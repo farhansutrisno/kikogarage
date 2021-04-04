@@ -65,7 +65,7 @@
 		          	<li class="nav-item dropdown" style="cursor: pointer;">
 	                  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
 	                  <ul class="dropdown-menu">
-	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksi" class="dropdown-item">All Reservasi</a></li>
+	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
 	                      <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
 	                      <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
 	                  </ul>
@@ -592,7 +592,7 @@
             <div class="block-18">
               <div class="text text-border d-flex align-items-center">
                 <strong class="number" data-number="<?php echo $jml_produk[0]->jml_produk; ?>">0</strong>
-                <span>Total <br>Produk</span>
+                <span>Total Produk<br>Kiko Good Garage</span>
               </div>
             </div>
           </div>
@@ -604,18 +604,19 @@
               </div>
             </div>
           </div> -->
-          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text text-border d-flex align-items-center">
-                <strong class="number" data-number="2590">0</strong>
-                <span>Total<br>Reservasi Customers</span>
-              </div>
-            </div>
-          </div>
-
+          
           <?php 
           if (!empty($idAkun)) { ?>
-          
+
+	          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+	            <div class="block-18">
+	              <div class="text text-border d-flex align-items-center">
+	                <strong class="number" data-number="<?php echo $jmlreservasi ?>">0</strong>
+	                <span>Total<br>Reservasi Customers</span>
+	              </div>
+	            </div>
+	          </div>
+
           	 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 	            <div class="block-18">
 	              <div class="text d-flex align-items-center">

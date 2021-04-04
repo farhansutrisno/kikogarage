@@ -390,6 +390,15 @@ class mod_dataProduk extends CI_Model{
                                 from pembelian";
         return $this->db->query("$query");
     }
+
+    public function jmlreservasi($id){
+        // $tahun = $this->session->userdata('tahun');
+        $query = "SELECT COUNT(kdPembelian) as jmlreservasi
+                                from pembelian
+                                WHERE idAkun= '".$id."' ";
+        return $this->db->query("$query");
+    }
+
     //==============================================================================
     //berdasarkan kategori
     

@@ -37,17 +37,15 @@ class C_produkPembeli extends CI_Controller{
         // $data['coating'] = $this->mod_dataProduk->coating()->result();
         // $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
         $id = $this->session->userdata('kode');
-
         if (!empty($id)) {
             $this->load->model('mod_dataAkun');
-            $data["dataPembeli"] = $this->mod_dataAkun->ubahDataPembelian($id)->result();
-            
-            $data['idAkun']        = $id;
+            $data["dataPembeli"]    = $this->mod_dataAkun->ubahDataPembelian($id)->result();
+            $data['jmlreservasi']   = $this->mod_dataProduk->jmlreservasi($id)->result()[0]->jmlreservasi;
+            $data['idAkun']         = $id;
         }
 
         $data['jml_produk']        = $this->mod_dataProduk->jml_produk2()->result();
-        // $data['jml_penjualan']     = $this->mod_dataProduk->jml_penjualan2()->result();
-
+        
         $this->session->set_flashdata('test1', 
                     '<div class="alert alert-info" style="margin-bottom: 20px !important">    
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

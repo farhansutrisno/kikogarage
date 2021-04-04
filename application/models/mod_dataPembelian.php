@@ -201,6 +201,14 @@ class mod_dataPembelian extends CI_Model{
 		
 	}
 
+	public function countpencarian($id){
+        // $tahun = $this->session->userdata('tahun');
+        $query = "SELECT  COUNT(kdProduk) as data
+                                FROM pembelian
+                                WHERE idAkun= '".$id."'";
+        return $this->db->query("$query");
+    }
+
 	public function sessionTransaksi($limit, $start){
 		$kode = $this->session->userdata('kode');
 		$this->db->distinct();
