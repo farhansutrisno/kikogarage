@@ -19,11 +19,13 @@ class C_dataAkun extends CI_Controller{
 
 		$no =0;
 		foreach ($data as $key) {
+
+			$namadepan = explode(' ', $key['namaLengkap']);
 			
-			if($username == $key['username'] && $password == $key['password']){
+			if($username == $namadepan[0] && $password == $key['password']){
 				$no=1;
 
-				$this->session->set_userdata('nama',$key['username']);
+				$this->session->set_userdata('nama',$key['namaLengkap']);
 				$this->session->set_userdata('pass',$key['password']);
 				$this->session->set_userdata('namaLengkap3',$key['namaLengkap']);
 				$this->session->set_userdata('fotoProfil',$key['foto']);
@@ -43,6 +45,7 @@ class C_dataAkun extends CI_Controller{
 		                '<div class="alert alert-danger">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>GAGAL LOGIN ! </h7>
+		                <p>Nama depan atau Password Salah </p>
 		                </div>');
 			redirect('C_produkPembeli/lihatProdukNew');
 		}
@@ -53,66 +56,69 @@ class C_dataAkun extends CI_Controller{
 	}
 
 	public function prosesCreateAkun(){
-		$this->form_validation->set_rules('namaLengkap','nama lengkap','trim|required|min_length[4]');
-		$this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
-	    $this->form_validation->set_rules('password','password','trim|required|min_length[4]|alpha_dash');
-	    $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
-	    $this->form_validation->set_rules('tanggal_lahir','tanggal lahir','required');
+		$this->form_validation->set_rules('namaLengkap','nama lengkap','required');
+		// $this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
+	    $this->form_validation->set_rules('password','password','required');
+	    // $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
+	    // $this->form_validation->set_rules('tanggal_lahir','tanggal lahir','required');
 	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
-	    $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
-	    $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');
-	    $this->form_validation->set_rules('kota_kab','kota/kabupaten','required|min_length[4]');
-	    $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
-	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
-	    $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
+	    // $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
+	    // $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');
+	    // $this->form_validation->set_rules('kota_kab','kota/kabupaten','required|min_length[4]');
+	    // $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
+	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required');
+	    // $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
 
-	    if(isset($_POST['submit'])){
+	    
+	    // if(isset($_POST['submit'])){
+
 		    if($this->form_validation->run() == false){
-		        $this->load->view('V_createAkun');
+		        // $this->load->view('V_createAkun');
+		        redirect('C_produkPembeli/lihatProdukNew');
 		    }
 		    else{
 		        
 		    	$data = $this->mod_dataAkun->login()->result_array();
-				$username = $this->input->post('username');
+				// $username = $this->input->post('username');
 				$password = $this->input->post('password');
 				$no =0;
 				foreach ($data as $key) {
 					
-					if($username == $key['username'] && $password == $key['password']){
+					if($password == $key['password']){
 						$no=1;
 
 						$this->session->set_flashdata('akun1', 
-				                '<div class="alert alert-danger fade in">    
+				                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
 				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				                <h7>GAGAL BUAT AKUN ! </h7>
-				                    <p>Data Username dan Password Sudah Terpakai</p><br>
-				                    <p>Harap Memasukan Username dan Password Lain </p>
-				                    Terima kasih.</p>
+				                <h7>GAGAL REGISTRASI! </h7>
+				                    <p>Password Sudah Terpakai</p><br>
+				                    <p>Harap Memasukan Password Lain </p>
 				                </div>');
-						redirect('C_dataAkun/createAkun');
+						// redirect('C_dataAkun/createAkun');
+						redirect('C_produkPembeli/lihatProdukNew');
 					}
 				}
+
 				if ($no==0) {
 					$config['upload_path']='./gambar_proyek/';
-		            $config['allowed_types']='jpg|png|jpeg|gif';
-		            $config['max_size'] = 50000000;
+		            $config['allowed_types']='jpg|png|jpeg';
+		            $config['max_size'] = 5000000;
 		            $this->load->library('upload',$config);
 		            $this->upload->do_upload();
 		            $data   =  $this->upload->data();
 
-					$this->mod_dataAkun->createAkun($data['file_name'],$username,$password);
+					$this->mod_dataAkun->createAkun($data['file_name'],$password);
 					$this->session->set_flashdata('akun2', 
-				                '<div class="alert alert-info fade in">    
+				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
 				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				                <h7>BERHASIL ! </h7>
-				                    <p>Anda berhasil Create Akun. Segera login dahulu.<br/>
-				                    Terima kasih.</p>
+				                <p>Silahkan login untuk reservasi</p>
 				                </div>');
-					redirect('C_dataAkun/login');
+					redirect('C_produkPembeli/lihatProdukNew');
 				}
 
 		    }
-		}
+		// }
 
 	}
 

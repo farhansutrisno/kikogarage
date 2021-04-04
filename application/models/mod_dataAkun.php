@@ -26,36 +26,36 @@ class mod_dataAkun extends CI_Model{
          return $this->db->get("konsumen");
     }
 
-	public function createAkun($gambar,$username,$password){
+	public function createAkun($gambar,$password){
 		
 			$namaLengkap 	= $this->input->post('namaLengkap');
-			$email 			= $this->input->post('email');
+			// $email 			= $this->input->post('email');
 			$noTelepon 		= $this->input->post('noTelepon');
-			$tanggal_lahir 	= $this->input->post('tanggal_lahir');
+			// $tanggal_lahir 	= $this->input->post('tanggal_lahir');
 			//$jenisKelamin 	= $this->input->post('jenisKelamin');
-			$kelurahan 		= $this->input->post('kelurahan');
-			$kecamatan 		= $this->input->post('kecamatan');
-			$kota_kab 		= $this->input->post('kota_kab');
+			// $kelurahan 		= $this->input->post('kelurahan');
+			// $kecamatan 		= $this->input->post('kecamatan');
+			//$kota_kab 		= $this->input->post('kota_kab');
 			$alamatLengkap 	= $this->input->post('alamatLengkap');
-			$provinsi 		= $this->input->post('provinsi');
-			$kodePos 		= $this->input->post('kodePos');
+			// $provinsi 		= $this->input->post('provinsi');
+			// $kodePos 		= $this->input->post('kodePos');
 
 			$data 			= array(
 				"namaLengkap" 		=> $namaLengkap,
-				"username" 			=> $username,
+				// "username" 			=> $username,
 				"password" 			=> $password,
 				//"jenisKelamin" 		=> $jenisKelamin,
 				"noTelepon" 		=> $noTelepon,
-				"email" 			=> $email,
+				// "email" 			=> $email,
 				"alamatLengkap" 	=> $alamatLengkap,
-				"provinsi" 			=> $provinsi,
-				"tglLahir" 			=> $tanggal_lahir,
-				"kota_kabupaten"	=> $kota_kab,
-				"kodePos" 			=> $kodePos,
-				"kelurahan" 		=> $kelurahan,
-				"kecamatan" 		=> $kecamatan,
+				// "provinsi" 			=> $provinsi,
+				// "tglLahir" 			=> $tanggal_lahir,
+				// "kota_kabupaten"	=> $kota_kab,
+				// "kodePos" 			=> $kodePos,
+				// "kelurahan" 		=> $kelurahan,
+				// "kecamatan" 		=> $kecamatan,
 				"foto"				=> $gambar,
-				"member"			=> 'No' 
+				"member"			=> 'Yes' 
 			);
 
 				$this->db->insert('konsumen',$data);

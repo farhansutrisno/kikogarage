@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/ionicons.min.css">
 
-    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.timepicker.css">
 
     
@@ -42,6 +42,8 @@
         <div class="col-md-12">
         	<?php echo $this->session->flashdata('msg1'); ?>
         	<?php echo $this->session->flashdata('msg3'); ?>
+        	<?php echo $this->session->flashdata('akun1'); ?>
+        	<?php echo $this->session->flashdata('akun2'); ?>
 
         	 <div class="container">
         	 	<div class="row">
@@ -64,7 +66,7 @@
 	                  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
 	                  <ul class="dropdown-menu">
 	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksi" class="dropdown-item">All Reservasi</a></li>
-	                      <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li>
+	                      <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
 	                      <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
 	                  </ul>
 	                </li>
@@ -103,10 +105,10 @@
 		              <div class="col-md-12 block-12">
 			            <form action="<?php echo base_url().'C_dataAkun/prosesLogin'?>" method="POST" id="regForm">
 			              <div class="form-group">
-			                <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+			                <input type="text" class="form-control" id="username" placeholder="Nama Depan" name="username" required>
 			              </div>
 			              <div class="form-group">
-			                <input type="password" class="form-control" placeholder="Password" name="password" required>
+			                <input type="password" class="form-control" id="passwordlogin" placeholder="Password" name="password" required>
 			              </div>
 			              
 			              <div class="form-group">
@@ -135,7 +137,7 @@
 
 	  <div class="modal fade" id="registermodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	     <div class="modal-dialog" role="document">
-	        <div class="modal-content" style="width: 800px !important;">
+	        <div class="modal-content">
 	        	<div id="login">
 		           <div class="modal-header">
 		             
@@ -146,33 +148,37 @@
 				           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				        </div>
 		           </div>
-		           <form action="<?php echo base_url().'C_dataAkun/prosesCreateAkun'?>" method="POST" id="regisForm">
+		           <form action="<?php echo base_url().'C_dataAkun/prosesCreateAkun'?>" method="POST" name="createAkun" enctype="multipart/form-data" id="regisForm">
 
 		           <div class="modal-body">
 		              
 		              <div class="col-md-10 block-10">
 
 			              <div class="form-group">
-			                <input type="text" class="form-control" name="namaLengkap" placeholder="Nama Lengkap" required>
+			                <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" placeholder="Nama Lengkap" required>
 			              </div>
 			              <div class="form-group">
-			                <input type="text" class="form-control" name="noTelepon" placeholder="No Telepon" required>
+			                <input type="text" class="form-control" id="noTelepon" name="noTelepon" placeholder="No Telepon" required>
 			              </div>
 			              <div class="form-group">
-			                <input type="password" class="form-control" name="password" placeholder="Password" required>
+			                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 			              </div>
 
 			              <div class="form-group">
-		                   	<input class="form-control datepicker" data-date-format="yyyy-mm-dd" type="text" name="tanggal_lahir" required> 
-		                  </div>
-			           	
-			          
+			                <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
+			              </div>
+			               
+			              <div class="form-group">
+			                 <input class="form-control" type="file" name="userfile" required>
+                    		<span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+			              </div>
+
 			          </div>
 
 		           </div>
 		           <div class="modal-footer justify-content-center">
 		           			<button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
-			                <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Submit</button>
+			                <button type="button" onclick="saveregister();" class="btn btn-info btn-lg marleft20 active">Submit</button>
 		           </div>
 		           </form>
 		         </div>
@@ -606,14 +612,22 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text d-flex align-items-center">
-                <strong class="number" data-number="67">0</strong>
-                <span>Total <br>Poin</span>
-              </div>
-            </div>
-          </div>
+
+          <?php 
+          if (!empty($idAkun)) { ?>
+          
+          	 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+	            <div class="block-18">
+	              <div class="text d-flex align-items-center">
+	                <strong class="number" data-number="<?php echo $dataPembeli[0]->poin?>">0</strong>
+	                <span>Total <br>Poin</span>
+	              </div>
+	            </div>
+	          </div>
+
+          <?php }
+          ?>
+         
         </div>
     	</div>
     </section>	
@@ -677,11 +691,43 @@
 		$('#registermodel').modal('show');
 		    
 	}
+
+	function saveregister(){
+
+		var namaLengkap = $('#namaLengkap').val();
+		var noTelepon 	= $('#noTelepon').val();
+		var password 	= $('#password').val();
+		var valid = 1;
+	  	
+		if(namaLengkap == ''){
+			valid = 0;
+			var msg = 'Nama Lengkap Tidak Boleh Kosong';
+		}
+
+		if(password == ''){
+			valid = 0;
+			var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+		}
+
+		if(noTelepon == ''){
+			valid = 0;
+			var msg = 'No Telepon Tidak Boleh Kosong Tidak Boleh Kosong';
+		}
+
+		if(valid == 1){
+
+			document.getElementById("regisForm").submit();
+			
+		}else{
+			alert(msg);
+		}
+		    
+	}
   	
 	function save(){
 
 		var username=$('#username').val();
-		var password=$('#password').val();
+		var passwordlogin=$('#passwordlogin').val();
 		var valid = 1;
 	  	
 		if(username == ''){
@@ -689,9 +735,9 @@
 			var msg = 'Username Tidak Boleh Kosong';
 		}
 
-		if(password == ''){
+		if(passwordlogin == ''){
 			valid = 0;
-			var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+			var msg = 'Password Tidak Boleh Kosong';
 		}
 
 		if(valid == 1){
@@ -734,19 +780,7 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-    <script type="text/javascript">
-     $('.datepicker').datetimepicker({
-        language:  'id',
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-        });
-    </script> 
+ 
   <script src="<?php echo base_url() ?>js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
   <script src="<?php echo base_url() ?>js/popper.min.js"></script>
@@ -758,7 +792,7 @@
   <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script>
   <script src="<?php echo base_url() ?>js/aos.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script>
-  <!-- <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script> -->
+  <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.timepicker.min.js"></script>
   <script src="<?php echo base_url() ?>js/scrollax.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->

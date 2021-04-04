@@ -36,6 +36,15 @@ class C_produkPembeli extends CI_Controller{
 
         // $data['coating'] = $this->mod_dataProduk->coating()->result();
         // $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
+        $id = $this->session->userdata('kode');
+
+        if (!empty($id)) {
+            $this->load->model('mod_dataAkun');
+            $data["dataPembeli"] = $this->mod_dataAkun->ubahDataPembelian($id)->result();
+            
+            $data['idAkun']        = $id;
+        }
+
         $data['jml_produk']        = $this->mod_dataProduk->jml_produk2()->result();
         // $data['jml_penjualan']     = $this->mod_dataProduk->jml_penjualan2()->result();
 

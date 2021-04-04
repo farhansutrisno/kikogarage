@@ -54,7 +54,7 @@
                 <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
                 <ul class="dropdown-menu">
                     <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksi" class="dropdown-item">All Reservasi</a></li>
-                    <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li>
+                    <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
                     <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
                 </ul>
               </li>
@@ -217,6 +217,67 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <script type="text/javascript">
+
+    function registermodel(){
+
+      $('#loginmodel').modal('hide');
+
+    $('#registermodel').modal('show');
+        
+  }
+    
+  function save(){
+
+    var username=$('#username').val();
+    var password=$('#password').val();
+    var valid = 1;
+      
+    if(username == ''){
+      valid = 0;
+      var msg = 'Username Tidak Boleh Kosong';
+    }
+
+    if(password == ''){
+      valid = 0;
+      var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+    }
+
+    if(valid == 1){
+
+
+      document.getElementById("regForm").submit();
+      
+      // $.ajax({
+      //       type:"post",
+   //                url: "<?php echo base_url(); ?>C_dataAkun/prosesLogin",
+     //         dataType: "text",
+      //       data: {
+      //           username: username,
+      //           password: password
+      //       },
+      //       success: function(data) {
+      //           console.log(username);
+      //           console.log(password);
+      //           $('#loginmodel').modal('hide');
+                
+    //                 window.location.href = "<?php echo base_url() ?>C_produkPembeli/lihatProdukNew";
+                    
+      //       },
+      //       error: function(xhr, ajaxOptions, thrownError)
+      //       {
+      //           alert("Failed to get where column list, please try again");
+      
+      //       }
+      // });
+
+    }else{
+      alert(msg);
+    }
+        
+  }
+
+  </script>
 
   <script src="<?php echo base_url() ?>js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
