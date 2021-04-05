@@ -57,7 +57,7 @@
 		          	<li class="nav-item dropdown" style="cursor: pointer;">
 	                  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
 	                  <ul class="dropdown-menu">
-	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksi" class="dropdown-item">All Reservasi</a></li>
+	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
 	                      <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
 	                      <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
 	                  </ul>
@@ -225,7 +225,7 @@
      </div>
   </div>
 
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo base_url() ?>images/bg_3.jpg'); height: 200px !important;" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo base_url() ?>images/car-2.jpg'); height: 200px !important;" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -245,7 +245,7 @@
       			<div class="car-details">
       				<div class="img rounded" style="background-image: url(<?php echo base_url().'gambar_proyek/'.$row[0]->gambar ?>);"></div>
       				<div class="text text-center">
-      					<span class="subheading"><?php echo $row[0]->kategori ?></span>
+      					<span class="subheading" style="font-size: 15px !important;"><?php echo $row[0]->kategori ?></span>
       					<h2><?php echo $row[0]->namaProduk ?></h2>
       					<h3 style="color: red;">Rp.<?php echo number_format($row[0]->hargaPenjualan,0,",","."); ?></h3>
       				</div>

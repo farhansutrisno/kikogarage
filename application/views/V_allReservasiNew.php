@@ -183,7 +183,7 @@
 	  </div>
     <!-- END nav -->
     
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo base_url() ?>images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo base_url() ?>images/car-8.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -238,7 +238,7 @@
 						        <td class="price">
 						        	<p class="btn-custom">
 						        		<!-- <a href="<?php echo base_url() ?>C_transaksiProduk/lihatTransaksi/'.$allTransaksi->kodeUnik.'/'.$allTransaksi->KdTukang">Lihat Detail</a> -->
-						        		<?php echo anchor('C_transaksiProduk/lihatTransaksi/'.$allTransaksi->kodeUnik.'/'.$allTransaksi->KdTukang,'Detail',array('class'=>'btn-round', 'style'=>'padding: 10px 50px !important;'));?>
+						        		<?php echo anchor('C_transaksiProduk/lihatTransaksiNew/'.$allTransaksi->kodeUnik.'/'.$allTransaksi->KdTukang,'Detail',array('class'=>'btn-round', 'style'=>'padding: 10px 50px !important;'));?>
 						        	</p>
 						        	<div class="price-rate" style="text-align: justify !important;margin-left: 40px !important;">
 						        		<span class="subheading">Status : <?php echo $allTransaksi->statusPembayaran; ?></span><br>
