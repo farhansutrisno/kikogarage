@@ -245,6 +245,26 @@ class C_transaksiProduk extends CI_Controller{
 		$this->load->view('V_Transaksi',$data);
 	}
 
+	public function lihatTransaksiNew(){
+		// $id 			= $this->uri->segment(3);
+		// $KdTukang 		= $this->uri->segment(4);
+		// $kode 			= $this->session->userdata('kode');
+
+		// $data["produk"] = $this->mod_dataPembelian->dataProduk($id)->result();
+		
+		// if (!empty($KdTukang)) {
+		// 	$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi($id)->result();
+		// }else{
+		// 	$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi3($id)->result();
+		// }
+		
+		// $data["profil"] = $this->mod_dataPembelian->lihatTransaksi2($kode)->result();
+		// $jml 			 		= $this->mod_dataPembelian->jumlahBayar2($id);
+		// $data['totalBelanja2'] 	= $jml->jumlahBayar2;
+
+		$this->load->view('V_TransaksiNew');
+	}
+
 	//function di bawah ini tidak dipakai
 	/*public function lihatDataTransaksi(){
 		$id   = $this->session->userdata('kdPembayaran');
