@@ -12,6 +12,12 @@ class C_dataKiko extends CI_Controller{
 		$this->load->view('V_aboutUs');
 	}
 
+	public  function lihatAboutUsFoNew(){
+		// $data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
+		$this->load->view('V_aboutUsNew');
+	}
+
+
 	public  function lihatDataArtikelFo(){
 		$data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
 		$this->load->view('V_lihatArtikelFo', $data);

@@ -20,10 +20,17 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/aos.css">
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/ionicons.min.css">
-
-    <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css">
+    
+     <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css"> -->
     <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.timepicker.css">
 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>dist/css/bootstrap-datepicker.min.css">
+  <script src="<?php echo base_url() ?>dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="<?php echo base_url() ?>dist/locales/bootstrap-datepicker.id.min.js"></script>
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/icomoon.css">
@@ -42,7 +49,7 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Beranda</a></li>
             <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="nav-link">Cars Wash</a></li>
             <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Interior') ?>" class="nav-link">Interior</a></li>
             <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
@@ -86,24 +93,84 @@
                   <div class="col-md-12 block-12">
                   <form action="<?php echo base_url().'C_dataAkun/prosesLogin'?>" method="POST" id="regForm">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+                      <input type="text" class="form-control" id="username" placeholder="Nama Depan" name="username" required>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                      <input type="password" class="form-control" id="passwordlogin" placeholder="Password" name="password" required>
                     </div>
-
+                    
                     <div class="form-group">
                       <!-- <input type="submit" name="submit" value="Kirim" class="btn btn-primary py-3 px-5"> -->
                        <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
                       <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Login</button>
                     </div>
+
                   </form>
                 
                 </div>
 
                </div>
-               <div class="modal-footer">
+               <div class="modal-footer justify-content-center">
+                  <br>
+                <hr />
+                <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
                </div>
+             </div>
+
+
+          </div>
+
+       </div>
+    </div>
+
+    <div class="modal fade" id="registermodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="login">
+               <div class="modal-header">
+                 
+                  <div class="col-md-11">
+                  <h4 class="modal-title textBlack" align="left">Form Registrasi</h4>
+                </div>
+                <div class="col-md-1">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+               </div>
+               <form action="<?php echo base_url().'C_dataAkun/prosesCreateAkun'?>" method="POST" name="createAkun" enctype="multipart/form-data" id="regisForm">
+
+               <div class="modal-body">
+                  
+                  <div class="col-md-10 block-10">
+
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="noTelepon" name="noTelepon" placeholder="No Telepon" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                          <input type="text" class="form-control" id="date" name="tanggal_lahir" placeholder="Tanggal Lahir" required">
+                        </div>
+                    <div class="form-group">
+                      <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
+                    </div>
+                     
+                    <div class="form-group">
+                       <input class="form-control" type="file" name="userfile" required>
+                        <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                    </div>
+
+                </div>
+
+               </div>
+               <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
+                      <button type="button" onclick="saveregister();" class="btn btn-info btn-lg marleft20 active">Submit</button>
+               </div>
+               </form>
              </div>
 
 
@@ -195,7 +262,7 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Informasi</h2>
               <ul class="list-unstyled">
-                <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFo" class="py-2 d-block">About</a></li>
+                <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFoNew" class="py-2 d-block">Tentang Kami</a></li>
                 <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelFo" class="py-2 d-block">Artikel</a></li>
                 <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriFo"" class="py-2 d-block">Galeri</a></li>
               </ul>
@@ -206,7 +273,7 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Customer Support</h2>
               <ul class="list-unstyled">
-                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Kontak Kami</a></li>
               </ul>
             </div>
           </div>
@@ -250,11 +317,43 @@
     $('#registermodel').modal('show');
         
   }
+
+  function saveregister(){
+
+    var namaLengkap = $('#namaLengkap').val();
+    var noTelepon   = $('#noTelepon').val();
+    var password  = $('#password').val();
+    var valid = 1;
+      
+    if(namaLengkap == ''){
+      valid = 0;
+      var msg = 'Nama Lengkap Tidak Boleh Kosong';
+    }
+
+    if(password == ''){
+      valid = 0;
+      var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+    }
+
+    if(noTelepon == ''){
+      valid = 0;
+      var msg = 'No Telepon Tidak Boleh Kosong Tidak Boleh Kosong';
+    }
+
+    if(valid == 1){
+
+      document.getElementById("regisForm").submit();
+      
+    }else{
+      alert(msg);
+    }
+        
+  }
     
   function save(){
 
     var username=$('#username').val();
-    var password=$('#password').val();
+    var passwordlogin=$('#passwordlogin').val();
     var valid = 1;
       
     if(username == ''){
@@ -262,9 +361,9 @@
       var msg = 'Username Tidak Boleh Kosong';
     }
 
-    if(password == ''){
+    if(passwordlogin == ''){
       valid = 0;
-      var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+      var msg = 'Password Tidak Boleh Kosong';
     }
 
     if(valid == 1){
@@ -301,9 +400,20 @@
         
   }
 
+  $( function() {
+
+      $( "#date" ).datepicker({
+        autoclose:true,
+        todayHighlight:true,
+        format:'yyyy-mm-dd',
+        language: 'id',
+      });
+
+    } );
+
   </script>
   
-  <script src="<?php echo base_url() ?>js/jquery.min.js"></script>
+  <!-- <script src="<?php echo base_url() ?>js/jquery.min.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
   <script src="<?php echo base_url() ?>js/popper.min.js"></script>
   <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
@@ -314,7 +424,7 @@
   <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script>
   <script src="<?php echo base_url() ?>js/aos.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script>
-  <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
+  <!-- <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery.timepicker.min.js"></script>
   <script src="<?php echo base_url() ?>js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>

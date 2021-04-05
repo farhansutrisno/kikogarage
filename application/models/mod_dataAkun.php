@@ -31,7 +31,7 @@ class mod_dataAkun extends CI_Model{
 			$namaLengkap 	= $this->input->post('namaLengkap');
 			// $email 			= $this->input->post('email');
 			$noTelepon 		= $this->input->post('noTelepon');
-			// $tanggal_lahir 	= $this->input->post('tanggal_lahir');
+			$tanggal_lahir 	= $this->input->post('tanggal_lahir');
 			//$jenisKelamin 	= $this->input->post('jenisKelamin');
 			// $kelurahan 		= $this->input->post('kelurahan');
 			// $kecamatan 		= $this->input->post('kecamatan');
@@ -49,7 +49,7 @@ class mod_dataAkun extends CI_Model{
 				// "email" 			=> $email,
 				"alamatLengkap" 	=> $alamatLengkap,
 				// "provinsi" 			=> $provinsi,
-				// "tglLahir" 			=> $tanggal_lahir,
+				"tglLahir" 			=> $tanggal_lahir,
 				// "kota_kabupaten"	=> $kota_kab,
 				// "kodePos" 			=> $kodePos,
 				// "kelurahan" 		=> $kelurahan,

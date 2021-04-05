@@ -10,7 +10,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo base_url() ?>css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/animate.css">
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.carousel.min.css">
@@ -21,8 +21,16 @@
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/ionicons.min.css">
 
-    <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css">
+    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css"> -->
     <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.timepicker.css">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>dist/css/bootstrap-datepicker.min.css">
+	<script src="<?php echo base_url() ?>dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="<?php echo base_url() ?>dist/locales/bootstrap-datepicker.id.min.js"></script>
 
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
@@ -34,9 +42,7 @@
     </style>
   </head>
   <body>
-    
-    
-
+    	
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	  	
         <div class="col-md-12">
@@ -54,7 +60,7 @@
 
 		      <div class="collapse navbar-collapse" id="ftco-nav">
 		        <ul class="navbar-nav ml-auto">
-		          <li class="nav-item active"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Home</a></li>
+		          <li class="nav-item active"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Beranda</a></li>
 		          <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="nav-link">Cars Wash</a></li>
 		          <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Interior') ?>" class="nav-link">Interior</a></li>
 		          <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
@@ -110,6 +116,7 @@
 			              <div class="form-group">
 			                <input type="password" class="form-control" id="passwordlogin" placeholder="Password" name="password" required>
 			              </div>
+
 			              
 			              <div class="form-group">
 			                <!-- <input type="submit" name="submit" value="Kirim" class="btn btn-primary py-3 px-5"> -->
@@ -164,6 +171,9 @@
 			                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 			              </div>
 
+						 <div class="form-group">
+			                <input type="text" class="form-control" id="date" name="tanggal_lahir" placeholder="Tanggal Lahir" required">
+			              </div>
 			              <div class="form-group">
 			                <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
 			              </div>
@@ -313,7 +323,11 @@
 			    						<p class="price ml-auto">Rp. <?php echo number_format($key->hargaPenjualan,0,",","."); ?></p>
 		    						</div>
 		    						<p class="d-flex mb-0 d-block">
-		    							<input type="submit" name="submit" data-toggle="modal" data-target="#loginmodel" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+		    							<?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
+		    								<input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+		    							<?php }else{ ?>
+		    								<input type="submit" name="submit" data-toggle="modal" data-target="#loginmodel" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+		    							<?php } ?> 
 		    							<a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-secondary py-2 ml-1" style="width: 30% !important">Detail</a>
 		    						</p>
 		    					</div>
@@ -382,7 +396,7 @@
 
 	            <p>kikogarage didirikan pada tanggal 1 september 2020. Dinamakan kikogarage karena nama owner ‘frangky dan eko’. Jadi dikikogarage ini merupakan usaha carwash gabungan dari dua orang entrepreneur dimana didepan terdapat café dan belakangnya garasi untuk carwash dan coating otomotif.</p>
 	            <!-- <p>Kiko Good Garage merupakan usaha kecil menengah yang berdiri pada tanggal 1 September 2020 dan bergerak di bidang otomotif khususnya jasa pencucian kendaraan baik roda dua maupun roda empat. Selain itu juga menyediakan jasa coating kendaraan untuk roda empat. Kiko Good Garage beralamat di Jl. Soewoko No. 30, Jetis Lamongan. Pemanfaatan teknologi informasi bisa diterapkan oleh Kiko Good Garage untuk meningkatkan layanan jasa pencucian dan coating kendaraan. Pemanfaatan internet bukan hanya untuk usaha menengah keatas, tetapi juga bisa dimanfaatkan oleh usaha menengah kebawah.</p> -->
-	            <p><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFo" class="btn btn-primary py-3 px-4">Detail</a></p>
+	            <p><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFoNew" class="btn btn-primary py-3 px-4">Detail</a></p>
 	          </div>
 					</div>
 				</div>
@@ -642,7 +656,7 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Informasi</h2>
               <ul class="list-unstyled">
-                <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFo" class="py-2 d-block">About</a></li>
+                <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFoNew" class="py-2 d-block">Tentang Kami</a></li>
                 <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelFo" class="py-2 d-block">Artikel</a></li>
                 <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriFo"" class="py-2 d-block">Galeri</a></li>
               </ul>
@@ -653,7 +667,7 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Customer Support</h2>
               <ul class="list-unstyled">
-                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Kontak Kami</a></li>
               </ul>
             </div>
           </div>
@@ -775,14 +789,24 @@
 		    
 	}
 
+	$( function() {
+
+	    $( "#date" ).datepicker({
+	      autoclose:true,
+	      todayHighlight:true,
+	      format:'yyyy-mm-dd',
+	      language: 'id',
+	    });
+
+	  } );
+
 	</script>
 	
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
- 
-  <script src="<?php echo base_url() ?>js/jquery.min.js"></script>
+  
+  <!-- <script src="<?php echo base_url() ?>js/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
   <script src="<?php echo base_url() ?>js/popper.min.js"></script>
   <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
@@ -793,8 +817,10 @@
   <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script>
   <script src="<?php echo base_url() ?>js/aos.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script>
-  <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
+
+  <!-- <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery.timepicker.min.js"></script>
+
   <script src="<?php echo base_url() ?>js/scrollax.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
   <!-- <script src="<?php echo base_url() ?>js/google-map.js"></script> -->

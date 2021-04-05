@@ -60,7 +60,7 @@ class C_dataAkun extends CI_Controller{
 		// $this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
 	    $this->form_validation->set_rules('password','password','required');
 	    // $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
-	    // $this->form_validation->set_rules('tanggal_lahir','tanggal lahir','required');
+	    $this->form_validation->set_rules('tanggal_lahir','tanggal lahir','required');
 	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
 	    // $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
 	    // $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');

@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/style.css">
 <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/responsive.css">
 <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="<?=base_url();?>vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+<!-- <link type="text/css" rel="stylesheet" href="<?=base_url();?>vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css" /> -->
 <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
 <!-- Fonts Online -->
@@ -513,7 +513,7 @@
 <!-- JavaScripts --> 
 <script src="<?php echo base_url() ?>asset/js/vendors/jquery/jquery.min.js"></script> 
 <script src="<?php echo base_url() ?>asset/js/vendors/wow.min.js"></script> 
-<script src="<?php echo base_url() ?>asset/js/vendors/bootstrap.min.js"></script> 
+<!-- <script src="<?php echo base_url() ?>asset/js/vendors/bootstrap.min.js"></script>  -->
 <script src="<?php echo base_url() ?>asset/js/vendors/own-menu.js"></script> 
 <script src="<?php echo base_url() ?>asset/js/vendors/jquery.sticky.js"></script> 
 <script src="<?php echo base_url() ?>asset/js/vendors/owl.carousel.min.js"></script> 
