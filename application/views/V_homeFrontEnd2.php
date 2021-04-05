@@ -710,7 +710,7 @@
                   <div class="price">Rp. <?php echo number_format($key->hargaPenjualan,0,",","."); ?> </div>
                     
                   
-                        <form method="post" action="<?php echo base_url()?>C_produkPembeli/prosesTambah" method="post" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo base_url()?>C_produkPembeli/prosesTambah" enctype="multipart/form-data">
 
                          <?php $kode = $this->session->userdata('kode'); 
                          $subtotal = $key->hargaPenjualan * 1 ;?>

@@ -206,7 +206,7 @@
         <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
           <div class="col-lg-8 ftco-animate">
           	<div class="text w-100 text-center mb-md-5 pb-md-5">
-	            <h1 class="mb-4">Premium Carwash & Auto Detailing</h1>
+	            <h1 class="mb-2" style="font-size: 40px;">Premium Carwash & Auto Detailing</h1>
 	            <p style="font-size: 18px;">Rawat dan Percantik Kendaraan Anda dan Percayakan Kepada Kami</p>
 	           <!--  <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
 	            	<div class="icon d-flex align-items-center justify-content-center">
@@ -260,8 +260,8 @@
 	  					<div class="col-md-8 d-flex align-items-right">
 	  						<div class="services-wrap rounded-right w-100">
 	  							<?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
-	  							<h4 class="heading-section mb-2">Selamat datang di Reservasi</h4>
-	  							<h3 class="heading-section mb-4">Kiko Good Garage</h3>
+	  							<h4 class="heading-section mb-2">Selamat datang <?=$this->session->userdata('namaLengkap3')?> </h4>
+	  							<h3 class="heading-section mb-4">Reservasi Kiko Good Garage</h3>
 	  							<?php }?>
 	  							<div class="row d-flex mb-4">
 					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
@@ -324,11 +324,31 @@
 		    						</div>
 		    						<p class="d-flex mb-0 d-block">
 		    							<?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
-		    								<input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+
+		    								<form method="post" action="<?php echo base_url()?>C_produkPembeli/prosesTambah" enctype="multipart/form-data">
+
+						                         <?php 
+							                         $kode = $this->session->userdata('kode'); 
+							                         $subtotal = $key->hargaPenjualan * 1 ;
+						                         ?>
+
+						                        <input type="hidden" name="subtotal" value="<?php echo $subtotal; ?>" /> 
+						                        <input type="hidden" name="idAkun" value="<?php echo $kode; ?>" /> 
+						                        <input type="hidden" name="kdProduk" value="<?php echo $key->kdProduk; ?>" />
+						                        <input type="hidden" name="namaProduk" value="<?php echo $key->namaProduk; ?>" />
+						                        <input type="hidden" name="harga" value="<?php echo $key->hargaPenjualan; ?>" />
+						                        <input type="hidden" name="gambar" value="<?php echo $key->gambar; ?>" />
+						                        <!-- <input type="hidden" name="berat" value="<?php echo $key->berat; ?>" /> -->
+						                        <input type="hidden" name="qty" value="1" />
+						                        <!-- <button type="submit" name="submit" class="cart-btn"><i class="icon-basket-loaded"></i></button> -->
+						                        <input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+						                        <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-secondary py-2 ml-1" style="width: 30% !important">Detail</a>
+					                        </form>
+
 		    							<?php }else{ ?>
 		    								<input type="submit" name="submit" data-toggle="modal" data-target="#loginmodel" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+		    								<a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-secondary py-2 ml-1" style="width: 30% !important">Detail</a>
 		    							<?php } ?> 
-		    							<a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-secondary py-2 ml-1" style="width: 30% !important">Detail</a>
 		    						</p>
 		    					</div>
 		    				</div>
