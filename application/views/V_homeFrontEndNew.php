@@ -10,7 +10,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/animate.css">
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.carousel.min.css">
@@ -53,7 +53,7 @@
 
         	 <div class="container">
         	 	<div class="row">
-        	 		<a class="navbar-brand" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
+        	 		<a class="navbar-brand" style="margin-left: -10px !important;" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
 		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="oi oi-menu"></span> Menu
 		      </button>
@@ -72,7 +72,6 @@
 	                  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
 	                  <ul class="dropdown-menu">
 	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
-	                      <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
 	                      <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
 	                  </ul>
 	                </li>
@@ -91,9 +90,8 @@
         </div>
 	   
 	  </nav>
-    <!-- END nav -->
 
-    <div class="modal fade" id="loginmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal fade" id="loginmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	     <div class="modal-dialog" role="document">
 	        <div class="modal-content">
 	        	<div id="login">
@@ -198,7 +196,9 @@
 
 	     </div>
 	  </div>
-    
+
+    <!-- END nav -->
+
     <div class="hero-wrap ftco-degree-bg" style="background-image: url('<?php echo base_url() ?>images/bg_1.jpg');" data-stellar-background-ratio="0.5">
 
       <div class="overlay"></div>
@@ -412,10 +412,9 @@
 					<div class="col-md-6 wrap-about ftco-animate">
 	          <div class="heading-section heading-section-white pl-md-5">
 	          	<span class="subheading">Tentang Kami</span>
-	            <h3 class="mb-4" style="color: #FFFFFF !important;">Welcome to Kiko Good Garage</h2>
+	            <h2 class="mb-4" style="color: #FFFFFF !important;">Welcome to Kiko Good Garage</h2>
 
 	            <p>kikogarage didirikan pada tanggal 1 september 2020. Dinamakan kikogarage karena nama owner ‘frangky dan eko’. Jadi dikikogarage ini merupakan usaha carwash gabungan dari dua orang entrepreneur dimana didepan terdapat café dan belakangnya garasi untuk carwash dan coating otomotif.</p>
-	            <!-- <p>Kiko Good Garage merupakan usaha kecil menengah yang berdiri pada tanggal 1 September 2020 dan bergerak di bidang otomotif khususnya jasa pencucian kendaraan baik roda dua maupun roda empat. Selain itu juga menyediakan jasa coating kendaraan untuk roda empat. Kiko Good Garage beralamat di Jl. Soewoko No. 30, Jetis Lamongan. Pemanfaatan teknologi informasi bisa diterapkan oleh Kiko Good Garage untuk meningkatkan layanan jasa pencucian dan coating kendaraan. Pemanfaatan internet bukan hanya untuk usaha menengah keatas, tetapi juga bisa dimanfaatkan oleh usaha menengah kebawah.</p> -->
 	            <p><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFoNew" class="btn btn-primary py-3 px-4">Detail</a></p>
 	          </div>
 					</div>
