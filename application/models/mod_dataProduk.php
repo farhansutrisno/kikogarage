@@ -42,6 +42,17 @@ class mod_dataProduk extends CI_Model{
         return $this->db->get("keranjang");
     }
 
+    public function lihatReservasi(){
+        $kode = $this->session->userdata('kode');
+
+        $this->db->select('keranjang.kdProduk, keranjang.kdKeranjang, produk.namaProduk, produk.hargaPenjualan, produk.kategori, produk.gambar, keranjang.idAkun, konsumen.alamatLengkap');
+        $this->db->from('keranjang');
+        $this->db->join('produk','produk.kdProduk=keranjang.kdProduk');
+        $this->db->join('konsumen','konsumen.idAkun=keranjang.idAkun');
+        $this->db->where("keranjang.idAkun",$kode);
+        return $this->db->get();
+    }
+
     public function cekJumlah($kdProduk){
         $this->db->select('jml_produk,berat');
         $this->db->where("kdProduk",$kdProduk);

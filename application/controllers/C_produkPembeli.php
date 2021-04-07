@@ -170,6 +170,13 @@ class C_produkPembeli extends CI_Controller{
             }
     }
 
+    public function datareservasi(){
+        $data['produk']         = $this->mod_dataProduk->lihatReservasi()->result();
+        $jml                    = $this->mod_dataProduk->jmlKeranjang();
+        $data['keranjang']      = $jml->jmlKeranjang;
+        $this->load->view('V_dataReservasiNew',$data);
+    }
+
     //function dibawah ini tidak dipakai
     /*public function prosesUpdate(){
         $qty            = $this->input->post('qty');
@@ -545,12 +552,6 @@ class C_produkPembeli extends CI_Controller{
         $this->load->view('V_pencarianLoginNew',$data);
     }
 
-    public function datareservasi(){
-        $data['produk']         = $this->mod_dataProduk->lihatKeranjang()->result();
-        $jml                    = $this->mod_dataProduk->jmlKeranjang();
-        $data['keranjang']      = $jml->jmlKeranjang;
-        $this->load->view('V_lihatKeranjang',$data);
-    }
 }
 
 ?>

@@ -39,6 +39,10 @@
       .nav-link{
         color: #FFFFFF !important;
       }
+
+      .ftco-degree-bg:after{
+        content: none !important;
+      }
     </style>
 
   </head>
@@ -117,7 +121,13 @@
         <h3 class="mb-3 bread"><b>Produk Terpilih</b></h3>
         <hr/>
         <div class="row">
-          <?php foreach ($produk as $produk1) { ?>
+
+          <?php 
+          $total_belanja = 0;
+          foreach ($produk as $produk1) { 
+
+            $total_belanja = $total_belanja + $produk1->hargaPenjualan;
+            ?>
 
           <div class="col-md-4">
             <div class="car-wrap rounded ftco-animate">
@@ -145,10 +155,36 @@
           <div class="col-md-8 ftco-animate">
             <h3><b>Data Reservasi</b></h3>
             <hr/>
-            <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
-            <p style="color: #000000 !important;">Tanggal Transaksi : <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
-            <p style="color: #000000 !important;">No Plat : <?php echo $row[0]->noPlat ?></p>
-            <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
+
+            <div class="col-md-10" style="margin-left: -60px !important; margin-bottom: -20px !important;">
+            <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="namaLengkap" required>
+              </div>
+              <div class="form-group">
+                <!-- <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required> -->
+                <select class="form-control" name="jenisBooking" required>
+                  <option value=""> Pilih Jenis Reservasi</option>
+                  <option value="Antar Jemput">Antar Jemput</option>
+                  <option value="Langsung">Langsung</option>
+                </select>
+              </div>
+             <!--  <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div> -->
+              <!-- <div class="form-group">
+                <textarea cols="30" rows="7" name="isiPesan" class="form-control" placeholder="Isi Pesan" required></textarea>
+              </div> -->
+              <div class="form-group">
+                <input type="submit" name="submit" value="Lanjutkan" class="btn btn-info py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+
+            <!-- <p style="color: #000000 !important;">Tanggal Transaksi : </p>
+            <p style="color: #000000 !important;">No Plat : </p>
+            <p style="color: #000000 !important;">Jenis Booking : </p> -->
             
             <!-- <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
@@ -157,22 +193,20 @@
               </div>
             </div> -->
             
-            <?php if (!empty($row[0]->nama_lengkap)) { ?>
-
-            <div class="about-author d-flex p-4 bg-light">
-              <div class="bio mr-5" style="margin-left: -25px !important;">
+            <!-- <div class="about-author d-flex p-4 bg-light"> -->
+              <!-- <div class="bio mr-5" style="margin-left: -25px !important;">
                 <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $row[0]->foto ?>" style="width: 150px !important;" alt="Image placeholder" class="img-fluid mb-4">
-              </div>
-              <div class="desc">
-                <h3><b>Pegawai Kiko Good Garage</b></h3>
+              </div> -->
+              <!-- <div class="desc" style="margin-left: -25px !important;">
+                <h3><b>Jadwal Tidak Tersedia</b></h3>
                 <hr/>
-                <p style="color: #000000 !important;">Nama Lengkap : <?php echo $row[0]->nama_lengkap ?></p>
-                <p style="color: #000000 !important;">Jenis Kelamin : <?php echo $row[0]->jenisKelamin; ?></p>
-                <p style="color: #000000 !important;">No Telepon : <?php echo $row[0]->noTelepon ?></p>
+                
+                
               </div>
-            </div>
-            <?php } ?>
 
+              
+            </div> -->
+            
           </div> <!-- .col-md-8 -->
           <div class="col-md-4 sidebar ftco-animate">
 
@@ -182,20 +216,10 @@
               <div class="block-21 mb-4 d-flex">
                 <!-- <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_1.jpg);"></a> -->
                 <div class="text">
-                  <h3 class="heading"><a href="#" style="cursor: default !important;">
-
-                    Total Bayar : Rp. <?php
-                     $totalBayar2 = $totalBelanja2;
-                      echo  number_format($totalBayar2, 0,",",".");  ?>
-                        
-                      </a></h3>
-                  <div class="meta">
-                   <h3 class="heading"><a href="#" style="cursor: default !important;">Potongan : </a></h3>
-                  </div>
-                  <hr/>
-                  <h3 class="heading"><a href="#" style="cursor: default !important;">Total Bayar : Rp. <?php
-                     // $totalBayar2 = $totalBelanja2;
-                      echo  number_format($totalBayar2, 0,",",".");  ?></a></h3>
+                  <h3 class="heading">
+                     <p style="color: #000000 !important;">Total Bayar : Rp. <?php echo  number_format($total_belanja, 0,",",".");  ?> </p>
+                  </h3>
+                 
                 </div>
               </div>
               <!-- <div class="block-21 mb-4 d-flex">
@@ -224,17 +248,29 @@
 
             <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
               <h3><b>Alamat Konsumen</b></h3>
+              <p style="color: #000000 !important;"><?php echo $produk[0]->alamatLengkap ?></p>
               <hr/>
-              <p style="color: #000000 !important;"><?php echo $profil[0]->alamatLengkap ?></p>
-              <?php if ($row[0]->statusPembayaran == 'Waiting List') { ?>
-                    <!-- <li class="col-xs-12"> -->
-                        <!-- <?php echo anchor('C_transaksiProduk/ubahAlamat/'.$row[0]->kodeUnik.'/'.$row[0]->idAkun.'/'.$row[0]->KdTukang,'Ubah Alamat',array('class'=>'btn-round', 'style'=>'padding: 10px 15px !important;'));?> -->
-                         <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" class="btn btn-info py-2 mr-1" style="color: #ffffff !important;">Ubah Alamat</a></p>
-                    <!-- </li> -->
-                <?php }else{ ?>
-                  
-                <?php } ?>
+              <p style="color: #000000 !important;"></p>
+              
+                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'?>" class="btn btn-info py-2 mr-1" style="color: #ffffff !important;">Ubah Alamat</a></p>
+                
             </div>
+
+            <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
+                <h3><b>Jadwal Penuh</b></h3>
+                <hr/>
+                <div class="tagcloud">
+                  <a href="#" class="tag-cloud-link">dish</a>
+                  <a href="#" class="tag-cloud-link">menu</a>
+                  <a href="#" class="tag-cloud-link">food</a>
+                  <a href="#" class="tag-cloud-link">sweet</a>
+                  <a href="#" class="tag-cloud-link">tasty</a>
+                  <a href="#" class="tag-cloud-link">delicious</a>
+                  <a href="#" class="tag-cloud-link">desserts</a>
+                  <a href="#" class="tag-cloud-link">drinks</a>
+                </div>
+              </div>
+
             <!-- <div class="sidebar-box">
               <form action="#" class="search-form">
                 <div class="form-group">
@@ -243,7 +279,7 @@
                 </div>
               </form>
             </div> -->
-            <div class="sidebar-box ftco-animate" style="margin-top: -30px !important;">
+            <!-- <div class="sidebar-box ftco-animate" style="margin-top: -30px !important;">
               <div class="categories">
                 <h3><b>Status Reservasi</b></h3>
                 <hr/>
@@ -251,27 +287,22 @@
                 <li style="color: #000000 !important;"><?php echo $row[0]->statusPembayaran ?></li>
                 
               </div>
-            </div>
-
-            <!-- <div class="sidebar-box ftco-animate">
-              <h3>Tag Cloud</h3>
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">dish</a>
-                <a href="#" class="tag-cloud-link">menu</a>
-                <a href="#" class="tag-cloud-link">food</a>
-                <a href="#" class="tag-cloud-link">sweet</a>
-                <a href="#" class="tag-cloud-link">tasty</a>
-                <a href="#" class="tag-cloud-link">delicious</a>
-                <a href="#" class="tag-cloud-link">desserts</a>
-                <a href="#" class="tag-cloud-link">drinks</a>
-              </div>
             </div> -->
-
             
           </div>
 
+          <!-- <div class="col-md-12 ftco-animate">
+
+              <div style="margin-left: -5px !important;">
+                <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew'?>" class="btn btn-secondary py-2 ml-1" style="width: 100% !important">Lanjutkan</a>  
+              </div>
+
+          </div> -->
+
         </div>
       </div>
+
+      
     </section> <!-- .section -->
 
     <footer class="ftco-footer ftco-bg-dark ftco-section" style="margin-top: -90px !important;">
