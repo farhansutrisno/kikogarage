@@ -360,6 +360,12 @@ class C_dataAkun extends CI_Controller{
 		
 	}
 
+	public function lihatMemberNew(){
+		$kode = $this->session->userdata('kode');
+		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+		$this->load->view('V_lihatMemberNew', $data);
+	}
+
 	public function daftarMember(){
 		$kode = $this->session->userdata('kode');
 		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
