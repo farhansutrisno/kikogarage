@@ -291,14 +291,8 @@
                     <table class="table">
                         
                         <tr><th style="width: 15px !important;">Nama Konsumen</th><td><?php echo $row[0]->namaLengkap ?></td></tr>
-                        <tr><th>Email</th><td><?php echo $row[0]->email ?></td>
                         <tr><th>No Telepon</th><td><?php echo $row[0]->noTelepon ?></td></tr>
-                        <tr><th>Kelurahan</th><td><?php echo $row[0]->kelurahan ?></td></tr>
-                        <tr><th>Kecamatan</th><td><?php echo $row[0]->kecamatan ?></td></tr>
-                        <tr><th>Kota/Kabupaten</th><td><?php echo $row[0]->kota_kabupaten ?></td></tr>
-                        <tr><th>Provinsi</th><td><?php echo $row[0]->provinsi ?></td></tr>
                         <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
-                        <tr><th>Kode Pos</th><td><?php echo $row[0]->kodePos ?></td></tr>
                         <tr><th>Foto Konsumen</th><td></td></tr>
                     </table>
                   </div>

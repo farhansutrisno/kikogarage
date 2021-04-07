@@ -37,9 +37,9 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
 
      <style type="text/css">
-      .nav-link{
+     /* .nav-link{
         color: #FFFFFF !important;
-      }
+      }*/
     </style>
 
   </head>

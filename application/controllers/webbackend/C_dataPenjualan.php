@@ -35,28 +35,20 @@ class C_dataPenjualan extends CI_Controller{
 
 	public function prosesUpdateDataPenjualan(){
 
-	    $this->form_validation->set_rules('noResi','noResi','required|min_length[7]|numeric');
-
 	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
+		    
 
-		    	$kdPembayaran		= $this->input->post('kdPembayaran');
-		        $data["penjualan"] 	= $this->mod_dataPenjualan->updateDataPenjualan($kdPembayaran)->result();
-				$this->load->view('webbackend/V_updateDataPenjualan', $data);
+			$this->session->set_flashdata('pesan1', 
+		                '<div class="alert alert-info ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>BERHASIL ! </h7>
+		                    <p>Data penjualan berhasil diupdate</p>
+		                </div>');
 
-		    }
-		    else{
+			$this->mod_dataPenjualan->prosesUpdateDataPenjualan();
+			
+			redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
 
-				$this->session->set_flashdata('pesan1', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>BERHASIL ! </h7>
-			                    <p>Data penjualan berhasil diupdate</p>
-			                </div>');
-				$this->mod_dataPenjualan->prosesUpdateDataPenjualan();
-				redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
-
-		    }
 		}
 
 	}

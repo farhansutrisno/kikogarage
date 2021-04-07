@@ -8,34 +8,12 @@ class C_produkPembeli extends CI_Controller{
 		$this->load->model('mod_dataProduk');
 	}
 
-	// public function index(){
- //        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
- //        $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
- //        $this->load->view('V_homeFrontEnd2',$data);
- //    }
-    
-    //function dibawah tidak dipakai
-	/*public function lihatProdukAwal(){
-		$data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-        $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
-		$this->load->view('V_homeFrontEnd1',$data);
-	}*/
-
-    public function lihatProduk(){
-        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-        $data['carwash'] = $this->mod_dataProduk->carwash()->result();
-
-        $data['coating'] = $this->mod_dataProduk->coating()->result();
-        $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
-        $this->load->view('V_homeFrontEnd2',$data);
-    }
+    //==========================================================================================================
+    //fix dipakai
 
     public function lihatProdukNew(){
         $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-        // $data['carwash'] = $this->mod_dataProduk->carwash()->result();
-
-        // $data['coating'] = $this->mod_dataProduk->coating()->result();
-        // $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
+        
         $id = $this->session->userdata('kode');
         if (!empty($id)) {
             $this->load->model('mod_dataAkun');
@@ -55,67 +33,12 @@ class C_produkPembeli extends CI_Controller{
         $this->load->view('V_homeFrontEndNew',$data);
     }
 
-    public function lihatProduk1(){
-        $this->session->set_flashdata('stok1', 
-                    '<div class="alert alert-success fade in">    
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <h7>Stok Tidak Tersedia </h7>
-                        <p>Segera memilih produk untuk transaksi.<br/>
-                        Terima kasih.</p>
-                    </div>');
-
-        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-        // $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
-        $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
-        $this->load->view('V_homeFrontEnd2',$data);
-    }
-	
-	public function lihatDetailProduk(){
-		$id 			= $this->uri->segment(3);
-        $data["row"]    = $this->mod_dataProduk->lihatDetailProduk($id)->result();
-        $kategori = $data["row"][0]->kategori;
-		$data['produk'] = $this->mod_dataProduk->lihatDataProdukDetail($kategori)->result();
-		$this->load->view('V_lihatDetailProduk',$data);
-	}
-
     public function lihatDetailProdukNew(){
         $id             = $this->uri->segment(3);
         $data["row"]    = $this->mod_dataProduk->lihatDetailProduk($id)->result();
         $kategori = $data["row"][0]->kategori;
         $data['produk'] = $this->mod_dataProduk->lihatDataProdukDetail($kategori)->result();
         $this->load->view('V_lihatDetailProdukNew',$data);
-    }
-
-	public function lihatKeranjang(){
-        $data['produk']         = $this->mod_dataProduk->lihatKeranjang()->result();
-        $jml                    = $this->mod_dataProduk->jmlKeranjang();
-        $data['keranjang']      = $jml->jmlKeranjang;
-		$this->load->view('V_lihatKeranjang',$data);
-	}
-
-	//=============================================================================================
-	 public function validasi(){
-        $uangmuka = $this->input->post('uangmuka');
-
-        if ( $uangmuka >= $total) {
-           $this->session->set_flashdata('update2', 
-                    '<div class="alert alert-info ">    
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <h7>Stok Kurang ! </h7>
-                        <p>Gagal Mengubah Jumlah Produk</p>
-                    </div>');
-            redirect('C_produkPembeli/lihatProduk');
-
-        } else if ($uangmuka <= 100000 ) {
-           $this->session->set_flashdata('update2', 
-                    '<div class="alert alert-info ">    
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <h7>Stok Kurang ! </h7>
-                        <p>Gagal Mengubah Jumlah Produk</p>
-                    </div>');
-            redirect('C_produkPembeli/lihatProduk');
-        }
-
     }
 
     public function prosesTambah(){
@@ -169,6 +92,7 @@ class C_produkPembeli extends CI_Controller{
             }
     }
 
+
     public function datareservasi(){
         $data['produk']         = $this->mod_dataProduk->lihatReservasi()->result();
         $jml                    = $this->mod_dataProduk->jmlKeranjang();
@@ -176,73 +100,129 @@ class C_produkPembeli extends CI_Controller{
         $this->load->view('V_dataReservasiNew',$data);
     }
 
-    //function dibawah ini tidak dipakai
-    /*public function prosesUpdate(){
-        $qty            = $this->input->post('qty');
-        $kdProduk       = $this->input->post('kdProduk');
-        $harga          = $this->input->post('harga');
-        $berat          = $this->input->post('berat');
+    public function pencarianNew(){
+       
+        //konfigurasi pagination
+        $kategori  = $this->uri->segment(3);
 
-        $cek = $this->mod_dataProduk->cekKeranjang($kdProduk)->result();
+        $data['kategori'] = $kategori;
 
-        if($qty >= $cek[0]->stok){
-            $this->session->set_flashdata('update2', 
+        $config['base_url'] = site_url('C_produkPembeli/pencarianNew'); //site url
+        $config['total_rows'] = $this->mod_dataProduk->countpencarian($kategori)->result()[0]->data; //total row
+
+        $config['per_page'] = 6;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        // Membuat Style pagination untuk BootStrap v4
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['pag'] = $this->pagination->create_links();
+        
+        $data['produk'] = $this->mod_dataProduk->kategori_makanan($config["per_page"], $data['page'],$kategori)->result();
+        $this->load->view('V_pencarianLoginNew',$data);
+    }
+
+    //================================================================================================================================
+
+
+	// public function index(){
+ //        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
+ //        $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
+ //        $this->load->view('V_homeFrontEnd2',$data);
+ //    }
+    
+    //function dibawah tidak dipakai
+	/*public function lihatProdukAwal(){
+		$data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
+        $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
+		$this->load->view('V_homeFrontEnd1',$data);
+	}*/
+
+    public function lihatProduk(){
+        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
+        $data['carwash'] = $this->mod_dataProduk->carwash()->result();
+
+        $data['coating'] = $this->mod_dataProduk->coating()->result();
+        $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
+        $this->load->view('V_homeFrontEnd2',$data);
+    }
+
+    public function lihatProduk1(){
+        $this->session->set_flashdata('stok1', 
+                    '<div class="alert alert-success fade in">    
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h7>Stok Tidak Tersedia </h7>
+                        <p>Segera memilih produk untuk transaksi.<br/>
+                        Terima kasih.</p>
+                    </div>');
+
+        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
+        // $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
+        $data['terlaris'] = $this->mod_dataProduk->terlaris()->result();
+        $this->load->view('V_homeFrontEnd2',$data);
+    }
+	
+	public function lihatDetailProduk(){
+		$id 			= $this->uri->segment(3);
+        $data["row"]    = $this->mod_dataProduk->lihatDetailProduk($id)->result();
+        $kategori = $data["row"][0]->kategori;
+		$data['produk'] = $this->mod_dataProduk->lihatDataProdukDetail($kategori)->result();
+		$this->load->view('V_lihatDetailProduk',$data);
+	}
+
+	public function lihatKeranjang(){
+        $data['produk']         = $this->mod_dataProduk->lihatKeranjang()->result();
+        $jml                    = $this->mod_dataProduk->jmlKeranjang();
+        $data['keranjang']      = $jml->jmlKeranjang;
+		$this->load->view('V_lihatKeranjang',$data);
+	}
+
+	//=============================================================================================
+	 public function validasi(){
+        $uangmuka = $this->input->post('uangmuka');
+
+        if ( $uangmuka >= $total) {
+           $this->session->set_flashdata('update2', 
                     '<div class="alert alert-info ">    
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <h7>Stok Kurang ! </h7>
                         <p>Gagal Mengubah Jumlah Produk</p>
                     </div>');
-            redirect('C_produkPembeli/lihatKeranjang');
-        }else{
+            redirect('C_produkPembeli/lihatProduk');
 
-            $jml = $this->mod_dataProduk->cekJumlah($kdProduk)->result();
-
-            if ($qty > $jml[0]->jml_produk) {
-
-                $this->session->set_flashdata('update1', 
-                        '<div class="alert alert-info ">    
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <h7>BERHASIL ! </h7>
-                            <p>Berhasil Mengubah Jumlah Barang<br/></p>
-                        </div>');
-                
-                // cara tambah tombol 
-                //
-                $data           = array(
-                    "jml_produk"    => $qty,
-                    "subtotal"      => $qty * $harga,
-                    "berat"         => $qty * $berat    
-                );
-                $this->mod_dataProduk->prosesUpdate($data,$kdProduk);
-                redirect('C_produkPembeli/lihatKeranjang');
-            }else{
-
-                $this->session->set_flashdata('update3', 
-                        '<div class="alert alert-info ">    
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <h7>BERHASIL ! </h7>
-                            <p>Berhasil Mengubah Jumlah Barang<br/></p>
-                        </div>');
-                $brt = $this->mod_dataProduk->cekBerat($kdProduk)->result();
-
-                $harga          = $this->input->post('harga');
-                //cara make tombol kurang 1
-                $beratAwal      = $jml[0]->berat - $brt[0]->berat;
-                //-------------------------------------------------
-                $beratAkhir     = $qty * $brt[0]->berat;
-
-                $data           = array(
-                    "jml_produk"    => $qty,
-                    "subtotal"      => $qty * $harga,
-                    "berat"         => $beratAwal   
-                );
-                $this->mod_dataProduk->prosesUpdate($data,$kdProduk);
-                redirect('C_produkPembeli/lihatKeranjang');
-            }
-
+        } else if ($uangmuka <= 100000 ) {
+           $this->session->set_flashdata('update2', 
+                    '<div class="alert alert-info ">    
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h7>Stok Kurang ! </h7>
+                        <p>Gagal Mengubah Jumlah Produk</p>
+                    </div>');
+            redirect('C_produkPembeli/lihatProduk');
         }
-        
-    }*/
+
+    }
 
     public function keranjangTambah(){
 
@@ -507,49 +487,7 @@ class C_produkPembeli extends CI_Controller{
         $this->load->view('V_pencarianLogin',$data);
     }
 
-    public function pencarianNew(){
-       
-        //konfigurasi pagination
-        $kategori  = $this->uri->segment(3);
-
-        $data['kategori'] = $kategori;
-
-        $config['base_url'] = site_url('C_produkPembeli/pencarianNew'); //site url
-        $config['total_rows'] = $this->mod_dataProduk->countpencarian($kategori)->result()[0]->data; //total row
-
-        $config['per_page'] = 6;  //show record per halaman
-        $config["uri_segment"] = 3;  // uri parameter
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
-
-        // Membuat Style pagination untuk BootStrap v4
-        $config['first_link']       = 'First';
-        $config['last_link']        = 'Last';
-        $config['next_link']        = 'Next';
-        $config['prev_link']        = 'Prev';
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav></div>';
-        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close']    = '</span></li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['prev_tagl_close']  = '</span>Next</li>';
-        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        $config['first_tagl_close'] = '</span></li>';
-        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['last_tagl_close']  = '</span></li>';
-
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        $data['pag'] = $this->pagination->create_links();
-        
-        $data['produk'] = $this->mod_dataProduk->kategori_makanan($config["per_page"], $data['page'],$kategori)->result();
-        $this->load->view('V_pencarianLoginNew',$data);
-    }
+    
 
 }
 

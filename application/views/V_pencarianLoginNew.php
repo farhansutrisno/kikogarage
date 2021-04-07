@@ -36,9 +36,9 @@
     <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
      <style type="text/css">
-      .nav-link{
+      /*.nav-link{
         color: #FFFFFF !important;
-      }
+      }*/
     </style>
 
   </head>

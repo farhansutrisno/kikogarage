@@ -7,9 +7,8 @@ class C_dataAkun extends CI_Controller{
 		$this->load->model('mod_dataAkun');
 	}
 
-	public function login(){
-		$this->load->view('V_login');
-	}
+	//================================================================================
+	//fix dipakai
 
 	public function prosesLogin(){
 
@@ -51,35 +50,19 @@ class C_dataAkun extends CI_Controller{
 		}
 	}
 
-	public  function createAkun(){
-		$this->load->view('V_createAkun');
-	}
-
 	public function prosesCreateAkun(){
 		$this->form_validation->set_rules('namaLengkap','nama lengkap','required');
-		// $this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
 	    $this->form_validation->set_rules('password','password','required');
-	    // $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
 	    $this->form_validation->set_rules('tanggal_lahir','tanggal lahir','required');
 	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
-	    // $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
-	    // $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');
-	    // $this->form_validation->set_rules('kota_kab','kota/kabupaten','required|min_length[4]');
-	    // $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
 	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required');
-	    // $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
-
-	    
-	    // if(isset($_POST['submit'])){
 
 		    if($this->form_validation->run() == false){
-		        // $this->load->view('V_createAkun');
 		        redirect('C_produkPembeli/lihatProdukNew');
 		    }
 		    else{
 		        
 		    	$data = $this->mod_dataAkun->login()->result_array();
-				// $username = $this->input->post('username');
 				$password = $this->input->post('password');
 				$no =0;
 				foreach ($data as $key) {
@@ -94,7 +77,6 @@ class C_dataAkun extends CI_Controller{
 				                    <p>Password Sudah Terpakai</p><br>
 				                    <p>Harap Memasukan Password Lain </p>
 				                </div>');
-						// redirect('C_dataAkun/createAkun');
 						redirect('C_produkPembeli/lihatProdukNew');
 					}
 				}
@@ -118,7 +100,6 @@ class C_dataAkun extends CI_Controller{
 				}
 
 		    }
-		// }
 
 	}
 
@@ -133,6 +114,24 @@ class C_dataAkun extends CI_Controller{
 			$this->session->unset_userdata('pembayaran');
 			
 			redirect('C_produkPembeli/lihatProdukNew');
+	}
+
+
+	public function lihatMemberNew(){
+		$kode = $this->session->userdata('kode');
+		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+		$this->load->view('V_lihatMemberNew', $data);
+	}
+
+	//========================================================================================================
+
+
+	public function login(){
+		$this->load->view('V_login');
+	}
+
+	public  function createAkun(){
+		$this->load->view('V_createAkun');
 	}
 
 	public function inputDataPembelian(){
@@ -360,11 +359,7 @@ class C_dataAkun extends CI_Controller{
 		
 	}
 
-	public function lihatMemberNew(){
-		$kode = $this->session->userdata('kode');
-		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
-		$this->load->view('V_lihatMemberNew', $data);
-	}
+	
 
 	public function daftarMember(){
 		$kode = $this->session->userdata('kode');

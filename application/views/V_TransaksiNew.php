@@ -36,9 +36,9 @@
     <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
      <style type="text/css">
-      .nav-link{
+      /*.nav-link{
         color: #FFFFFF !important;
-      }
+      }*/
     </style>
 
   </head>
@@ -141,20 +141,13 @@
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ftco-animate">
+          <div class="col-md-7 ftco-animate">
             <h3><b>Data Reservasi</b></h3>
             <hr/>
             <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
             <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
             <p style="color: #000000 !important;">No Plat : <?php echo $row[0]->noPlat ?></p>
             <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
-            
-            <!-- <div class="tag-widget post-tag-container mb-5 mt-5">
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">Pegawai Kiko Good Garage</a>
-                
-              </div>
-            </div> -->
             
             <?php if (!empty($row[0]->nama_lengkap)) { ?>
 
@@ -173,7 +166,7 @@
             <?php } ?>
 
           </div> <!-- .col-md-8 -->
-          <div class="col-md-4 sidebar ftco-animate">
+          <div class="col-md-5 sidebar ftco-animate">
 
             <div class="sidebar-box ftco-animate">
               <h3><b>Data Pembayaran</b></h3>
@@ -197,28 +190,7 @@
                       echo  number_format($totalBayar2, 0,",",".");  ?></a></h3>
                 </div>
               </div>
-              <!-- <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span>Oct. 29, 2019</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_3.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span>Oct. 29, 2019</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div> -->
+              
             </div>
 
             <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
@@ -232,38 +204,30 @@
                   
                 <?php } ?> -->
             </div>
-            <!-- <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="icon icon-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div> -->
+           
             <div class="sidebar-box ftco-animate" style="margin-top: -30px !important;">
               <div class="categories">
                 <h3><b>Status Reservasi</b></h3>
                 <hr/>
 
-                <li style="color: #000000 !important;"><?php echo $row[0]->statusPembayaran ?></li>
-                
+                <?php foreach ($history as $row) { 
+
+                  $dateUpdate = date_format (new DateTime($row->createDate), 'd M Y H:i:s');
+
+                  ?>
+                  <div class="row">
+
+                      <div class="col-md-6">
+                        <p style="color: #000000 !important;"><?php echo $row->status ?></p>
+                      </div>
+                      <div class="col-md-6">
+                        <p style="color: #000000 !important;"><?php echo $dateUpdate ?></p>
+                      </div>
+                  </div>
+
+                <?php } ?>
               </div>
             </div>
-
-            <!-- <div class="sidebar-box ftco-animate">
-              <h3>Tag Cloud</h3>
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">dish</a>
-                <a href="#" class="tag-cloud-link">menu</a>
-                <a href="#" class="tag-cloud-link">food</a>
-                <a href="#" class="tag-cloud-link">sweet</a>
-                <a href="#" class="tag-cloud-link">tasty</a>
-                <a href="#" class="tag-cloud-link">delicious</a>
-                <a href="#" class="tag-cloud-link">desserts</a>
-                <a href="#" class="tag-cloud-link">drinks</a>
-              </div>
-            </div> -->
-
             
           </div>
 

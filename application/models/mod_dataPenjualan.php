@@ -18,7 +18,7 @@ class mod_dataPenjualan extends CI_Model{
 		$this->db->from('pembelian');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->join('konsumen','konsumen.idAkun = pembelian.idAkun');
-		$this->db->order_by('tglPembayaran','DESC');
+		$this->db->order_by('tglTransaksi','DESC');
 		return $this->db->get();
 	}
 
@@ -62,19 +62,43 @@ class mod_dataPenjualan extends CI_Model{
 	}
 
 	public function prosesUpdateDataPenjualan(){
-			$kode			= $this->input->post('bismillah');
-			$noResi 		= $this->input->post('noResi');
-			$kdPembayaran 	= $this->input->post('kdPembayaran');
+
+			$kodeUnik 		= $this->input->post('kodeUnik');
+			$idAkun			= $this->input->post('idAkun');
+			$kdoperator		= $this->input->post('kdoperator');
+
+			$pencucian		= $this->input->post('pencucian');
+			$pengeringan	= $this->input->post('pengeringan');
+			$selesai		= $this->input->post('selesai');
+
+			if (!empty($pencucian)) {
+				$status = $pencucian;
+			}else if (!empty($pengeringan)) {
+				$status = $pengeringan;
+			}else if (!empty($selesai)) {
+				$status = $selesai;
+			}
+
 			$data 			= array(
 				
-				"noResi" 					=> $noResi,
-				"statusPembayaran"			=> 'sudah dikirim',
-				"kdOperator"				=> $kode
+				"kodeUnik" 			=> $kodeUnik,
+				"status"			=> $status,
+				"kdOperator"		=> $kdOperator,
+				"createDate"		=> date("Y-m-d H:i:s"),
+				"idAkun"			=> $idAkun
 				
 			);
 
-		$this->db->where("kdPembayaran",$kdPembayaran);
-		return $this->db->update("pembelian",$data);
+			$this->db->insert("history",$data);
+
+			$data1 			= array(
+				
+				"statusPembayaran"	=> $status
+				
+			);
+
+			$this->db->where("kodeUnik",$kodeUnik);
+			return $this->db->update("pembelian",$data1);
 	}
 
 	public function prosesUpdateDataPenjualan2(){

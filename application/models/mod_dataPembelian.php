@@ -67,6 +67,13 @@ class mod_dataPembelian extends CI_Model{
 		
 	}
 
+	public function lihatDataHistory($id) {
+		
+		$this->db->where("kodeUnik",$id);
+		return $this->db->get('history');
+		
+	}
+
 	public function inputPembayaran(){
 
 			$kode 			= $this->session->userdata('kode');
@@ -83,6 +90,10 @@ class mod_dataPembelian extends CI_Model{
 
 	public function inputDataOrder($dataTransaksi){
 		$this->db->insert("pembelian",$dataTransaksi);
+	}
+
+	public function inputDataHistory($dataHistory){
+		$this->db->insert("history",$dataHistory);
 	}
 
 	public function inputOngkir(){

