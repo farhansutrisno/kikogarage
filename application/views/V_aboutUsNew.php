@@ -36,40 +36,42 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/icomoon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
+
+     <style type="text/css">
+      .nav-link{
+        color: #FFFFFF !important;
+      }
+    </style>
+
   </head>
   <body>
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      
-        <div class="col-md-12">
-          <?php echo $this->session->flashdata('msg1'); ?>
-          <?php echo $this->session->flashdata('msg3'); ?>
-          <?php echo $this->session->flashdata('akun1'); ?>
-          <?php echo $this->session->flashdata('akun2'); ?>
+      <div class="container">
+        <a class="navbar-brand" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-           <div class="container">
-            <div class="row">
-              <a class="navbar-brand" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
-          </button>
-
-          <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Beranda</a></li>
-              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="nav-link">Cars Wash</a></li>
-              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Interior') ?>" class="nav-link">Interior</a></li>
-              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
-              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Coating') ?>" class="nav-link">Coating</a></li>
-              
-              <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Beranda</a></li>
+            <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="nav-link">Cars Wash</a></li>
+            <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Interior') ?>" class="nav-link">Interior</a></li>
+            <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
+            <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Coating') ?>" class="nav-link">Coating</a></li>
+            <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
                 
                 <li class="nav-item dropdown" style="cursor: pointer;">
-                    <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
-                        <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
-                        <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
+                    <ul class="nav">
+                        <li class="dropdown" style="cursor: pointer;">
+                          <p class="nav-link" style="padding-top: 14px !important;"><?=$this->session->userdata('namaLengkap3')?></p>
+
+                          <ul class="dropdown-menu">
+                              <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
+                              <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
+                          </ul>
+                        </li>
                     </ul>
                   </li>
 
@@ -78,14 +80,9 @@
                   <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginmodel">Login</a></li>
 
                   <?php } ?>
-            </ul>
-
-          </div>
-            </div>
-          
+          </ul>
         </div>
-        </div>
-     
+      </div>
     </nav>
 
     <div class="modal fade" id="loginmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

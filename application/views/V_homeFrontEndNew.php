@@ -38,7 +38,9 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
 
     <style type="text/css">
-    	
+    	.nav-link{
+    		color: #FFFFFF !important;
+    	}
     </style>
   </head>
   <body>
@@ -53,8 +55,8 @@
 
         	 <div class="container">
         	 	<div class="row">
-        	 		<a class="navbar-brand" style="margin-left: -10px !important;" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
-		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        	 		<a class="navbar-brand" style="margin-left: -20px !important;" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
+		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 65px !important;">
 		        <span class="oi oi-menu"></span> Menu
 		      </button>
 
@@ -68,12 +70,22 @@
 		          
 		          <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
 		          	
-		          	<li class="nav-item dropdown" style="cursor: pointer;">
-	                  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
-	                  <ul class="dropdown-menu">
+		          	<li class="nav-item" style="cursor: pointer;">
+	                 <!--  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
+	                  <ul class="dropdown dropdown-menu">
 	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
 	                      <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
-	                  </ul>
+	                  </ul> -->
+	                  	<ul class="nav">
+		                    <li class="dropdown" style="cursor: pointer;">
+		                      <p class="nav-link" style="padding-top: 14px !important;"><?=$this->session->userdata('namaLengkap3')?></p>
+
+		                      <ul class="dropdown-menu">
+		                          <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
+	                      		  <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
+		                      </ul>
+		                    </li>
+		                </ul>
 	                </li>
 
 	                <?php }else{ ?>

@@ -35,6 +35,13 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/icomoon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
+
+     <style type="text/css">
+    	.nav-link{
+    		color: #FFFFFF !important;
+    	}
+    </style>
+
   </head>
   <body>
     
@@ -55,12 +62,16 @@
 	          <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
 		          	
 		          	<li class="nav-item dropdown" style="cursor: pointer;">
-	                  <a href="#" class="nav-link"><?=$this->session->userdata('namaLengkap3')?></a>
-	                  <ul class="dropdown-menu">
-	                      <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
-	                      <!-- <li><a href="<?php echo base_url() ?>C_dataAkun/daftarMember" class="dropdown-item">Member</a></li> -->
-	                      <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
-	                  </ul>
+	                  <ul class="nav">
+		                    <li class="dropdown" style="cursor: pointer;">
+		                      <p class="nav-link" style="padding-top: 14px !important;"><?=$this->session->userdata('namaLengkap3')?></p>
+
+		                      <ul class="dropdown-menu">
+		                          <li><a href="<?php echo base_url() ?>C_transaksiProduk/allTransaksiNew" class="dropdown-item">All Reservasi</a></li>
+	                      		  <li><a href="<?=base_url('C_dataAkun/logout')?>" class="dropdown-item">Logout</a></li>
+		                      </ul>
+		                    </li>
+		                </ul>
 	                </li>
 
 	                <?php }else{ ?>
