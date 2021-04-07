@@ -631,7 +631,7 @@
 
     	
 
-    <section class="ftco-counter ftco-section img bg-light" id="section-counter">
+   <!--  <section class="ftco-counter ftco-section img bg-light" id="section-counter">
 			<div class="overlay"></div>
     	<div class="container">
     		<div class="row">
@@ -643,14 +643,7 @@
               </div>
             </div>
           </div>
-         <!--  <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text text-border d-flex align-items-center">
-                <strong class="number" data-number="<?php echo $jml_penjualan[0]->jml_penjualan; ?>">0</strong>
-                <span>Total <br>Reservasi Kiko</span>
-              </div>
-            </div>
-          </div> -->
+         
           
           <?php 
           if (!empty($idAkun)) { ?>
@@ -678,7 +671,7 @@
          
         </div>
     	</div>
-    </section>	
+    </section> -->	
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container" style="margin-top: -75px !important;margin-bottom: -85px !important;">
