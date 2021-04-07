@@ -94,9 +94,40 @@ class C_transaksiProduk extends CI_Controller{
 		}
 	}
 
-	public function lihatTransaksi2($kodeUnik,$jenisBooking){
+	public function inputDataReservasi(){
+		if($this->input->post("submit")){
+
+			// $this->session->set_flashdata('pembayaran1', 
+		 //                '<div class="alert alert-info ">    
+		 //                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		 //                <h7>BERHASIL ! </h7>
+		 //                    <p>Harap Segera Dibayar Dan Lanjutkan Transaksi <br>
+		 //                    	Tekan Tombol Lanjutkan Transaksi </p>
+		 //                </div>');
+
+			// $this->mod_dataPembelian->inputPembayaran();
+
+			// $kodeUnik	= $this->input->post('kodeUnik');
+
+			$noPlat			= $this->input->post('noPlat');
+			$jenisBooking	= $this->input->post('jenisBooking');
+
+			redirect('C_transaksiProduk/lihatTransaksi2/'.$noPlat.'/'.$jenisBooking);
+		}else{
+			// $this->session->set_flashdata('pembayaran2', 
+		 //                '<div class="alert alert-danger">    
+		 //                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		 //                <h7>Erorr Pembayaran ! </h7>
+		                   
+		 //                </div>');
+			redirect('C_produkPembeli/datareservasi');
+		}
+	}
+
+	public function lihatTransaksi2($noPlat,$jenisBooking){
 		
-		$id   = $kodeUnik;
+		$noPlat = $noPlat;
+		$id   = random_string('numeric', 3);
 		$kode = $this->session->userdata('kode');
 		$booking  = str_replace('%20',' ',$jenisBooking);
 
@@ -196,10 +227,10 @@ class C_transaksiProduk extends CI_Controller{
 								// 'kurir'				=> $key['kurir'],
 								'KdTukang'			=> $KdTukang,
 								'noAntrian'			=> $noAntrian,
-								'kodeUnik'			=> $key['kodeUnik'],
+								'kodeUnik'			=> $id,
 								'tglTransaksi'		=> date("Y-m-d"),
-								'noPlat'			=> $key['noPlat'],
-								'jenisBooking'		=> $key['jenisBooking'],
+								'noPlat'			=> $noPlat,
+								'jenisBooking'		=> $booking,
 								'statusPembayaran' 	=> 'Waiting List');
 
 			$this->mod_dataPembelian->inputDataOrder($dataTransaksi);
@@ -219,10 +250,19 @@ class C_transaksiProduk extends CI_Controller{
 		}
 		
 		$data["profil"] 		= $this->mod_dataPembelian->lihatTransaksi2($kode)->result();
+
 		$jml 			 		= $this->mod_dataPembelian->jumlahBayar2($id);
 		$data['totalBelanja2'] 	= $jml->jumlahBayar2;
+
 		$this->mod_dataPembelian->deleteProduk($id);
-		$this->load->view('V_Transaksi',$data);
+
+		$this->session->set_flashdata('test1', 
+                    '<div class="alert alert-info" style="margin-bottom: 20px !important">    
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h7>Berhasil Reservasi</h7>
+                    </div>');
+
+		$this->load->view('V_TransaksiNew',$data);
 	}
 
 	public function lihatTransaksi(){

@@ -129,7 +129,7 @@ class C_produkPembeli extends CI_Controller{
             $gambar         = $this->input->post('gambar');
             // $berat          = $this->input->post('berat');
 
-            $produk = $this->mod_dataProduk->cekProduk($kdProduk)->result();
+            $produk = $this->mod_dataProduk->cekProduk($kdProduk,$idAkun)->result();
 
             if ($kdProduk == $produk[0]->kdProduk) {
                 

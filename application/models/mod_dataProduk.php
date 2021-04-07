@@ -112,9 +112,10 @@ class mod_dataProduk extends CI_Model{
     }
 
     //function tambahan revisi sidang
-    public function cekProduk($kdProduk){
+    public function cekProduk($kdProduk,$idAkun){
         $this->db->select('kdProduk');
         $this->db->where("kdProduk",$kdProduk);
+        $this->db->where("idAkun",$idAkun);
         return $this->db->get("keranjang");
     }
 
