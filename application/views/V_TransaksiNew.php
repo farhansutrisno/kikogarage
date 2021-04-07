@@ -225,14 +225,12 @@
               <h3><b>Alamat Konsumen</b></h3>
               <hr/>
               <p style="color: #000000 !important;"><?php echo $profil[0]->alamatLengkap ?></p>
-              <?php if ($row[0]->statusPembayaran == 'Waiting List') { ?>
-                    <!-- <li class="col-xs-12"> -->
-                        <!-- <?php echo anchor('C_transaksiProduk/ubahAlamat/'.$row[0]->kodeUnik.'/'.$row[0]->idAkun.'/'.$row[0]->KdTukang,'Ubah Alamat',array('class'=>'btn-round', 'style'=>'padding: 10px 15px !important;'));?> -->
+              <!-- <?php if ($row[0]->statusPembayaran == 'Waiting List') { ?>
+                   
                          <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" class="btn btn-info py-2 mr-1" style="color: #ffffff !important;">Ubah Alamat</a></p>
-                    <!-- </li> -->
                 <?php }else{ ?>
                   
-                <?php } ?>
+                <?php } ?> -->
             </div>
             <!-- <div class="sidebar-box">
               <form action="#" class="search-form">

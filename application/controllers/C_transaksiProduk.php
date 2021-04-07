@@ -94,7 +94,7 @@ class C_transaksiProduk extends CI_Controller{
 		}
 	}
 
-	public function inputDataReservasi(){
+	/*public function inputDataReservasi(){
 		if($this->input->post("submit")){
 
 			// $this->session->set_flashdata('pembayaran1', 
@@ -122,147 +122,169 @@ class C_transaksiProduk extends CI_Controller{
 		 //                </div>');
 			redirect('C_produkPembeli/datareservasi');
 		}
-	}
+	}*/
 
-	public function lihatTransaksi2($noPlat,$jenisBooking){
+	public function inputDataReservasi(){
 		
-		$noPlat = $noPlat;
-		$id   = random_string('numeric', 3);
-		$kode = $this->session->userdata('kode');
-		$booking  = str_replace('%20',' ',$jenisBooking);
+		if($this->input->post("submit")){
 
-		$cekAntrian = $this->mod_dataPembelian->cekNoAntrian();
+			$noPlat			= $this->input->post('noPlat');
+			$jenisBooking	= $this->input->post('jenisBooking');
+			$idAkun 		= $this->input->post('idAkun');
+			$totalBayar		= $this->input->post('totalBayar');
 
-		$currentDate = date("Y-m-d");
+			$noPlat = $noPlat;
+			$id   = random_string('numeric', 3);
+			// $kode = $this->session->userdata('kode');
+			// $booking  = str_replace('%20',' ',$jenisBooking);
+			$booking  = $jenisBooking;
 
-		if (empty($cekAntrian)) {
+			$cekAntrian = $this->mod_dataPembelian->cekNoAntrian();
 
-			if ($booking == 'Langsung') {
-				$noAntrian1 = 1;
-				$noAntrian = 'LA'.$noAntrian1;
-			}else{
-				$noAntrian1 = 1;
-				$noAntrian = 'ANT'.$noAntrian1;
-			}
+			$currentDate = date("Y-m-d");
 
-		}else{
+			if (empty($cekAntrian)) {
 
-			if ($booking == 'Langsung') {
-				$cekAntrian2 = $this->mod_dataPembelian->cekNoAntrian2();
-
-				if (!empty($cekAntrian2)) {
-					if ($currentDate == $cekAntrian2->tglTransaksi) {
-
-						$explode_data = explode('LA',$cekAntrian2->noAntrian);
-
-						$noAntrian1 = $explode_data[1] + 1;
-						$noAntrian = 'LA'.$noAntrian1;
-
-					}else{
-
-						$noAntrian1 = 1;
-						$noAntrian = 'LA'.$noAntrian1;
-
-					}
-				}else{
-
+				if ($booking == 'Langsung') {
 					$noAntrian1 = 1;
 					$noAntrian = 'LA'.$noAntrian1;
-
+				}else{
+					$noAntrian1 = 1;
+					$noAntrian = 'ANT'.$noAntrian1;
 				}
-				
+
 			}else{
-				
-				$cekAntrian3 = $this->mod_dataPembelian->cekNoAntrian3();
-				if (!empty($cekAntrian3)) {
-					if ($currentDate == $cekAntrian3->tglTransaksi) {
 
-						$explode_data = explode('ANT',$cekAntrian3->noAntrian);
+				if ($booking == 'Langsung') {
+					$cekAntrian2 = $this->mod_dataPembelian->cekNoAntrian2();
 
-						$noAntrian1 = $explode_data[1] + 1;
-						$noAntrian = 'ANT'.$noAntrian1;
+					if (!empty($cekAntrian2)) {
+						if ($currentDate == $cekAntrian2->tglTransaksi) {
 
+							$explode_data = explode('LA',$cekAntrian2->noAntrian);
+
+							$noAntrian1 = $explode_data[1] + 1;
+							$noAntrian = 'LA'.$noAntrian1;
+
+						}else{
+
+							$noAntrian1 = 1;
+							$noAntrian = 'LA'.$noAntrian1;
+
+						}
+					}else{
+
+						$noAntrian1 = 1;
+						$noAntrian = 'LA'.$noAntrian1;
+
+					}
+					
+				}else{
+					
+					$cekAntrian3 = $this->mod_dataPembelian->cekNoAntrian3();
+					if (!empty($cekAntrian3)) {
+						if ($currentDate == $cekAntrian3->tglTransaksi) {
+
+							$explode_data = explode('ANT',$cekAntrian3->noAntrian);
+
+							$noAntrian1 = $explode_data[1] + 1;
+							$noAntrian = 'ANT'.$noAntrian1;
+
+						}else{
+
+							$noAntrian1 = 1;
+							$noAntrian = 'ANT'.$noAntrian1;
+
+						}
 					}else{
 
 						$noAntrian1 = 1;
 						$noAntrian = 'ANT'.$noAntrian1;
 
 					}
-				}else{
-
-					$noAntrian1 = 1;
-					$noAntrian = 'ANT'.$noAntrian1;
 
 				}
 
 			}
 
-		}
 
-		$cekTukang = $this->mod_dataPembelian->cekTukang();
-		$cekTukang2 = $this->mod_dataPembelian->cekTukang2();
+			$cekTukang = $this->mod_dataPembelian->cekTukang();
+			$cekTukang2 = $this->mod_dataPembelian->cekTukang2();
 
-		if (empty($cekTukang->KdTukang)) {
-			$kodeTukang = $cekTukang2->KdTukang;
-		}else{
-			$kodeTukang = $cekTukang->KdTukang;
-		}
-		
-		$order = $this->mod_dataPembelian->inputTransaksi($id)->result_array();
-		foreach ($order as $key) {
+			if (empty($cekTukang->KdTukang)) {
+				$kodeTukang = $cekTukang2->KdTukang;
+			}else{
+				$kodeTukang = $cekTukang->KdTukang;
+			}
 
-			if ($key['jenisBooking'] == 'Antar Jemput') {
+			if ($booking == 'Antar Jemput') {
 				$KdTukang = $kodeTukang;
 			}else{
 				$KdTukang = NULL;
 			}
+
+			$order = $this->mod_dataPembelian->inputTransaksi($idAkun)->result_array();
+
+			foreach ($order as $key) {
+
+				$dataTransaksi = array(
+									'idAkun'			=> $idAkun,
+									'kdProduk'			=> $key['kdProduk'],
+									'jml_produk'		=> $key['jml_produk'],
+									// 'berat'				=> $key['berat'],
+									'subtotal'			=> $key['subtotal'],
+									'totalBayar'		=> $totalBayar,
+									// 'kurir'				=> $key['kurir'],
+									'KdTukang'			=> $KdTukang,
+									'noAntrian'			=> $noAntrian,
+									'kodeUnik'			=> $id,
+									'tglTransaksi'		=> date("Y-m-d"),
+									'noPlat'			=> $noPlat,
+									'jenisBooking'		=> $booking,
+									'statusPembayaran' 	=> 'Waiting List');
+				
+				$this->mod_dataPembelian->inputDataOrder($dataTransaksi);
+			}
+
+			if (!empty($KdTukang)) {
+				$this->mod_dataPembelian->statusTukang($kodeTukang);
+			}
 			
-			$dataTransaksi = array(
-								'idAkun'			=> $key['idAkun'],
-								'kdProduk'			=> $key['kdProduk'],
-								'jml_produk'		=> $key['jml_produk'],
-								// 'berat'				=> $key['berat'],
-								'subtotal'			=> $key['subtotal'],
-								'totalBayar'		=> $key['totalBayar'],
-								// 'kurir'				=> $key['kurir'],
-								'KdTukang'			=> $KdTukang,
-								'noAntrian'			=> $noAntrian,
-								'kodeUnik'			=> $id,
-								'tglTransaksi'		=> date("Y-m-d"),
-								'noPlat'			=> $noPlat,
-								'jenisBooking'		=> $booking,
-								'statusPembayaran' 	=> 'Waiting List');
+			$data["produk"] 		= $this->mod_dataPembelian->dataProduk($id)->result();
 
-			$this->mod_dataPembelian->inputDataOrder($dataTransaksi);
-		}
-		
+			if (!empty($KdTukang)) {
+				$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi($id)->result();
+			}else{
+				$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi3($id)->result();
+			}
+			
+			$data["profil"] 		= $this->mod_dataPembelian->lihatTransaksi2($idAkun)->result();
 
-		if (!empty($KdTukang)) {
-			$this->mod_dataPembelian->statusTukang($kodeTukang);
-		}
-		
-		$data["produk"] 		= $this->mod_dataPembelian->dataProduk($id)->result();
+			$jml 			 		= $this->mod_dataPembelian->jumlahBayar2($id);
+			$data['totalBelanja2'] 	= $jml->jumlahBayar2;
 
-		if (!empty($KdTukang)) {
-			$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi($id)->result();
-		}else{
-			$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi3($id)->result();
-		}
-		
-		$data["profil"] 		= $this->mod_dataPembelian->lihatTransaksi2($kode)->result();
+			$this->mod_dataPembelian->deleteProduk($idAkun);
 
-		$jml 			 		= $this->mod_dataPembelian->jumlahBayar2($id);
-		$data['totalBelanja2'] 	= $jml->jumlahBayar2;
+			$this->session->set_flashdata('test1', 
+	                    '<div class="alert alert-info" style="margin-bottom: 20px !important">    
+	                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	                    <h7>Berhasil Reservasi</h7>
+	                    </div>');
 
-		$this->mod_dataPembelian->deleteProduk($id);
+			$this->load->view('V_TransaksiNew',$data);
 
-		$this->session->set_flashdata('test1', 
-                    '<div class="alert alert-info" style="margin-bottom: 20px !important">    
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <h7>Berhasil Reservasi</h7>
-                    </div>');
+			}else{
+				// $this->session->set_flashdata('pembayaran2', 
+			 //                '<div class="alert alert-danger">    
+			 //                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			 //                <h7>Erorr Pembayaran ! </h7>
+			                   
+			 //                </div>');
+				redirect('C_produkPembeli/datareservasi');
+			}
 
-		$this->load->view('V_TransaksiNew',$data);
+
+
 	}
 
 	public function lihatTransaksi(){
@@ -516,6 +538,10 @@ class C_transaksiProduk extends CI_Controller{
                  
         $data['pag'] = $this->pagination->create_links();
 		$data['pembayaran'] = $this->mod_dataPembelian->sessionTransaksi($config["per_page"], $data['page'])->result();
+
+		// echo "<pre>";
+		// var_dump($data['pembayaran']);
+		// die();
 
 		$this->load->view('V_allReservasiNew',$data);
 	}

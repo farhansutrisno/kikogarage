@@ -53,8 +53,8 @@ class mod_dataPembelian extends CI_Model{
          return $this->db->get('pembelian');
     }
 
-    public function lihatTransaksi2($kode){
-         $this->db->where("idAkun",$kode);
+    public function lihatTransaksi2($idAkun){
+         $this->db->where("idAkun",$idAkun);
          return $this->db->get("konsumen");
     }
 
@@ -129,9 +129,9 @@ class mod_dataPembelian extends CI_Model{
 		 return $this->db->get("keranjang");
 	}
 
-	public function inputTransaksi($id){
+	public function inputTransaksi($idAkun){
 		
-		$this->db->where("kodeUnik",$id);
+		$this->db->where("idAkun",$idAkun);
 		 return $this->db->get("keranjang");
 	}
 
@@ -212,8 +212,8 @@ class mod_dataPembelian extends CI_Model{
 	public function sessionTransaksi($limit, $start){
 		$kode = $this->session->userdata('kode');
 		$this->db->distinct();
-		$this->db->select("totalBayar,kdPembayaran,kodeUnik,tglTransaksi,noAntrian,statusPembayaran,strukPembayaran, jenisBooking, noPlat, gambar, namaProduk, kategori, KdTukang");
-		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
+		$this->db->select("totalBayar,kdPembayaran,kodeUnik,tglTransaksi,noAntrian,statusPembayaran,strukPembayaran, jenisBooking, noPlat, KdTukang");
+		// $this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->where("idAkun",$kode);
 		$this->db->order_by('kdPembelian','DESC');
 		 return $this->db->get("pembelian",$limit, $start);
@@ -231,9 +231,9 @@ class mod_dataPembelian extends CI_Model{
 		 return $this->db->get();
 	}*/
 
-	public function deleteProduk(){
-		$kode 			= $this->session->userdata('kode');
-        $this->db->where("idAkun",$kode);
+	public function deleteProduk($idAkun){
+		// $kode 			= $this->session->userdata('kode');
+        $this->db->where("idAkun",$idAkun);
         return $this->db->delete("keranjang");
     }
 

@@ -185,6 +185,8 @@
 
             <div class="col-md-10" style="margin-left: -60px !important; margin-bottom: -20px !important;">
               <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
+                <input type="hidden" name="totalBayar" value="<?php echo $total_belanja?>">
+                <input type="hidden" name="idAkun" value="<?php echo $produk[0]->idAkun?>">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="noPlat" required>
                 </div>

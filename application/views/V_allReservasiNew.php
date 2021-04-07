@@ -225,11 +225,17 @@
 			                ?>
 
 						      <tr class="">
-						      	<td class="car-image"><div class="img" style="background-image:url(<?php echo base_url() ?>gambar_proyek/<?php echo $allTransaksi->gambar ?>);"></div></td>
+						      	<td class="product-name">
+						      		<!-- <div class="img" style="background-image:url(<?php echo base_url() ?>gambar_proyek/<?php echo $allTransaksi->gambar ?>);">
+						      			
+						      		</div> -->
+						      		<h5>Status</h5>
+						      		<span class="subheading"><?php echo $allTransaksi->statusPembayaran; ?></span>
+						      	</td>
 						        <td class="product-name">
-						        	<h3><?php echo $allTransaksi->namaProduk; ?></h3>
+						        	<h3>No Antrian : <?php echo $allTransaksi->noAntrian; ?></h3>
 						        	<!-- <p class="mb-0 rated"> -->
-						        		<span class="subheading"><?php echo $allTransaksi->kategori; ?></span>
+						        		<span class="subheading"> No Plat : <?php echo $allTransaksi->noPlat; ?></span>
 						        		
 						        	<!-- </p> -->
 						        </td>
@@ -240,290 +246,25 @@
 						        		<?php echo anchor('C_transaksiProduk/lihatTransaksiNew/'.$allTransaksi->kodeUnik.'/'.$allTransaksi->KdTukang,'Detail',array('class'=>'btn-round', 'style'=>'padding: 10px 50px !important;'));?>
 						        	</p>
 						        	<div class="price-rate" style="text-align: justify !important;margin-left: 40px !important;">
-						        		<span class="subheading">Status : <?php echo $allTransaksi->statusPembayaran; ?></span><br>
-						        		<span class="subheading">No Antrian : <?php echo $allTransaksi->noAntrian; ?></span><br>
+						        		<!-- <span class="subheading">Status : <?php echo $allTransaksi->statusPembayaran; ?></span><br> -->
+						        		<!-- <span class="subheading">No Antrian : <?php echo $allTransaksi->noAntrian; ?></span><br> -->
 						        		<span class="subheading">Tgl Reservasi : <?php echo $dateUpdate; ?></span><br>
 						        		<span class="subheading">Jenis Booking : <?php echo $allTransaksi->jenisBooking; ?></span><br>
-						        		<span class="subheading">No Plat : <?php echo $allTransaksi->noPlat; ?></span>
+						        		<!-- <span class="subheading">No Plat : <?php echo $allTransaksi->noPlat; ?></span> -->
 							        	<h3>
-							        		<span class="num"><small class="currency"></small>Harga : Rp.<?php echo  number_format($allTransaksi->totalBayar, 0,",","."); ?></span>
+							        		<span class="num"><small class="currency"></small>Harga : Rp. <?php echo  number_format($allTransaksi->totalBayar, 0,",","."); ?></span>
 							        		<!-- <span class="per">/per hour</span> -->
 							        	</h3>
 							        	
 						        	</div>
 
 						        </td>
-						        
-						        <!-- <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 60.99</span>
-							        		<span class="per">/per day</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-						        </div>
-						        </td>
-
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 995.99</span>
-							        		<span class="per">/per month</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td> -->
+						       
 						      </tr><!-- END TR-->
 
 						      <?php } ?>
 
-						     <!--  <tr class="">
-						      	<td class="car-image"><div class="img" style="background-image:url(<?php echo base_url() ?>images/car-2.jpg);"></div></td>
-						        <td class="product-name">
-						        	<h3>Cheverolet SUV Car</h3>
-						        	<p class="mb-0 rated">
-						        		<span>rated:</span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        	</p>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 10.99</span>
-							        		<span class="per">/per hour</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 60.99</span>
-							        		<span class="per">/per day</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 995.99</span>
-							        		<span class="per">/per month</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						      </tr> -->
-						      <!-- END TR-->
-
-						      <!-- <tr class="">
-						      	<td class="car-image"><div class="img" style="background-image:url(<?php echo base_url() ?>images/car-3.jpg);"></div></td>
-						        <td class="product-name">
-						        	<h3>Cheverolet SUV Car</h3>
-						        	<p class="mb-0 rated">
-						        		<span>rated:</span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        	</p>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 10.99</span>
-							        		<span class="per">/per hour</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 60.99</span>
-							        		<span class="per">/per day</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 995.99</span>
-							        		<span class="per">/per month</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						      </tr> -->
-						      <!-- END TR-->
-
-						      <!-- <tr class="">
-						      	<td class="car-image"><div class="img" style="background-image:url(<?php echo base_url() ?>images/car-4.jpg);"></div></td>
-						        <td class="product-name">
-						        	<h3>Cheverolet SUV Car</h3>
-						        	<p class="mb-0 rated">
-						        		<span>rated:</span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        	</p>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 10.99</span>
-							        		<span class="per">/per hour</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 60.99</span>
-							        		<span class="per">/per day</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 995.99</span>
-							        		<span class="per">/per month</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						      </tr> -->
-						      <!-- END TR-->
-
-
-						     <!--  <tr class="">
-						      	<td class="car-image"><div class="img" style="background-image:url(<?php echo base_url() ?>images/car-5.jpg);"></div></td>
-						        <td class="product-name">
-						        	<h3>Cheverolet SUV Car</h3>
-						        	<p class="mb-0 rated">
-						        		<span>rated:</span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        	</p>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 10.99</span>
-							        		<span class="per">/per hour</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 60.99</span>
-							        		<span class="per">/per day</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 995.99</span>
-							        		<span class="per">/per month</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						      </tr> -->
-						      <!-- END TR-->
-
-
-						      <!-- <tr class="">
-						      	<td class="car-image"><div class="img" style="background-image:url(<?php echo base_url() ?>images/car-6.jpg);"></div></td>
-						        <td class="product-name">
-						        	<h3>Cheverolet SUV Car</h3>
-						        	<p class="mb-0 rated">
-						        		<span>rated:</span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        		<span class="ion-ios-star"></span>
-						        	</p>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 10.99</span>
-							        		<span class="per">/per hour</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						        
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 60.99</span>
-							        		<span class="per">/per day</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-
-						        <td class="price">
-						        	<p class="btn-custom"><a href="#">Rent a car</a></p>
-						        	<div class="price-rate">
-							        	<h3>
-							        		<span class="num"><small class="currency">$</small> 995.99</span>
-							        		<span class="per">/per month</span>
-							        	</h3>
-							        	<span class="subheading">$3/hour fuel surcharges</span>
-							        </div>
-						        </td>
-						      </tr> -->
+						   
 						      <!-- END TR-->
 						    </tbody>
 						  </table>
@@ -531,8 +272,34 @@
 						  <?php echo $pag; ?>
 
 					  </div>
-					  <?php }
-    					?>
+					  <?php }else{ ?>
+
+
+					  <section class="ftco-section bg-light" style="margin-top: -80px !important; margin-bottom: -200px !important;">
+
+					      <div class="container" style="margin-top: -50px !important;">
+					        
+					        <div class="row">
+
+					              <div class="col-md-8">
+					                <div class="car-wrap rounded ftco-animate">
+
+					                  <div class="text">
+					                  <h4 class="mb-0"><b>Reservasi Kosong</b></h4>
+					                  <h4 class="mb-0"><b>Harap Reservasi Terlebih Dahulu</b></h4>
+					                  <br>
+					                  <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Reservasi Sekarang</a></p>
+					                  <br>
+					                  </div>
+					                  
+					                </div>
+					              </div>
+					                
+					        </div>
+					      </div>
+			    		</section>
+
+					  	<?php }?>
 
     			</div>
     		</div>

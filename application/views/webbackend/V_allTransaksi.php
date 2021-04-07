@@ -181,8 +181,11 @@
             <!-- Items -->
             <div class="col-list"> 
 
-              <?php foreach ($pembayaran as $allTransaksi) { 
+              <?php 
+                $totalBayar = 0;
+              foreach ($pembayaran as $allTransaksi) { 
 
+                    $totalBayar = $totalBayar + $allTransaksi->totalBayar;
 
                     if (empty($allTransaksi->tglTransaksi)) {
                       $dateUpdate = '-';
@@ -214,7 +217,7 @@
                                 <tr><td>Status Pembayaran</td><td><?php echo $allTransaksi->statusPembayaran; ?></td></tr>
                                 <tr><td>Nama Produk</td><td><?php echo $allTransaksi->namaProduk; ?></td></tr>
                                 <tr><td>Kategori</td><td><?php echo $allTransaksi->kategori; ?></td></tr>
-                                <tr><td>Total Bayar</td><td>Rp.<?php echo  number_format($allTransaksi->totalBayar, 0,",","."); ?></td></tr>
+                                <tr><td>Total Bayar</td><td>Rp.<?php echo  number_format($totalBayar, 0,",","."); ?></td></tr>
                                 
                             </table>
                           </div>
