@@ -219,7 +219,7 @@
 						   		if (empty($allTransaksi->tglTransaksi)) {
 			                      $dateUpdate = '-';
 			                    }else{
-			                      $dateUpdate = date_format (new DateTime($allTransaksi->tglTransaksi), 'd M Y');
+			                      $dateUpdate = date_format (new DateTime($allTransaksi->tglTransaksi), 'd M Y').' '.date_format (new DateTime($allTransaksi->tglPembayaran), 'H:i:s');
 			                    }
 
 			                ?>

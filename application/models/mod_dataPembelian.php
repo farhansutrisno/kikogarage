@@ -223,7 +223,7 @@ class mod_dataPembelian extends CI_Model{
 	public function sessionTransaksi($limit, $start){
 		$kode = $this->session->userdata('kode');
 		$this->db->distinct();
-		$this->db->select("totalBayar,kdPembayaran,kodeUnik,tglTransaksi,noAntrian,statusPembayaran,strukPembayaran, jenisBooking, noPlat, KdTukang");
+		$this->db->select("totalBayar,kdPembayaran,kodeUnik,tglTransaksi,noAntrian,statusPembayaran,strukPembayaran, jenisBooking, noPlat, KdTukang, tglPembayaran");
 		// $this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->where("idAkun",$kode);
 		$this->db->order_by('kdPembelian','DESC');

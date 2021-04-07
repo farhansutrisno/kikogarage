@@ -211,19 +211,19 @@
 					</div>
 					<div class="col-md-6 wrap-about ftco-animate">
 	          <div class="heading-section heading-section-white pl-md-5">
-	          	<span class="subheading">About us</span>
-	            <h2 class="mb-4">Welcome to Carbook</h2>
+	          	<!-- <span class="subheading">Tentang Kami</span> -->
+	            <h3 class="mb-4" style="color: #FFFFFF !important;">Welcome to Kiko Good Garage</h3>
 
-	            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-	            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-	            <p><a href="#" class="btn btn-primary py-3 px-4">Lihat Produk</a></p>
+	            <p>Kiko Good Garage merupakan usaha kecil menengah yang berdiri pada tanggal 1 September 2020 dan bergerak di bidang otomotif khususnya jasa pencucian kendaraan baik roda dua maupun roda empat. Selain itu juga menyediakan jasa coating kendaraan untuk roda empat. Kiko Good Garage beralamat di Jl. Soewoko No. 30, Jetis Lamongan. Pemanfaatan teknologi informasi bisa diterapkan oleh Kiko Good Garage untuk meningkatkan layanan jasa pencucian dan coating kendaraan. Pemanfaatan internet bukan hanya untuk usaha menengah keatas, tetapi juga bisa dimanfaatkan oleh usaha menengah kebawah.</p>
+              <p>kikogarage didirikan pada tanggal 1 september 2020. Dinamakan kikogarage karena nama owner ‘frangky dan eko’. Jadi dikikogarage ini merupakan usaha carwash gabungan dari dua orang entrepreneur dimana didepan terdapat café dan belakangnya garasi untuk carwash dan coating otomotif.</p>
+	            <p><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Lihat Produk</a></p>
 	          </div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="ftco-section ftco-intro" style="background-image: url(<?php echo base_url() ?>images/bg_3.jpg);">
+		<!-- <section class="ftco-section ftco-intro" style="background-image: url(<?php echo base_url() ?>images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row justify-content-end">
@@ -233,15 +233,15 @@
           </div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 
     <section class="ftco-section testimony-section bg-light">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-          	<span class="subheading">Testimonial</span>
-            <h2 class="mb-3">Happy Clients</h2>
+          	<span class="subheading">Struktur Organisasi</span>
+            <h2 class="mb-3">Kiko Good Garage</h2>
           </div>
         </div>
         <div class="row ftco-animate">
@@ -308,7 +308,7 @@
       </div>
     </section>
 
-    <section class="ftco-counter ftco-section img" id="section-counter">
+    <!-- <section class="ftco-counter ftco-section img" id="section-counter">
 			<div class="overlay"></div>
     	<div class="container">
     		<div class="row">
@@ -336,17 +336,10 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text d-flex align-items-center">
-                <strong class="number" data-number="67">0</strong>
-                <span>Total <br>Branches</span>
-              </div>
-            </div>
-          </div> -->
+          
         </div>
     	</div>
-    </section>	
+    </section>	 -->
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container" style="margin-top: -75px !important;margin-bottom: -85px !important;">

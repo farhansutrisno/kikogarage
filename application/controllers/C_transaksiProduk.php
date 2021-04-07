@@ -124,6 +124,7 @@ class C_transaksiProduk extends CI_Controller{
 									'noAntrian'			=> $noAntrian,
 									'kodeUnik'			=> $id,
 									'tglTransaksi'		=> date("Y-m-d"),
+									'tglPembayaran'		=> date("H:i:s"),
 									'noPlat'			=> $noPlat,
 									'jenisBooking'		=> $booking,
 									'statusPembayaran' 	=> 'Waiting List');
