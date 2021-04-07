@@ -9,13 +9,6 @@ class C_transaksiProduk extends CI_Controller{
 		date_default_timezone_set('Asia/Jakarta');
 	}
 
-	public function datareservasi(){
-		// $jml 			 		= $this->mod_dataPembelian->jumlahBayar();
-		// $data['totalBelanja'] 	= $jml->jumlahBayar;
-		// $data["data"] 			= $this->mod_dataPembelian->inputDataPembayaran()->result();
-		$this->load->view('V_dataReservasiNew');
-	}
-
 	public function inputOngkir(){
 
 		$this->form_validation->set_rules('noPlat','no plat','required');

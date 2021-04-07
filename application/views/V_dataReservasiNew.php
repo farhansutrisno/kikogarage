@@ -51,10 +51,8 @@
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       
         <div class="col-md-12">
-          <?php echo $this->session->flashdata('msg1'); ?>
-          <?php echo $this->session->flashdata('msg3'); ?>
-          <?php echo $this->session->flashdata('akun1'); ?>
-          <?php echo $this->session->flashdata('akun2'); ?>
+          <?php echo $this->session->flashdata('tambah1'); ?>
+          <?php echo $this->session->flashdata('hapus1'); ?>
 
            <div class="container">
             <div class="row">
@@ -65,11 +63,13 @@
 
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="nav-link">Beranda</a></li>
+              <li class="nav-item"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="nav-link">Beranda</a></li>
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="nav-link">Cars Wash</a></li>
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Interior') ?>" class="nav-link">Interior</a></li>
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Coating') ?>" class="nav-link">Coating</a></li>
+
+              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/datareservasi') ?>" class="nav-link">Data Reservasi</a></li>
               
               <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
                 
@@ -122,29 +122,54 @@
         <hr/>
         <div class="row">
 
-          <?php 
-          $total_belanja = 0;
-          foreach ($produk as $produk1) { 
+        <?php
+          if (!empty($produk)) { ?>
 
-            $total_belanja = $total_belanja + $produk1->hargaPenjualan;
+                <?php 
+                $total_belanja = 0;
+                foreach ($produk as $produk1) { 
+
+                  $total_belanja = $total_belanja + $produk1->hargaPenjualan;
+                  ?>
+
+                <div class="col-md-4">
+                  <div class="car-wrap rounded ftco-animate">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $produk1->gambar ?>);">
+                    </div>
+                    <div class="text">
+                      <h2 class="mb-0"><a href="#" style="cursor: default !important;"><?php echo $produk1->namaProduk ?></a></h2>
+                      <div class="d-flex mb-3">
+                        <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
+                        <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>
+                      </div>
+                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Delete</a></p>
+                    </div>
+                  </div>
+                </div>
+
+                 <?php } ?>   
+
+           <?php }else{ 
+
+                  $total_belanja = 0;
             ?>
 
-          <div class="col-md-4">
-            <div class="car-wrap rounded ftco-animate">
-              <div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $produk1->gambar ?>);">
-              </div>
-              <div class="text">
-                <h2 class="mb-0"><a href="#" style="cursor: default !important;"><?php echo $produk1->namaProduk ?></a></h2>
-                <div class="d-flex mb-3">
-                  <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
-                  <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>
-                </div>
-                <!-- <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Delete</a></p> -->
-              </div>
-            </div>
-          </div>
+              <div class="col-md-8">
+                <div class="car-wrap rounded ftco-animate">
 
-           <?php } ?>    
+                  <div class="text">
+                  <h4 class="mb-0"><b>Produk Kosong</b></h4>
+                  <h4 class="mb-0"><b>Harap Pilih Produk Terlebih Dahulu</b></h4>
+                  <br>
+                  <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Reservasi Sekarang</a></p>
+                  <br>
+                  </div>
+                  
+                </div>
+              </div>
+                
+           <?php }?>
+
         </div>
       </div>
     </section>
@@ -156,31 +181,28 @@
             <h3><b>Data Reservasi</b></h3>
             <hr/>
 
+            <?php if (!empty($produk)) { ?>
+
             <div class="col-md-10" style="margin-left: -60px !important; margin-bottom: -20px !important;">
-            <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="namaLengkap" required>
-              </div>
-              <div class="form-group">
-                <!-- <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required> -->
-                <select class="form-control" name="jenisBooking" required>
-                  <option value=""> Pilih Jenis Reservasi</option>
-                  <option value="Antar Jemput">Antar Jemput</option>
-                  <option value="Langsung">Langsung</option>
-                </select>
-              </div>
-             <!--  <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-              </div> -->
-              <!-- <div class="form-group">
-                <textarea cols="30" rows="7" name="isiPesan" class="form-control" placeholder="Isi Pesan" required></textarea>
-              </div> -->
-              <div class="form-group">
-                <input type="submit" name="submit" value="Lanjutkan" class="btn btn-info py-3 px-5">
-              </div>
-            </form>
-          
-          </div>
+              <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="namaLengkap" required>
+                </div>
+                <div class="form-group">
+                  <!-- <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required> -->
+                  <select class="form-control" name="jenisBooking" required>
+                    <option value=""> Pilih Jenis Reservasi</option>
+                    <option value="Antar Jemput">Antar Jemput</option>
+                    <option value="Langsung">Langsung</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="submit" value="Lanjutkan" class="btn btn-info py-3 px-5">
+                </div>
+              </form>
+            </div>
+
+            <?php }?>
 
             <!-- <p style="color: #000000 !important;">Tanggal Transaksi : </p>
             <p style="color: #000000 !important;">No Plat : </p>
@@ -247,16 +269,25 @@
             </div>
 
             <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
+
               <h3><b>Alamat Konsumen</b></h3>
-              <p style="color: #000000 !important;"><?php echo $produk[0]->alamatLengkap ?></p>
               <hr/>
-              <p style="color: #000000 !important;"></p>
-              
-                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'?>" class="btn btn-info py-2 mr-1" style="color: #ffffff !important;">Ubah Alamat</a></p>
+              <?php
+              if (!empty($produk)) { ?>
+                
+                <p style="color: #000000 !important;"><?php echo $produk[0]->alamatLengkap ?></p>
+                
+                <!-- <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'?>" class="btn btn-info py-2 mr-1" style="color: #ffffff !important;">Ubah Alamat</a></p> -->
+
+              <?php }else{ ?>
+                
+                <br>
+              <?php }
+              ?>
                 
             </div>
 
-            <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
+            <div class="sidebar-box ftco-animate" style="margin-top: -35px !important;">
                 <h3><b>Jadwal Penuh</b></h3>
                 <hr/>
                 <div class="tagcloud">

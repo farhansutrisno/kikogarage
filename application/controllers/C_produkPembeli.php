@@ -144,15 +144,14 @@ class C_produkPembeli extends CI_Controller{
                             "subtotal"      => $qty * $harga
                         );
                         $this->mod_dataProduk->ubahData($data,$kdProduk);
-                        redirect('C_produkPembeli/lihatProduk');
+                        redirect('C_produkPembeli/datareservasi');
 
             }else{
 
                 $this->session->set_flashdata('tambah1', 
-                        '<div class="alert alert-info ">    
+                        '<div class="alert alert-success" style="margin-bottom: 20px !important">    
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <h7>Berhasil Memilih Produk</h7>
-                            
                         </div>');
 
                 $data           = array(
@@ -166,7 +165,7 @@ class C_produkPembeli extends CI_Controller{
                 );
 
                 $this->mod_dataProduk->prosesTambah($data);
-                redirect('C_produkPembeli/lihatProduk');
+                redirect('C_produkPembeli/datareservasi');
             }
     }
 
@@ -421,13 +420,13 @@ class C_produkPembeli extends CI_Controller{
 
     public function deleteProduk2($kdKeranjang){
         $this->session->set_flashdata('hapus1', 
-                        '<div class="alert alert-info ">    
+                        '<div class="alert alert-info" style="margin-bottom: 20px !important">    
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <h7>BERHASIL ! </h7>
                             <p>Berhasil Menghapus Produk</p>
                         </div>');
         $this->mod_dataProduk->deleteProduk($kdKeranjang);
-        redirect('C_produkPembeli/lihatkeranjang');
+        redirect('C_produkPembeli/datareservasi');
     }
 
     public function pencarianLogin(){
