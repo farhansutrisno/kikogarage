@@ -69,7 +69,7 @@
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Coating') ?>" class="nav-link">Coating</a></li>
 
-              <li class="nav-item active"><a href="<?php echo base_url('C_produkPembeli/datareservasi') ?>" class="nav-link">Data Reservasi</a></li>
+              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/datareservasi') ?>" class="nav-link">Data Reservasi</a></li>
               
               <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
                 
@@ -225,8 +225,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Reservasi <i class="ion-ios-arrow-forward"></i></a></span> <span>Detail Reservasi </span></p>
-            <h1 class="mb-3 bread">Detail Reservasi</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Data Member <i class="ion-ios-arrow-forward"></i></a></span> <span>Edit Data Member</span></p>
+            <h1 class="mb-3 bread">Edit Data Member</h1>
           </div>
         </div>
       </div>
@@ -238,33 +238,39 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 ftco-animate">
-            <h3><b>Data Reservasi</b></h3>
+            <h3><b>Edit Data Member</b></h3>
             <hr/>
 
-            <!-- <?php if (!empty($produk)) { ?> -->
-
+            
             <div class="col-md-10" style="margin-left: -60px !important; margin-bottom: -20px !important;">
               <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
-                <input type="hidden" name="totalBayar" value="<?php echo $total_belanja?>">
-                <input type="hidden" name="idAkun" value="<?php echo $produk[0]->idAkun?>">
+                <!-- <input type="hidden" name="totalBayar" value=""> -->
+                <input type="hidden" name="idAkun" value="">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="noPlat" required>
+                  <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap" required>
+                </div>
+               <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Password" name="password" required>
                 </div>
                 <div class="form-group">
-                  <!-- <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required> -->
-                  <select class="form-control" name="jenisBooking" required>
-                    <option value=""> Pilih Jenis Reservasi</option>
-                    <option value="Antar Jemput">Antar Jemput</option>
-                    <option value="Langsung">Langsung</option>
-                  </select>
+                  <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required>
                 </div>
                 <div class="form-group">
-                  <input type="submit" name="submit" value="Lanjutkan" class="btn btn-info py-3 px-5">
+                  <input type="text" class="form-control" id="datemember" name="tanggal_lahir" placeholder="Tanggal Lahir" required">
+                </div>
+                <div class="form-group">
+                  <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
+                </div>
+                <div class="form-group">
+                  
+                  
+                  <div class="row justify-content-center">
+                        <button type="button" class="btn btn-primary py-3 px-5" data-dismiss="modal">Close</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="submit" name="submit" value="Lanjutkan" class="btn btn-success py-3 px-5">
+                    </div>
                 </div>
               </form>
             </div>
-
-            <!-- <?php }?> -->
 
             <!-- <p style="color: #000000 !important;">Tanggal Transaksi : </p>
             <p style="color: #000000 !important;">No Plat : </p>
@@ -295,13 +301,13 @@
           <div class="col-md-4 sidebar ftco-animate">
 
             <div class="sidebar-box ftco-animate">
-              <h3><b>Data Pembayaran</b></h3>
+              <h3><b>Data Poin</b></h3>
               <hr/>
               <div class="block-21 mb-4 d-flex">
                 <!-- <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_1.jpg);"></a> -->
                 <div class="text">
                   <h3 class="heading">
-                     <p style="color: #000000 !important;">Total Bayar : Rp.  </p>
+                     <p style="color: #000000 !important;">Total Poin : </p>
                   </h3>
                  
                 </div>
@@ -330,10 +336,15 @@
               </div> -->
             </div>
 
-            <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
+            <div class="sidebar-box ftco-animate" style="margin-top: -70px !important;">
 
-              <h3><b>Alamat Konsumen</b></h3>
+              <h3><b>Foto</b></h3>
               <hr/>
+              <div class="about-author d-flex p-4 bg-light">
+                <div class="bio mr-5" style="margin-left: -25px !important;">
+                  <img src="<?php echo base_url() ?>images/car-11.jpg" style="width: 150px !important;" alt="Image placeholder" class="img-fluid mb-4">
+                </div>
+              </div>
               <!-- <?php
               if (!empty($produk)) { ?>
                 
@@ -344,12 +355,12 @@
               <?php }else{ ?>
                 
                 <br>
-              <?php } -->
-              ?>
+              <?php } 
+              ?>-->
                 
             </div>
 
-            <div class="sidebar-box ftco-animate" style="margin-top: -35px !important;">
+            <!-- <div class="sidebar-box ftco-animate" style="margin-top: -35px !important;">
                 <h3><b>Jadwal Penuh</b></h3>
                 <hr/>
                 <div class="tagcloud">
@@ -362,7 +373,7 @@
                   <a href="#" class="tag-cloud-link">desserts</a>
                   <a href="#" class="tag-cloud-link">drinks</a>
                 </div>
-              </div>
+              </div> -->
 
             <!-- <div class="sidebar-box">
               <form action="#" class="search-form">
@@ -540,16 +551,24 @@
         
   }
 
-  // $( function() {
+  $( function() {
 
-  //     $( "#date" ).datepicker({
-  //       autoclose:true,
-  //       todayHighlight:true,
-  //       format:'yyyy-mm-dd',
-  //       language: 'id',
-  //     });
+      $( "#date" ).datepicker({
+        autoclose:true,
+        todayHighlight:true,
+        format:'yyyy-mm-dd',
+        language: 'id',
+      });
 
-  //   } );
+      $( "#datemember" ).datepicker({
+        autoclose:true,
+        todayHighlight:true,
+        format:'yyyy-mm-dd',
+        language: 'id',
+      });
+
+
+    } );
 
   </script>
 
