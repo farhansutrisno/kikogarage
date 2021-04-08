@@ -55,8 +55,8 @@
 
         	 <div class="container">
         	 	<div class="row">
-        	 		<a class="navbar-brand" style="margin-left: -20px !important;" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
-		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 65px !important;">
+        	 		<a class="navbar-brand" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew"><span>Kiko</span> <span style="color: #fdee00">Good</span> Garage</a>
+		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="oi oi-menu"></span> Menu
 		      </button>
 
@@ -132,8 +132,10 @@
 			              
 			              <div class="form-group">
 			                <!-- <input type="submit" name="submit" value="Kirim" class="btn btn-primary py-3 px-5"> -->
-			                 <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
-			                <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Login</button>
+			                <div class="row justify-content-center">
+				                 <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>&nbsp;&nbsp;
+				                <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Login</button>
+				            </div>
 			              </div>
 
 			            </form>
@@ -143,8 +145,17 @@
 		           </div>
 		           <div class="modal-footer justify-content-center">
 		           		<br>
+		           		
 				        <hr />
-				        <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+				        <div class="col-md-12">
+				        	<div class="row justify-content-center">
+			           			<h6>Belum punya akun?</h6>	
+			           		</div>
+			           		<div class="row justify-content-center">
+			           			<button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+			           		</div>	
+				        </div>
+				        
 		           </div>
 		         </div>
 
