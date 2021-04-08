@@ -125,8 +125,8 @@ class C_dataAkun extends CI_Controller{
 
 	public function editMemberNew(){
 		$kode = $this->session->userdata('kode');
-		// $data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
-		$this->load->view('V_editDataMemberNew');
+		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+		$this->load->view('V_editDataMemberNew',$data);
 	}
 
 	public function daftarMember(){

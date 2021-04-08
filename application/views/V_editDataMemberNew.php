@@ -237,41 +237,44 @@
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ftco-animate">
+          <div class="col-md-7 ftco-animate" style="margin-bottom: -80px !important">
             <h3><b>Edit Data Member</b></h3>
             <hr/>
-
+            <div class="row d-flex mb-5 contact-info">
             
-            <div class="col-md-10" style="margin-left: -60px !important; margin-bottom: -20px !important;">
-              <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
-                <!-- <input type="hidden" name="totalBayar" value=""> -->
-                <input type="hidden" name="idAkun" value="">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap" required>
-                </div>
-               <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Password" name="password" required>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="datemember" name="tanggal_lahir" placeholder="Tanggal Lahir" required">
-                </div>
-                <div class="form-group">
-                  <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
-                </div>
-                <div class="form-group">
-                  
-                  
-                  <div class="row justify-content-center">
-                        <button type="button" class="btn btn-primary py-3 px-5" data-dismiss="modal">Close</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="submit" name="submit" value="Lanjutkan" class="btn btn-success py-3 px-5">
+              <div class="col-md-10 block-9 mb-md-5">
+                <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_dataAkun/prosesUpdateAkun' ?>" method="POST">
+                  <!-- <input type="hidden" name="totalBayar" value=""> -->
+                  <input type="hidden" name="idAkun" value="">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap" value="<?php echo $member[0]->namaLengkap ?>" required>
+                  </div>
+                 <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Password" name="password" value="<?php echo $member[0]->password ?>" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" value="<?php echo $member[0]->noTelepon ?>" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="datemember" name="tanggal_lahir" placeholder="Tanggal Lahir" value="<?php echo $member[0]->tglLahir ?>" required">
+                  </div>
+                  <div class="form-group">
+                    <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required><?php echo $member[0]->alamatLengkap ?></textarea>
+                  </div>
+                   <div class="form-group">
+                       <input class="form-control" type="file" name="userfile" value="<?php echo $member[0]->foto ?>" required>
+                        <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
                     </div>
-                </div>
-              </form>
+                  <div class="form-group">
+                  <br>
+                    <div class="row justify-content-left">
+                          <!-- <button type="button" class="btn btn-primary py-3 px-5" style="margin-left: 15px !important;">Kembali</button>&nbsp;&nbsp; -->
+                          <input type="submit" name="submit" value="Simpan" class="btn btn-success py-3 px-5" style="margin-left: 15px !important;">
+                      </div>
+                  </div>
+                </form>
+              </div>
             </div>
-
             <!-- <p style="color: #000000 !important;">Tanggal Transaksi : </p>
             <p style="color: #000000 !important;">No Plat : </p>
             <p style="color: #000000 !important;">Jenis Booking : </p> -->
@@ -298,7 +301,7 @@
             </div> -->
             
           </div> <!-- .col-md-8 -->
-          <div class="col-md-4 sidebar ftco-animate">
+          <div class="col-md-5 sidebar ftco-animate">
 
             <div class="sidebar-box ftco-animate">
               <h3><b>Data Poin</b></h3>
@@ -307,7 +310,7 @@
                 <!-- <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_1.jpg);"></a> -->
                 <div class="text">
                   <h3 class="heading">
-                     <p style="color: #000000 !important;">Total Poin : </p>
+                     <p style="color: #000000 !important;">Total Poin : <?php echo $member[0]->poin ?></p>
                   </h3>
                  
                 </div>
@@ -342,7 +345,8 @@
               <hr/>
               <div class="about-author d-flex p-4 bg-light">
                 <div class="bio mr-5" style="margin-left: -25px !important;">
-                  <img src="<?php echo base_url() ?>images/car-11.jpg" style="width: 150px !important;" alt="Image placeholder" class="img-fluid mb-4">
+                  <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $member[0]->foto ?>" style="width: 150px !important;" alt="Image placeholder" class="img-fluid mb-4">
+                  <!-- <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $profil[0]->foto ?>" style="cursor: pointer !important;height: 100px; width: 120px;"> -->
                 </div>
               </div>
               <!-- <?php
