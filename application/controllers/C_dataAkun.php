@@ -123,6 +123,47 @@ class C_dataAkun extends CI_Controller{
 		$this->load->view('V_lihatMemberNew', $data);
 	}
 
+	public function editMemberNew(){
+		$kode = $this->session->userdata('kode');
+		// $data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+		$this->load->view('V_editDataMemberNew');
+	}
+
+	public function daftarMember(){
+		$kode = $this->session->userdata('kode');
+		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+		$this->load->view('V_lihatMember', $data);
+	}
+
+	public function prosesDaftarMember(){
+		
+	    $this->form_validation->set_rules('member','member','required');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+
+		    	$kode 			= $this->input->post('idAkun');
+		        $data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+				$this->load->view('V_lihatMember', $data);
+
+		    }
+		    else{
+		        
+		        $this->mod_dataAkun->prosesDaftarMember();
+
+		        $this->session->set_flashdata('pesanProfil', 
+				                '<div class="alert alert-info ">    
+				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				                <h7>BERHASIL ! </h7>
+				                </div>');
+				
+				redirect('C_dataAkun/daftarMember');
+
+		    }
+		}	
+		
+	}
+
 	//========================================================================================================
 
 
@@ -360,41 +401,6 @@ class C_dataAkun extends CI_Controller{
 	}
 
 	
-
-	public function daftarMember(){
-		$kode = $this->session->userdata('kode');
-		$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
-		$this->load->view('V_lihatMember', $data);
-	}
-
-	public function prosesDaftarMember(){
-		
-	    $this->form_validation->set_rules('member','member','required');
-
-	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
-
-		    	$kode 			= $this->input->post('idAkun');
-		        $data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
-				$this->load->view('V_lihatMember', $data);
-
-		    }
-		    else{
-		        
-		        $this->mod_dataAkun->prosesDaftarMember();
-
-		        $this->session->set_flashdata('pesanProfil', 
-				                '<div class="alert alert-info ">    
-				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				                <h7>BERHASIL ! </h7>
-				                </div>');
-				
-				redirect('C_dataAkun/daftarMember');
-
-		    }
-		}	
-		
-	}
 }
 
 ?>

@@ -154,7 +154,7 @@
               <p style="color: #000000 !important;">Alamat : <?php echo $member[0]->alamatLengkap ?></p>
               <br>
               
-                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'?>" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Edit Profil</a></p>
+                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/editMemberNew/'?>" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Edit Profil</a></p>
                
             </div>
             
