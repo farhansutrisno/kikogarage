@@ -56,7 +56,7 @@
 
            <div class="container">
             <div class="row">
-              <a class="navbar-brand" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew">Kiko <span>Good Garage</span></a>
+              <a class="navbar-brand" href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew"><span>Kiko</span> <span style="color: #fdee00">Good</span> Garage</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
@@ -69,7 +69,7 @@
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Eksterior') ?>" class="nav-link">Eksterior</a></li>
               <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/Coating') ?>" class="nav-link">Coating</a></li>
 
-              <li class="nav-item"><a href="<?php echo base_url('C_produkPembeli/datareservasi') ?>" class="nav-link">Data Reservasi</a></li>
+              <li class="nav-item active"><a href="<?php echo base_url('C_produkPembeli/datareservasi') ?>" class="nav-link">Data Reservasi</a></li>
               
               <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
                 
@@ -101,6 +101,123 @@
         </div>
      
     </nav>
+
+     <div class="modal fade" id="loginmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="login">
+               <div class="modal-header">
+                 
+                  <div class="col-md-11">
+                  <h4 class="modal-title textBlack" align="left">Form Login</h4>
+                </div>
+                <div class="col-md-1">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+               </div>
+               <div class="modal-body">
+                  
+                  <div class="col-md-12 block-12">
+                  <form action="<?php echo base_url().'C_dataAkun/prosesLogin'?>" method="POST" id="regForm">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="username" placeholder="Nama Depan" name="username" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="passwordlogin" placeholder="Password" name="password" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                      <!-- <input type="submit" name="submit" value="Kirim" class="btn btn-primary py-3 px-5"> -->
+                      <div class="row justify-content-center">
+                         <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>&nbsp;&nbsp;
+                        <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Login</button>
+                    </div>
+                    </div>
+
+                  </form>
+                
+                </div>
+
+               </div>
+               <div class="modal-footer justify-content-center">
+                  <br>
+                  
+                <hr />
+                <div class="col-md-12">
+                  <div class="row justify-content-center">
+                      <h6>Belum punya akun?</h6>  
+                    </div>
+                    <div class="row justify-content-center">
+                      <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+                    </div>  
+                </div>
+                
+               </div>
+             </div>
+
+
+          </div>
+
+       </div>
+    </div>
+
+    <div class="modal fade" id="registermodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="login">
+               <div class="modal-header">
+                 
+                  <div class="col-md-11">
+                  <h4 class="modal-title textBlack" align="left">Form Registrasi</h4>
+                </div>
+                <div class="col-md-1">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+               </div>
+               <form action="<?php echo base_url().'C_dataAkun/prosesCreateAkun'?>" method="POST" name="createAkun" enctype="multipart/form-data" id="regisForm">
+
+               <div class="modal-body">
+                  
+                  <div class="col-md-10 block-10">
+
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="noTelepon" name="noTelepon" placeholder="No Telepon" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+
+             <div class="form-group">
+                      <input type="text" class="form-control" id="date" name="tanggal_lahir" placeholder="Tanggal Lahir" required">
+                    </div>
+                    <div class="form-group">
+                      <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
+                    </div>
+                     
+                    <div class="form-group">
+                       <input class="form-control" type="file" name="userfile" required>
+                        <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                    </div>
+
+                </div>
+
+               </div>
+               <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
+                      <button type="button" onclick="saveregister();" class="btn btn-info btn-lg marleft20 active">Submit</button>
+               </div>
+               </form>
+             </div>
+
+
+          </div>
+
+       </div>
+    </div>
     <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo base_url() ?>images/car-11.jpg');" data-stellar-background-ratio="0.5">
@@ -108,8 +225,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Data Reservasi <i class="ion-ios-arrow-forward"></i></a></span> <span>Detail Data Reservasi <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-3 bread">Detail Data Reservasi</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Reservasi <i class="ion-ios-arrow-forward"></i></a></span> <span>Detail Reservasi </span></p>
+            <h1 class="mb-3 bread">Detail Reservasi</h1>
           </div>
         </div>
       </div>
@@ -161,7 +278,7 @@
                   <h4 class="mb-0"><b>Produk Kosong</b></h4>
                   <h4 class="mb-0"><b>Harap Pilih Produk Terlebih Dahulu</b></h4>
                   <br>
-                  <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Reservasi Sekarang</a></p>
+                  <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-success py-3 px-4">Reservasi Sekarang</a></p>
                   <br>
                   </div>
                   
@@ -388,7 +505,110 @@
       </div>
     </footer>
     
-  
+   <script type="text/javascript">
+
+    function registermodel(){
+
+      $('#loginmodel').modal('hide');
+
+    $('#registermodel').modal('show');
+        
+  }
+
+  function saveregister(){
+
+    var namaLengkap = $('#namaLengkap').val();
+    var noTelepon   = $('#noTelepon').val();
+    var password  = $('#password').val();
+    var valid = 1;
+      
+    if(namaLengkap == ''){
+      valid = 0;
+      var msg = 'Nama Lengkap Tidak Boleh Kosong';
+    }
+
+    if(password == ''){
+      valid = 0;
+      var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+    }
+
+    if(noTelepon == ''){
+      valid = 0;
+      var msg = 'No Telepon Tidak Boleh Kosong Tidak Boleh Kosong';
+    }
+
+    if(valid == 1){
+
+      document.getElementById("regisForm").submit();
+      
+    }else{
+      alert(msg);
+    }
+        
+  }
+    
+  function save(){
+
+    var username=$('#username').val();
+    var passwordlogin=$('#passwordlogin').val();
+    var valid = 1;
+      
+    if(username == ''){
+      valid = 0;
+      var msg = 'Username Tidak Boleh Kosong';
+    }
+
+    if(passwordlogin == ''){
+      valid = 0;
+      var msg = 'Password Tidak Boleh Kosong';
+    }
+
+    if(valid == 1){
+
+
+      document.getElementById("regForm").submit();
+      
+      // $.ajax({
+      //       type:"post",
+   //                url: "<?php echo base_url(); ?>C_dataAkun/prosesLogin",
+     //         dataType: "text",
+      //       data: {
+      //           username: username,
+      //           password: password
+      //       },
+      //       success: function(data) {
+      //           console.log(username);
+      //           console.log(password);
+      //           $('#loginmodel').modal('hide');
+                
+    //                 window.location.href = "<?php echo base_url() ?>C_produkPembeli/lihatProdukNew";
+                    
+      //       },
+      //       error: function(xhr, ajaxOptions, thrownError)
+      //       {
+      //           alert("Failed to get where column list, please try again");
+      
+      //       }
+      // });
+
+    }else{
+      alert(msg);
+    }
+        
+  }
+
+  // $( function() {
+
+  //     $( "#date" ).datepicker({
+  //       autoclose:true,
+  //       todayHighlight:true,
+  //       format:'yyyy-mm-dd',
+  //       language: 'id',
+  //     });
+
+  //   } );
+
+  </script>
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>

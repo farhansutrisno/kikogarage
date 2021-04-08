@@ -233,6 +233,7 @@
           	<div class="text w-100 text-center mb-md-5 pb-md-5">
 	            <h1 class="mb-2" style="font-size: 40px;">Premium Carwash & Auto Detailing</h1>
 	            <p style="font-size: 18px;">Rawat dan Percantik Kendaraan Anda dan Percayakan Kepada Kami</p>
+	            <p class="mb-0"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="btn btn-success py-3 px-4">Reservasi Sekarang</a></p>
 	           <!--  <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
 	            	<div class="icon d-flex align-items-center justify-content-center">
 	            		<span class="ion-ios-play"></span>
@@ -367,12 +368,12 @@
 						                        <input type="hidden" name="qty" value="1" />
 						                        <!-- <button type="submit" name="submit" class="cart-btn"><i class="icon-basket-loaded"></i></button> -->
 						                        <input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
-						                        <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-secondary py-2 ml-1" style="width: 30% !important">Detail</a>
+						                        <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-success py-2 ml-1" style="width: 30% !important">Detail</a>
 					                        </form>
 
 		    							<?php }else{ ?>
 		    								<input type="submit" name="submit" data-toggle="modal" data-target="#loginmodel" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
-		    								<a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-secondary py-2 ml-1" style="width: 30% !important">Detail</a>
+		    								<a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-success py-2 ml-1" style="width: 30% !important">Detail</a>
 		    							<?php } ?> 
 		    						</p>
 		    					</div>
