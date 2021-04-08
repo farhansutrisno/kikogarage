@@ -305,6 +305,12 @@
                 <input type="hidden" name="totalBayar" value="<?php echo $total_belanja?>">
                 <input type="hidden" name="idAkun" value="<?php echo $produk[0]->idAkun?>">
                 <div class="form-group">
+                  <input type="text" class="form-control" id="datereservasi" placeholder="Tanggal Reservasi" name="tglReservasi" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Jam Reservasi" name="tglReservasi" required>
+                </div>
+                <div class="form-group">
                   <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="noPlat" required>
                 </div>
                 <div class="form-group">
@@ -410,14 +416,10 @@
                 <h3><b>Jadwal Penuh</b></h3>
                 <hr/>
                 <div class="tagcloud">
-                  <a href="#" class="tag-cloud-link"><?php echo date("H:i:s"); ?></a>
-                  <a href="#" class="tag-cloud-link">menu</a>
-                  <a href="#" class="tag-cloud-link">food</a>
-                  <a href="#" class="tag-cloud-link">sweet</a>
-                  <a href="#" class="tag-cloud-link">tasty</a>
-                  <a href="#" class="tag-cloud-link">delicious</a>
-                  <a href="#" class="tag-cloud-link">desserts</a>
-                  <a href="#" class="tag-cloud-link">drinks</a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
                 </div>
               </div>
 
@@ -459,7 +461,6 @@
       <div class="container" style="margin-top: -75px !important;margin-bottom: -85px !important;">
         <div class="row mb-5">
           
-
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Informasi</h2>
@@ -597,16 +598,16 @@
         
   }
 
-  // $( function() {
+  $( function() {
 
-  //     $( "#date" ).datepicker({
-  //       autoclose:true,
-  //       todayHighlight:true,
-  //       format:'yyyy-mm-dd',
-  //       language: 'id',
-  //     });
+      $( "#datereservasi" ).datepicker({
+        autoclose:true,
+        todayHighlight:true,
+        format:'yyyy-mm-dd',
+        language: 'id',
+      });
 
-  //   } );
+    } );
 
   </script>
 
