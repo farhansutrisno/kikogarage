@@ -12,6 +12,8 @@ class C_dataPenjualan extends CI_Controller{
 		$data['tahun']	= $this->mod_dataPenjualan->tahun2()->result();
 		$data['bulan']	= $this->mod_dataPenjualan->bulan()->result();
 		$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan()->result();
+
+
 		$this->load->view('webbackend/V_lihatDataPenjualan',$data);
 	}
 
@@ -25,6 +27,8 @@ class C_dataPenjualan extends CI_Controller{
 			$data["KdTukang"] = array($KodeTukang = 1);
 		}
 
+		$data["penjualanProduk"] = $this->mod_dataPenjualan->detailDataPenjualanProduk($kodeUnik)->result();
+		
 		$this->load->view('webbackend/V_detailDataPenjualan', $data);
 	}
 

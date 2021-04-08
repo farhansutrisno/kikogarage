@@ -8,37 +8,27 @@ class mod_dataPenjualan extends CI_Model{
 	}
 
 	public function lihatDataPenjualan(){
-		// $this->db->distinct();
-		// $this->db->select("idAkun,noAntrian,kodeUnik,totalBayar,statusPembayaran,tglTransaksi,noPlat");
-		// $this->db->order_by('tglPembayaran','DESC');
-		// return $this->db->get("pembelian");
 
 		$this->db->distinct();
-		$this->db->select('*');
+		$this->db->select('konsumen.namaLengkap,konsumen.noTelepon,pembelian.tglTransaksi,pembelian.KdTukang,pembelian.kodeUnik,pembelian.noAntrian,pembelian.noPlat,pembelian.totalBayar,pembelian.statusPembayaran,pembelian.tglPembayaran');
 		$this->db->from('pembelian');
-		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->join('konsumen','konsumen.idAkun = pembelian.idAkun');
-		$this->db->order_by('tglTransaksi','DESC');
+		$this->db->order_by('kdPembelian','DESC');
 		return $this->db->get();
 	}
 
 	public function lihatDataPenjualan2(){
 		
-		// $this->db->order_by('tglPembayaran','DESC');
-		// return $this->db->get("pembelian");
-
 		$this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen');
 		$this->db->from('konsumen');
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
-		// $this->db->join('tukang','tukang.KdTukang = pembelian.KdTukang');
 		$this->db->order_by('pembelian.kdPembelian','DESC');
-		// $this->db->where("kodeUnik",$kodeUnik);
 		return $this->db->get();
 	}
 
     public function detailDataPenjualan2($kodeUnik){
-        $this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, tukang.nama_lengkap, tukang.noTelepon as tukangHP, tukang.status, konsumen.foto as fotoKonsumen');
+        $this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, tukang.nama_lengkap, tukang.noTelepon as tukangHP, tukang.jenisKelamin, konsumen.foto as fotoKonsumen');
 		$this->db->from('konsumen');
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
@@ -48,9 +38,17 @@ class mod_dataPenjualan extends CI_Model{
     }
 
     public function detailDataPenjualan3($kodeUnik){
-        $this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen');
+        $this->db->select('konsumen.namaLengkap, konsumen.noTelepon, konsumen.alamatLengkap, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, pembelian.totalBayar, konsumen.foto as fotoKonsumen');
 		$this->db->from('konsumen');
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
+		// $this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
+		$this->db->where("kodeUnik",$kodeUnik);
+		return $this->db->get();
+    }
+
+    public function detailDataPenjualanProduk($kodeUnik){
+        $this->db->select('*');
+		$this->db->from('pembelian');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->where("kodeUnik",$kodeUnik);
 		return $this->db->get();
@@ -83,7 +81,7 @@ class mod_dataPenjualan extends CI_Model{
 				
 				"kodeUnik" 			=> $kodeUnik,
 				"status"			=> $status,
-				"kdOperator"		=> $kdOperator,
+				"kdOperator"		=> $kdoperator,
 				"createDate"		=> date("Y-m-d H:i:s"),
 				"idAkun"			=> $idAkun
 				
@@ -91,14 +89,38 @@ class mod_dataPenjualan extends CI_Model{
 
 			$this->db->insert("history",$data);
 
-			$data1 			= array(
-				
-				"statusPembayaran"	=> $status
-				
-			);
+			if ($status == 'Selesai') {
 
-			$this->db->where("kodeUnik",$kodeUnik);
-			return $this->db->update("pembelian",$data1);
+				$data1 			= array(
+					"statusPembayaran"	=> $status,	
+				);
+
+				$this->db->where("kodeUnik",$kodeUnik);
+				$this->db->update("pembelian",$data1);
+
+				$query = $this->db->select('*');
+				$query = $this->db->where("idAkun",$idAkun);
+				$query = $this->db->get('konsumen')->result();
+
+				$poin = $query[0]->poin + 1;
+
+
+				$datapoin 			= array(
+					"poin"	=> $poin,
+				);
+
+				$this->db->where("idAkun",$idAkun);
+				return $this->db->update("konsumen",$datapoin);
+
+			}else{
+				$data1 			= array(
+					"statusPembayaran"	=> $status,	
+				);
+
+				$this->db->where("kodeUnik",$kodeUnik);
+				return $this->db->update("pembelian",$data1);
+			}
+
 	}
 
 	public function prosesUpdateDataPenjualan2(){

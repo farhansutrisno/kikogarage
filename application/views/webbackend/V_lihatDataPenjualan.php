@@ -336,7 +336,7 @@
                           <th>Nama Konsumen</th>
                           <th>No Telepon</th>
                           <th>No Plat</th>
-                          <th>kategori</th>
+                          <!-- <th>kategori</th> -->
                           <th>No Antrian</th>
                           <th>Total Bayar</th>
                           <th>Status Pembelian</th>
@@ -352,7 +352,7 @@
                                 if (empty($key->tglTransaksi)) {
                                   $dateUpdate = '-';
                                 }else{
-                                  $dateUpdate = date_format (new DateTime($key->tglTransaksi), 'd M Y');
+                                  $dateUpdate = date_format (new DateTime($key->tglTransaksi), 'd M Y').' '.date_format (new DateTime($key->tglPembayaran), 'H:i:s');
                                 }
 
                                 if (empty($key->KdTukang)) {
@@ -366,7 +366,7 @@
                                 echo "<td>". $key->namaLengkap."</td>";
                                 echo "<td>". $key->noTelepon."</td>";
                                 echo "<td>". $key->noPlat."</td>";
-                                echo "<td>". $key->kategori."</td>";
+                                // echo "<td>". $key->kategori."</td>";
                                 echo "<td>". $key->noAntrian."</td>";
                                 echo "<td>Rp.".number_format($key->totalBayar, 0,",",".")."</td>";
                                 echo "<td>". $key->statusPembayaran."</td>";

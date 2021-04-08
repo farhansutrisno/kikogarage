@@ -219,7 +219,9 @@ class mod_dataOperator extends CI_Model{
     }
 
     public function lihatDataKonsumen(){
+    	
 		return $this->db->get("konsumen");
+
 	}
 
 	public function deleteDataKonsumen($idAkun){
