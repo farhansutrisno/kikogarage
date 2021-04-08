@@ -64,6 +64,10 @@
       .ftco-degree-bg:after{
         content: none !important;
       }
+
+      .table{
+        min-width: 0px !important;
+      }
     </style>
 
   </head>
@@ -326,7 +330,7 @@
                 <input type="hidden" name="totalBayar" value="<?php echo $total_belanja?>">
                 <input type="hidden" name="idAkun" value="<?php echo $produk[0]->idAkun?>">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="datereservasi" placeholder="Tanggal Reservasi" name="tglReservasi" required>
+                  <input type="text" class="form-control" id="date11" placeholder="Tanggal Reservasi" name="tglReservasi" required>
                 </div>
                 <div class="form-group">
                   <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Jam Reservasi">
@@ -620,37 +624,40 @@
         
   }
 
-  $( function() {
+  // $( function() {
 
-      $( "#datereservasi" ).datepicker({
-        autoclose:true,
-        todayHighlight:true,
-        format:'yyyy-mm-dd',
-        language: 'id',
-      });
+  //     $( "#datereservasi" ).datepicker({
+  //       autoclose:true,
+  //       todayHighlight:true,
+  //       format:'yyyy-mm-dd',
+  //       language: 'id',
+  //     });
 
-    } );
+  //   } );
 
   </script>
 
   <script type="text/javascript">
     $(document).ready(function()
     {
-      // $('#date11').bootstrapMaterialDatePicker
-      // ({
-      //   time: false,
-      //   clearButton: true
-      // });
+      $('#date11').bootstrapMaterialDatePicker
+      ({
+        time: false,
+        lang: 'id',
+        format:'YYYY-MM-DD',
+        minDate : moment(),
+        maxDate: moment().add(1, 'days'),
+        cancelText: 'Kembali',
+      });
 
       $('#time').bootstrapMaterialDatePicker
       ({
         date: false,
         shortTime: false,
-        format: 'HH:mm'
+        format: 'HH:mm',
+        cancelText: 'Kembali',
       });
 
-
-      // $.material.init()
     });
     </script>
 

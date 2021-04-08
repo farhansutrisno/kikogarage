@@ -41,6 +41,7 @@
      /* .nav-link{
         color: #FFFFFF !important;
       }*/
+      
     </style>
 
   </head>
@@ -207,7 +208,7 @@
     <section class="ftco-section ftco-about">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo base_url() ?>images/person_1.jpg);">
+					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo base_url() ?>gambar_proyek/kiko/Wa1.jpeg);">
 					</div>
 					<div class="col-md-6 wrap-about ftco-animate">
 	          <div class="heading-section heading-section-white pl-md-5">
@@ -237,7 +238,17 @@
 
 
     <section class="ftco-section testimony-section bg-light">
+        <div class="container">
+         
+          <video controls loop="true" autoplay="true" width="1000px" height="800px" style="margin-top: -80px !important;">
+            <source src="<?php echo base_url() ?>gambar_proyek/kiko/Wa15.mp4" type="video/mp4" />
+          </video>
+      </div>
+    </section>
+
+  <section class="ftco-section testimony-section bg-light" style="margin-top: -100px !important;">
       <div class="container">
+
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
           	<span class="subheading">Struktur Organisasi</span>
