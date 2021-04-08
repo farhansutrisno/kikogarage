@@ -219,8 +219,34 @@
   	    						<p class="price ml-auto">Rp. <?php echo number_format($key->hargaPenjualan,0,",","."); ?></p>
       						</div>
       						<p class="d-flex mb-0 d-block">
-                      <input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
-                      <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-success py-2 ml-1" style="width: 30% !important">Detail</a>
+
+                      <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
+
+                        <form method="post" action="<?php echo base_url()?>C_produkPembeli/prosesTambah" enctype="multipart/form-data">
+
+                                     <?php 
+                                       $kode = $this->session->userdata('kode'); 
+                                       $subtotal = $key->hargaPenjualan * 1 ;
+                                     ?>
+
+                                    <input type="hidden" name="subtotal" value="<?php echo $subtotal; ?>" /> 
+                                    <input type="hidden" name="idAkun" value="<?php echo $kode; ?>" /> 
+                                    <input type="hidden" name="kdProduk" value="<?php echo $key->kdProduk; ?>" />
+                                    <input type="hidden" name="namaProduk" value="<?php echo $key->namaProduk; ?>" />
+                                    <input type="hidden" name="harga" value="<?php echo $key->hargaPenjualan; ?>" />
+                                    <input type="hidden" name="gambar" value="<?php echo $key->gambar; ?>" />
+                                    <!-- <input type="hidden" name="berat" value="<?php echo $key->berat; ?>" /> -->
+                                    <input type="hidden" name="qty" value="1" />
+                                    <!-- <button type="submit" name="submit" class="cart-btn"><i class="icon-basket-loaded"></i></button> -->
+                                    <input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+                                    <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-success py-2 ml-1" style="width: 30% !important">Detail</a>
+                                  </form>
+
+                      <?php }else{ ?>
+                        <input type="submit" name="submit" data-toggle="modal" data-target="#loginmodel" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 
+                        <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'.$key->kdProduk?>" class="btn btn-success py-2 ml-1" style="width: 30% !important">Detail</a>
+                      <?php } ?>
+
                     </p>
       					</div>
       				</div>
