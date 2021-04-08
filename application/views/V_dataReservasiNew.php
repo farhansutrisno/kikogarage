@@ -32,8 +32,29 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/icomoon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
-    <link type="text/css" rel="stylesheet" href="<?=base_url();?>vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
-    <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+   <!--  <link type="text/css" rel="stylesheet" href="<?=base_url();?>vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+    <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"> -->
+
+    <!-- dibawah buat timepicker ===========================================================================================================================================================  -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css"/> -->
+
+    <link rel="stylesheet" href="<?php echo base_url()?>datetimepicker/css/bootstrap-material-datetimepicker.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script> -->
+    <!-- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
+    <!-- <script type="text/javascript" src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script> -->
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>datetimepicker//js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- =========================================================================================================================================================== -->
 
      <style type="text/css">
       /*.nav-link{
@@ -308,7 +329,7 @@
                   <input type="text" class="form-control" id="datereservasi" placeholder="Tanggal Reservasi" name="tglReservasi" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Jam Reservasi" name="tglReservasi" required>
+                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Jam Reservasi">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="noPlat" required>
@@ -416,10 +437,10 @@
                 <h3><b>Jadwal Penuh</b></h3>
                 <hr/>
                 <div class="tagcloud">
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i:s"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
+                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
                 </div>
               </div>
 
@@ -457,7 +478,8 @@
       
     </section> <!-- .section -->
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section" style="margin-top: -90px !important;">
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container" style="margin-top: -75px !important;margin-bottom: -85px !important;">
         <div class="row mb-5">
           
@@ -610,6 +632,27 @@
     } );
 
   </script>
+
+  <script type="text/javascript">
+    $(document).ready(function()
+    {
+      // $('#date11').bootstrapMaterialDatePicker
+      // ({
+      //   time: false,
+      //   clearButton: true
+      // });
+
+      $('#time').bootstrapMaterialDatePicker
+      ({
+        date: false,
+        shortTime: false,
+        format: 'HH:mm'
+      });
+
+
+      // $.material.init()
+    });
+    </script>
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
