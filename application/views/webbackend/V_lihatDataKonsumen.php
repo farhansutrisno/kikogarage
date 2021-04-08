@@ -298,9 +298,9 @@
                           <th>Nama Lengkap</th>
                           <th>No Telepon</th>
                           <th>Kecamatan</th>
-                          <th>Poin</th>
-                          <th>Status Member</th>
-                          <th>Action</th>
+                          <th style="text-align: center !important;">Poin</th>
+                          <th style="text-align: center !important;">Status Member</th>
+                          <th style="text-align: center !important;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -313,10 +313,10 @@
                                 echo "<td>". $key->namaLengkap."</td>";
                                 echo "<td>". $key->noTelepon."</td>";
                                 echo "<td>". $key->kecamatan."</td>";
-                                echo "<td>". $key->poin."</td>";
-                                echo "<td>". $key->member."</td>";
+                                echo "<td align='center'>". $key->poin."</td>";
+                                echo "<td align='center'>". $key->member."</td>";
                                 ?>
-                                <td>
+                                <td style="text-align: center !important;">
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/detailDataKonsumen/'.$key->idAkun ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/updateDataKonsumen/'.$key->idAkun?>" class="btn btn-primary">
                                     <i class="ion ion-md-create"></i> Edit</a>

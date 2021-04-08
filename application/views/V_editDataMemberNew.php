@@ -245,7 +245,7 @@
               <div class="col-md-10 block-9 mb-md-5">
                 <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_dataAkun/prosesUpdateAkun' ?>" method="POST">
                   <!-- <input type="hidden" name="totalBayar" value=""> -->
-                  <input type="hidden" name="idAkun" value="">
+                  <input type="hidden" name="idAkun" value="<?php echo $member[0]->idAkun ?>">
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap" value="<?php echo $member[0]->namaLengkap ?>" required>
                   </div>
@@ -256,49 +256,26 @@
                     <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" value="<?php echo $member[0]->noTelepon ?>" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="datemember" name="tanggal_lahir" placeholder="Tanggal Lahir" value="<?php echo $member[0]->tglLahir ?>" required">
+                    <input type="text" class="form-control" id="datemember" name="tglLahir" placeholder="Tanggal Lahir" value="<?php echo $member[0]->tglLahir ?>" required">
                   </div>
                   <div class="form-group">
                     <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required><?php echo $member[0]->alamatLengkap ?></textarea>
                   </div>
                    <div class="form-group">
-                       <input class="form-control" type="file" name="userfile" value="<?php echo $member[0]->foto ?>" required>
+                       <input class="form-control" type="file" name="userfile" value="<?php echo $member[0]->foto ?>">
                         <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
                     </div>
                   <div class="form-group">
                   <br>
                     <div class="row justify-content-left">
-                          <!-- <button type="button" class="btn btn-primary py-3 px-5" style="margin-left: 15px !important;">Kembali</button>&nbsp;&nbsp; -->
+                           <p class="mb-0"><a href="<?php echo base_url()?>C_dataAkun/lihatmemberNew" class="btn btn-primary py-3 px-5">Kembali</a></p>&nbsp;&nbsp;
                           <input type="submit" name="submit" value="Simpan" class="btn btn-success py-3 px-5" style="margin-left: 15px !important;">
                       </div>
                   </div>
                 </form>
               </div>
             </div>
-            <!-- <p style="color: #000000 !important;">Tanggal Transaksi : </p>
-            <p style="color: #000000 !important;">No Plat : </p>
-            <p style="color: #000000 !important;">Jenis Booking : </p> -->
-            
-            <!-- <div class="tag-widget post-tag-container mb-5 mt-5">
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">Pegawai Kiko Good Garage</a>
-                
-              </div>
-            </div> -->
-            
-            <!-- <div class="about-author d-flex p-4 bg-light"> -->
-              <!-- <div class="bio mr-5" style="margin-left: -25px !important;">
-                <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $row[0]->foto ?>" style="width: 150px !important;" alt="Image placeholder" class="img-fluid mb-4">
-              </div> -->
-              <!-- <div class="desc" style="margin-left: -25px !important;">
-                <h3><b>Jadwal Tidak Tersedia</b></h3>
-                <hr/>
-                
-                
-              </div>
-
-              
-            </div> -->
+           
             
           </div> <!-- .col-md-8 -->
           <div class="col-md-5 sidebar ftco-animate">
@@ -315,28 +292,7 @@
                  
                 </div>
               </div>
-              <!-- <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span>Oct. 29, 2019</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_3.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span>Oct. 29, 2019</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div> -->
+              
             </div>
 
             <div class="sidebar-box ftco-animate" style="margin-top: -70px !important;">
@@ -349,63 +305,10 @@
                   <!-- <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $profil[0]->foto ?>" style="cursor: pointer !important;height: 100px; width: 120px;"> -->
                 </div>
               </div>
-              <!-- <?php
-              if (!empty($produk)) { ?>
-                
-                <p style="color: #000000 !important;"><?php echo $produk[0]->alamatLengkap ?></p>
-                
-                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew/'?>" class="btn btn-info py-2 mr-1" style="color: #ffffff !important;">Ubah Alamat</a></p>
-
-              <?php }else{ ?>
-                
-                <br>
-              <?php } 
-              ?>-->
                 
             </div>
-
-            <!-- <div class="sidebar-box ftco-animate" style="margin-top: -35px !important;">
-                <h3><b>Jadwal Penuh</b></h3>
-                <hr/>
-                <div class="tagcloud">
-                  <a href="#" class="tag-cloud-link">dish</a>
-                  <a href="#" class="tag-cloud-link">menu</a>
-                  <a href="#" class="tag-cloud-link">food</a>
-                  <a href="#" class="tag-cloud-link">sweet</a>
-                  <a href="#" class="tag-cloud-link">tasty</a>
-                  <a href="#" class="tag-cloud-link">delicious</a>
-                  <a href="#" class="tag-cloud-link">desserts</a>
-                  <a href="#" class="tag-cloud-link">drinks</a>
-                </div>
-              </div> -->
-
-            <!-- <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="icon icon-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div> -->
-            <!-- <div class="sidebar-box ftco-animate" style="margin-top: -30px !important;">
-              <div class="categories">
-                <h3><b>Status Reservasi</b></h3>
-                <hr/>
-
-                <li style="color: #000000 !important;"><?php echo $row[0]->statusPembayaran ?></li>
-                
-              </div>
-            </div> -->
             
           </div>
-
-          <!-- <div class="col-md-12 ftco-animate">
-
-              <div style="margin-left: -5px !important;">
-                <a href="<?php echo base_url().'C_produkPembeli/lihatDetailProdukNew'?>" class="btn btn-secondary py-2 ml-1" style="width: 100% !important">Lanjutkan</a>  
-              </div>
-
-          </div> -->
 
         </div>
       </div>

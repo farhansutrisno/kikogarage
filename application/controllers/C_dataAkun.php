@@ -152,12 +152,53 @@ class C_dataAkun extends CI_Controller{
 		        $this->mod_dataAkun->prosesDaftarMember();
 
 		        $this->session->set_flashdata('pesanProfil', 
-				                '<div class="alert alert-info ">    
+				                '<div class="alert alert-info" style="margin-bottom: 20px !important">    
 				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				                <h7>BERHASIL ! </h7>
 				                </div>');
 				
 				redirect('C_dataAkun/daftarMember');
+
+		    }
+		}	
+		
+	}
+
+	public function prosesUpdateAkun(){
+
+		$this->form_validation->set_rules('namaLengkap','nama lengkap','trim|required|min_length[4]');
+	    $this->form_validation->set_rules('password','password','trim|required|min_length[4]|alpha_dash');
+	    $this->form_validation->set_rules('tglLahir','tanggal lahir','required');
+	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
+	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+
+		    	$kode = $this->input->post('idAkun');
+				$data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
+				$this->load->view('V_editDataMemberNew',$data);
+
+		    }
+		    else{
+		        
+		    	$config['upload_path']='./gambar_proyek/';
+		        $config['allowed_types']='jpg|png|jpeg';
+		        $config['max_size'] = 500000;
+		        $this->load->library('upload',$config);
+		        $this->upload->do_upload();
+		        $data   =  $this->upload->data();
+
+		        $this->mod_dataAkun->prosesUpdateAkun($data['file_name']);
+
+		        $this->session->set_flashdata('pesanProfil', 
+				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
+				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				                <h7>BERHASIL ! </h7>
+				                    <p>Berhasil mengupdate data Member</p>
+				                </div>');
+				
+				redirect('C_dataAkun/lihatMemberNew');
 
 		    }
 		}	
@@ -353,54 +394,6 @@ class C_dataAkun extends CI_Controller{
 		$this->load->view('V_lihatProfil', $data);
 	}
 
-	public function prosesUpdateAkun(){
-		$this->form_validation->set_rules('namaLengkap','nama lengkap','trim|required|min_length[4]');
-		$this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
-	    $this->form_validation->set_rules('password','password','trim|required|min_length[4]|alpha_dash');
-	    $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
-	    $this->form_validation->set_rules('tglLahir','tanggal lahir','required');
-	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
-	    $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
-	    $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');
-	    $this->form_validation->set_rules('kota_kab','kota/kabupaten','required|min_length[4]');
-	    $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
-	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
-	    $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
-
-	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
-
-		    	$kode 			= $this->input->post('idAkun');
-		        $data["profil"] = $this->mod_dataAkun->lihatDataProfil($kode)->result();
-				$this->load->view('V_lihatProfil', $data);
-
-		    }
-		    else{
-		        
-		    	$config['upload_path']='./gambar_proyek/';
-		        $config['allowed_types']='jpg|png|jpeg|gif';
-		        $config['max_size'] = 5000000;
-		        $this->load->library('upload',$config);
-		        $this->upload->do_upload();
-		        $data   =  $this->upload->data();
-
-		        $this->mod_dataAkun->prosesUpdateAkun($data['file_name']);
-
-		        $this->session->set_flashdata('pesanProfil', 
-				                '<div class="alert alert-info ">    
-				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				                <h7>BERHASIL ! </h7>
-				                    <p>Berhasil mengupdate data Akun</p>
-				                </div>');
-				
-				redirect('C_dataAkun/lihatDataProfil');
-
-		    }
-		}	
-		
-	}
-
-	
 }
 
 ?>

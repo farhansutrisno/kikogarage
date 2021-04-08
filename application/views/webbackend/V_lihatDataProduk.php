@@ -290,7 +290,7 @@
              <h5 class="page-title">  Lihat Data Jasa <small>Kiko Good Garage</small></h5><br>
              <div class="row">
                 
-                <div class="col-md-6">
+                <div class="col-md-8">
                   <?php
                     echo anchor('webbackend/C_dataProduk/inputDataProduk','Input Data Produk',array('class'=>'btn btn-round btn-success'));
                     ?>
@@ -298,34 +298,41 @@
                     echo anchor('webbackend/C_dataProduk/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
                     ?>
                 </div>
-                <div class="col-md-6" align="right">
+                <div class="col-md-4" align="right">
                     <form action="<?php echo base_url().'webbackend/C_dataProduk/dataFilter'?>" method="POST">
-                 
-                      <select class="from-control"  name="kategori">  
-                        <option value="">Kategori</option>                 
-                        <?php foreach($filter as $r) { ?>
-                          <option value="<?php echo $r->kategori;?>"><?php echo $r->kategori;?></option>
-                        <?php } ?>
-                      </select>
-                      <select class="from-control"  name="tahun">  
-                        <option value="">Tahun</option>                 
-                        <?php foreach($tahun as $key) { ?>
-                          <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
-                        <?php } ?>
-                      </select>
-                      <select class="from-control"  name="bulan">  
-                        <option value="">Bulan</option>                 
-                        <?php foreach($bulan as $bln) { ?>
-                          <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
-                        <?php } ?>
-                      </select>
-                      <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >
-                      <br><br>
-                  
+                      
+                      <div class="row">
+
+                        <select class="form-control"  name="kategori" style="width: 120px !important">  
+                          <option value="">Kategori</option>                 
+                          <?php foreach($filter as $r) { ?>
+                            <option value="<?php echo $r->kategori;?>"><?php echo $r->kategori;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                          <option value="">Tahun</option>                 
+                          <?php foreach($tahun as $key) { ?>
+                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                          <option value="">Bulan</option>                 
+                          <?php foreach($bulan as $bln) { ?>
+                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >
+
+                      </div>
+
                   </form>
                 </div>
               </div>
-             
+             <br>
+             <br>
               <div class="row">
                 
                 <div class="col-12 table-responsive">
@@ -336,10 +343,10 @@
                           <th>Nama Jasa</th>
                           <th>Kategori</th>
                           <th>Harga Jasa</th>
-                          <th>Create date</th>
-                          <th>Update date</th>
+                          <th style="text-align: center !important;">Create date</th>
+                          <th style="text-align: center !important;">Update date</th>
                           <!-- <th>Point</th> -->
-                          <th>Action</th>
+                          <th style="text-align: center !important;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -374,7 +381,7 @@
                                 echo "<td align='center'>". $dateUpdate."</td>";
                                 // echo "<td>". $point."</td>";
                                 ?>
-                                <td>
+                                <td style="text-align: center !important;">
                                     <a href="<?php echo base_url().'webbackend/C_dataProduk/detailProduk/'.$key->kdProduk?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
                                     <a href="<?php echo base_url().'webbackend/C_dataProduk/updateDataProduk/'.$key->kdProduk?>" class="btn btn-primary">
                                     <i class="ion ion-md-create"></i> Edit</a>

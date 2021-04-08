@@ -250,36 +250,38 @@
               <h5 class="page-title">Lihat Data Penjualan <small>Kiko Good Garage</small> </h5><br>
               <div class="row">
                 
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <?php
                     echo anchor('webbackend/C_dataPenjualan/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
                     ?>
                 </div>
-                <div class="col-md-6" align="right">
+                <div class="col-md-4">
                     <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
                       
-                      <select class="from-control" name="statusPembayaran">  
-                          <option value="">Status</option>                 
-                         <?php foreach($status as $r) { ?>
-                            <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
+                      <div class="row">
+                        <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
+                            <option value="">Status</option>                 
+                           <?php foreach($status as $r) { ?>
+                              <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
+                            <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                          <option value="">Tahun</option>                 
+                          <?php foreach($tahun as $key) { ?>
+                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
                           <?php } ?>
-                      </select>
-
-                      <select class="from-control"  name="tahun">  
-                        <option value="">Tahun</option>                 
-                        <?php foreach($tahun as $key) { ?>
-                          <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
-                        <?php } ?>
-                      </select>
-
-                      <select class="from-control"  name="bulan">  
-                        <option value="">bulan</option>                 
-                        <?php foreach($bulan as $bln) { ?>
-                          <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
-                        <?php } ?>
-                      </select>
-
-                      <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                          <option value="">bulan</option>                 
+                          <?php foreach($bulan as $bln) { ?>
+                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                      </div>
                       
                     </form>
                 </div>

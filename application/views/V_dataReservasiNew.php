@@ -410,7 +410,7 @@
                 <h3><b>Jadwal Penuh</b></h3>
                 <hr/>
                 <div class="tagcloud">
-                  <a href="#" class="tag-cloud-link">dish</a>
+                  <a href="#" class="tag-cloud-link"><?php echo date("H:i:s"); ?></a>
                   <a href="#" class="tag-cloud-link">menu</a>
                   <a href="#" class="tag-cloud-link">food</a>
                   <a href="#" class="tag-cloud-link">sweet</a>
