@@ -65,6 +65,11 @@ class C_dataKiko extends CI_Controller{
 		$this->load->view('V_galeriFo',$data);
 	}
 
+	public  function lihatDataGaleriFoNew(){
+		
+		$this->load->view('V_galeriFoNew');
+	}
+
 	//=========================================================================================
 
 	public  function lihatDataArtikelBo(){
