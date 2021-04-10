@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg">
+    <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg">
 	<link rel="icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/open-iconic-bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/animate.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/animate.css">
     
-    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.carousel.min.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.theme.default.min.css">
     <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/magnific-popup.css"> -->
 
@@ -21,34 +21,26 @@
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/ionicons.min.css">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
-
-    <link rel="stylesheet" href="<?php echo base_url() ?>dist/css/bootstrap-datepicker.min.css">
-  <script src="<?php echo base_url() ?>dist/js/bootstrap-datepicker.min.js"></script>
-  <script src="<?php echo base_url() ?>dist/locales/bootstrap-datepicker.id.min.js"></script>
-
     <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-datepicker.css"> -->
     <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.timepicker.css">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>dist/css/bootstrap-datepicker.min.css">
+	<script src="<?php echo base_url() ?>dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="<?php echo base_url() ?>dist/locales/bootstrap-datepicker.id.min.js"></script>
+
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/icomoon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
 
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/main2.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>frontend/css/magnific-popup.css">
-	<link rel="stylesheet" href="<?php echo base_url() ?>frontend/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="<?php echo base_url() ?>frontend/css/animate.css">
-	<link rel="stylesheet" href="<?php echo base_url() ?>frontend/css/meanmenu.min.css">
-	<script src="<?php echo base_url() ?>frontend/js/isotope.pkgd.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/jquery.magnific-popup.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/owl.animate.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/jquery.scrollUp.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/jquery.counterup.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/waypoints.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/jquery.meanmenu.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/imagesloaded.pkgd.min.js"></script>
-	<script src="<?php echo base_url() ?>frontend/js/custom.js"></script>
+
 
      <style type="text/css">
     	/*.nav-link{
@@ -57,6 +49,10 @@
     	.form-control{
     		height: 35px !important;
     		font-size: 14px !important;
+    	}
+
+    	.col-md-3 {
+    		max-width: 100% !important;
     	}
     </style>
 
@@ -230,87 +226,70 @@
       </div>
     </section>
 	
-	<br>
-	<br>
-   <section class="ftco-section ftco-no-pt bg-light">
-
-   	<div class="gallery-page-sec"> 
-				        <div class="container">
-				          <div class="row">   
-				            
-				            <div class="gallery-area">            
-				              <div class="gallery-container">  
-				                  
-				                  <div class="col-xs-6 col-sm-4 col-md-3 ">
-				                    <div class="gallery-item">
-				                      <h2 style="margin: 0 0 20px; font-weight: 600; font-family: 'Poppins' sans-serif; color: #083180; font-size: 18px; text-align: justify;">judul</h2>
-				                      <img src="<?php echo base_url() ?>gambar_proyek/kiko/Wa5.jpeg" width="200px" alt="" />
-				                      <div class="project-project-gallery-overlay">
-				                        <div class="project-gallery-overlay-text">
-				                          <span class="gallery-button">
-				                            <a href="<?php echo base_url() ?>gambar_proyek/kiko/Wa5.jpeg" width="200px" hright="300px" class="gallery-photo"><i class="fa fa-image"></i></a>
-				                          </span>
-				                        </div>
-				                      </div>
-				                    </div>                
-				                  </div>    
-				                   
-				              </div>          
-				            </div>  
-				            
-				          </div>
-				        </div>
-				      </div>
-
+	<section class="ftco-section ftco-car-details">
     	<div class="container">
-
-
-
     		<div class="row justify-content-center">
-	          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-	          	<span class="subheading">Kiko Good Garage</span>
-	            <h2 class="mb-2">Galeri</h2>
-	          </div>
-	        </div>
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+          	<!-- <span class="subheading">What we offer</span> -->
+            <h2 class="mb-2">Produk Kiko Good Garage</h2>
+          </div>
+        </div>
     		<div class="row">
     			<div class="col-md-12">
+    				<div class="carousel-car owl-carousel">
 
-    				
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-				      <br>
-
-    				<!-- <div class="carousel-car owl-carousel">
-
+    					<?php foreach ($galeri as $key) { ?>
 
     					<div class="item">
     						<div class="car-wrap rounded ftco-animate">
-		    					<div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/kiko/Wa5.jpeg);">
+		    					<div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $key->gambar ?>);">
 		    					</div>
 		    					<div class="text">
-		    						<h2 class="mb-0"><a href="#">namaa produk</a></h2>
+		    						<h2 class="mb-0"><a href="#"><?php echo $key->judulGaleri; ?></a></h2>
 		    						
 		    					</div>
 		    				</div>
     					</div>
 
-    					
-    				</div> -->
+    					<?php } ?> 
 
-
+    				</div>
     			</div>
     		</div>
     	</div>
+    </section>
 
-
+    <section class="padding-top-20 padding-bottom-20">
+      
+      <div class="gallery-page-sec"> 
+        <div class="container">
+          <div class="row">   
+            <?php foreach ($galeri as $key) { ?>
+            <div class="gallery-area">            
+              <div class="gallery-container">  
+                  
+                  <div class="col-xs-6 col-sm-4 col-md-3 ">
+                    <div class="gallery-item">
+                      <h2 style="margin: 0 0 20px; font-weight: 600; font-family: 'Poppins' sans-serif; color: #083180; font-size: 18px; text-align: justify;"><?php echo $key->judulGaleri; ?></h2>
+                      <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $key->gambar ?>" width="200px" alt="" />
+                      <div class="project-project-gallery-overlay">
+                        <div class="project-gallery-overlay-text">
+                          <span class="gallery-button">
+                            <a href="<?php echo base_url() ?>gambar_proyek/<?php echo $key->gambar ?>" width="200px" hright="300px" class="gallery-photo"><i class="fa fa-image"></i></a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>                
+                  </div>    
+                   
+              </div>          
+            </div>  
+            <?php } ?>
+            
+          </div>
+            <?php echo $pag; ?>
+        </div>
+      </div>
     </section>
 
    
@@ -473,24 +452,29 @@
 	  } );
 
 	</script>
+	<script src="<?php echo base_url() ?>frontend/js/jquery.magnific-popup.min.js"></script>
 
-  <!-- <script src="<?php echo base_url() ?>js/jquery.min.js"></script> -->
+  <!-- <script src="<?php echo base_url() ?>js/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
   <script src="<?php echo base_url() ?>js/popper.min.js"></script>
   <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.easing.1.3.js"></script>
-  <!-- <script src="<?php echo base_url() ?>js/jquery.waypoints.min.js"></script> -->
+  <script src="<?php echo base_url() ?>js/jquery.waypoints.min.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.stellar.min.js"></script>
   <script src="<?php echo base_url() ?>js/owl.carousel.min.js"></script>
   <!-- <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script> -->
   <script src="<?php echo base_url() ?>js/aos.js"></script>
-  <!-- <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script> -->
+  <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script>
+
   <!-- <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery.timepicker.min.js"></script>
+
   <script src="<?php echo base_url() ?>js/scrollax.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
   <!-- <script src="<?php echo base_url() ?>js/google-map.js"></script> -->
   <script src="<?php echo base_url() ?>js/main.js"></script>
+
+
     
   </body>
 </html>
