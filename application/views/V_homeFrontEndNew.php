@@ -41,6 +41,10 @@
     	/*.nav-link{
     		color: #FFFFFF !important;
     	}*/
+    	.form-control{
+    		height: 35px !important;
+    		font-size: 14px !important;
+    	}
     </style>
   </head>
   <body>
@@ -112,7 +116,7 @@
 		           <div class="modal-header">
 		             
 		              <div class="col-md-11">
-				          <h4 class="modal-title textBlack" align="left">Form Login</h4>
+				          <h6 class="modal-title textBlack" align="left">Form Login</h6>
 				        </div>
 				        <div class="col-md-1">
 				           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -144,7 +148,6 @@
 
 		           </div>
 		           <div class="modal-footer justify-content-center">
-		           		<br>
 		           		
 				        <hr />
 				        <div class="col-md-12">
@@ -172,7 +175,7 @@
 		           <div class="modal-header">
 		             
 		              <div class="col-md-11">
-				          <h4 class="modal-title textBlack" align="left">Form Registrasi</h4>
+				          <h6 class="modal-title textBlack" align="left">Form Registrasi</h6>
 				        </div>
 				        <div class="col-md-1">
 				           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -198,12 +201,12 @@
 			                <input type="text" class="form-control" id="date" name="tanggal_lahir" placeholder="Tanggal Lahir" required">
 			              </div>
 			              <div class="form-group">
-			                <textarea cols="10" rows="4" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
+			                <textarea cols="10" rows="3" name="alamatLengkap" class="form-control" placeholder="Alamat Lengkap" required></textarea>
 			              </div>
 			               
 			              <div class="form-group">
 			                 <input class="form-control" type="file" name="userfile" required>
-                    		<span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                    		<span style="font-size: 14px !important;"><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
 			              </div>
 
 			          </div>
