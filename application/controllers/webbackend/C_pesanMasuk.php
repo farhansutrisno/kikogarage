@@ -12,10 +12,6 @@ class C_pesanMasuk extends CI_Controller{
 		$this->load->view('webbackend/V_lihatPesanMasuk',$data);
 	}
 
-	public function kirimPesan(){
-		$this->load->view('V_kirimPesan');
-	}
-
 	public function kirimPesanNew(){
 		$this->load->view('V_kirimPesanNew');
 	}
@@ -49,33 +45,6 @@ class C_pesanMasuk extends CI_Controller{
 
 	}
 
-	//Function dibawah ini tidak dipakai
-	/*public function kirimPesanLogin(){
-		$this->load->view('V_PesanLogin');
-	}*/
-	//function dibawah ini tidak dipakai
-	/*public function prosesKirimPesanLogin(){
-		if($this->input->post("submit")){
-			$this->session->set_flashdata('pesan2', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL ! </h7>
-		                    <p>Pesan berhasil terkirim </p>
-		                </div>');
-			$this->mod_dataPesanMasuk->kirimPesan();
-			redirect('webbackend/C_pesanMasuk/kirimPesanLogin');
-		}else{
-			$this->session->set_flashdata('pesan3', 
-		                '<div class="alert alert-danger">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>GAGAL MENGIRIM PESAN ! </h7>
-		                    <p>Harap memasukan data dengan lengkap<br/>
-		                    Terima kasih.</p>
-		                </div>');
-			redirect('webbackend/C_pesanMasuk/kirimPesanLogin');
-		}
-	}*/
-
 	public function deletePesanMasuk($kdPesanMasuk){
 		$this->session->set_flashdata('delete1', 
 		                '<div class="alert alert-info ">    
@@ -86,34 +55,17 @@ class C_pesanMasuk extends CI_Controller{
 		$this->mod_dataPesanMasuk->deletePesanMasuk($kdPesanMasuk);
 		redirect('webbackend/C_pesanMasuk/lihatPesanMasuk');
 	}
-	
+
+
 	public function detailPesanMasuk($kdPesanMasuk){
 		$data["row"] = $this->mod_dataPesanMasuk->detailPesanMasuk($kdPesanMasuk)->result();
 		$this->load->view('webbackend/V_detailPesanMasuk', $data);
 	}
 
-
-	//function dibawah ini tidak dipakai
-
-	function periksasatu($fullname){
-		if (! preg_match('/^[a-zA-Z\s.,]+$/',$username)) {
-			$this->form_validation->set_massage('periksasatu','gunakan huruf dalam mengisi');
-			return false;
-		}else{
-			return true;
-		}
-	}
-
-	//function dibawah ini tidak dipakai
-	function periksadua($fullname){
-		if (! preg_match('/^[a-zA-Z\s.,123456789]+$/',$username)) {
-			$this->form_validation->set_massage('periksasatu','gunakan huruf, karakter atau angka dalam mengisi');
-			return false;
-		}else{
-			return true;
-		}
-	}
-
+	// public function kirimPesan(){
+	// 	$this->load->view('V_kirimPesan');
+	// }
+	
 }
 
 ?>

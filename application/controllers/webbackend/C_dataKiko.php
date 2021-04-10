@@ -7,16 +7,130 @@ class C_dataKiko extends CI_Controller{
 		$this->load->model('mod_dataKiko');
 	}
 
-	public  function lihatAboutUsFo(){
-		// $data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
-		$this->load->view('V_aboutUs');
-	}
-
 	public  function lihatAboutUsFoNew(){
 		// $data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
 		$this->load->view('V_aboutUsNew');
 	}
 
+	public  function lihatDataGaleriFoNew(){
+		
+		$this->load->view('V_galeriFoNew');
+	}
+
+	public  function lihatDataGaleriBo(){
+		$data['Galeri'] = $this->mod_dataKiko->lihatDataGaleri()->result();
+		$this->load->view('webbackend/V_lihatDataGaleriBo', $data);
+	}
+
+	public function inputDataGaleri(){
+		$this->load->view('webbackend/V_inputDataGaleri');
+	}
+
+	public function prosesInputDataGaleri(){
+		$this->form_validation->set_rules('judulGaleri','judul galeri','trim|required|min_length[5]');
+	    // $this->form_validation->set_rules('isiArtikel','alamat lengkap','required|min_length[6]');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+		    	$this->session->set_flashdata('pesan3', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>Gagal ! </h7>
+			                <p>Harap cek kembali</p>
+			                </div>');
+		        $this->load->view('webbackend/V_inputDataGaleri');
+		    }
+		    else{
+
+		        $config['upload_path']='./gambar_proyek/';
+	            $config['allowed_types']='jpg|png|jpeg';
+	            $config['max_size'] = 5000000;
+	            $this->load->library('upload',$config);
+	            $this->upload->do_upload();
+	            $data   =  $this->upload->data();
+	            
+				$this->session->set_flashdata('pesan3', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>BERHASIL ! </h7>
+			                </div>');
+				$this->mod_dataKiko->inputDataGaleri($data['file_name']);
+				redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
+		    }
+		}
+
+	}
+
+	public function detailDataGaleri($kdGaleri){
+		$data["Galeri"] = $this->mod_dataKiko->detailDataGaleri($kdGaleri)->result();
+		$this->load->view('webbackend/V_detailDataGaleri', $data);
+	}	
+
+	public function updateDataGaleri($kdGaleri){
+		$data["Galeri"] = $this->mod_dataKiko->updateDataGaleri($kdGaleri)->row_array();
+		$this->load->view('webbackend/V_updateDataGaleri', $data);
+	}
+
+	public function prosesUpdateDataGaleri(){
+		$this->form_validation->set_rules('judulGaleri','judul galeri','trim|required|min_length[4]');
+	    // $this->form_validation->set_rules('isiArtikel','isi artikel','required|min_length[6]');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+		    	$id 				= $this->input->post('kdGaleri');
+		        $data["Galeri"] 	= $this->mod_dataKiko->updateDataGaleri($id)->row_array();
+		       	$this->session->set_flashdata('pesan3', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>Gagal ! </h7>
+			                <p>Harap cek kembali</p>
+			                </div>');
+				$this->load->view('webbackend/V_updateDataGaleri', $data);
+		    }
+		    else{
+		        $config['upload_path']='./gambar_proyek/';
+	            $config['allowed_types']='jpg|png|jpeg';
+	            $config['max_size'] = 5000000;
+	            $this->load->library('upload',$config);
+	            $this->upload->do_upload();
+	            $data   =  $this->upload->data();
+
+				$this->session->set_flashdata('pesan5', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>BERHASIL ! </h7>
+			                </div>');
+				$this->mod_dataKiko->prosesUpdateDataGaleri($data['file_name']);
+				redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
+		    }
+		}
+
+	}
+
+	public function deleteDataGaleri($kdGaleri){
+		$this->session->set_flashdata('pesan7', 
+		                '<div class="alert alert-info ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>BERHASIL ! </h7>
+		                </div>');
+		$this->mod_dataKiko->deleteDataGaleri($kdGaleri);
+		redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
+	}
+
+
+	
+
+	public  function lihatDataArtikelBo(){
+
+		$data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
+		$this->load->view('webbackend/V_lihatDataArtikelBo', $data);
+	}
+
+
+	public  function lihatAboutUsFo(){
+		// $data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
+		$this->load->view('V_aboutUs');
+	}
 
 	public  function lihatDataArtikelFo(){
 		$data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
@@ -65,18 +179,11 @@ class C_dataKiko extends CI_Controller{
 		$this->load->view('V_galeriFo',$data);
 	}
 
-	public  function lihatDataGaleriFoNew(){
-		
-		$this->load->view('V_galeriFoNew');
-	}
+	
 
 	//=========================================================================================
 
-	public  function lihatDataArtikelBo(){
-
-		$data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
-		$this->load->view('webbackend/V_lihatDataArtikelBo', $data);
-	}
+	
 
 	public function inputDataArtikel(){
 		$this->load->view('webbackend/V_inputDataArtikel');
@@ -200,105 +307,12 @@ class C_dataKiko extends CI_Controller{
 	===================================================================================================================
 	*/
 
-	public  function lihatDataGaleriBo(){
-		$data['Galeri'] = $this->mod_dataKiko->lihatDataGaleri()->result();
-		$this->load->view('webbackend/V_lihatDataGaleriBo', $data);
-	}
+	
 
-	public function inputDataGaleri(){
-		$this->load->view('webbackend/V_inputDataGaleri');
-	}
 
-	public function prosesInputDataGaleri(){
-		$this->form_validation->set_rules('judulGaleri','judul galeri','trim|required|min_length[5]');
-	    // $this->form_validation->set_rules('isiArtikel','alamat lengkap','required|min_length[6]');
+	
 
-	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
-		    	$this->session->set_flashdata('pesan3', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>Gagal ! </h7>
-			                <p>Harap cek kembali</p>
-			                </div>');
-		        $this->load->view('webbackend/V_inputDataArtikel');
-		    }
-		    else{
-
-		        $config['upload_path']='./gambar_proyek/';
-	            $config['allowed_types']='jpg|png|jpeg';
-	            $config['max_size'] = 5000000;
-	            $this->load->library('upload',$config);
-	            $this->upload->do_upload();
-	            $data   =  $this->upload->data();
-	            
-				$this->session->set_flashdata('pesan3', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>BERHASIL ! </h7>
-			                </div>');
-				$this->mod_dataKiko->inputDataGaleri($data['file_name']);
-				redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
-		    }
-		}
-
-	}
-
-	public function updateDataGaleri($kdGaleri){
-		$data["Galeri"] = $this->mod_dataKiko->updateDataGaleri($kdGaleri)->row_array();
-		$this->load->view('webbackend/V_updateDataGaleri', $data);
-	}
-
-	public function prosesUpdateDataGaleri(){
-		$this->form_validation->set_rules('judulGaleri','judul galeri','trim|required|min_length[4]');
-	    // $this->form_validation->set_rules('isiArtikel','isi artikel','required|min_length[6]');
-
-	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
-		    	$id 				= $this->input->post('kdGaleri');
-		        $data["Galeri"] 	= $this->mod_dataKiko->updateDataGaleri($id)->row_array();
-		       	$this->session->set_flashdata('pesan3', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>Gagal ! </h7>
-			                <p>Harap cek kembali</p>
-			                </div>');
-				$this->load->view('webbackend/V_updateDataGaleri', $data);
-		    }
-		    else{
-		        $config['upload_path']='./gambar_proyek/';
-	            $config['allowed_types']='jpg|png|jpeg';
-	            $config['max_size'] = 5000000;
-	            $this->load->library('upload',$config);
-	            $this->upload->do_upload();
-	            $data   =  $this->upload->data();
-
-				$this->session->set_flashdata('pesan5', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>BERHASIL ! </h7>
-			                </div>');
-				$this->mod_dataKiko->prosesUpdateDataGaleri($data['file_name']);
-				redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
-		    }
-		}
-
-	}
-
-	public function deleteDataGaleri($kdGaleri){
-		$this->session->set_flashdata('pesan7', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL ! </h7>
-		                </div>');
-		$this->mod_dataKiko->deleteDataGaleri($kdGaleri);
-		redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
-	}
-
-	public function detailDataGaleri($kdGaleri){
-		$data["Galeri"] = $this->mod_dataKiko->detailDataGaleri($kdGaleri)->result();
-		$this->load->view('webbackend/V_detailDataGaleri', $data);
-	}
+	
 
 }
 
