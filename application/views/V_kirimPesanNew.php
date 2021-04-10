@@ -124,8 +124,17 @@
                </div>
                <div class="modal-footer justify-content-center">
                   <br>
+                  
                 <hr />
-                <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+                <div class="col-md-12">
+                  <div class="row justify-content-center">
+                      <h6>Belum punya akun?</h6>  
+                    </div>
+                    <div class="row justify-content-center">
+                      <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+                    </div>  
+                </div>
+                
                </div>
              </div>
 

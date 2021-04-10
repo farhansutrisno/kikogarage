@@ -54,6 +54,10 @@
     	/*.nav-link{
     		color: #FFFFFF !important;
     	}*/
+    	.form-control{
+    		height: 35px !important;
+    		font-size: 14px !important;
+    	}
     </style>
 
   </head>
@@ -107,7 +111,7 @@
 		           <div class="modal-header">
 		             
 		              <div class="col-md-11">
-				          <h4 class="modal-title textBlack" align="left">Form Login</h4>
+				          <h6 class="modal-title textBlack" align="left">Form Login</h6>
 				        </div>
 				        <div class="col-md-1">
 				           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -135,11 +139,20 @@
 			          </div>
 
 		           </div>
-		           <div class="modal-footer justify-content-center">
-		           		<br>
-				        <hr />
-				        <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
-		           </div>
+		          <div class="modal-footer justify-content-center">
+	                  <br>
+	                  
+	                <hr />
+	                <div class="col-md-12">
+	                  <div class="row justify-content-center">
+	                      <h6>Belum punya akun?</h6>  
+	                    </div>
+	                    <div class="row justify-content-center">
+	                      <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+	                    </div>  
+	                </div>
+	                
+	               </div>
 		         </div>
 
 
@@ -155,7 +168,7 @@
 		           <div class="modal-header">
 		             
 		              <div class="col-md-11">
-				          <h4 class="modal-title textBlack" align="left">Form Registrasi</h4>
+				          <h6 class="modal-title textBlack" align="left">Form Registrasi</h6>
 				        </div>
 				        <div class="col-md-1">
 				           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -185,7 +198,7 @@
 			               
 			              <div class="form-group">
 			                 <input class="form-control" type="file" name="userfile" required>
-                    		<span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                    		<span style="font-size: 14px !important;"><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
 			              </div>
 
 			          </div>
@@ -204,51 +217,6 @@
 	     </div>
 	  </div>
     <!-- END nav -->
-
-
-
-	<div class="modal fade" id="loginmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-     <div class="modal-dialog" role="document">
-        <div class="modal-content martop105">
-        	<div>
-	           <div class="modal-header">
-	             
-	              <div class="col-md-11">
-			          <h4 class="modal-title textBlack" align="left">Form Login</h4>
-			        </div>
-			        <div class="col-md-1">
-			           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        </div>
-	           </div>
-	           <div class="modal-body">
-	              
-	              <div class="col-md-12 block-12">
-		            <form>
-		              <div class="form-group">
-		                <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
-		              </div>
-		              <div class="form-group">
-		                <input type="text" class="form-control" id="password" placeholder="Password" name="password" required>
-		              </div>
-
-		              <div class="form-group">
-		                <!-- <input type="submit" name="submit" value="Kirim" class="btn btn-primary py-3 px-5"> -->
-		                 <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
-		                <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Login</button>
-		              </div>
-		            </form>
-		          
-		          </div>
-
-	           </div>
-	           <div class="modal-footer">
-	           </div>
-	         </div>
-
-        </div>
-
-     </div>
-  </div>
 
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo base_url() ?>images/car-2.jpg'); height: 200px !important;" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>

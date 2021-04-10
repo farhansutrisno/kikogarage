@@ -39,6 +39,10 @@
       /*.nav-link{
         color: #FFFFFF !important;
       }*/
+      .form-control{
+        height: 35px !important;
+        font-size: 14px !important;
+      }
     </style>
 
   </head>
@@ -92,7 +96,7 @@
                <div class="modal-header">
                  
                   <div class="col-md-11">
-                  <h4 class="modal-title textBlack" align="left">Form Login</h4>
+                  <h6 class="modal-title textBlack" align="left">Form Login</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -122,8 +126,17 @@
                </div>
                <div class="modal-footer justify-content-center">
                   <br>
+                  
                 <hr />
-                <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+                <div class="col-md-12">
+                  <div class="row justify-content-center">
+                      <h6>Belum punya akun?</h6>  
+                    </div>
+                    <div class="row justify-content-center">
+                      <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+                    </div>  
+                </div>
+                
                </div>
              </div>
 
@@ -140,7 +153,7 @@
                <div class="modal-header">
                  
                   <div class="col-md-11">
-                  <h4 class="modal-title textBlack" align="left">Form Registrasi</h4>
+                  <h6 class="modal-title textBlack" align="left">Form Registrasi</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -170,7 +183,7 @@
                      
                     <div class="form-group">
                        <input class="form-control" type="file" name="userfile" required>
-                        <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                        <span style="font-size: 14px !important;"><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
                     </div>
 
                 </div>
