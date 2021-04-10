@@ -57,34 +57,6 @@ class C_dataPenjualan extends CI_Controller{
 
 	}
 
-	public function prosesUpdateDataPenjualan2(){
-
-	    $this->form_validation->set_rules('catatan','catatan','required|min_length[7]');
-
-	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
-
-		    	$kdPembayaran		= $this->input->post('kdPembayaran');
-		        $data["penjualan"] 	= $this->mod_dataPenjualan->updateDataPenjualan($kdPembayaran)->result();
-				$this->load->view('webbackend/V_updateDataPenjualan', $data);
-
-		    }
-		    else{
-
-				$this->session->set_flashdata('pesan2', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>BERHASIL ! </h7>
-			                    <p>Data penjualan berhasil diupdate</p>
-			                </div>');
-				$this->mod_dataPenjualan->prosesUpdateDataPenjualan2();
-				redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
-
-		    }
-		}
-
-	}
-
 	public function exportAll(){
 		$data["filter"] 	 = array(
 								'filter' => 0
@@ -117,6 +89,35 @@ class C_dataPenjualan extends CI_Controller{
             $this->load->view('webbackend/V_excelDataPenjualan',$data);
         }
     }
+
+    public function prosesUpdateDataPenjualan2(){
+
+	    $this->form_validation->set_rules('catatan','catatan','required|min_length[7]');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+
+		    	$kdPembayaran		= $this->input->post('kdPembayaran');
+		        $data["penjualan"] 	= $this->mod_dataPenjualan->updateDataPenjualan($kdPembayaran)->result();
+				$this->load->view('webbackend/V_updateDataPenjualan', $data);
+
+		    }
+		    else{
+
+				$this->session->set_flashdata('pesan2', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>BERHASIL ! </h7>
+			                    <p>Data penjualan berhasil diupdate</p>
+			                </div>');
+				$this->mod_dataPenjualan->prosesUpdateDataPenjualan2();
+				redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
+
+		    }
+		}
+
+	}
+	
 }
 
 ?>

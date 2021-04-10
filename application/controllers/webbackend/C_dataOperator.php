@@ -48,6 +48,55 @@ class C_dataOperator extends CI_Controller{
 		}
 	}
 
+	public  function lihatDataKonsumen(){
+		$data['konsumen'] = $this->mod_dataOperator->lihatDataKonsumen()->result();
+		$this->load->view('webbackend/V_lihatDataKonsumen',$data);
+	}
+
+	public function deleteDataKonsumen($idAkun){
+		$this->session->set_flashdata('pesan7', 
+		                '<div class="alert alert-info ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>BERHASIL ! </h7>
+		                </div>');
+		$this->mod_dataOperator->deleteDataKonsumen($idAkun);
+		redirect('webbackend/C_dataOperator/lihatDataKonsumen');
+	}
+
+	public function detailDataKonsumen($idAkun){
+		$data["row"] = $this->mod_dataOperator->detailDataKonsumen($idAkun)->result();
+		$this->load->view('webbackend/V_detailDataKonsumen', $data);
+	}
+
+	public function updateDataKonsumen($idAkun){
+		$data["konsumen"] = $this->mod_dataOperator->updateDataKonsumen($idAkun)->row_array();
+		$this->load->view('webbackend/V_updateDataKonsumen', $data);
+	}
+
+	public function prosesUpdateDataKonsumen(){
+
+		$this->form_validation->set_rules('member','member','required');
+		
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+		    	$id 				= $this->input->post('idAkun');
+		        $data["konsumen"] 	= $this->mod_dataOperator->updateDataKonsumen($id)->row_array();
+				$this->load->view('webbackend/V_updateDataKonsumen', $data);
+		    }
+		    else{
+		        
+				$this->session->set_flashdata('pesan5', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>BERHASIL ! </h7>
+			                </div>');
+				$this->mod_dataOperator->prosesUpdateDataKonsumen();
+				redirect('webbackend/C_dataOperator/lihatDataKonsumen');
+		    }
+		}
+
+	}
+
 	public function logout(){
 		$this->session->unset_userdata('namaAdmin');
 		$this->session->unset_userdata('namaLengkap');
@@ -57,8 +106,6 @@ class C_dataOperator extends CI_Controller{
 		redirect('webbackend/C_dataOperator/login');
 	}
 
-	//=================================================================================
-	// data operator
 	public  function lihatDataOperator(){
 		$data['operator'] = $this->mod_dataOperator->lihatDataOperator()->result();
 		$this->load->view('webbackend/V_lihatDataOperator',$data);
@@ -173,34 +220,6 @@ class C_dataOperator extends CI_Controller{
 		$this->load->view('webbackend/V_detailDataOperator', $data);
 	}
 
-	//funtion dibawah ini tidak dipakai
-	//=============================================================================================================
-	/*function periksasatu($username){
-		if (! preg_match('/^[a-zA-Z\s.,123456789]+$/',$username)) {
-			$this->form_validation->set_massage('periksasatu','gunakan huruf atau angka dalam mengisi');
-			return false;
-		}else{
-			return true;
-		}
-	}
-
-	function periksadua($username){
-		if (! preg_match('/^[a-zA-Z\s.,123456789]+$/',$username)) {
-			$this->form_validation->set_massage('periksasatu','gunakan huruf, karakter atau angka dalam mengisi');
-			return false;
-		}else{
-			return true;
-		}
-	}*/
-	//===================================================================================================================
-
-	//data tukang
-
-	public function detailDataTukang($KdTukang){
-		$data["row"] = $this->mod_dataOperator->detailDataTukang($KdTukang)->result();
-		$this->load->view('webbackend/V_detailDataTukang', $data);
-	}
-
 	public  function lihatDataTukang(){
 		$data['tukang'] = $this->mod_dataOperator->lihatDataTukang()->result();
 		$this->load->view('webbackend/V_lihatDataTukang',$data);
@@ -291,54 +310,11 @@ class C_dataOperator extends CI_Controller{
 		redirect('webbackend/C_dataOperator/lihatDataTukang');
 	}
 
-	public  function lihatDataKonsumen(){
-		$data['konsumen'] = $this->mod_dataOperator->lihatDataKonsumen()->result();
-		$this->load->view('webbackend/V_lihatDataKonsumen',$data);
+	public function detailDataTukang($KdTukang){
+		$data["row"] = $this->mod_dataOperator->detailDataTukang($KdTukang)->result();
+		$this->load->view('webbackend/V_detailDataTukang', $data);
 	}
 
-	public function deleteDataKonsumen($idAkun){
-		$this->session->set_flashdata('pesan7', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL ! </h7>
-		                </div>');
-		$this->mod_dataOperator->deleteDataKonsumen($idAkun);
-		redirect('webbackend/C_dataOperator/lihatDataKonsumen');
-	}
-
-	public function detailDataKonsumen($idAkun){
-		$data["row"] = $this->mod_dataOperator->detailDataKonsumen($idAkun)->result();
-		$this->load->view('webbackend/V_detailDataKonsumen', $data);
-	}
-
-	public function updateDataKonsumen($idAkun){
-		$data["konsumen"] = $this->mod_dataOperator->updateDataKonsumen($idAkun)->row_array();
-		$this->load->view('webbackend/V_updateDataKonsumen', $data);
-	}
-
-	public function prosesUpdateDataKonsumen(){
-
-		$this->form_validation->set_rules('member','member','required');
-		
-	    if(isset($_POST['submit'])){
-		    if($this->form_validation->run() == false){
-		    	$id 				= $this->input->post('idAkun');
-		        $data["konsumen"] 	= $this->mod_dataOperator->updateDataKonsumen($id)->row_array();
-				$this->load->view('webbackend/V_updateDataKonsumen', $data);
-		    }
-		    else{
-		        
-				$this->session->set_flashdata('pesan5', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>BERHASIL ! </h7>
-			                </div>');
-				$this->mod_dataOperator->prosesUpdateDataKonsumen();
-				redirect('webbackend/C_dataOperator/lihatDataKonsumen');
-		    }
-		}
-
-	}
 
 }
 

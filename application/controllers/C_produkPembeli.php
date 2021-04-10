@@ -14,15 +14,15 @@ class C_produkPembeli extends CI_Controller{
     public function lihatProdukNew(){
         $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
         
-        $id = $this->session->userdata('kode');
-        if (!empty($id)) {
-            $this->load->model('mod_dataAkun');
-            $data["dataPembeli"]    = $this->mod_dataAkun->ubahDataPembelian($id)->result();
-            $data['jmlreservasi']   = $this->mod_dataProduk->jmlreservasi($id)->result()[0]->jmlreservasi;
-            $data['idAkun']         = $id;
-        }
+        // $id = $this->session->userdata('kode');
+        // if (!empty($id)) {
+            // $this->load->model('mod_dataAkun');
+            // $data["dataPembeli"]    = $this->mod_dataAkun->ubahDataPembelian($id)->result();
+            // $data['jmlreservasi']   = $this->mod_dataProduk->jmlreservasi($id)->result()[0]->jmlreservasi;
+            // $data['idAkun']         = $id;
+        // }
 
-        $data['jml_produk']        = $this->mod_dataProduk->jml_produk2()->result();
+        // $data['jml_produk']        = $this->mod_dataProduk->jml_produk2()->result();
         
         $this->session->set_flashdata('test1', 
                     '<div class="alert alert-info" style="margin-bottom: 20px !important">    
