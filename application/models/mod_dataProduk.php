@@ -366,8 +366,9 @@ class mod_dataProduk extends CI_Model{
     }
     //=======================================================================
     //garfik berdasarkan jumlah produk
-    public function jml_produk(){
-        $tahun = $this->session->userdata('tahun');
+    public function jml_produk($tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT COUNT(kdProduk) as jml_produk
                                 from produk
                                 WHERE createDate BETWEEN '$tahun-01-01' AND '$tahun-12-31'";
@@ -384,7 +385,7 @@ class mod_dataProduk extends CI_Model{
     
     //============================================================================================
 
-    public function jml_pesan(){
+    public function jml_pesan($tahun){
         $tahun = $this->session->userdata('tahun');
         $query = "SELECT COUNT(kdPesanMasuk) as jml_pesan
                                 from pesanmasuk
@@ -393,8 +394,9 @@ class mod_dataProduk extends CI_Model{
     }
     //=======================================================================
     //garfik berdasarkan jumlah produk
-    public function jml_penjualan(){
-        $tahun = $this->session->userdata('tahun');
+    public function jml_penjualan($tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT COUNT(kdPembelian) as jml_penjualan
                                 from pembelian
                                 WHERE tglTransaksi BETWEEN '$tahun-01-01' AND '$tahun-12-31'";
@@ -423,16 +425,18 @@ class mod_dataProduk extends CI_Model{
         return $this->db->query("SELECT DISTINCT YEAR(createDate) AS tanggal FROM produk  order by tanggal desc");
     }                           
 
-    function get_kategori($kategori){
-        $tahun = $this->session->userdata('tahun');
+    function get_kategori($kategori,$tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT  COUNT(kategori) as data
                                 FROM produk
                                 WHERE kategori= '".$kategori."' AND createDate BETWEEN '$tahun-01-01' AND '$tahun-12-31'";
         return $this->db->query("$query");
     }
 
-    function kategori_value($kategori){
-        $tahun = $this->session->userdata('tahun');
+    function kategori_value($kategori,$tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT  COUNT(kdPembelian) as data
                                 FROM pembelian 
                                 JOIN produk
@@ -441,26 +445,29 @@ class mod_dataProduk extends CI_Model{
         return $this->db->query("$query");
     }
 
-    function seluruhnya($status){
-        $tahun = $this->session->userdata('tahun');
+    function seluruhnya($status,$tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT  COUNT(statusPembayaran) as data
                                 FROM pembelian
                                 WHERE statusPembayaran = '".$status."' AND tglTransaksi BETWEEN '$tahun-01-01' AND '$tahun-12-31'";
         return $this->db->query("$query");
     }
 
-    function jenisBooking($jenisBooking){
-        $tahun = $this->session->userdata('tahun');
+    function jenisBooking($jenisBooking,$tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT  COUNT(kdPembelian) as data
                                 FROM pembelian
                                 WHERE jenisBooking = '".$jenisBooking."' AND tglTransaksi BETWEEN '$tahun-01-01' AND '$tahun-12-31'";
         return $this->db->query("$query");
     }
 
-    function get_bulan($bulan){
-        $tahun = $this->session->userdata('tahun');
+    function get_bulan($bulan,$tahun){
+        // $tahun = $this->session->userdata('tahun');
+        $tahun = $tahun;
         $query = "SELECT  SUM(DISTINCT totalBayar) as total_bayar
-                                FROM pembelian WHERE tglTransaksi LIKE '".$tahun."-".$bulan."-%'";
+                                FROM pembelian WHERE statusPembayaran = 'Selesai' AND tglTransaksi LIKE '".$tahun."-".$bulan."-%'";
         return $this->db->query("$query");
     }
 

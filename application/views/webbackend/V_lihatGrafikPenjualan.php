@@ -259,20 +259,24 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 grid-margin" align="center">
+          <div class="col-md-4 grid-margin">
               <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title mb-0">FILTER PER-<?php echo $this->session->userdata('tahun') ?></h3><br><br>
+                <div class="card-body" align="center">
+                  <h3 class="card-title mb-0">FILTER PER-<?php echo $tahuncurrent ?></h3><br><br>
+
                   <form action="<?php echo base_url().'webbackend/C_dataProduk/grafikProduk'?>" method="POST">
-                  <select class="from-control" name="tahun">  
-                      <option value="">Tahun</option>                 
-                     <?php foreach($tahun as $r) { ?>
-                        <option value="<?php echo $r->tanggal;?>"><?php echo $r->tanggal;?></option>
-                      <?php } ?>
-                  </select>
-                  <input type="submit" name="submit" class="btn btn-round btn-success" value="Filter Tahun" >
-                </form>
-                
+                      <div class="row">
+                        <select class="form-control" name="tahun" style="width: 100px !important">  
+                            <option value="">Tahun</option>                 
+                           <?php foreach($tahun as $r) { ?>
+                              <option value="<?php echo $r->tanggal;?>" <?php if($tahuncurrent == $r->tanggal) echo 'selected';?>><?php echo $r->tanggal;?></option>
+                            <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Filter" >
+                      </div>
+                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -352,7 +356,7 @@
                           backgroundColor: 'transparent'
                         },
                         title: {
-                          text:'<h3>JUMLAH JASA BERDASARKAN KATEGORI</h3>'
+                          text:'<h3>JUMLAH LAYANAN KIKO BERDASARKAN KATEGORI</h3>'
                         },
                         tooltip: {
                           backgroundColor: getColor['tosca_blue'],

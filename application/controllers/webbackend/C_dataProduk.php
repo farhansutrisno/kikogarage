@@ -9,111 +9,118 @@ class C_dataProduk extends CI_Controller{
 	}
 
 	function grafikProduk(){
-		$tahun = $this->input->post('tahun');
-		$this->session->set_userdata('tahun', $tahun);
-		
-		$x['tahun']=  $this->mod_dataProduk->tahun()->result();
+		$tahun1 = $this->input->post('tahun');
 
-		$x['Cars_Wash'] 	= $this->mod_dataProduk->get_kategori('Cars Wash')->row()->data;
-		$x['Coating'] 		= $this->mod_dataProduk->get_kategori('Coating')->row()->data;
+		if (empty($tahun1)) {
+			$tahun = date("Y");
+		}else{
+			$tahun = $tahun1;
+		}
 
-		$x['Cars_Wash1'] 	= $this->mod_dataProduk->kategori_value('Cars Wash')->row()->data;
-		$x['Coating1'] 		= $this->mod_dataProduk->kategori_value('Coating')->row()->data;
+		// $this->session->set_userdata('tahun', $tahun);
+		$x['tahuncurrent']	= $tahun;
+		$x['tahun']			= $this->mod_dataProduk->tahun()->result();
 
-		$x['antarjemput'] 	= $this->mod_dataProduk->jenisBooking('Antar Jemput')->row()->data;
-		$x['langsung'] 		= $this->mod_dataProduk->jenisBooking('Langsung')->row()->data;
+		$x['Cars_Wash'] 	= $this->mod_dataProduk->get_kategori('CarWash',$tahun)->row()->data;
+		$x['Coating'] 		= $this->mod_dataProduk->get_kategori('Coating',$tahun)->row()->data;
+
+		$x['Cars_Wash1'] 	= $this->mod_dataProduk->kategori_value('CarWash',$tahun)->row()->data;
+		$x['Coating1'] 		= $this->mod_dataProduk->kategori_value('Coating',$tahun)->row()->data;
+
+		$x['antarjemput'] 	= $this->mod_dataProduk->jenisBooking('Antar Jemput',$tahun)->row()->data;
+		$x['langsung'] 		= $this->mod_dataProduk->jenisBooking('Langsung',$tahun)->row()->data;
 
 
-      	$x['jml_produk'] 		= $this->mod_dataProduk->jml_produk()->result();
-		$x['jml_pesan'] 		= $this->mod_dataProduk->jml_pesan()->result();
-		$x['jml_penjualan'] 	= $this->mod_dataProduk->jml_penjualan()->result();
+      	$x['jml_produk'] 		= $this->mod_dataProduk->jml_produk($tahun)->result();
+		$x['jml_pesan'] 		= $this->mod_dataProduk->jml_pesan($tahun)->result();
+		$x['jml_penjualan'] 	= $this->mod_dataProduk->jml_penjualan($tahun)->result();
 
-		$x['januari'] = $this->mod_dataProduk->get_bulan('01')->result()[0]->total_bayar;
+		$x['januari'] = $this->mod_dataProduk->get_bulan('01',$tahun)->result()[0]->total_bayar;
 		if ($x['januari'] == NULL) {
 			$x['januari'] = 0;
 		}else{
-			$x['januari'] = $this->mod_dataProduk->get_bulan('01')->result()[0]->total_bayar;
+			$x['januari'] = $this->mod_dataProduk->get_bulan('01',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['februari'] 		= $this->mod_dataProduk->get_bulan('02')->result()[0]->total_bayar;
+		$x['februari'] 		= $this->mod_dataProduk->get_bulan('02',$tahun)->result()[0]->total_bayar;
 		if ($x['februari'] == NULL) {
 			$x['februari'] = 0;
 		}else{
-			$x['februari'] 		= $this->mod_dataProduk->get_bulan('02')->result()[0]->total_bayar;
+			$x['februari'] 		= $this->mod_dataProduk->get_bulan('02',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['maret'] = $this->mod_dataProduk->get_bulan('03')->result()[0]->total_bayar;
+		$x['maret'] = $this->mod_dataProduk->get_bulan('03',$tahun)->result()[0]->total_bayar;
 		if ($x['maret'] == NULL) {
 			$x['maret'] = 0;
 		}else{
-			$x['maret'] = $this->mod_dataProduk->get_bulan('03')->result()[0]->total_bayar;
+			$x['maret'] = $this->mod_dataProduk->get_bulan('03',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['april'] 		= $this->mod_dataProduk->get_bulan('04')->result()[0]->total_bayar;
+		$x['april'] 		= $this->mod_dataProduk->get_bulan('04',$tahun)->result()[0]->total_bayar;
 		if ($x['april'] == NULL) {
 			$x['april'] = 0;
 		}else{
-			$x['april'] 		= $this->mod_dataProduk->get_bulan('04')->result()[0]->total_bayar;
+			$x['april'] 		= $this->mod_dataProduk->get_bulan('04',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['mei'] 		= $this->mod_dataProduk->get_bulan('05')->result()[0]->total_bayar;
+		$x['mei'] 		= $this->mod_dataProduk->get_bulan('05',$tahun)->result()[0]->total_bayar;
 		if ($x['mei'] == NULL) {
 			$x['mei'] = 0;
 		}else{
-			$x['mei'] 		= $this->mod_dataProduk->get_bulan('05')->result()[0]->total_bayar;
+			$x['mei'] 		= $this->mod_dataProduk->get_bulan('05',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['juni'] 		= $this->mod_dataProduk->get_bulan('06')->result()[0]->total_bayar;
+		$x['juni'] 		= $this->mod_dataProduk->get_bulan('06',$tahun)->result()[0]->total_bayar;
 		if ($x['juni'] == NULL) {
 			$x['juni'] = 0;
 		}else{
-			$x['juni'] 		= $this->mod_dataProduk->get_bulan('06')->result()[0]->total_bayar;
+			$x['juni'] 		= $this->mod_dataProduk->get_bulan('06',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['juli'] 		= $this->mod_dataProduk->get_bulan('07')->result()[0]->total_bayar;
+		$x['juli'] 		= $this->mod_dataProduk->get_bulan('07',$tahun)->result()[0]->total_bayar;
 		if ($x['juli'] == NULL) {
 			$x['juli'] = 0;
 		}else{
-			$x['juli'] 		= $this->mod_dataProduk->get_bulan('07')->result()[0]->total_bayar;
+			$x['juli'] 		= $this->mod_dataProduk->get_bulan('07',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['agustus'] 		= $this->mod_dataProduk->get_bulan('08')->result()[0]->total_bayar;
+		$x['agustus'] 		= $this->mod_dataProduk->get_bulan('08',$tahun)->result()[0]->total_bayar;
 		if ($x['agustus'] == NULL) {
 			$x['agustus'] = 0;
 		}else{
-			$x['agustus'] 		= $this->mod_dataProduk->get_bulan('08')->result()[0]->total_bayar;
+			$x['agustus'] 		= $this->mod_dataProduk->get_bulan('08',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['september'] 		= $this->mod_dataProduk->get_bulan('09')->result()[0]->total_bayar;
+		$x['september'] 		= $this->mod_dataProduk->get_bulan('09',$tahun)->result()[0]->total_bayar;
 		if ($x['september'] == NULL) {
 			$x['september'] = 0;
 		}else{
-			$x['september'] 		= $this->mod_dataProduk->get_bulan('09')->result()[0]->total_bayar;
+			$x['september'] 		= $this->mod_dataProduk->get_bulan('09',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['oktober'] 		= $this->mod_dataProduk->get_bulan('10')->result()[0]->total_bayar;
+		$x['oktober'] 		= $this->mod_dataProduk->get_bulan('10',$tahun)->result()[0]->total_bayar;
 		if ($x['oktober'] == NULL) {
 			$x['oktober'] = 0;
 		}else{
-			$x['oktober'] 		= $this->mod_dataProduk->get_bulan('10')->result()[0]->total_bayar;
+			$x['oktober'] 		= $this->mod_dataProduk->get_bulan('10',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['november'] 		= $this->mod_dataProduk->get_bulan('11')->result()[0]->total_bayar;
+		$x['november'] 		= $this->mod_dataProduk->get_bulan('11',$tahun)->result()[0]->total_bayar;
 		if ($x['november'] == NULL) {
 			$x['november'] = 0;
 		}else{
-			$x['november'] 		= $this->mod_dataProduk->get_bulan('11')->result()[0]->total_bayar;
+			$x['november'] 		= $this->mod_dataProduk->get_bulan('11',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['desember'] 		= $this->mod_dataProduk->get_bulan('12')->result()[0]->total_bayar;
+		$x['desember'] 		= $this->mod_dataProduk->get_bulan('12',$tahun)->result()[0]->total_bayar;
 		if ($x['desember'] == NULL) {
 			$x['desember'] = 0;
 		}else{
-			$x['desember'] 		= $this->mod_dataProduk->get_bulan('12')->result()[0]->total_bayar;
+			$x['desember'] 		= $this->mod_dataProduk->get_bulan('12',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['waitinglist'] 	= $this->mod_dataProduk->seluruhnya('Waiting List')->row()->data;
-		$x['selesai'] 		= $this->mod_dataProduk->seluruhnya('Selesai')->row()->data;
+		$x['waitinglist'] 	= $this->mod_dataProduk->seluruhnya('Waiting List',$tahun)->row()->data;
+		$x['selesai'] 		= $this->mod_dataProduk->seluruhnya('Selesai',$tahun)->row()->data;
 
 		$this->load->view('webbackend/V_lihatGrafikPenjualan',$x);
 
