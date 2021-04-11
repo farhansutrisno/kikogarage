@@ -287,7 +287,7 @@
 
           <div class="card">
             <div class="card-body">
-             <h5 class="page-title">  Lihat Data Jasa <small>Kiko Good Garage</small></h5><br>
+             <h5 class="page-title">  Lihat Data Layanan <small>Kiko Good Garage</small></h5><br>
              <div class="row">
                 
                 <div class="col-md-8">
@@ -340,9 +340,9 @@
                     <thead>
                       <tr>
                           <th style="width: 10px !important;">No</th>
-                          <th>Nama Jasa</th>
+                          <th>Nama Layanan</th>
                           <th>Kategori</th>
-                          <th>Harga Jasa</th>
+                          <th>Harga</th>
                           <th style="text-align: center !important;">Create date</th>
                           <th style="text-align: center !important;">Update date</th>
                           <!-- <th>Point</th> -->

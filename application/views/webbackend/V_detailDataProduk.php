@@ -284,13 +284,13 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Lihat Detail Jasa <small>Kiko Good Garage</small> </h5><br>
+              <h5 class="page-title">Lihat Detail Layanan <small>Kiko Good Garage</small> </h5><br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                         <tr><th style="width: 90px !important;">Kd Operator</th><td><?php echo $row[0]->kdOperator ?></td></tr>
-                        <tr><th>Kd Jasa</th><td><?php echo $row[0]->kdProduk ?></td>
+                        <!-- <tr><th>Kd Layanan</th><td><?php echo $row[0]->kdProduk ?></td> -->
                         <tr><th>Nama Produk</th><td><?php echo $row[0]->namaProduk ?></td></tr>
                         <tr><th style="width: 90px !important;">Kategori</th><td><?php echo $row[0]->kategori ?></td></tr>
                         <!-- <tr><th>Nama Suplier</th><td><?php echo $row[0]->namaSuplier ?></td></tr> -->
@@ -298,7 +298,7 @@
                         <!-- <tr><th>Harga Pokok Pembelian</th><td>: <?php echo $row[0]->hargaPokokPembelian ?></td></tr> -->
                         <!-- <tr><th>Harga Pokok Pembelian</th><td>Rp.<?php echo  number_format($row[0]->hargaPokokPembelian, 0,",","."); ?></td></tr> -->
                         <!-- <tr><th>Harga Penjualan</th><td>: <?php echo $row[0]->hargaPenjualan ?></td></tr> -->
-                        <tr><th>Harga Jasa</th><td>Rp.<?php echo  number_format($row[0]->hargaPenjualan, 0,",","."); ?></td></tr>
+                        <tr><th>Harga Layanan</th><td>Rp.<?php echo  number_format($row[0]->hargaPenjualan, 0,",","."); ?></td></tr>
                         <!-- <tr><th>Paket</th><td>Rp.<?php echo  number_format($row[0]->paket, 0,",","."); ?></td></tr> -->
                         <tr><th>Jenis Paket</th><td><?php echo $row[0]->paket ?></td></tr>
                         <!-- <tr><th>Gambar Pendukung</th><td></td></tr> -->
@@ -339,7 +339,7 @@
                       
                       <tr><th style="width: 90px !important;">Create Date</th><td><?php echo $dateCreate ?></td></tr>
                       <tr><th>Update Date</th><td><?php echo $dateUpdate ?></td></tr>
-                      <tr><th>Gambar Jasa</th><td></td></tr>
+                      <tr><th>Gambar Layanan</th><td></td></tr>
                       
                     </table>
                   </div>

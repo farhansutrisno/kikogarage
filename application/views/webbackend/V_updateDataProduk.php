@@ -285,14 +285,14 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Update Data Jasa</h4>
+                  <h4 class="card-title">Form Update Data Layanan</h4>
                 
                   <hr>
                     <input type="hidden" name="kdProduk" value="<?php echo $produk[0]->kdProduk ?>"/>
                     
                     <fieldset>
                       <div class="form-group">
-                          <label>Nama Jasa</label>
+                          <label>Nama Layanan</label>
                           <input type="text" class="form-control" name="namaProduk" value="<?php echo $produk[0]->namaProduk ?>" required />
                           <?php echo set_value('namaProduk') ?><br><?php echo form_error('namaProduk'); ?>
                       </div>
@@ -309,7 +309,7 @@
                           </div>
                       </div> -->
                       <div class="form-group">
-                          <label>Harga Jasa</label>
+                          <label>Harga</label>
                           <input type="number" class="form-control" name="hp" value="<?php echo $produk[0]->hargaPenjualan ?>" required />
                           <?php echo set_value('hp') ?><br><?php echo form_error('hp'); ?>
                       </div>

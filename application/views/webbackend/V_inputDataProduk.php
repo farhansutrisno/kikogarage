@@ -288,18 +288,18 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Input Data Jasa</h4>
+                  <h4 class="card-title">Form Input Data Layanan</h4>
                   
                   <hr>
                   
                     <fieldset>
                       <div class="form-group">
-                          <label>Nama Jasa</label>
+                          <label>Nama Layanan</label>
                           <input type="text" class="form-control" name="namaProduk" value="<?php echo set_value('namaProduk') ?>" required />
                           <?php echo form_error('namaProduk'); ?>
                       </div>
                       <div class="form-group">
-                          <label>Harga Jasa</label>
+                          <label>Harga</label>
                           <input type="number" class="form-control" name="hp" value="<?php echo set_value('hp') ?>" required />
                           <?php echo form_error('hp'); ?>
                       </div>
@@ -356,7 +356,7 @@
                           </div>
                       </div>
                       <div>
-                        <label>Gambar Jasa</label>
+                        <label>Gambar Layanan</label>
                         <div>
                          <input class="form-control" type="file" name="userfile[]" multiple="multiple">
                           <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
