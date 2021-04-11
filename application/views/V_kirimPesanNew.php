@@ -40,6 +40,10 @@
      /* .nav-link{
         color: #FFFFFF !important;
       }*/
+      .form-control{
+        height: 35px !important;
+        font-size: 14px !important;
+      }
     </style>
 
   </head>
@@ -79,7 +83,7 @@
 
                   <?php }else{ ?>
 
-                  <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginmodel">Login</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginmodel">Masuk</a></li>
 
                   <?php } ?>
           </ul>
@@ -94,7 +98,7 @@
                <div class="modal-header">
                  
                   <div class="col-md-11">
-                  <h4 class="modal-title textBlack" align="left">Form Login</h4>
+                  <h6 class="modal-title textBlack" align="left">Masuk</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -113,8 +117,11 @@
                     
                     <div class="form-group">
                       <!-- <input type="submit" name="submit" value="Kirim" class="btn btn-primary py-3 px-5"> -->
-                       <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
-                      <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Login</button>
+                       <!-- <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button> -->
+                      <div class="row justify-content-center">
+                           <!-- <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>&nbsp;&nbsp; -->
+                          <button type="button" onclick="save();" class="btn btn-info btn-lg marleft20 active">Masuk</button>
+                      </div>
                     </div>
 
                   </form>
@@ -123,7 +130,6 @@
 
                </div>
                <div class="modal-footer justify-content-center">
-                  <br>
                   
                 <hr />
                 <div class="col-md-12">
@@ -131,7 +137,7 @@
                       <h6>Belum punya akun?</h6>  
                     </div>
                     <div class="row justify-content-center">
-                      <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Register</button>
+                      <button type="button" class="btn btn-info btn-lg marleft20 active" onclick="registermodel()" style="width: 300px !important;">Daftar</button>
                     </div>  
                 </div>
                 
@@ -151,7 +157,7 @@
                <div class="modal-header">
                  
                   <div class="col-md-11">
-                  <h4 class="modal-title textBlack" align="left">Form Registrasi</h4>
+                  <h6 class="modal-title textBlack" align="left">Form Registrasi</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -181,15 +187,15 @@
                      
                     <div class="form-group">
                        <input class="form-control" type="file" name="userfile" required>
-                        <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                        <span style="font-size: 14px !important;"><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
                     </div>
 
                 </div>
 
                </div>
                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
-                      <button type="button" onclick="saveregister();" class="btn btn-info btn-lg marleft20 active">Submit</button>
+                    <!-- <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button> -->
+                      <button type="button" onclick="saveregister();" class="btn btn-info btn-lg marleft20 active">Kirim</button>
                </div>
                </form>
              </div>
