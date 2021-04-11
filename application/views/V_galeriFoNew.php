@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/main2.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>frontend/css/magnific-popup.css">
 
+    <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/font-awesome.min.css">
+
 
      <style type="text/css">
     	/*.nav-link{
