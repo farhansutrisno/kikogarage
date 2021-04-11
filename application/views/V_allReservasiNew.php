@@ -187,8 +187,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span>All Reservasi <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-3 bread">All Reservasi</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span>Semua Reservasi <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Semua Reservasi</h1>
           </div>
         </div>
       </div>
@@ -285,10 +285,10 @@
 					                <div class="car-wrap rounded ftco-animate">
 
 					                  <div class="text">
-					                  <h4 class="mb-0"><b>Reservasi Kosong</b></h4>
-					                  <h4 class="mb-0"><b>Harap Reservasi Terlebih Dahulu</b></h4>
+					                  <!-- <h4 class="mb-0"><b>Reservasi Kosong</b></h4> -->
+					                  <h4 class="mb-0"><b>Belum Ada Riwayat Reservasi</b></h4>
 					                  <br>
-					                  <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Reservasi Sekarang</a></p>
+					                  <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-success py-3 px-4">Reservasi Sekarang</a></p>
 					                  <br>
 					                  </div>
 					                  

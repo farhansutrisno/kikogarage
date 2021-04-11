@@ -225,8 +225,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Data Member <i class="ion-ios-arrow-forward"></i></a></span> <span>Edit Data Member</span></p>
-            <h1 class="mb-3 bread">Edit Data Member</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Profile Saya <i class="ion-ios-arrow-forward"></i></a></span> <span>Edit Profile</span></p>
+            <h1 class="mb-3 bread">Edit Profile</h1>
           </div>
         </div>
       </div>
@@ -238,7 +238,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 ftco-animate" style="margin-bottom: -80px !important">
-            <h3><b>Edit Data Member</b></h3>
+            <h3><b>Edit Profile</b></h3>
             <hr/>
             <div class="row d-flex mb-5 contact-info">
             
@@ -268,7 +268,7 @@
                   <div class="form-group">
                   <br>
                     <div class="row justify-content-left">
-                           <p class="mb-0"><a href="<?php echo base_url()?>C_dataAkun/lihatmemberNew" class="btn btn-primary py-3 px-5">Kembali</a></p>&nbsp;&nbsp;
+                           <p class="mb-0"><a href="<?php echo base_url()?>C_dataAkun/lihatmemberNew" class="btn btn-primary py-3 px-5">Batal</a></p>&nbsp;&nbsp;
                           <input type="submit" name="submit" value="Simpan" class="btn btn-success py-3 px-5" style="margin-left: 15px !important;">
                       </div>
                   </div>
@@ -281,7 +281,7 @@
           <div class="col-md-5 sidebar ftco-animate">
 
             <div class="sidebar-box ftco-animate">
-              <h3><b>Data Poin</b></h3>
+              <h3><b>Point</b></h3>
               <hr/>
               <div class="block-21 mb-4 d-flex">
                 <!-- <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_1.jpg);"></a> -->

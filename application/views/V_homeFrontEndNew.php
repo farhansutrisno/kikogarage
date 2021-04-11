@@ -385,23 +385,42 @@
 
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Informasi</h2>
+              <h2 class="ftco-heading-2"><span style="color: #01d28e">Kiko</span> <span style="color: #fdee00">Good</span> Garage</h2>
               <ul class="list-unstyled">
-                <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFoNew" class="py-2 d-block">Tentang Kami</a></li>
-                <!-- <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelFo" class="py-2 d-block">Artikel</a></li> -->
-                <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriFoNew"" class="py-2 d-block">Galeri</a></li>
+              	<li><a class="py-2 d-block">Premium Carwash & Auto Detailing</a></li>
+                
               </ul>
             </div>
           </div>
 
           <div class="col-md">
              <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Customer Support</h2>
+              <!-- <h2 class="ftco-heading-2">Customer Support</h2> -->
               <ul class="list-unstyled">
-                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Kontak Kami</a></li>
+              	<li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatAboutUsFoNew" class="py-2 d-block">Tentang Kami</a></li>
+              	<li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriFoNew"" class="py-2 d-block">Galeri</a></li>
+                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Hubungi Kami</a></li>
               </ul>
             </div>
           </div>
+
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Ikuti Kami</h2>
+              <!-- <ul class="list-unstyled">
+              	<li class="ftco-animate"><span class="icon-instagram"></span></li> -->
+              	<!-- <li><a href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriFoNew"" class="py-2 d-block">Galeri</a></li>
+                <li><a href="<?php echo base_url() ?>webbackend/C_pesanMasuk/kirimPesanNew" class="py-2 d-block">Hubungi Kami</a></li> -->
+              <!-- </ul> -->
+              <ul class="list-unstyled">
+	              <li class="ftco-animate"><a href="https://www.instagram.com/accounts/login/" target="_blank" title="Instagram"><span class="icon-instagram"></span> kikogarage.co</a></li>
+	              <li class="ftco-animate"><a href="https://www.youtube.com/channel/UCvRorMTjPdc74qqyAe7FSkA" target="_blank" title="Youtube"><span class="icon-youtube"></span> Kiko Good Garage</a></li>
+                  <!-- <li class="ftco-animate"><a href="https://www.facebook.com/" target="_blank" title="Facebook"><span class="icon-facebook"></span></a></li> -->
+                  
+	           </ul>
+            </div>
+          </div>
+
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Kiko Good Garage</h2>
@@ -413,11 +432,11 @@
 	              </ul>
 
 	            </div>
-	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5" style="margin-top: -10px !important;">
+	            <!-- <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5" style="margin-top: -10px !important;">
 	                <li class="ftco-animate"><a href="https://twitter.com/login" target="_blank" title="Twitter"><span class="icon-twitter"></span></a></li>
                   <li class="ftco-animate"><a href="https://www.facebook.com/" target="_blank" title="Facebook"><span class="icon-facebook"></span></a></li>
                   <li class="ftco-animate"><a href="https://www.instagram.com/accounts/login/" target="_blank" title="Instagram"><span class="icon-instagram"></span></a></li>
-	              </ul>
+	              </ul> -->
             </div>
           </div>
         </div>

@@ -304,8 +304,8 @@
                 <div class="car-wrap rounded ftco-animate">
 
                   <div class="text">
-                  <h4 class="mb-0"><b>Produk Kosong</b></h4>
-                  <h4 class="mb-0"><b>Harap Pilih Produk Terlebih Dahulu</b></h4>
+                  <h4 class="mb-0"><b>Layanan Anda Kosong.</b></h4>
+                  <h4 class="mb-0"><b>Silahkan Pilih Layanan Terlebih Dahulu</b></h4>
                   <br>
                   <p class="mb-0"><a href="<?php echo base_url()?>C_produkPembeli/lihatProdukNew" class="btn btn-success py-3 px-4">Reservasi Sekarang</a></p>
                   <br>

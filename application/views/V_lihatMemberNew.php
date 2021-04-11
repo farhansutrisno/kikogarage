@@ -103,8 +103,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2">Data Member</span></p>
-            <h1 class="mb-3 bread">Data Member</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2">Profile Saya</span></p>
+            <h1 class="mb-3 bread">Profile Saya</h1>
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 ftco-animate">
-            <h3><b>Data Member</b></h3>
+            <h3><b>Profile Saya</b></h3>
             <hr/>
             
            
@@ -162,11 +162,11 @@
             </div>
 
             <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
-              <h3><b>Edit Profil</b><hr/></h3>
+              <h3><b>Alamat Saya</b><hr/></h3>
               <p style="color: #000000 !important;">Alamat : <?php echo $member[0]->alamatLengkap ?></p>
               <br>
               
-                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_dataAkun/editMemberNew/'?>" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Edit Profil</a></p>
+                <p class="d-flex mb-0 d-block"><a href="<?php echo base_url().'C_dataAkun/editMemberNew/'?>" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Edit Profile</a></p>
                
             </div>
             
