@@ -189,9 +189,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
@@ -228,7 +228,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
-              <span class="menu-title">Data Produk</span>
+              <span class="menu-title">Data Layanan</span>
             </a>
           </li>
           
@@ -308,9 +308,11 @@
                         <label>Jenis Kelamin</label>
                           <select class="form-control" type="text" name="jenis" required>
                                 
-                                <option><?php echo $tukang['jenisKelamin'] ?></option>
-                                <option>Laki-Laki</option>
-                                <option>Perempuan</option>
+                            <?php 
+                            $listgender = array("Laki-Laki", "Perempuan");
+                            foreach($listgender as $listgender) { ?>
+                                <option value="<?php echo $listgender;?>" <?php if($listgender == $tukang['jenisKelamin']) echo 'selected';?>><?php echo $listgender;?></option>
+                            <?php } ?>
 
                           </select>
                           <?php echo set_value('jenis') ?><br><?php echo form_error('jenis'); ?>

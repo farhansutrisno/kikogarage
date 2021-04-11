@@ -190,9 +190,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
+               <!--  <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
@@ -229,7 +229,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
-              <span class="menu-title">Data Produk</span>
+              <span class="menu-title">Data Layanan</span>
             </a>
           </li>
           
@@ -316,9 +316,11 @@
                       <div class="form-group">
                           <label>Status Member</label>
                           <select class="form-control" type="text" name="member" required>
-                              <option><?php echo $konsumen['member']?></option>
-                              <option>Yes</option>
-                              <option>No</option>
+                              <?php 
+                                $list1 = array("Yes", "No");
+                                foreach($list1 as $list1) { ?>
+                                    <option value="<?php echo $list1;?>" <?php if($list1 == $konsumen['member']) echo 'selected';?>><?php echo $list1;?></option>
+                              <?php } ?>
                         </select>
                         <?php echo set_value('member') ?><br><?php echo form_error('member'); ?>
                       </div>

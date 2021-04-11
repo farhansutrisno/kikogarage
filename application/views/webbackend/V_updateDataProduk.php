@@ -190,9 +190,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
@@ -229,7 +229,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
-              <span class="menu-title">Data Produk</span>
+              <span class="menu-title">Data Layanan</span>
             </a>
           </li>
           
@@ -366,19 +366,26 @@
                     <div class="form-group">
                           <label>Kategori</label>
                           <select class="form-control" type="text" name="kategori" required> 
-                              <option value="<?php echo $produk[0]->kategori ?>"><?php echo $produk[0]->kategori ?></option>
-                              <option value="CarWash">Cars Wash</option>
-                              <option value="Coating">Coating</option>
+
+                              <?php 
+                              $array = array("CarWash", "Coating", "Interior", "Eksterior");
+
+                              foreach($array as $array) { ?>
+                                  <option value="<?php echo $array;?>" <?php if($array == $produk[0]->kategori) echo 'selected';?>><?php echo $array;?></option>
+                              <?php } ?>
                           </select>
                           <?php echo set_value('kategori') ?><br><?php echo form_error('kategori'); ?>
                       </div>
 
                       <div class="form-group">
-                          <label>paket</label>
+                          <label>Paket</label>
                           <select class="form-control" type="text" name="paket"> 
-                              <option><?php echo $produk[0]->paket ?></option>
-                              <option>Reguler</option>
-                              <option>Premium</option>
+                              <?php 
+                              $array1 = array("Premium", "Reguler");
+
+                              foreach($array1 as $array1) { ?>
+                                  <option value="<?php echo $array;?>" <?php if($array1 == $produk[0]->paket) echo 'selected';?>><?php echo $array1;?></option>
+                              <?php } ?>
                           </select>
                           <?php echo set_value('paket') ?><br><?php echo form_error('paket'); ?>
                       </div>

@@ -170,9 +170,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
@@ -209,7 +209,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
-              <span class="menu-title">Data Produk</span>
+              <span class="menu-title">Data Layanan</span>
             </a>
           </li>
           

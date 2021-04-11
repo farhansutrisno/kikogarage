@@ -101,9 +101,12 @@ class mod_dataPenjualan extends CI_Model{
 				$query = $this->db->select('*');
 				$query = $this->db->where("idAkun",$idAkun);
 				$query = $this->db->get('konsumen')->result();
-
-				$poin = $query[0]->poin + 1;
-
+				
+				if ($query[0]->member == 'Yes') {
+					$poin = $query[0]->poin + 1;
+				}else{
+					$poin = 0;
+				}
 
 				$datapoin 			= array(
 					"poin"	=> $poin,

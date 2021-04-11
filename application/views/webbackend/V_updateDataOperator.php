@@ -190,9 +190,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
@@ -229,7 +229,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
-              <span class="menu-title">Data Produk</span>
+              <span class="menu-title">Data Layanan</span>
             </a>
           </li>
           
@@ -332,11 +332,12 @@
                       <div class="form-group">
                         <label>Jenis Kelamin</label>
                           <select class="form-control" type="text" name="jenis" required>
-                                
-                                <option><?php echo $operator['jenisKelamin'] ?></option>
-                                <option>Laki-Laki</option>
-                                <option>Perempuan</option>
-
+                                <?php 
+                                $listgender = array("Laki-Laki", "Perempuan");
+                                foreach($listgender as $listgender) { ?>
+                                    <option value="<?php echo $listgender;?>" <?php if($listgender == $operator['jenisKelamin']) echo 'selected';?>><?php echo $listgender;?></option>
+                                <?php } ?>
++
                           </select>
                           <?php echo set_value('jenis') ?><br><?php echo form_error('jenis'); ?>
                       </div>
@@ -368,41 +369,11 @@
                       <div class="form-group">
                           <label>Provinsi</label>
                           <select class="form-control" type="text" name="provinsi" required>
-                              <option><?php echo $operator['provinsi']?></option>
-                              <option>Aceh</option>
-                              <option>Sumatera Utara</option>
-                              <option>Sumatera Barat</option>
-                              <option>Riau</option>
-                              <option>Jambi</option>
-                              <option>Sumatera Selatan</option>
-                              <option>Bengkulu</option>
-                              <option>Lampung</option>
-                              <option>Kepulauan Bangka Belitung</option>
-                              <option>Kepulauan Riau</option>
-                              <option>DKI Jakarta</option>
-                              <option>Jawa Barat</option>
-                              <option>Jawa Tengah</option>
-                              <option>DI Yogyakarta</option>
-                              <option>Jawa Timur</option>
-                              <option>Banten</option>
-                              <option>Bali</option>
-                              <option>Nusa Tenggara Barat</option>
-                              <option>Nusa Tenggara Timur</option>
-                              <option>Kalimantan Barat</option>
-                              <option>Kalimantan Tengah</option>
-                              <option>Kalimantan Selatan</option>
-                              <option>Kalimantan Utara</option>
-                              <option>Kalimantan Timur</option>
-                              <option>Sulawesi Utara</option>
-                              <option>Sulawesi Tengah</option>
-                              <option>Sulawesi Selatan</option>
-                              <option>Sulawesi Tenggara</option>
-                              <option>Sulawesi Barat</option>
-                              <option>Gorontalo</option>
-                              <option>Maluku</option>
-                              <option>Maluku Utara</option>
-                              <option>Papua</option>
-                              <option>Papua Barat</option>
+                              <?php 
+                                $listprovinsi = array("Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Bengkulu", "Lampung", "Kepulauan Bangka Belitung", "Kepulauan Riau", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Utara", "Kalimantan Timur", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Barat", "Gorontalo", "Maluku", "Maluku Utara", "Papua", "Papua Barat");
+                                foreach($listprovinsi as $listprovinsi) { ?>
+                                    <option value="<?php echo $listprovinsi;?>" <?php if($listprovinsi == $operator['provinsi']) echo 'selected';?>><?php echo $listprovinsi;?></option>
+                              <?php } ?>
                         </select>
                         <?php echo set_value('provinsi') ?><br><?php echo form_error('provinsi'); ?>
                       </div>
