@@ -238,7 +238,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Penjualan</span>
+              <span class="menu-title">Data Reservasi</span>
             </a>
           </li>
 

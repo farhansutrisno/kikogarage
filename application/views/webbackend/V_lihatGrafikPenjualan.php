@@ -216,7 +216,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Penjualan</span>
+              <span class="menu-title">Data Reservasi</span>
             </a>
           </li>
           
@@ -286,7 +286,7 @@
             <div class="col-md-4 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title mb-0">JUMLAH PRODUK</h3>
+                  <h3 class="card-title mb-0">JUMLAH LAYANAN TERSEDIA</h3>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-inline-block pt-3">
                       <div class="d-flex">
@@ -327,7 +327,7 @@
             <div class="col-md-4 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title mb-0">JUMLAH PENJUALAN PRODUK</h3>
+                  <h3 class="card-title mb-0">JUMLAH RESERVASI</h3>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-inline-block pt-3">
                       <div class="d-flex">

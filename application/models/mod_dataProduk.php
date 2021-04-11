@@ -21,8 +21,12 @@ class mod_dataProduk extends CI_Model{
     }
 
     public function detailProduk($kdProduk){
-         $this->db->where("kdProduk",$kdProduk);
-         return $this->db->get("produk");
+        
+        $this->db->select('*');
+        $this->db->from('produk');
+        $this->db->join('operator','operator.kdOperator=produk.kdOperator');
+        $this->db->where("kdProduk",$kdProduk);
+        return $this->db->get();
     }
 
     public function lihatDetailProduk($id){

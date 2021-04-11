@@ -237,7 +237,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Penjualan</span>
+              <span class="menu-title">Data Reservasi</span>
             </a>
           </li>
 
@@ -365,7 +365,7 @@
                 <div class="card-body">
                     <div class="form-group">
                           <label>Kategori</label>
-                          <select class="form-control" type="text" name="kategori" required> 
+                          <select class="form-control" type="text" name="kategori" id="category" required> 
 
                               <?php 
                               $array = array("CarWash", "Coating", "Interior", "Eksterior");
@@ -377,21 +377,32 @@
                           <?php echo set_value('kategori') ?><br><?php echo form_error('kategori'); ?>
                       </div>
 
-                      <div class="form-group">
-                          <label>Paket</label>
-                          <select class="form-control" type="text" name="paket"> 
+                      <div class="form-group" id="carswash">
+                          <label>Paket Car Wash</label>
+                          <select class="form-control" type="text" name="paket1">   
                               <?php 
-                              $array1 = array("Premium", "Reguler");
+                              $array1 = array("--pilih--","Reguler", "Premium");
 
                               foreach($array1 as $array1) { ?>
-                                  <option value="<?php echo $array;?>" <?php if($array1 == $produk[0]->paket) echo 'selected';?>><?php echo $array1;?></option>
+                                  <option value="<?php echo $array1;?>" <?php if($array1 == $produk[0]->paket) echo 'selected';?>><?php echo $array1;?></option>
                               <?php } ?>
                           </select>
-                          <?php echo set_value('paket') ?><br><?php echo form_error('paket'); ?>
                       </div>
-                      
+
+                      <div class="form-group" id="coating">
+                          <label>Paket Coating</label>
+                          <select class="form-control" type="text" name="paket2">   
+                              <?php 
+                              $array2 = array("--pilih--","Bronze", "Diamond", "Gold", "Silver");
+
+                              foreach($array2 as $array2) { ?>
+                                  <option value="<?php echo $array2;?>" <?php if($array2 == $produk[0]->paket) echo 'selected';?>><?php echo $array2;?></option>
+                              <?php } ?>
+                          </select>
+                      </div>
+
                       <div>
-                        <label>Gambar Produk</label>
+                        <label>Gambar Layanan/label>
                         <div>
                           <input class="form-control" type="file" name="userfile[]" multiple="multiple">
                           <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span><br><br>
@@ -487,6 +498,41 @@
         minView: 2,
         forceParse: 0
         });
+    </script>
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+          $('#carswash').hide();
+          $('#coating').hide();
+
+          var data= $('select').find('option:selected').val();
+          if (data == 'Coating') {
+            $('#carswash').hide();
+            $('#coating').show();
+          } else if (data == 'CarWash') {
+            $('#carswash').show();
+            $('#coating').hide();
+          }else {
+            $('#carswash').hide();
+            $('#coating').hide();
+          }
+
+          $("#category").change(function(event) {
+
+              if ($(this).val() == 'Coating') {
+                $('#carswash').hide();
+                $('#coating').show();
+              } else if ($(this).val() == 'CarWash') {
+                $('#carswash').show();
+                $('#coating').hide();
+              }else {
+                $('#carswash').hide();
+                $('#coating').hide();
+              }
+          });
+      });
+
     </script>
 </body>
 

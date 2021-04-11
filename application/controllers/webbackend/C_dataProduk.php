@@ -186,7 +186,16 @@ class C_dataProduk extends CI_Controller{
 				$deskripsi 		= $this->input->post('deskripsi');
 				$hp 			= $this->input->post('hp');
 				$kategori 		= $this->input->post('kategori');
-				$paket 			= $this->input->post('paket');
+				$paket1 		= $this->input->post('paket1');
+				$paket2 		= $this->input->post('paket2');
+
+				if ($paket1 != " ") {
+					$paket = $paket1;
+				}elseif($paket2 != " "){
+					$paket = $paket2;
+				}else{
+					$paket = NULL;
+				}
 				
 				$data 			= array(
 					"namaProduk" 			=> $namaProduk,
@@ -265,7 +274,16 @@ class C_dataProduk extends CI_Controller{
 					$deskripsi 		= $this->input->post('deskripsi');
 					$hp 			= $this->input->post('hp');
 					$kategori 		= $this->input->post('kategori');
-					$paket 			= $this->input->post('paket');
+					$paket1 		= $this->input->post('paket1');
+					$paket2 		= $this->input->post('paket2');
+
+					if ($paket1 != "--pilih--") {
+						$paket = $paket1;
+					}elseif($paket2 != "--pilih--"){
+						$paket = $paket2;
+					}else{
+						$paket = NULL;
+					}
 
 			    if($dataInfo[0]['file_name'] == null AND $dataInfo[1]['file_name'] == null AND $dataInfo[2]['file_name'] == null){
 		        	

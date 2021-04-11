@@ -15,7 +15,7 @@
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.theme.default.min.css">
-    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/magnific-popup.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/magnific-popup.css">
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/aos.css">
 
@@ -39,8 +39,6 @@
 
 
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/main2.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>frontend/css/magnific-popup.css">
-
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/css/font-awesome.min.css">
 
 
@@ -454,7 +452,6 @@
 	  } );
 
 	</script>
-	<script src="<?php echo base_url() ?>frontend/js/jquery.magnific-popup.min.js"></script>
 
   <!-- <script src="<?php echo base_url() ?>js/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
@@ -464,7 +461,7 @@
   <script src="<?php echo base_url() ?>js/jquery.waypoints.min.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.stellar.min.js"></script>
   <script src="<?php echo base_url() ?>js/owl.carousel.min.js"></script>
-  <!-- <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script> -->
+  <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script>
   <script src="<?php echo base_url() ?>js/aos.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script>
 

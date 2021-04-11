@@ -237,7 +237,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Penjualan</span>
+              <span class="menu-title">Data Reservasi</span>
             </a>
           </li>
 
@@ -317,25 +317,23 @@
                       </div>
 
                       <div class="form-group" id="carswash">
-                          <label>Paket</label>
-                          <select class="form-control" type="text" name="paket">   
-                              <!-- <option><?php echo set_value('kategori') ?></option> -->
-                              <option>Reguler</option>
-                              <option>Premium</option>
+                          <label>Paket Cars Wash</label>
+                          <select class="form-control" type="text" name="paket1">   
+                              <option value=" ">-- Pilih --</option>
+                              <option value="Reguler">Reguler</option>
+                              <option value="Premium">Premium</option>
                           </select>
-                          <?php echo form_error('paket'); ?>
                       </div>
 
                       <div class="form-group" id="coating">
-                          <label>Paket</label>
-                          <select class="form-control" type="text" name="paket">   
-                              <!-- <option><?php echo set_value('kategori') ?></option> -->
-                              <option>Bronze</option>
-                              <option>Diamond</option>
-                              <option>Gold</option>
-                              <option>Silver</option>
+                          <label>Paket Coating</label>
+                          <select class="form-control" type="text" name="paket2">   
+                              <option value=" ">-- Pilih --</option>
+                              <option value="Bronze">Bronze</option>
+                              <option value="Diamond">Diamond</option>
+                              <option value="Gold">Gold</option>
+                              <option value="Silver">Silver</option>
                           </select>
-                          <?php echo form_error('paket'); ?>
                       </div>
                       
                     </fieldset>

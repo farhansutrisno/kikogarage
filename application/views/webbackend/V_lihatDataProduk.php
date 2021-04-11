@@ -242,7 +242,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Penjualan</span>
+              <span class="menu-title">Data Reservasi</span>
             </a>
           </li>
 
@@ -292,7 +292,7 @@
                 
                 <div class="col-md-8">
                   <?php
-                    echo anchor('webbackend/C_dataProduk/inputDataProduk','Input Data Produk',array('class'=>'btn btn-round btn-success'));
+                    echo anchor('webbackend/C_dataProduk/inputDataProduk','Input Layanan',array('class'=>'btn btn-round btn-success'));
                     ?>
                    <?php
                     echo anchor('webbackend/C_dataProduk/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
@@ -342,6 +342,7 @@
                           <th style="width: 10px !important;">No</th>
                           <th>Nama Layanan</th>
                           <th>Kategori</th>
+                          <th>Paket</th>
                           <th>Harga</th>
                           <th style="text-align: center !important;">Create date</th>
                           <th style="text-align: center !important;">Update date</th>
@@ -376,6 +377,7 @@
                                 echo "<td>". $no++."</td>";
                                 echo "<td>". $key->namaProduk."</td>";
                                 echo "<td>". $key->kategori."</td>";
+                                echo "<td>". $key->paket."</td>";
                                 echo "<td>Rp.".number_format($key->hargaPenjualan, 0,",",".")."</td>";
                                 echo "<td align='center'>". $dateCreate."</td>";
                                 echo "<td align='center'>". $dateUpdate."</td>";
