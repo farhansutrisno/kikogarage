@@ -120,6 +120,7 @@ class mod_dataOperator extends CI_Model{
 				$provinsi		= $this->input->post('provinsi');
 				$alamatLengkap	= $this->input->post('alamatLengkap');
 				$kodePos		= $this->input->post('kodePos');
+				$status 		= $this->input->post('status');
 
 				$data 			= array(
 					"namaLengkap" 		=> $namaLengkap,
@@ -134,7 +135,8 @@ class mod_dataOperator extends CI_Model{
 					"kota_kab"			=> $kota_kab,
 					"provinsi"			=> $provinsi,
 					"alamatLengkap"		=> $alamatLengkap,
-					"kodePos"			=> $kodePos 
+					"kodePos"			=> $kodePos,
+					"status"			=> $status
 				);
 
 			$this->db->where("kdOperator",$kdOperator);

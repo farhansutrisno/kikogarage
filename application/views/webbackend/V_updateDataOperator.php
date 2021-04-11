@@ -337,9 +337,21 @@
                                 foreach($listgender as $listgender) { ?>
                                     <option value="<?php echo $listgender;?>" <?php if($listgender == $operator['jenisKelamin']) echo 'selected';?>><?php echo $listgender;?></option>
                                 <?php } ?>
-+
+
                           </select>
                           <?php echo set_value('jenis') ?><br><?php echo form_error('jenis'); ?>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Status</label>
+                          <select class="form-control" type="text" name="status" required>
+                                <?php 
+                                $array3 = array("1", "2");
+                                $tra_type = array("1" => "Admin", "2" => "Super Admin");
+                                foreach($array3 as $array3) { ?>
+                                    <option value="<?php echo $array3;?>" <?php if($array3 == $operator['status']) echo 'selected';?>><?php echo $tra_type[$array3];?></option>
+                                <?php } ?>
+                          </select>
                       </div>
                        
                     </fieldset>

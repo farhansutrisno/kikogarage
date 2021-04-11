@@ -176,6 +176,7 @@ class C_dataOperator extends CI_Controller{
 	    $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
 	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
 	    $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
+	    $this->form_validation->set_rules('status','Status','required');
 
 	    if(isset($_POST['submit'])){
 		    if($this->form_validation->run() == false){
