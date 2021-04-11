@@ -145,7 +145,7 @@
             <h3><b>Data Reservasi</b></h3>
             <hr/>
             <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
-            <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?> <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i:s') ?></p>
+            <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
             <p style="color: #000000 !important;">No Plat : <?php echo $row[0]->noPlat ?></p>
             <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
             

@@ -265,7 +265,7 @@
                         <tr><th>No Antrian</th><td><?php echo $row[0]->noAntrian ?></td></tr>
                         <tr><th>No Plat</th><td><?php echo $row[0]->noPlat ?></td></tr>
                         <tr><th>Jenis Booking</th><td><?php echo $row[0]->jenisBooking ?></td></tr>
-                        <tr><th style="width: 15px !important;">Tgl Transaksi</th><td><?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y').' '.date_format (new DateTime($row[0]->tglPembayaran), 'H:i:s') ?></td></tr>
+                        <tr><th style="width: 15px !important;">Tgl Transaksi</th><td><?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y').' '.date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?></td></tr>
                         <tr><th>Status Reservasi</th><td><?php echo $row[0]->statusPembayaran ?></td></tr>
                         <tr><th>Total Bayar</th><td>Rp.<?php echo number_format($row[0]->totalBayar, 0,",",".") ?></td></tr>
                     </table>

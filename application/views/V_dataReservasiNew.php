@@ -82,6 +82,7 @@
         <div class="col-md-12">
           <?php echo $this->session->flashdata('tambah1'); ?>
           <?php echo $this->session->flashdata('hapus1'); ?>
+          <?php echo $this->session->flashdata('notif1'); ?>
 
            <div class="container">
             <div class="row">
@@ -323,7 +324,7 @@
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ftco-animate">
+          <div class="col-md-7 ftco-animate">
             <h3><b>Data Reservasi</b></h3>
             <hr/>
 
@@ -337,7 +338,7 @@
                   <input type="text" class="form-control" id="date11" placeholder="Tanggal Reservasi" name="tglReservasi" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Jam Reservasi">
+                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Jam Reservasi" value="10:00">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="noPlat" required>
@@ -384,7 +385,7 @@
             </div> -->
             
           </div> <!-- .col-md-8 -->
-          <div class="col-md-4 sidebar ftco-animate">
+          <div class="col-md-5 sidebar ftco-animate">
 
             <div class="sidebar-box ftco-animate">
               <h3><b>Data Pembayaran</b></h3>
@@ -442,13 +443,19 @@
             </div>
 
             <div class="sidebar-box ftco-animate" style="margin-top: -35px !important;">
-                <h3><b>Jadwal Penuh</b></h3>
+                <h3><b>Jadwal Sudah Terisi</b></h3>
                 <hr/>
+
                 <div class="tagcloud">
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
-                  <a href="#" class="tag-cloud-link"><b><?php echo date("H:i"); ?></b></a>
+                  <?php foreach ($jamreservasi1 as $row1) { 
+                    $dateUpdate1 = date_format (new DateTime($row1->tglPembayaran), 'H:i');
+                    $dateUpdate2 = date_format (new DateTime($row1->tglTransaksi), 'd M Y');
+                    ?>
+
+                    <a href="#" class="tag-cloud-link"><b><?php echo $dateUpdate1.' - '.$dateUpdate2; ?></b></a>
+
+                  <?php }?>
+                  
                 </div>
               </div>
 
@@ -660,6 +667,11 @@
         shortTime: false,
         format: 'HH:mm',
         cancelText: 'Kembali',
+        minDate: moment({h:10}),
+        maxDate: moment({h:17}),
+        twelvehour: true,
+        shortTime: false,
+        switchOnClick: true
       });
 
     });

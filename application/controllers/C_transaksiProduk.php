@@ -19,6 +19,8 @@ class C_transaksiProduk extends CI_Controller{
 			$jenisBooking	= $this->input->post('jenisBooking');
 			$idAkun 		= $this->input->post('idAkun');
 			$totalBayar		= $this->input->post('totalBayar');
+			$tglReservasi	= $this->input->post('tglReservasi');
+			$jamreservasi	= $this->input->post('jamreservasi');
 
 			$noPlat = $noPlat;
 			$id   = random_string('numeric', 3);
@@ -32,10 +34,10 @@ class C_transaksiProduk extends CI_Controller{
 
 				if ($booking == 'Langsung') {
 					$noAntrian1 = 1;
-					$noAntrian = 'LA'.$noAntrian1;
+					$noAntrian = 'LGSG-'.$noAntrian1;
 				}else{
 					$noAntrian1 = 1;
-					$noAntrian = 'ANT'.$noAntrian1;
+					$noAntrian = 'JEMPUT-'.$noAntrian1;
 				}
 
 			}else{
@@ -44,23 +46,33 @@ class C_transaksiProduk extends CI_Controller{
 					$cekAntrian2 = $this->mod_dataPembelian->cekNoAntrian2();
 
 					if (!empty($cekAntrian2)) {
-						if ($currentDate == $cekAntrian2->tglTransaksi) {
+						if ($tglReservasi == $cekAntrian2->tglTransaksi) {
 
-							$explode_data = explode('LA',$cekAntrian2->noAntrian);
+							if ($jamreservasi != $cekAntrian2->tglPembayaran) {
+								$explode_data = explode('LGSG-',$cekAntrian2->noAntrian);
 
-							$noAntrian1 = $explode_data[1] + 1;
-							$noAntrian = 'LA'.$noAntrian1;
+								$noAntrian1 = $explode_data[1] + 1;
+								$noAntrian = 'LGSG-'.$noAntrian1;
+							}else{
+								$this->session->set_flashdata('notif1', 
+					                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
+					                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					                <h7>Jam Reservasi Sudah Penuh! </h7>
+					                   
+					                </div>');
+								redirect('C_produkPembeli/datareservasi');
+							}
 
 						}else{
 
 							$noAntrian1 = 1;
-							$noAntrian = 'LA'.$noAntrian1;
+							$noAntrian = 'LGSG-'.$noAntrian1;
 
 						}
 					}else{
 
 						$noAntrian1 = 1;
-						$noAntrian = 'LA'.$noAntrian1;
+						$noAntrian = 'LGSG-'.$noAntrian1;
 
 					}
 					
@@ -68,23 +80,35 @@ class C_transaksiProduk extends CI_Controller{
 					
 					$cekAntrian3 = $this->mod_dataPembelian->cekNoAntrian3();
 					if (!empty($cekAntrian3)) {
-						if ($currentDate == $cekAntrian3->tglTransaksi) {
+						if ($tglReservasi == $cekAntrian3->tglTransaksi) {
 
-							$explode_data = explode('ANT',$cekAntrian3->noAntrian);
+							if ($jamreservasi != $cekAntrian3->tglPembayaran) {
 
-							$noAntrian1 = $explode_data[1] + 1;
-							$noAntrian = 'ANT'.$noAntrian1;
+								$explode_data = explode('JEMPUT-',$cekAntrian3->noAntrian);
+
+								$noAntrian1 = $explode_data[1] + 1;
+								$noAntrian = 'JEMPUT-'.$noAntrian1;
+
+							}else{
+								$this->session->set_flashdata('notif1', 
+					                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
+					                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					                <h7>Jam Reservasi Sudah Penuh! </h7>
+					                   
+					                </div>');
+								redirect('C_produkPembeli/datareservasi');
+							}
 
 						}else{
 
 							$noAntrian1 = 1;
-							$noAntrian = 'ANT'.$noAntrian1;
+							$noAntrian = 'JEMPUT-'.$noAntrian1;
 
 						}
 					}else{
 
 						$noAntrian1 = 1;
-						$noAntrian = 'ANT'.$noAntrian1;
+						$noAntrian = 'JEMPUT-'.$noAntrian1;
 
 					}
 
@@ -123,8 +147,8 @@ class C_transaksiProduk extends CI_Controller{
 									'KdTukang'			=> $KdTukang,
 									'noAntrian'			=> $noAntrian,
 									'kodeUnik'			=> $id,
-									'tglTransaksi'		=> date("Y-m-d"),
-									'tglPembayaran'		=> date("H:i:s"),
+									'tglTransaksi'		=> $tglReservasi,
+									'tglPembayaran'		=> $jamreservasi,
 									'noPlat'			=> $noPlat,
 									'jenisBooking'		=> $booking,
 									'statusPembayaran' 	=> 'Waiting List');

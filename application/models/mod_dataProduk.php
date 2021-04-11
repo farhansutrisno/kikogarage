@@ -7,6 +7,11 @@ class mod_dataProduk extends CI_Model{
         date_default_timezone_set('Asia/Jakarta');
 	}
 
+    public function lihatjamreservasi(){
+         $this->db->where("statusPembayaran",'Selesai');
+         return $this->db->get("pembelian");
+    }
+
     public function jmlKeranjang(){
         $kode = $this->session->userdata('kode');
         $query = $this->db->query("SELECT COUNT(kdKeranjang) as jmlKeranjang

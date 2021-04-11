@@ -314,7 +314,7 @@
                                 if (empty($key->tglTransaksi)) {
                                   $dateUpdate = '-';
                                 }else{
-                                  $dateUpdate = date_format (new DateTime($key->tglTransaksi), 'd M Y').' '.date_format (new DateTime($key->tglPembayaran), 'H:i:s');
+                                  $dateUpdate = date_format (new DateTime($key->tglTransaksi), 'd M Y').' '.date_format (new DateTime($key->tglPembayaran), 'H:i');
                                 }
 
                                 if (empty($key->KdTukang)) {
