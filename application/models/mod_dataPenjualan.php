@@ -14,6 +14,7 @@ class mod_dataPenjualan extends CI_Model{
 		$this->db->from('pembelian');
 		$this->db->join('konsumen','konsumen.idAkun = pembelian.idAkun');
 		$this->db->order_by('kdPembelian','DESC');
+		 $this->db->where("statusPembayaran !=",'Selesai');
 		return $this->db->get();
 	}
 

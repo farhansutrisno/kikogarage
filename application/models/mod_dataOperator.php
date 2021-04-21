@@ -19,15 +19,15 @@ class mod_dataOperator extends CI_Model{
 			$username 		= $this->input->post('username');
 			$password 		= $this->input->post('password');
 			$email 			= $this->input->post('email');
-			$tglLahir 		= $this->input->post('tglLahir');
+			// $tglLahir 		= $this->input->post('tglLahir');
 			$noTelepon 		= $this->input->post('noTelepon');
-			$jenisKelamin 	= $this->input->post('jenisKelamin');
-			$kelurahan 		= $this->input->post('kelurahan');
-			$kecamatan		= $this->input->post('kecamatan');
-			$kota_kab 		= $this->input->post('kota_kab');
-			$provinsi		= $this->input->post('provinsi');
-			$alamatLengkap	= $this->input->post('alamatLengkap');
-			$kodePos		= $this->input->post('kodePos');
+			// $jenisKelamin 	= $this->input->post('jenisKelamin');
+			// $kelurahan 		= $this->input->post('kelurahan');
+			// $kecamatan		= $this->input->post('kecamatan');
+			// $kota_kab 		= $this->input->post('kota_kab');
+			// $provinsi		= $this->input->post('provinsi');
+			// $alamatLengkap	= $this->input->post('alamatLengkap');
+			// $kodePos		= $this->input->post('kodePos');
 			$status			= $this->input->post('status');
 
 			$data 			= array(
@@ -35,15 +35,15 @@ class mod_dataOperator extends CI_Model{
 				"username" 			=> $username,
 				"password" 			=> $password,
 				"email" 			=> $email,
-				"tglLahir" 			=> $tglLahir,
+				// "tglLahir" 			=> $tglLahir,
 				"noTelepon" 		=> $noTelepon,
-				"jenisKelamin" 		=> $jenisKelamin,
-				"kelurahan" 		=> $kelurahan,
-				"kecamatan" 		=> $kecamatan,
-				"kota_kab"			=> $kota_kab,
-				"provinsi"			=> $provinsi,
-				"alamatLengkap"		=> $alamatLengkap,
-				"kodePos"			=> $kodePos,
+				// "jenisKelamin" 		=> $jenisKelamin,
+				// "kelurahan" 		=> $kelurahan,
+				// "kecamatan" 		=> $kecamatan,
+				// "kota_kab"			=> $kota_kab,
+				// "provinsi"			=> $provinsi,
+				// "alamatLengkap"		=> $alamatLengkap,
+				// "kodePos"			=> $kodePos,
 				"foto"				=> $gambar,
 				"status"			=> $status
 			);
@@ -111,15 +111,15 @@ class mod_dataOperator extends CI_Model{
 				$username 		= $this->input->post('username');
 				$password 		= $this->input->post('password');
 				$email 			= $this->input->post('email');
-				$tglLahir 		= $this->input->post('tglLahir');
+				// $tglLahir 		= $this->input->post('tglLahir');
 				$noTelepon 		= $this->input->post('noTelepon');
-				$jenis 			= $this->input->post('jenis');
-				$kelurahan 		= $this->input->post('kelurahan');
-				$kecamatan		= $this->input->post('kecamatan');
-				$kota_kab 		= $this->input->post('kota_kab');
-				$provinsi		= $this->input->post('provinsi');
-				$alamatLengkap	= $this->input->post('alamatLengkap');
-				$kodePos		= $this->input->post('kodePos');
+				// $jenis 			= $this->input->post('jenis');
+				// $kelurahan 		= $this->input->post('kelurahan');
+				// $kecamatan		= $this->input->post('kecamatan');
+				// $kota_kab 		= $this->input->post('kota_kab');
+				// $provinsi		= $this->input->post('provinsi');
+				// $alamatLengkap	= $this->input->post('alamatLengkap');
+				// $kodePos		= $this->input->post('kodePos');
 				$status 		= $this->input->post('status');
 
 				$data 			= array(
@@ -127,15 +127,15 @@ class mod_dataOperator extends CI_Model{
 					"username" 			=> $username,
 					"password" 			=> $password,
 					"email" 			=> $email,
-					"tglLahir" 			=> $tglLahir,
+					// "tglLahir" 			=> $tglLahir,
 					"noTelepon" 		=> $noTelepon,
-					"jenisKelamin" 		=> $jenis,
-					"kelurahan" 		=> $kelurahan,
-					"kecamatan" 		=> $kecamatan,
-					"kota_kab"			=> $kota_kab,
-					"provinsi"			=> $provinsi,
-					"alamatLengkap"		=> $alamatLengkap,
-					"kodePos"			=> $kodePos,
+					// "jenisKelamin" 		=> $jenis,
+					// "kelurahan" 		=> $kelurahan,
+					// "kecamatan" 		=> $kecamatan,
+					// "kota_kab"			=> $kota_kab,
+					// "provinsi"			=> $provinsi,
+					// "alamatLengkap"		=> $alamatLengkap,
+					// "kodePos"			=> $kodePos,
 					"status"			=> $status
 				);
 
@@ -147,14 +147,14 @@ class mod_dataOperator extends CI_Model{
 				$username 		= $this->input->post('username');
 				$password 		= $this->input->post('password');
 				$email 			= $this->input->post('email');
-				$tglLahir 		= $this->input->post('tglLahir');
+				// $tglLahir 		= $this->input->post('tglLahir');
 				$noTelepon 		= $this->input->post('noTelepon');
-				$jenis 			= $this->input->post('jenis');
-				$kelurahan 		= $this->input->post('kelurahan');
-				$kecamatan		= $this->input->post('kecamatan');
-				$kota_kab 		= $this->input->post('kota_kab');
-				$provinsi		= $this->input->post('provinsi');
-				$alamatLengkap	= $this->input->post('alamatLengkap');
+				// $jenis 			= $this->input->post('jenis');
+				// $kelurahan 		= $this->input->post('kelurahan');
+				// $kecamatan		= $this->input->post('kecamatan');
+				// $kota_kab 		= $this->input->post('kota_kab');
+				// $provinsi		= $this->input->post('provinsi');
+				// $alamatLengkap	= $this->input->post('alamatLengkap');
 				$kodePos		= $this->input->post('kodePos');
 
 				$data 			= array(
@@ -162,15 +162,15 @@ class mod_dataOperator extends CI_Model{
 					"username" 			=> $username,
 					"password" 			=> $password,
 					"email" 			=> $email,
-					"tglLahir" 			=> $tglLahir,
+					// "tglLahir" 			=> $tglLahir,
 					"noTelepon" 		=> $noTelepon,
-					"jenisKelamin" 		=> $jenis,
-					"kelurahan" 		=> $kelurahan,
-					"kecamatan" 		=> $kecamatan,
-					"kota_kab"			=> $kota_kab,
-					"provinsi"			=> $provinsi,
-					"alamatLengkap"		=> $alamatLengkap,
-					"kodePos"			=> $kodePos,
+					// "jenisKelamin" 		=> $jenis,
+					// "kelurahan" 		=> $kelurahan,
+					// "kecamatan" 		=> $kecamatan,
+					// "kota_kab"			=> $kota_kab,
+					// "provinsi"			=> $provinsi,
+					// "alamatLengkap"		=> $alamatLengkap,
+					// "kodePos"			=> $kodePos,
 					"foto"				=> $gambar 
 				);
 
@@ -204,7 +204,7 @@ class mod_dataOperator extends CI_Model{
 				$jenis 			= $this->input->post('jenis');
 				
 				$data 			= array(
-					"namaLengkap" 		=> $namaLengkap,
+					"nama_lengkap" 		=> $namaLengkap,
 					"noTelepon" 		=> $noTelepon,
 					"jenisKelamin" 		=> $jenis,
 					"foto"				=> $gambar 

@@ -235,11 +235,29 @@
             </a>
           </li>
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
             </a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
+              <i class="menu-icon icon-bag"></i>
+              <span class="menu-title">Data Reservasi</span>
+              <div class="badge badge-info">2</div>
+            </a>
+            <div class="collapse" id="datareservasi">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">Reservasi Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatHistoryReservasi">History Reservasi</a>
+                </li>
+              </ul>
+            </div>
           </li>
 
         </ul>
@@ -320,22 +338,22 @@
                           </td>
                         </tr>
                         <tr><th>Tanggal Lahir</th><td><?php echo date_format (new DateTime($row[0]->tglLahir), 'd-M-Y') ?></td></tr>
-                        <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?></td></tr>
+                        <!-- <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?></td></tr> -->
                         <tr><th>Email</th><td><?php echo $row[0]->email?></td></tr>
                         <tr><th>No Telepon</th><td><?php echo $row[0]->noTelepon ?></td></tr> 
-                        <tr><th>Kelurahan</th><td><?php echo $row[0]->kelurahan ?></td></tr>
+                        <!-- <tr><th>Kelurahan</th><td><?php echo $row[0]->kelurahan ?></td></tr>
                         <tr><th>Kecamatan</th><td><?php echo $row[0]->kecamatan ?></td></tr>
-                        <tr><th>Kabupaten</th><td><?php echo $row[0]->kota_kab ?></td></tr>
+                        <tr><th>Kabupaten</th><td><?php echo $row[0]->kota_kab ?></td></tr> -->
                     </table>
                   </div>
                 </div>
                 <div class="col-md-6">
                     <div class="table-responsive">
                     <table class="table table-bordered table-striped">
-                        <tr><th style="width: 90px !important;">Provinsi</th><td><?php echo $row[0]->provinsi ?></td></tr>
+                       <!--  <tr><th style="width: 90px !important;">Provinsi</th><td><?php echo $row[0]->provinsi ?></td></tr>
                         <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
-                        <tr><th>Kode Pos</th><td><?php echo $row[0]->kodePos ?></td></tr>
-                        <tr><th>Foto</th><td></td></tr>
+                        <tr><th>Kode Pos</th><td><?php echo $row[0]->kodePos ?></td></tr> -->
+                        <tr><th style="width: 90px !important;">Foto</th><td></td></tr>
                         
                     </table>
                   </div>

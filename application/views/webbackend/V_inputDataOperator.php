@@ -234,11 +234,29 @@
             </a>
           </li>
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
             </a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
+              <i class="menu-icon icon-bag"></i>
+              <span class="menu-title">Data Reservasi</span>
+              <div class="badge badge-info">2</div>
+            </a>
+            <div class="collapse" id="datareservasi">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">Reservasi Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatHistoryReservasi">History Reservasi</a>
+                </li>
+              </ul>
+            </div>
           </li>
 
         </ul>
@@ -287,63 +305,73 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Input Data Operator</h4>
+                  <h4 class="card-title">Form Data Operator</h4>
       
                   <hr>
                   
                     <fieldset>
                       <div class="form-group">
-                          <label>Nama Lengkap</label>
+                          <label>Nama Lengkap <span style="color: red;">*</span></label>
                           <input type="text" class="form-control" name="namaLengkap" value="<?php echo set_value('namaLengkap') ?>" required/>
                           <?php echo form_error('namaLengkap'); ?>
                       </div>
                       <div class="form-group">
-                          <label>Username</label>
+                          <label>Username <span style="color: red;">*</span></label>
                           <input type="text"  class="form-control" name="username" value="<?php echo set_value('username') ?>" required/>
                           <?php echo form_error('username'); ?>
                       </div>
                       <div class="form-group">
-                          <label>Password</label>
+                          <label>Password <span style="color: red;">*</span></label>
                           <input type="password"  class="form-control" name="password" value="<?php echo set_value('password') ?>" required/>
                           <?php echo form_error('password'); ?>
                       </div>
                       <div class="form-group">
-                          <label>Email</label>
+                          <label>Email <span style="color: red;">*</span></label>
                           <input type="email" class="form-control" name="email" value="<?php echo set_value('email') ?>" required/>
                           <?php echo form_error('email'); ?>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label>Tanggal Lahir</label>
                         <div>
                           <input class="form-control datepicker" style="width:335px;" size="30" data-date-format="yyyy-mm-dd" type="text" value="<?php echo set_value('tglLahir') ?>" name="tglLahir" required> <?php echo form_error('tglLahir'); ?>
                         </div>
-                      </div>
+                      </div> -->
                       
                       <div class="form-group">
-                          <label>No Telp</label>
+                          <label>No Telepon <span style="color: red;">*</span></label>
                           <div>
                               <input type="number" class="form-control" name="noTelepon" value="<?php echo set_value('noTelepon') ?>" required/>
                               <?php echo form_error('noTelepon'); ?>
                           </div>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label>Jenis Kelamin</label>
                           <select class="form-control" type="text" name="jenisKelamin" required>
-                                <!-- <option><?php echo set_value('jenisKelamin') ?></option> -->
                                 <option>Laki-Laki</option>
                                 <option>Perempuan</option>
                           </select>
                           <?php echo form_error('jenisKelamin'); ?>
-                      </div>
+                      </div> -->
 
                       <div class="form-group">
-                        <label>Status</label>
+                        <label>Status <span style="color: red;">*</span></label>
                           <select class="form-control" type="text" name="status" required>
                                 <!-- <option><?php echo set_value('status') ?></option> -->
                                 <option value="1">Admin</option>
                                 <option value="2">Super Admin</option>
                           </select>
                           <?php echo form_error('status'); ?>
+                      </div>
+
+                      <div>
+                        <label>Gambar <span style="color: red;">*</span></label>
+                        <div>
+                            <input class="form-control" type="file" name="userfile" required>
+                            <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                            <?php echo form_error('userfile'); ?>
+
+                        </div>
+                      
                       </div>
                       
                     </fieldset>
@@ -352,7 +380,7 @@
               </div>
             </div>
 
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
                     <fieldset>
@@ -375,7 +403,6 @@
                       <div class="form-group">
                           <label>Provinsi</label>
                           <select class="form-control" type="text" name="provinsi" required>
-                              <!-- <option><?php echo set_value('provinsi') ?></option> -->
                               <option>Aceh</option>
                               <option>Sumatera Utara</option>
                               <option>Sumatera Barat</option>
@@ -441,9 +468,10 @@
                     </fieldset>
                 </div>
               </div>
-            </div>
-
-            <div class="col-lg-12">
+            </div> -->
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
                     <fieldset>

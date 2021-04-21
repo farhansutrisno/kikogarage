@@ -283,5 +283,12 @@ class mod_dataPembelian extends CI_Model{
 		return $this->db->update("tukang",$data);
 	}
 
+
+	public function cekjadwalreservasi($tglReservasi){
+		$this->db->where("statusPembayaran !=",'Selesai');
+		$this->db->where("tglTransaksi",$tglReservasi);
+         return $this->db->get('pembelian');
+    }
+
 }
 ?>

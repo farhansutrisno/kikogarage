@@ -22,6 +22,22 @@ class C_transaksiProduk extends CI_Controller{
 			$tglReservasi	= $this->input->post('tglReservasi');
 			$jamreservasi	= $this->input->post('jamreservasi');
 
+			$cekjadwal = $this->mod_dataPembelian->cekjadwalreservasi($tglReservasi)->result_array();
+
+			foreach ($cekjadwal as $key) {
+			
+				if($jamreservasi == $key['tglPembayaran']){
+
+					$this->session->set_flashdata('cekjadwal1', 
+		                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>Jadwal Sudah Penuh !</h7>
+		                </div>');
+				
+					redirect('C_produkPembeli/datareservasi');
+				}
+			}
+
 			$noPlat = $noPlat;
 			$id   = random_string('numeric', 3);
 			$booking  = $jenisBooking;
@@ -129,7 +145,7 @@ class C_transaksiProduk extends CI_Controller{
 			if ($booking == 'Antar Jemput') {
 				$KdTukang = $kodeTukang;
 			}else{
-				$KdTukang = NULL;
+				$KdTukang = $kodeTukang;
 			}
 
 			$order = $this->mod_dataPembelian->inputTransaksi($idAkun)->result_array();

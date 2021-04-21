@@ -234,11 +234,29 @@
           </li>
           
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
             </a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
+              <i class="menu-icon icon-bag"></i>
+              <span class="menu-title">Data Reservasi</span>
+              <div class="badge badge-info">2</div>
+            </a>
+            <div class="collapse" id="datareservasi">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">Reservasi Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatHistoryReservasi">History Reservasi</a>
+                </li>
+              </ul>
+            </div>
           </li>
           
         </ul>
@@ -286,7 +304,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Update Data Operator</h4>
+                  <h4 class="card-title">Form Data Operator</h4>
                   
                   <hr>
                      
@@ -315,21 +333,21 @@
                               <?php echo set_value('email') ?><br><?php echo form_error('email'); ?>
                           </div>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label>Tanggal Lahir</label>
                         <div>
                           <input class="form-control datepicker" style="width:335px;" size="30" data-date-format="yyyy-mm-dd" type="text" name="tglLahir" value="<?php echo $operator['tglLahir'] ?>" required> <?php echo set_value('tglLahir') ?><br><?php echo form_error('tglLahir'); ?>
                         </div>
-                      </div>
+                      </div> -->
                       
                       <div class="form-group">
-                          <label>No Telp</label>
+                          <label>No Telepon</label>
                           <div>
                               <input type="number" class="form-control" name="noTelepon" value="<?php echo $operator['noTelepon'] ?>" required/>
                               <?php echo set_value('noTelepon') ?><br><?php echo form_error('noTelepon'); ?>
                           </div>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label>Jenis Kelamin</label>
                           <select class="form-control" type="text" name="jenis" required>
                                 <?php 
@@ -340,7 +358,7 @@
 
                           </select>
                           <?php echo set_value('jenis') ?><br><?php echo form_error('jenis'); ?>
-                      </div>
+                      </div> -->
 
                       <div class="form-group">
                         <label>Status</label>
@@ -353,14 +371,29 @@
                                 <?php } ?>
                           </select>
                       </div>
-                       
+
+                       <div>
+                          <label>Gambar</label>
+                          <div>
+                            <span><img src="<?php echo base_url().'gambar_proyek/'.$operator['foto'] ?>" height="50px" width="60px" ></span>
+            
+                            <input class="form-control" type="file" name="userfile">
+                            <span><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+
+                        </div>
+                      </div>  
+                      <br>
+
+                       <?php echo anchor('webbackend/C_dataOperator/lihatDataOperator','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
+                       <input type="submit" name="submit" class="btn btn-round btn-success" value="S I M P A N"/>
+
                     </fieldset>
                   
                 </div>
               </div>
             </div>
 
-            <div class="col-lg-6">
+           <!--  <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
                   <div class="form-group">
@@ -420,7 +453,7 @@
                       <input type="submit" name="submit" class="btn btn-round btn-success" value="S I M P A N"/>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
           </form>

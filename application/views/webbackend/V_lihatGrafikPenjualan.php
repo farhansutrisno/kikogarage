@@ -213,11 +213,29 @@
             </a>
           </li>
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
             </a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
+              <i class="menu-icon icon-bag"></i>
+              <span class="menu-title">Data Reservasi</span>
+              <div class="badge badge-info">2</div>
+            </a>
+            <div class="collapse" id="datareservasi">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">Reservasi Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatHistoryReservasi">History Reservasi</a>
+                </li>
+              </ul>
+            </div>
           </li>
           
         </ul>

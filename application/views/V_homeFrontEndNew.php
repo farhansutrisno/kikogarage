@@ -213,7 +213,7 @@
 
 		           </div>
 		           <div class="modal-footer justify-content-center">
-		           			<button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button>
+		           			<!-- <button type="button" class="btn btn-primary btn-lg marleft20" data-dismiss="modal">Close</button> -->
 			                <button type="button" onclick="saveregister();" class="btn btn-info btn-lg marleft20 active">Submit</button>
 		           </div>
 		           </form>
@@ -244,7 +244,7 @@
       </div>
     </div>
 
-     <section class="ftco-section ftco-no-pt bg-light">
+     <!-- <section class="ftco-section ftco-no-pt bg-light">
     	<div class="container">
     		<div class="row no-gutters">
     			<div class="col-md-12	featured-top">
@@ -284,13 +284,12 @@
 					            </div>      
 					          </div>
 					        </div>
-					        <!-- <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p> -->
 	  						</div>
 	  					</div>
 	  				</div>
 				</div>
   		</div>
-    </section>
+    </section> -->
 
 
     <section class="ftco-section ftco-no-pt bg-light">

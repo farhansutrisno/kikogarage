@@ -8,8 +8,12 @@ class mod_dataProduk extends CI_Model{
 	}
 
     public function lihatjamreservasi(){
-         // $this->db->where("statusPembayaran",'Selesai');
-        $this->db->order_by('tglPembayaran', 'ASC');
+        $this->db->where("statusPembayaran !=",'Selesai');
+        $data1 = date("Y-m-d");
+        $data2 = date("Y-m-d", strtotime("+1 days"));
+
+        $this->db->where("tglTransaksi BETWEEN '$data1' AND '$data2'");
+        $this->db->order_by('tglTransaksi', 'ASC');
          return $this->db->get("pembelian");
     }
 

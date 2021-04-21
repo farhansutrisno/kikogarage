@@ -72,6 +72,13 @@
         height: 35px !important;
         font-size: 14px !important;
       }
+
+      .tagcloud a{
+        background-color: #A31313 !important;
+        color: #FFFFFF !important;
+        pointer-events: none !important;
+      }
+
     </style>
 
   </head>
@@ -83,6 +90,7 @@
           <?php echo $this->session->flashdata('tambah1'); ?>
           <?php echo $this->session->flashdata('hapus1'); ?>
           <?php echo $this->session->flashdata('notif1'); ?>
+          <?php echo $this->session->flashdata('cekjadwal1'); ?>
 
            <div class="container">
             <div class="row">
@@ -264,7 +272,7 @@
     <section class="ftco-section bg-light" style="margin-bottom: -180px !important;">
 
       <div class="container" style="margin-top: -50px !important;">
-        <h3 class="mb-3 bread"><b>Produk Terpilih</b></h3>
+        <h3 class="mb-3 bread"><b>Layanan yang diambil</b></h3>
         <hr/>
         <div class="row">
 
@@ -330,17 +338,17 @@
             <?php if (!empty($produk)) { ?>
 
             <div class="col-md-10" style="margin-left: -60px !important; margin-bottom: -20px !important;">
-              <form class="bg-light p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
+              <form class="p-5 contact-form" action="<?php echo base_url().'C_transaksiProduk/inputDataReservasi' ?>" method="POST" name="kirimPesan" style="margin-top: -15px !important;">
                 <input type="hidden" name="totalBayar" value="<?php echo $total_belanja?>">
                 <input type="hidden" name="idAkun" value="<?php echo $produk[0]->idAkun?>">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="date11" placeholder="Tanggal Reservasi" name="tglReservasi" required>
+                  <input type="text" class="form-control" id="date11" placeholder="Pilih Tanggal Reservasi Anda" name="tglReservasi" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Jam Reservasi" value="10:00">
+                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Pilih Jam Reservasi Anda" value="10:00">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="No Plat Kendaraan" name="noPlat" required>
+                  <input type="text" class="form-control" placeholder="Nomor Plat Kendaraan Anda" name="noPlat" required>
                 </div>
                 <div class="form-group">
                   <!-- <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required> -->
@@ -387,7 +395,7 @@
           <div class="col-md-5 sidebar ftco-animate">
 
             <div class="sidebar-box ftco-animate">
-              <h3><b>Data Pembayaran</b></h3>
+              <h3><b>Data Reservasi</b></h3>
               <hr/>
               <div class="block-21 mb-4 d-flex">
                 <!-- <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_1.jpg);"></a> -->
@@ -424,7 +432,7 @@
 
             <div class="sidebar-box ftco-animate" style="margin-top: -50px !important;">
 
-              <h3><b>Alamat Konsumen</b></h3>
+              <h3><b>Alamat Saya</b></h3>
               <hr/>
               <?php
               if (!empty($produk)) { ?>
@@ -442,7 +450,7 @@
             </div>
 
             <div class="sidebar-box ftco-animate" style="margin-top: -35px !important;">
-                <h3><b>Jadwal Sudah Terisi</b></h3>
+                <h3><b>Jadwal Reservasi Penuh</b></h3>
                 <hr/>
 
                 <div class="tagcloud">
@@ -451,7 +459,7 @@
                     $dateUpdate2 = date_format (new DateTime($row1->tglTransaksi), 'd M Y');
                     ?>
 
-                    <a href="#" class="tag-cloud-link"><b><?php echo $dateUpdate1.' - '.$dateUpdate2; ?></b></a>
+                    <a href="#" class="tag-cloud-link" disable><b><?php echo $dateUpdate1.' - '.$dateUpdate2; ?></b></a>
 
                   <?php }?>
                   
