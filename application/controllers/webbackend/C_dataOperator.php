@@ -251,7 +251,7 @@ class C_dataOperator extends CI_Controller{
 	            $data   =  $this->upload->data();
 
 				$this->session->set_flashdata('pesan3', 
-			                '<div class="alert alert-info ">    
+			                '<div class="alert alert-info" style="height: 70px !important;">    
 			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			                <h7>BERHASIL ! </h7>
 			                    <p>Berhasil menambahkan data tukang baru</p>
@@ -288,7 +288,7 @@ class C_dataOperator extends CI_Controller{
 	            $data   =  $this->upload->data();
 
 				$this->session->set_flashdata('pesan5', 
-			                '<div class="alert alert-info ">    
+			                '<div class="alert alert-info" style="height: 70px !important;">    
 			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			                <h7>BERHASIL ! </h7>
 			                    <p>Berhasil mengupdate data tukang<br/></p>
@@ -300,14 +300,17 @@ class C_dataOperator extends CI_Controller{
 
 	}
 
-	public function deleteDataTukang($KdTukang){
-		$this->session->set_flashdata('pesan7', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL ! </h7>
-		                    <p>Berhasil menghapus data tukang<br/></p>
-		                </div>');
-		$this->mod_dataOperator->deleteDataTukang($KdTukang);
+	public function deleteDataTukang(){
+
+		$kdtukang = $this->input->post('kdtukang');
+
+		// $this->session->set_flashdata('pesan7', 
+		//                 '<div class="alert alert-info ">    
+		//                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		//                 <h7>BERHASIL ! </h7>
+		//                     <p>Berhasil menghapus data tukang<br/></p>
+		//                 </div>');
+		$this->mod_dataOperator->deleteDataTukang($kdtukang);
 		redirect('webbackend/C_dataOperator/lihatDataTukang');
 	}
 

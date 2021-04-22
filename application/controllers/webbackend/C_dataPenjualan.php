@@ -17,6 +17,16 @@ class C_dataPenjualan extends CI_Controller{
 		$this->load->view('webbackend/V_lihatDataPenjualan',$data);
 	}
 
+	public function lihatHistoryReservasi(){
+		$data['status'] = $this->mod_dataPenjualan->filter()->result();
+		$data['tahun']	= $this->mod_dataPenjualan->tahun2()->result();
+		$data['bulan']	= $this->mod_dataPenjualan->bulan()->result();
+		$data['penjualan'] = $this->mod_dataPenjualan->lihatHistoryReservasi()->result();
+
+
+		$this->load->view('webbackend/V_lihatHistoryReservasi',$data);
+	}
+
 	public function detailDataPenjualan2($kodeUnik,$KdTukang){
 
 		if ($KdTukang == 0) {
@@ -31,6 +41,22 @@ class C_dataPenjualan extends CI_Controller{
 		
 		$this->load->view('webbackend/V_detailDataPenjualan', $data);
 	}
+
+	public function detailHistoryReservasi($kodeUnik,$KdTukang){
+
+		if ($KdTukang == 0) {
+			$data["row"] = $this->mod_dataPenjualan->detailDataPenjualan3($kodeUnik)->result();
+			$data["KdTukang"] = array($KodeTukang = 0);
+		}else{
+			$data["row"] = $this->mod_dataPenjualan->detailDataPenjualan2($kodeUnik)->result();
+			$data["KdTukang"] = array($KodeTukang = 1);
+		}
+
+		$data["penjualanProduk"] = $this->mod_dataPenjualan->detailDataPenjualanProduk($kodeUnik)->result();
+		
+		$this->load->view('webbackend/V_detailHistoryReservasi', $data);
+	}
+
 
 	public function updateDataPenjualan($kodeUnik){
 		$data["penjualan"] = $this->mod_dataPenjualan->updateDataPenjualan($kodeUnik)->result();

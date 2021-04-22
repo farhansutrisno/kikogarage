@@ -18,6 +18,17 @@ class mod_dataPenjualan extends CI_Model{
 		return $this->db->get();
 	}
 
+	public function lihatHistoryReservasi(){
+
+		$this->db->distinct();
+		$this->db->select('konsumen.namaLengkap,konsumen.noTelepon,pembelian.tglTransaksi,pembelian.KdTukang,pembelian.kodeUnik,pembelian.noAntrian,pembelian.noPlat,pembelian.totalBayar,pembelian.statusPembayaran,pembelian.tglPembayaran');
+		$this->db->from('pembelian');
+		$this->db->join('konsumen','konsumen.idAkun = pembelian.idAkun');
+		$this->db->order_by('kdPembelian','DESC');
+		 $this->db->where("statusPembayaran =",'Selesai');
+		return $this->db->get();
+	}
+
 	public function lihatDataPenjualan2(){
 		
 		$this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen');

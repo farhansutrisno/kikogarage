@@ -92,8 +92,8 @@ class mod_dataOperator extends CI_Model{
 		return $this->db->get("tukang");
 	}
 
-	public function deleteDataTukang($KdTukang){
-		$this->db->where("KdTukang",$KdTukang);
+	public function deleteDataTukang($kdtukang){
+		$this->db->where("KdTukang",$kdtukang);
 		return $this->db->delete("tukang");
 	}
 
