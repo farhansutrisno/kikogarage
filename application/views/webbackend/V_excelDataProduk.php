@@ -1,12 +1,12 @@
 <?php
- // header("Content-type: application/vnd-ms-excel");
- // header("Content-Disposition: attachment; filename=Data_Produk.xls");
- // header("Pragma: no-cache");
- // header("Expires: 0");
+ header("Content-type: application/vnd-ms-excel");
+ header("Content-Disposition: attachment; filename=Data_Produk.xls");
+ header("Pragma: no-cache");
+ header("Expires: 0");
 
-header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-header("Content-Disposition: attachment;filename=\"filename.xls\"");
-header("Cache-Control: max-age=0");
+// header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+// header("Content-Disposition: attachment;filename=\"filename.xls\"");
+// header("Cache-Control: max-age=0");
  ?>
 
  <?php 

@@ -146,7 +146,7 @@
             <hr/>
             <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
             <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
-            <p style="color: #000000 !important;">No Plat : <?php echo $row[0]->noPlat ?></p>
+            <p style="color: #000000 !important;">Nomor Plat Kendaraan : <?php echo $row[0]->noPlat ?></p>
             <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
             
             <?php if (!empty($row[0]->nama_lengkap)) { ?>

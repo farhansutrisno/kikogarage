@@ -26,6 +26,7 @@ class C_dataOperator extends CI_Controller{
 				$this->session->set_userdata('namaLengkap',$key['namaLengkap']);
 				$this->session->set_userdata('kodeOperator',$key['kdOperator']);
 				$this->session->set_userdata('foto',$key['foto']);
+				$this->session->set_userdata('statusAdmin',$key['status']);
 
 				$this->session->set_flashdata('pesan1', 
 	 	                '<div class="alert alert-info ">    

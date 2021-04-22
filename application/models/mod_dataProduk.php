@@ -330,12 +330,13 @@ class mod_dataProduk extends CI_Model{
     }
 
     public function tahun2(){
-        return $this->db->query("SELECT DISTINCT YEAR(createDate) AS tanggal1 FROM produk  order by tanggal1 desc");
+        return $this->db->query("SELECT DISTINCT YEAR(tglTransaksi) AS tanggal1 FROM pembelian  order by tanggal1 desc");
     }
 
     public function bulan(){
-        return $this->db->query("SELECT DISTINCT MONTH(createDate) AS bulan FROM produk  order by bulan ASC");
+        return $this->db->query("SELECT DISTINCT MONTH(tglTransaksi) AS bulan FROM pembelian  order by bulan ASC");
     } 
+
 
     public function excelFilter($kategori,$tahun,$bulan)
     {
@@ -432,7 +433,7 @@ class mod_dataProduk extends CI_Model{
     
     function tahun(){
         return $this->db->query("SELECT DISTINCT YEAR(createDate) AS tanggal FROM produk  order by tanggal desc");
-    }                           
+    } 
 
     function get_kategori($kategori,$tahun){
         // $tahun = $this->session->userdata('tahun');

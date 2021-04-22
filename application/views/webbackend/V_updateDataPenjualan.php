@@ -23,6 +23,16 @@
   <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="<?=base_url();?>vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
   <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+  <style type="text/css">
+    .sidebar .nav .nav-item.nav-profile img{
+      border-radius: 0% !important;
+    }
+
+    .rounded-circle, .settings-panel .color-tiles .tiles{
+      border-radius: 0% !important;
+    }
+  </style>
   
 </head>
 
@@ -171,13 +181,21 @@
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
-              <div class="badge badge-info">2</div>
+              <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
+                <div class="badge badge-info">2</div>
+              <?php }else{ ?>
+                <div class="badge badge-info">1</div>
+              <?php } ?>
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
-                </li>
+                <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
+                  </li>
+
+                <?php } ?>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
                 </li>

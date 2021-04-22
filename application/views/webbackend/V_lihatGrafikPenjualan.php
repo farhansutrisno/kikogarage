@@ -46,6 +46,15 @@
       'dark': '#262932'
     };
   </script>
+  <style type="text/css">
+    .sidebar .nav .nav-item.nav-profile img{
+      border-radius: 0% !important;
+    }
+
+    .rounded-circle, .settings-panel .color-tiles .tiles{
+      border-radius: 0% !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -191,13 +200,21 @@
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
-              <div class="badge badge-info">2</div>
+              <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
+                <div class="badge badge-info">2</div>
+              <?php }else{ ?>
+                <div class="badge badge-info">1</div>
+              <?php } ?>
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
-                </li>
+                <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
+                  </li>
+
+                <?php } ?>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
                 </li>
@@ -284,6 +301,25 @@
 
                   <form action="<?php echo base_url().'webbackend/C_dataProduk/grafikProduk'?>" method="POST">
                       <div class="row">
+                        <select class="form-control"  name="bulan" style="width: 100px !important">  
+                          <option value="">Tanggal</option> 
+
+                          <?php 
+                          $day = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31);
+                          foreach($day as $day1) { ?>
+                            <option value="<?php echo $day1;?>"><?php echo $day1;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                          <option value="">bulan</option>                 
+                          <?php 
+                          $bulan = array(1,2,3,4,5,6,7,8,9,10,11,12);
+                          foreach($bulan as $bln) { ?>
+                            <option value="<?php echo $bln;?>"><?php echo $bln;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
                         <select class="form-control" name="tahun" style="width: 100px !important">  
                             <option value="">Tahun</option>                 
                            <?php foreach($tahun as $r) { ?>
