@@ -397,7 +397,7 @@
                <div class="modal-header" style="height: 50px !important;">
                  
                   <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Hapus Data Operartor</h6>
+                  <h6 class="modal-title textBlack" align="left">Hapus Data Pegawai</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -405,7 +405,7 @@
                </div>
                <div class="modal-body" style="height: 50px !important;">
                   
-                     <p>Apakah anda yakin ingin menghapus data operator</p>  
+                     <p>Apakah anda yakin ingin menghapus data Pegawai</p>  
                   
                 </div>
 
@@ -424,8 +424,7 @@
           </div>
 
        </div>
-    </div>
-
+    
   <script>
     function myDelete(val) {
         // console.log(val);

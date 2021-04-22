@@ -143,12 +143,15 @@ class C_dataKiko extends CI_Controller{
 
 	}
 
-	public function deleteDataGaleri($kdGaleri){
+	public function deleteDataGaleri(){
 		$this->session->set_flashdata('pesan7', 
 		                '<div class="alert alert-info ">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>BERHASIL ! </h7>
 		                </div>');
+
+		$kdGaleri = $this->input->post('kdGaleri');
+
 		$this->mod_dataKiko->deleteDataGaleri($kdGaleri);
 		redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
 	}

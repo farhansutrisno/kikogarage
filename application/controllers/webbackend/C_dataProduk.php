@@ -329,13 +329,16 @@ class C_dataProduk extends CI_Controller{
 		
 	}
 
-	public function deleteDataProduk($kdProduk){
+	public function deleteDataProduk(){
 		$this->session->set_flashdata('pesan5', 
 		                '<div class="alert alert-info ">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>BERHASIL ! </h7>
 		                    <p>Berhasil menghapus data produk</p>
 		                </div>');
+
+		$kdProduk = $this->input->post('kdProduk');
+
 		$this->mod_dataProduk->deleteDataProduk($kdProduk);
 		redirect('webbackend/C_dataProduk/lihatDataProduk');
 	}

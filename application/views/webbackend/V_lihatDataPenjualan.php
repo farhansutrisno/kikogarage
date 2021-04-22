@@ -268,12 +268,12 @@
               <h5 class="page-title">Lihat Data Penjualan <small>Kiko Good Garage</small> </h5><br>
               <div class="row">
                 
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <?php
                     echo anchor('webbackend/C_dataPenjualan/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
                     ?>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
                       
                       <div class="row">

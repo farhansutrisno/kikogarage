@@ -53,12 +53,15 @@ class C_dataOperator extends CI_Controller{
 		$this->load->view('webbackend/V_lihatDataKonsumen',$data);
 	}
 
-	public function deleteDataKonsumen($idAkun){
+	public function deleteDataKonsumen(){
 		$this->session->set_flashdata('pesan7', 
 		                '<div class="alert alert-info ">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>BERHASIL ! </h7>
 		                </div>');
+		
+		$idAkun = $this->input->post('idAkun');
+
 		$this->mod_dataOperator->deleteDataKonsumen($idAkun);
 		redirect('webbackend/C_dataOperator/lihatDataKonsumen');
 	}
@@ -205,13 +208,16 @@ class C_dataOperator extends CI_Controller{
 
 	}
 
-	public function deleteDataOperator($kdOperator){
+	public function deleteDataOperator(){
 		$this->session->set_flashdata('pesan7', 
 		                '<div class="alert alert-info ">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>BERHASIL ! </h7>
 		                    <p>Berhasil menghapus data operator<br/></p>
 		                </div>');
+
+		$kdOperator = $this->input->post('kdOperator');
+
 		$this->mod_dataOperator->deleteDataOperator($kdOperator);
 		redirect('webbackend/C_dataOperator/lihatDataOperator');
 	}

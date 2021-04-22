@@ -45,13 +45,16 @@ class C_pesanMasuk extends CI_Controller{
 
 	}
 
-	public function deletePesanMasuk($kdPesanMasuk){
+	public function deletePesanMasuk(){
 		$this->session->set_flashdata('delete1', 
 		                '<div class="alert alert-info ">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>BERHASIL ! </h7>
 		                    <p>Berhasil menghapus data pesan masuk</p>
 		                </div>');
+
+		$kdPesanMasuk = $this->input->post('kdPesanMasuk');
+
 		$this->mod_dataPesanMasuk->deletePesanMasuk($kdPesanMasuk);
 		redirect('webbackend/C_pesanMasuk/lihatPesanMasuk');
 	}

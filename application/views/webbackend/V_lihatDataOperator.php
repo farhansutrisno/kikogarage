@@ -349,7 +349,7 @@
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/detailDataOperator/'.$key->kdOperator ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/updateDataOperator/'.$key->kdOperator?>" class="btn btn-primary">
                                     <i class="ion ion-md-create"></i> Edit</a>
-                                    <a href="<?php echo base_url().'webbackend/C_dataOperator/deleteDataOperator/'.$key->kdOperator?>" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
+                                    <a href="#" onclick="myDelete(<?='\''.$key->kdOperator.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -378,6 +378,76 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
+  <div class="modal fade" id="dialogrepair_box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="login">
+               <div class="modal-header" style="height: 50px !important;">
+                 
+                  <div class="col-md-11">
+                  <h6 class="modal-title textBlack" align="left">Hapus Data Operartor</h6>
+                </div>
+                <div class="col-md-1">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+               </div>
+               <div class="modal-body" style="height: 50px !important;">
+                  
+                     <p>Apakah anda yakin ingin menghapus data operator</p>  
+                  
+                </div>
+
+               </div>
+               <div class="modal-footer" align="right">
+                <div class="col-md-12">
+                    <div align="right">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                      <button type="button" id="btn_delete" class="btn btn-danger">Hapus</button>
+                    </div>  
+                </div>
+               </div>
+             </div>
+
+
+          </div>
+
+       </div>
+    </div>
+
+  <script>
+    function myDelete(val) {
+        // console.log(val);
+        var kdOperator = val;
+
+        $('#dialogrepair_box').modal('show');
+
+        $("#btn_delete").click(function() {
+
+            $.ajax({
+                  url:"<?php echo base_url(); ?>webbackend/C_dataOperator/deleteDataOperator",
+                  type: 'POST',
+                  dataType: "html",
+                  data: {
+                      kdOperator: kdOperator
+                  },
+                  success: function(data) {
+                      console.log(data);
+                      $('#dialogrepair_box').modal('hide');
+                      window.location.reload(true);
+                   
+                  },
+                  error: function(xhr, ajaxOptions, thrownError)
+                  {
+                      alert("Failed to get where column list, please try again");
+            
+                  }
+            });
+
+        });
+        
+    }
+  </script>
 
   <!-- plugins:js -->
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.base.js"></script>
