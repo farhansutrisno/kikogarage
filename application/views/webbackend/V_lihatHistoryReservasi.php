@@ -30,60 +30,25 @@
       border-radius: 0% !important;
     }
   </style>
-
-  <style type="text/css">
-    .nav-tabs .nav-link {
-        border-color: #c9c9c9;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        text-align: center;
-        font-size: 12px
-      }
-      .nav-tabs .nav-link:hover {
-        border-color: #c9c9c9;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        color:black;
-        margin-top: -10px;
-          padding-bottom: 10px;
-          top: -10px;
-          padding-top: 18px;
-          height: 47.5px;
-      }
-      .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-          color:black;
-          background-color: #D3D3D3;
-          border-color: #dee2e6 #dee2e6 #fff;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          margin-top: -10px;
-          padding-bottom: 10px;
-          top: -10px;
-          padding-top: 14px;
-          height: 47.5px;
-          font-size: 14px
-      }
-  </style>
-  
 </head>
 
 <body>
 
   <div class="container-scroller">
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan5'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan7'); ?></div>
+   <!--  <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>-->
+  <div  id="notifications"><?php echo $this->session->flashdata('pesan2'); ?></div>
+  <div  id="notifications"><?php echo $this->session->flashdata('pesan1'); ?></div>
     
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0   ">
 
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 
-        <a class="navbar-brand" href="#"> 
-         
-          <p class="text-center font-weight-medium">Kiko Good Garage</p>
-      </a>
+       <a class="navbar-brand" href="#">
         
+          <p class="text-center font-weight-medium">Kiko Good Garage</p>
+      </a> 
+       
       </div>
       
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -92,9 +57,6 @@
           <span class="mdi mdi-menu"></span>
         </button>
         
-        
-
-
         <ul class="navbar-nav navbar-nav-right">
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
@@ -102,7 +64,6 @@
               <div class="dropdown-toggle-wrapper">
                 <div class="inner">
                   <img class="img-xs rounded-circle" src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="Profile image">
-                  <!-- <img class="img-xs rounded-circle" src="<?php echo base_url() ?>images/<?php echo $row['foto'] ?>" alt="Profile image"> -->
                 </div>
                 <div class="inner">
                   <div class="inner">
@@ -131,54 +92,19 @@
                   </div>
                 </div>
               </a>
-              
+            <!--   <a class="dropdown-item mt-2">
+                Lihat Data Akun
+              </a>
+              <a class="dropdown-item">
+                Ubah Data
+              </a> -->
               <a class="dropdown-item" href="<?php echo base_url() ?>webbackend/C_dataOperator/logout">
                 Keluar
               </a>
             </div>
           </li>
           
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle count-indicator" id="messageDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
-              <i class="mdi mdi-email-outline"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-              <div class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
-                </p>
-                <span class="badge badge-info badge-pill float-right">View all</span>
-              </div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="<?php echo base_url()?>admin/images/faces/face4.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
-                    <span class="float-right font-weight-light small-text">1 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    The meeting is cancelled
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="<?php echo base_url()?>admin/images/faces/face2.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
-                    <span class="float-right font-weight-light small-text">15 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    New product launch
-                  </p>
-                </div>
-              </a>
-              
-            </div>
-          </li> -->
+       
           <li class="nav-item dropdown color-setting d-none d-md-block">
             <a class="nav-link count-indicator" href="#">
               <i class="mdi mdi-invert-colors"></i>
@@ -219,11 +145,12 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
 
-        <ul class="nav">
+         <ul class="nav">
           <li class="nav-item nav-profile">
             <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
@@ -239,10 +166,10 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-               <!--  <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
                 </li> -->
-                 <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
                 <li class="nav-item">
@@ -268,7 +195,6 @@
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
-
                 <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                   
                   <li class="nav-item">
@@ -276,9 +202,8 @@
                   </li>
 
                 <?php } ?>
-                
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pekerja</a>
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
                 </li>
                 
               </ul>
@@ -292,7 +217,6 @@
             </a>
           </li>
           
-          
           <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
@@ -300,7 +224,7 @@
             </a>
           </li> -->
 
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
@@ -323,7 +247,6 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-
           <div class="row mb-4">
 
             <div class="col-12 d-flex align-items-center justify-content-between">
@@ -360,81 +283,104 @@
           
           <div class="card">
             <div class="card-body">
-              <!-- <div class="container"> -->
-
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri Photo</a>
-                     
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriVideo">Galeri Video</a>
-                    
-                  </li>
-                </ul>
-              <!-- </div> -->
-              <br>
-              <h5 class="page-title">Data Galeri Photo <small>Kiko Good Garage </small></h5><br>
+              <h5 class="page-title">Detail History Reservasi <small>Kiko Good Garage</small> </h5><br>
               <div class="row">
-              <div class="col-12 page-header-title">
+                
+                <div class="col-md-7">
                     <?php
-                    echo anchor('webbackend/C_dataKiko/inputDataGaleri','Add Photo',array('class'=>'btn btn-round btn-success'));
+                    echo anchor('webbackend/C_dataPenjualan/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
                     ?>
-
                 </div>
-                <br>
-                <br>
-                <br>
+                <div class="col-md-5">
+                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
+                      
+                      <div class="row">
+                        <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
+                            <option value="">Status</option>                 
+                           <?php foreach($status as $r) { ?>
+                              <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
+                            <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                          <option value="">Tahun</option>                 
+                          <?php foreach($tahun as $key) { ?>
+                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                          <option value="">bulan</option>                 
+                          <?php foreach($bulan as $bln) { ?>
+                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                      </div>
+                      
+                    </form>
+                </div>
+              </div>
+              <br><br>
+                    
+              <div class="row">
+                
                 <div class="col-12 table-responsive">
                   <table id="order-listing" class="table">
                     <thead>
                       <tr>
                           <th style="width: 10px !important;">No</th>
-                          <th>Judul</th>
-                          <th>Create Date</th>
-                          <th>Update Date</th>
-                          <th>Action</th>
+                          <th>Nama Konsumen</th>
+                          <th>No Telepon</th>
+                          <th>No Plat</th>
+                          <!-- <th>kategori</th> -->
+                          <th>No Antrian</th>
+                          <th>Total Bayar</th>
+                          <th>Status Pembelian</th>
+                          <th>Tgl Transaksi</th>
+                          <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
                         $no=1;
-                            foreach ($Galeri as $key){
+                            foreach ($penjualan as $key){
 
-                              if (empty($key->tglUpdateGaleri)) {
-                                $dateUpdate = '-';
-                              }else{
-                                $dateUpdate = date_format (new DateTime($key->tglUpdateGaleri), 'd-M-Y H:i:s');
-                              }
+                                if (empty($key->tglTransaksi)) {
+                                  $dateUpdate = '-';
+                                }else{
+                                  $dateUpdate = date_format (new DateTime($key->tglTransaksi), 'd M Y').' '.date_format (new DateTime($key->tglPembayaran), 'H:i');
+                                }
 
-                              if (empty($key->tglGaleri)) {
-                                $dateCreate = '-';
-                              }else{
-                                $dateCreate = date_format (new DateTime($key->tglGaleri), 'd-M-Y H:i:s');
-                              }
+                                if (empty($key->KdTukang)) {
+                                  $KdTukang = 0;
+                                }else{
+                                  $KdTukang = $key->KdTukang;
+                                }
 
-                            echo "<tr>";
+                                echo "<tr>";
                                 echo "<td>". $no++."</td>";
-                                echo "<td>". $key->judulGaleri."</td>";
-                                echo "<td>". $dateCreate."</td>";
+                                echo "<td>". $key->namaLengkap."</td>";
+                                echo "<td>". $key->noTelepon."</td>";
+                                echo "<td>". $key->noPlat."</td>";
+                                // echo "<td>". $key->kategori."</td>";
+                                echo "<td>". $key->noAntrian."</td>";
+                                echo "<td>Rp.".number_format($key->totalBayar, 0,",",".")."</td>";
+                                echo "<td>". $key->statusPembayaran."</td>";
                                 echo "<td>". $dateUpdate."</td>";
                                 
-                                ?>
+                      ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleri/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleri/'.$key->kdGaleri?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Update</a>
-                                    <a href="#" onclick="myDelete(<?='\''.$key->kdGaleri.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailHistoryReservasi/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
                                 </td>
                             </tr>
                         <?php } ?>
-                      
                     </tbody>
                   </table>
                 </div>
               </div>
                 
-
             </div>
           </div>  
         </div>
@@ -454,75 +400,6 @@
   </div>
   <!-- container-scroller -->
 
-  <div class="modal fade" id="dialogrepair_box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-       <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div id="login">
-               <div class="modal-header" style="height: 50px !important;">
-                 
-                  <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Hapus Data Galeri</h6>
-                </div>
-                <div class="col-md-1">
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-               </div>
-               <div class="modal-body" style="height: 50px !important;">
-                  
-                     <p>Apakah anda yakin ingin menghapus data Galeri</p>  
-                  
-                </div>
-
-               </div>
-               <div class="modal-footer" align="right">
-                <div class="col-md-12">
-                    <div align="right">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_delete" class="btn btn-danger">Hapus</button>
-                    </div>  
-                </div>
-               </div>
-             </div>
-
-
-          </div>
-
-       </div>
-    
-  <script>
-    function myDelete(val) {
-        // console.log(val);
-        var kdGaleri = val;
-
-        $('#dialogrepair_box').modal('show');
-
-        $("#btn_delete").click(function() {
-
-            $.ajax({
-                  url:"<?php echo base_url(); ?>webbackend/C_dataKiko/deleteDataGaleri",
-                  type: 'POST',
-                  dataType: "html",
-                  data: {
-                      kdGaleri: kdGaleri
-                  },
-                  success: function(data) {
-                      console.log(data);
-                      $('#dialogrepair_box').modal('hide');
-                      window.location.reload(true);
-                   
-                  },
-                  error: function(xhr, ajaxOptions, thrownError)
-                  {
-                      alert("Failed to get where column list, please try again");
-            
-                  }
-            });
-
-        });
-        
-    }
-  </script>
-
   <!-- plugins:js -->
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.base.js"></script>
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.addons.js"></script>
@@ -540,7 +417,7 @@
   <script src="<?php echo base_url() ?>admin/js/dashboard.js"></script>
    <script src="<?php echo base_url() ?>admin/js/data-table.js"></script>
   <!-- End custom js for this page-->
-<!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVDaLDOLvcbvWBm58jdhbN5LM041ifJBZ4HHvIzRSXMUkU4lPIh%2fYqiYc7wtqmtMWoVr1kId0HDTGeZ%2bwQlH%2f%2btg9ebKzUxo5T%2b%2bUN33UTMMTi3eGi571v2PevtQzTdiYpJVhTtVEGUZXMKXF300l5O8y2VFuocYUdTimwf0tcjekcsd0TAIp%2fx2G5jr67Au82DHajA2TlsBD3vQpEs6V7vc%2fK5PMmaV4mxJK6Qdbjc8X66VRhcIdG0rPLtCnwGAfXHnH0q7lDgPG2%2bel3wwNlE8NuCC%2bSmu2SxOiUx7A%2fkj1m9sM6a7R9yRzGzMEzGh3%2fZ5h3fPhYwybJgtfoY8sfQS9qABhgp%2bKXOhY1eGm056ufcOuaT9yTsNAy03FCk1yKUbUYcdljSxWQlc%2ftnBOBZKowLu%2ff7SENG%2bUzAmQLVINArEORbgm66kyE03E0UOkllDZopVlWKTRVEGKpAY%2bhlJ" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
+<!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVDaLDOLvcbvWBm58jdhbN5LM041ifJBZ4HHvIzRSXMUkU4lPIh%2fYqiYc7wtqmtMWoVr1kId0HDTGeZ%2bwQlH%2f%2btg9ebKzUxo5T%2b%2bUN33UTMMTi3eGi571v2PevtQzTdiYpJVhTtVEGUZXMKXF300l5O8y2VFuocYUdTimwf0tcjekcsd0TAIp%2fx2G5jr67Au82DHajA2TlsBD3vQpEs6V7vc%2fK5PMmaV4mxJK6Qdbjc8X66VRhcIdG0rPLtCnwGAfXHnH0q7lDgPG2%2bel3wwNlE8NuCC%2bSmu2SxOiUx7A%2fkj1m9sM6a7R9yRzGzMEzGh3%2fZ5h3fPhYwybJgtfoY8sfQS9qABhgp%2bKXOhY1eGm056ufcOuaT9yTsNAy03FCk1yKUbUYcdljSxWQlc%2ftnBOBZKowLu%2ff7SENG%2bUzAmQLVINArEORbgm66kyE03E0UOkllDZopVlWKTRVEGKpAY%2bhlJ" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};
+</script> -->
 </body>
-
 </html>

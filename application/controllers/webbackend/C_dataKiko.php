@@ -58,8 +58,17 @@ class C_dataKiko extends CI_Controller{
 		$this->load->view('webbackend/V_lihatDataGaleriBo', $data);
 	}
 
+	public  function lihatDataGaleriVideo(){
+		$data['Galeri'] = $this->mod_dataKiko->lihatDataGaleriVideo()->result();
+		$this->load->view('webbackend/V_lihatGaleriVideo', $data);
+	}
+
 	public function inputDataGaleri(){
 		$this->load->view('webbackend/V_inputDataGaleri');
+	}
+
+	public function inputDataGaleriVideo(){
+		$this->load->view('webbackend/V_inputDataGaleriVideo');
 	}
 
 	public function prosesInputDataGaleri(){
@@ -92,6 +101,41 @@ class C_dataKiko extends CI_Controller{
 			                </div>');
 				$this->mod_dataKiko->inputDataGaleri($data['file_name']);
 				redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
+		    }
+		}
+
+	}
+
+	public function prosesInputDataGaleriVideo(){
+		$this->form_validation->set_rules('judulGaleriVideo','judul galeri Video','trim|required|min_length[5]');
+	    // $this->form_validation->set_rules('isiArtikel','alamat lengkap','required|min_length[6]');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+		    	$this->session->set_flashdata('pesan3', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>Gagal ! </h7>
+			                <p>Harap cek kembali</p>
+			                </div>');
+		        $this->load->view('webbackend/V_inputDataGaleriVideo');
+		    }
+		    else{
+
+		        $config['upload_path']='./gambar_proyek/';
+	            $config['allowed_types']='jpg|png|jpeg';
+	            $config['max_size'] = 5000000;
+	            $this->load->library('upload',$config);
+	            $this->upload->do_upload();
+	            $data   =  $this->upload->data();
+	            
+				$this->session->set_flashdata('pesan3', 
+			                '<div class="alert alert-info ">    
+			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			                <h7>BERHASIL ! </h7>
+			                </div>');
+				$this->mod_dataKiko->inputDataGaleriVideo($data['file_name']);
+				redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
 		    }
 		}
 

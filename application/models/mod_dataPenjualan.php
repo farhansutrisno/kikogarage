@@ -162,21 +162,6 @@ class mod_dataPenjualan extends CI_Model{
         return $this->db->query("SELECT DISTINCT MONTH(tglTransaksi) AS bulan FROM pembelian  order by bulan ASC");
     }
 
- //    public function lihatDataPenjualan2(){
-		
-	// 	// $this->db->order_by('tglPembayaran','DESC');
-	// 	// return $this->db->get("pembelian");
-
-	// 	$this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen');
-	// 	$this->db->from('konsumen');
-	// 	$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
-	// 	$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
-	// 	// $this->db->join('tukang','tukang.KdTukang = pembelian.KdTukang');
-	// 	$this->db->order_by('pembelian.kdPembelian','DESC');
-	// 	// $this->db->where("kodeUnik",$kodeUnik);
-	// 	return $this->db->get();
-	// }
-
     public function excelFilter($status,$tahun,$bulan)
     {
 

@@ -30,59 +30,21 @@
       border-radius: 0% !important;
     }
   </style>
-
-  <style type="text/css">
-    .nav-tabs .nav-link {
-        border-color: #c9c9c9;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        text-align: center;
-        font-size: 12px
-      }
-      .nav-tabs .nav-link:hover {
-        border-color: #c9c9c9;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        color:black;
-        margin-top: -10px;
-          padding-bottom: 10px;
-          top: -10px;
-          padding-top: 18px;
-          height: 47.5px;
-      }
-      .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-          color:black;
-          background-color: #D3D3D3;
-          border-color: #dee2e6 #dee2e6 #fff;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          margin-top: -10px;
-          padding-bottom: 10px;
-          top: -10px;
-          padding-top: 14px;
-          height: 47.5px;
-          font-size: 14px
-      }
-  </style>
-  
 </head>
 
 <body>
 
   <div class="container-scroller">
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan5'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan7'); ?></div>
-    
+
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0   ">
 
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 
-        <a class="navbar-brand" href="#"> 
+       <a class="navbar-brand" href="#">
          
           <p class="text-center font-weight-medium">Kiko Good Garage</p>
-      </a>
+        </a>
         
       </div>
       
@@ -92,9 +54,6 @@
           <span class="mdi mdi-menu"></span>
         </button>
         
-        
-
-
         <ul class="navbar-nav navbar-nav-right">
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
@@ -102,7 +61,6 @@
               <div class="dropdown-toggle-wrapper">
                 <div class="inner">
                   <img class="img-xs rounded-circle" src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="Profile image">
-                  <!-- <img class="img-xs rounded-circle" src="<?php echo base_url() ?>images/<?php echo $row['foto'] ?>" alt="Profile image"> -->
                 </div>
                 <div class="inner">
                   <div class="inner">
@@ -131,54 +89,18 @@
                   </div>
                 </div>
               </a>
-              
+              <!-- <a class="dropdown-item mt-2">
+                Lihat Data Akun
+              </a>
+              <a class="dropdown-item">
+                Ubah Data
+              </a> -->
               <a class="dropdown-item" href="<?php echo base_url() ?>webbackend/C_dataOperator/logout">
                 Keluar
               </a>
             </div>
           </li>
-          
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle count-indicator" id="messageDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
-              <i class="mdi mdi-email-outline"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-              <div class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
-                </p>
-                <span class="badge badge-info badge-pill float-right">View all</span>
-              </div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="<?php echo base_url()?>admin/images/faces/face4.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
-                    <span class="float-right font-weight-light small-text">1 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    The meeting is cancelled
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="<?php echo base_url()?>admin/images/faces/face2.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
-                    <span class="float-right font-weight-light small-text">15 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    New product launch
-                  </p>
-                </div>
-              </a>
-              
-            </div>
-          </li> -->
+         
           <li class="nav-item dropdown color-setting d-none d-md-block">
             <a class="nav-link count-indicator" href="#">
               <i class="mdi mdi-invert-colors"></i>
@@ -219,11 +141,12 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
 
-        <ul class="nav">
+         <ul class="nav">
           <li class="nav-item nav-profile">
             <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
@@ -239,10 +162,10 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-               <!--  <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
                 </li> -->
-                 <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
                 <li class="nav-item">
@@ -256,7 +179,7 @@
             </div>
           </li>
 
-          <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
@@ -268,7 +191,6 @@
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
-
                 <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                   
                   <li class="nav-item">
@@ -276,9 +198,8 @@
                   </li>
 
                 <?php } ?>
-                
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pekerja</a>
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
                 </li>
                 
               </ul>
@@ -292,7 +213,6 @@
             </a>
           </li>
           
-          
           <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
@@ -300,7 +220,7 @@
             </a>
           </li> -->
 
-           <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
@@ -323,7 +243,6 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-
           <div class="row mb-4">
 
             <div class="col-12 d-flex align-items-center justify-content-between">
@@ -360,80 +279,74 @@
           
           <div class="card">
             <div class="card-body">
-              <!-- <div class="container"> -->
-
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri Photo</a>
-                     
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriVideo">Galeri Video</a>
-                    
-                  </li>
-                </ul>
-              <!-- </div> -->
-              <br>
-              <h5 class="page-title">Data Galeri Photo <small>Kiko Good Garage </small></h5><br>
+              <h5 class="page-title">Detail History Reservasi <small>Kiko Good Garage</small> </h5><br>
               <div class="row">
-              <div class="col-12 page-header-title">
-                    <?php
-                    echo anchor('webbackend/C_dataKiko/inputDataGaleri','Add Photo',array('class'=>'btn btn-round btn-success'));
-                    ?>
-
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr><th colspan="2" style="text-align: center;">Data Konsumen</th></tr>
+                        <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->namaLengkap ?></td></tr>
+                        <tr><th>No Telepon</th><td><?php echo $row[0]->noTelepon ?></td></tr>
+                        <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
+                        <tr><th>Foto</th><td></td></tr>
+                    </table>
+                  </div>
+                  <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="200px" height="200px">
+                  <br><br>
                 </div>
-                <br>
-                <br>
-                <br>
-                <div class="col-12 table-responsive">
-                  <table id="order-listing" class="table">
-                    <thead>
-                      <tr>
-                          <th style="width: 10px !important;">No</th>
-                          <th>Judul</th>
-                          <th>Create Date</th>
-                          <th>Update Date</th>
-                          <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                        $no=1;
-                            foreach ($Galeri as $key){
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr><th colspan="2" style="text-align: center;">Data Reservasi</th></tr>
+                        <tr><th>No Antrian</th><td><?php echo $row[0]->noAntrian ?></td></tr>
+                        <tr><th>No Plat</th><td><?php echo $row[0]->noPlat ?></td></tr>
+                        <tr><th>Jenis Booking</th><td><?php echo $row[0]->jenisBooking ?></td></tr>
+                        <tr><th style="width: 15px !important;">Tgl Transaksi</th><td><?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y').' '.date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?></td></tr>
+                        <tr><th>Status Reservasi</th><td><?php echo $row[0]->statusPembayaran ?></td></tr>
+                        <tr><th>Total Bayar</th><td>Rp.<?php echo number_format($row[0]->totalBayar, 0,",",".") ?></td></tr>
+                    </table>
+                    <br>
+                    <table class="table table-bordered">
+                      <tr><th colspan="2" style="text-align: center;">Produk Terpilih</th></tr>
+                        <?php foreach ($penjualanProduk as $key) { ?>
+                            <tr><th style="width: 15px !important;">Nama Produk</th><td><?php echo $key->namaProduk ?></td></tr>
+                            <tr><th>Kategori</th><td><?php echo $key->kategori ?></td></tr>
+                            <tr><th>Harga</th><td><?php echo $key->hargaPenjualan ?></td></tr>
+                        <?php } ?> 
+                    </table>
+                    <br>
+                    <table class="table table-bordered">
+                        <tr><th colspan="2" style="text-align: center;">Nama Pegawai Kiko</th></tr>
+                        <?php 
+                        if ($KdTukang[0] != 0) { ?>
+                         
+                          <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->nama_lengkap ?></td></tr>
+                          <tr><th>No Handphone</th><td><?php echo $row[0]->tukangHP ?></td></tr>
+                          <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?>
+                            <!-- <?php 
 
-                              if (empty($key->tglUpdateGaleri)) {
-                                $dateUpdate = '-';
-                              }else{
-                                $dateUpdate = date_format (new DateTime($key->tglUpdateGaleri), 'd-M-Y H:i:s');
-                              }
+                          if ($row[0]->status == 1) {
+                            $status = 'Free';
+                          }else{
+                            $status = 'Kerja';
+                          }
 
-                              if (empty($key->tglGaleri)) {
-                                $dateCreate = '-';
-                              }else{
-                                $dateCreate = date_format (new DateTime($key->tglGaleri), 'd-M-Y H:i:s');
-                              }
-
-                            echo "<tr>";
-                                echo "<td>". $no++."</td>";
-                                echo "<td>". $key->judulGaleri."</td>";
-                                echo "<td>". $dateCreate."</td>";
-                                echo "<td>". $dateUpdate."</td>";
-                                
-                                ?>
-                                <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleri/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleri/'.$key->kdGaleri?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Update</a>
-                                    <a href="#" onclick="myDelete(<?='\''.$key->kdGaleri.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                      
-                    </tbody>
-                  </table>
+                          echo $status ?> -->
+                            
+                          </td></tr>
+                        
+                        <?php 
+                        }
+                        ?>
+                        
+                    </table>
+                  </div>
+                    
                 </div>
+
+                 <?php echo anchor('webbackend/C_dataPenjualan/lihatHistoryReservasi','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
               </div>
-                
+               
 
             </div>
           </div>  
@@ -453,75 +366,6 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
-  <div class="modal fade" id="dialogrepair_box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-       <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div id="login">
-               <div class="modal-header" style="height: 50px !important;">
-                 
-                  <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Hapus Data Galeri</h6>
-                </div>
-                <div class="col-md-1">
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-               </div>
-               <div class="modal-body" style="height: 50px !important;">
-                  
-                     <p>Apakah anda yakin ingin menghapus data Galeri</p>  
-                  
-                </div>
-
-               </div>
-               <div class="modal-footer" align="right">
-                <div class="col-md-12">
-                    <div align="right">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_delete" class="btn btn-danger">Hapus</button>
-                    </div>  
-                </div>
-               </div>
-             </div>
-
-
-          </div>
-
-       </div>
-    
-  <script>
-    function myDelete(val) {
-        // console.log(val);
-        var kdGaleri = val;
-
-        $('#dialogrepair_box').modal('show');
-
-        $("#btn_delete").click(function() {
-
-            $.ajax({
-                  url:"<?php echo base_url(); ?>webbackend/C_dataKiko/deleteDataGaleri",
-                  type: 'POST',
-                  dataType: "html",
-                  data: {
-                      kdGaleri: kdGaleri
-                  },
-                  success: function(data) {
-                      console.log(data);
-                      $('#dialogrepair_box').modal('hide');
-                      window.location.reload(true);
-                   
-                  },
-                  error: function(xhr, ajaxOptions, thrownError)
-                  {
-                      alert("Failed to get where column list, please try again");
-            
-                  }
-            });
-
-        });
-        
-    }
-  </script>
 
   <!-- plugins:js -->
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.base.js"></script>

@@ -163,5 +163,8 @@ return array(
 	'vcf'	=>	'text/x-vcard',
 	'srt'	=>	array('text/srt', 'text/plain'),
 	'vtt'	=>	array('text/vtt', 'text/plain'),
-	'ico'	=>	array('image/x-icon', 'image/x-ico', 'image/vnd.microsoft.icon')
+	'ico'	=>	array('image/x-icon', 'image/x-ico', 'image/vnd.microsoft.icon'),
+	'mp4' => 'video/mp4',
+	'3gp' => 'video/3gpp',
+	'flv'   => array('video/x-flv', 'flv-application/octet-stream', 'application/octet-stream'),
 );

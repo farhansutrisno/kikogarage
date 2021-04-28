@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
-  <link href="<?php echo base_url() ?>assetsAdmin/css/icons.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
@@ -18,8 +17,12 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/css/style.css">
-  <!-- endinject -->
   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg" />
+  <!-- endinject -->
+  <!-- link baru date picker-->
+  <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="<?=base_url();?>vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+  <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
   <style type="text/css">
     .sidebar .nav .nav-item.nav-profile img{
@@ -30,79 +33,34 @@
       border-radius: 0% !important;
     }
   </style>
-
-  <style type="text/css">
-    .nav-tabs .nav-link {
-        border-color: #c9c9c9;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        text-align: center;
-        font-size: 12px
-      }
-      .nav-tabs .nav-link:hover {
-        border-color: #c9c9c9;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        color:black;
-        margin-top: -10px;
-          padding-bottom: 10px;
-          top: -10px;
-          padding-top: 18px;
-          height: 47.5px;
-      }
-      .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-          color:black;
-          background-color: #D3D3D3;
-          border-color: #dee2e6 #dee2e6 #fff;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          margin-top: -10px;
-          padding-bottom: 10px;
-          top: -10px;
-          padding-top: 14px;
-          height: 47.5px;
-          font-size: 14px
-      }
-  </style>
   
 </head>
 
 <body>
-
   <div class="container-scroller">
     <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan5'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan7'); ?></div>
-    
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0   ">
-
+    <div  id="notifications"><?php echo $this->session->flashdata('pesan4'); ?></div>
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-
-        <a class="navbar-brand" href="#"> 
+       <a class="navbar-brand brand-logo" href="#"> 
          
           <p class="text-center font-weight-medium">Kiko Good Garage</p>
-      </a>
-        
+        </a>
+       
       </div>
-      
       <div class="navbar-menu-wrapper d-flex align-items-center">
-
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="mdi mdi-menu"></span>
         </button>
         
-        
-
-
         <ul class="navbar-nav navbar-nav-right">
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <div class="dropdown-toggle-wrapper">
                 <div class="inner">
                   <img class="img-xs rounded-circle" src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="Profile image">
-                  <!-- <img class="img-xs rounded-circle" src="<?php echo base_url() ?>images/<?php echo $row['foto'] ?>" alt="Profile image"> -->
                 </div>
                 <div class="inner">
                   <div class="inner">
@@ -131,15 +89,20 @@
                   </div>
                 </div>
               </a>
-              
+              <!-- <a class="dropdown-item mt-2">
+                Lihat Data Operator
+              </a>
+              <a class="dropdown-item">
+                Ubah Data
+              </a> -->
               <a class="dropdown-item" href="<?php echo base_url() ?>webbackend/C_dataOperator/logout">
                 Keluar
               </a>
             </div>
           </li>
-          
+         
           <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle count-indicator" id="messageDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-email-outline"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
@@ -151,7 +114,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="<?php echo base_url()?>admin/images/faces/face4.jpg" alt="image" class="profile-pic">
+                  <img src="<?php echo base_url() ?>admin/images/faces/face4.jpg" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
@@ -165,7 +128,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="<?php echo base_url()?>admin/images/faces/face2.jpg" alt="image" class="profile-pic">
+                  <img src="<?php echo base_url() ?>admin/images/faces/face2.jpg" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
@@ -192,8 +155,7 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-
-      <!-- partial:partials/_settings-panel.html -->
+      <!-- partial:../../partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close mdi mdi-close"></i>
@@ -216,14 +178,14 @@
         </div>
       </div>
       <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
+      <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
-
         <ul class="nav">
           <li class="nav-item nav-profile">
             <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
@@ -239,10 +201,10 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-               <!--  <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
                 </li> -->
-                 <li class="nav-item">
+                <li class="nav-item Active">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
                 <li class="nav-item">
@@ -268,7 +230,6 @@
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
-
                 <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                   
                   <li class="nav-item">
@@ -276,9 +237,8 @@
                   </li>
 
                 <?php } ?>
-                
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pekerja</a>
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
                 </li>
                 
               </ul>
@@ -292,7 +252,6 @@
             </a>
           </li>
           
-          
           <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
               <i class="menu-icon icon-bag"></i>
@@ -300,7 +259,7 @@
             </a>
           </li> -->
 
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
@@ -358,92 +317,64 @@
             </div>
           </div>
           
-          <div class="card">
-            <div class="card-body">
-              <!-- <div class="container"> -->
+          <form method="POST" action="<?php echo base_url().'webbackend/C_dataKiko/prosesInputDataGaleriVideo'?>" enctype="multipart/form-data">
+          <div class="row">
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri Photo</a>
-                     
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriVideo">Galeri Video</a>
-                    
-                  </li>
-                </ul>
-              <!-- </div> -->
-              <br>
-              <h5 class="page-title">Data Galeri Photo <small>Kiko Good Garage </small></h5><br>
-              <div class="row">
-              <div class="col-12 page-header-title">
-                    <?php
-                    echo anchor('webbackend/C_dataKiko/inputDataGaleri','Add Photo',array('class'=>'btn btn-round btn-success'));
-                    ?>
-
-                </div>
-                <br>
-                <br>
-                <br>
-                <div class="col-12 table-responsive">
-                  <table id="order-listing" class="table">
-                    <thead>
-                      <tr>
-                          <th style="width: 10px !important;">No</th>
-                          <th>Judul</th>
-                          <th>Create Date</th>
-                          <th>Update Date</th>
-                          <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                        $no=1;
-                            foreach ($Galeri as $key){
-
-                              if (empty($key->tglUpdateGaleri)) {
-                                $dateUpdate = '-';
-                              }else{
-                                $dateUpdate = date_format (new DateTime($key->tglUpdateGaleri), 'd-M-Y H:i:s');
-                              }
-
-                              if (empty($key->tglGaleri)) {
-                                $dateCreate = '-';
-                              }else{
-                                $dateCreate = date_format (new DateTime($key->tglGaleri), 'd-M-Y H:i:s');
-                              }
-
-                            echo "<tr>";
-                                echo "<td>". $no++."</td>";
-                                echo "<td>". $key->judulGaleri."</td>";
-                                echo "<td>". $dateCreate."</td>";
-                                echo "<td>". $dateUpdate."</td>";
-                                
-                                ?>
-                                <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleri/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleri/'.$key->kdGaleri?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Update</a>
-                                    <a href="#" onclick="myDelete(<?='\''.$key->kdGaleri.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Input Data Galeri Video</h4>
+      
+                  <hr>
+                  
+                    <fieldset>
+                      <div class="form-group">
+                          <label>Judul Galeri</label>
+                          <input type="text" class="form-control" name="judulGaleriVideo" value="<?php echo set_value('judulGaleriVideo') ?>" required/>
+                          <?php echo form_error('judulGaleriVideo'); ?>
+                      </div>
                       
-                    </tbody>
-                  </table>
+                      <div>
+                        <label>Gambar Galeri</label>
+                        <div>
+                          <input class="form-control" type="file" name="userfile" required>
+                          <span><i>Format file : JPG/JPEG/PNG | Maksimal Upload : 10 Mb</i></span>
+                          <?php echo form_error('userfile'); ?>
+
+                      </div>
+                      
+                      </div>
+                      
+                    </fieldset>
+                  
                 </div>
               </div>
-                
-
             </div>
-          </div>  
+
+            <div class="col-lg-6">
+           
+            </div>
+
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                    <fieldset>
+                       <?php echo anchor('webbackend/C_dataKiko/lihatDataGaleriVideo','Back',array('class'=>'btn btn-round btn-info' ));?>
+                    
+                          <input type="submit" name="submit" class="btn btn-round btn-success" value="Submit"/>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </form>
+          <!-- <?php echo form_close(); ?> -->
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
+        <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright. All rights reserved.</span>
-           
           </div>
         </footer>
         <!-- partial -->
@@ -453,75 +384,6 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
-  <div class="modal fade" id="dialogrepair_box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-       <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div id="login">
-               <div class="modal-header" style="height: 50px !important;">
-                 
-                  <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Hapus Data Galeri</h6>
-                </div>
-                <div class="col-md-1">
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-               </div>
-               <div class="modal-body" style="height: 50px !important;">
-                  
-                     <p>Apakah anda yakin ingin menghapus data Galeri</p>  
-                  
-                </div>
-
-               </div>
-               <div class="modal-footer" align="right">
-                <div class="col-md-12">
-                    <div align="right">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_delete" class="btn btn-danger">Hapus</button>
-                    </div>  
-                </div>
-               </div>
-             </div>
-
-
-          </div>
-
-       </div>
-    
-  <script>
-    function myDelete(val) {
-        // console.log(val);
-        var kdGaleri = val;
-
-        $('#dialogrepair_box').modal('show');
-
-        $("#btn_delete").click(function() {
-
-            $.ajax({
-                  url:"<?php echo base_url(); ?>webbackend/C_dataKiko/deleteDataGaleri",
-                  type: 'POST',
-                  dataType: "html",
-                  data: {
-                      kdGaleri: kdGaleri
-                  },
-                  success: function(data) {
-                      console.log(data);
-                      $('#dialogrepair_box').modal('hide');
-                      window.location.reload(true);
-                   
-                  },
-                  error: function(xhr, ajaxOptions, thrownError)
-                  {
-                      alert("Failed to get where column list, please try again");
-            
-                  }
-            });
-
-        });
-        
-    }
-  </script>
 
   <!-- plugins:js -->
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.base.js"></script>
@@ -537,10 +399,25 @@
   <script src="<?php echo base_url() ?>admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="<?php echo base_url() ?>admin/js/dashboard.js"></script>
-   <script src="<?php echo base_url() ?>admin/js/data-table.js"></script>
+  <script src="<?php echo base_url() ?>admin/js/form-validation.js"></script>
+  <script src="<?php echo base_url() ?>admin/js/bt-maxLength.js"></script>
   <!-- End custom js for this page-->
-<!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVDaLDOLvcbvWBm58jdhbN5LM041ifJBZ4HHvIzRSXMUkU4lPIh%2fYqiYc7wtqmtMWoVr1kId0HDTGeZ%2bwQlH%2f%2btg9ebKzUxo5T%2b%2bUN33UTMMTi3eGi571v2PevtQzTdiYpJVhTtVEGUZXMKXF300l5O8y2VFuocYUdTimwf0tcjekcsd0TAIp%2fx2G5jr67Au82DHajA2TlsBD3vQpEs6V7vc%2fK5PMmaV4mxJK6Qdbjc8X66VRhcIdG0rPLtCnwGAfXHnH0q7lDgPG2%2bel3wwNlE8NuCC%2bSmu2SxOiUx7A%2fkj1m9sM6a7R9yRzGzMEzGh3%2fZ5h3fPhYwybJgtfoY8sfQS9qABhgp%2bKXOhY1eGm056ufcOuaT9yTsNAy03FCk1yKUbUYcdljSxWQlc%2ftnBOBZKowLu%2ff7SENG%2bUzAmQLVINArEORbgm66kyE03E0UOkllDZopVlWKTRVEGKpAY%2bhlJ" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
+<!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVCVZX4IV0M5OaagmDC9xsepkK5hTLXpERDD8TrtJTWm0zcV8%2fw8Bo1%2fdc0i%2flxQYMINzyz8b1eLBCBLpqGjHWbErwHMhSNKiAJCGszynE9YkG8NHcHRxQ1jwpwxZIzS8L%2fMTjMHwpldaKnjciA%2fhvOrKk1Fzzkub2sg2tTtj796sIzcH6mm1DOXvDtCyo8h2p%2f1owNmB1ECpI9ViW8Cg3oo%2fBEpXGASLHU8CQL2kPOgiAPWCrmFdL8%2bklJdp9XZsUQZYQLTt%2fkX4v840V8lCkn4yItrMroeG7%2fSdghqboIPnfn1E%2fkkK1t%2fu8ThWoxLWkGcwA1VfTfVKAKnhXmDKXlaB4brppugOypwm%2bZ06%2bsfR%2bUbccHipHHR1rT0RZxzpDka63wnX%2fEivA00t4UVN90FRZyokx9jt4%2fOl9pO7VvRg9tRQrcccUw4mg%2f3tXoqsJXzVdVaQys%2fG4PR5sRiiR6Rw%2bDyLgNLcT1OUSkj9R6s4Q%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
+  
+  <script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+     $('.datepicker').datetimepicker({
+        language:  'id',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+        });
+    </script>
+
 </body>
 
 </html>

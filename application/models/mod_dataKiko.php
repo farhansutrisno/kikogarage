@@ -93,6 +93,12 @@ class mod_dataKiko extends CI_Model{
 	*/
 
 	public function lihatDataGaleri(){
+		$this->db->where("tipe",1);
+		return $this->db->get("galeri");
+	}
+
+	public function lihatDataGaleriVideo(){
+		$this->db->where("tipe",2);
 		return $this->db->get("galeri");
 	}
 
@@ -112,6 +118,21 @@ class mod_dataKiko extends CI_Model{
 			$data 			= array(
 				"judulGaleri" 		=> $judulGaleri,
 				"tglGaleri" 		=> date("Y-m-d H:i:s"),
+				"tipe"				=> 1,
+				"gambar"			=> $gambar
+			);
+
+			$this->db->insert('galeri',$data);
+	}
+
+	public function inputDataGaleriVideo($gambar){
+			
+			$judulGaleriVideo	= $this->input->post('judulGaleriVideo');
+		
+			$data 			= array(
+				"judulGaleri" 		=> $judulGaleriVideo,
+				"tglGaleri" 		=> date("Y-m-d H:i:s"),
+				"tipe"				=> 2,
 				"gambar"			=> $gambar
 			);
 

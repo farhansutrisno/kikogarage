@@ -364,21 +364,21 @@
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri Photo</a>
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri Photo</a>
                      
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriVideo">Galeri Video</a>
+                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriVideo">Galeri Video</a>
                     
                   </li>
                 </ul>
               <!-- </div> -->
               <br>
-              <h5 class="page-title">Data Galeri Photo <small>Kiko Good Garage </small></h5><br>
+              <h5 class="page-title">Data Galeri Video <small>Kiko Good Garage </small></h5><br>
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php
-                    echo anchor('webbackend/C_dataKiko/inputDataGaleri','Add Photo',array('class'=>'btn btn-round btn-success'));
+                    echo anchor('webbackend/C_dataKiko/inputDataGaleriVideo','Add Video',array('class'=>'btn btn-round btn-success'));
                     ?>
 
                 </div>
@@ -421,8 +421,8 @@
                                 
                                 ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleri/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleri/'.$key->kdGaleri?>" class="btn btn-primary">
+                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleriVideo/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleriVideo/'.$key->kdGaleri?>" class="btn btn-primary">
                                     <i class="ion ion-md-create"></i>Update</a>
                                     <a href="#" onclick="myDelete(<?='\''.$key->kdGaleri.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                 </td>
