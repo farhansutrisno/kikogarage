@@ -36,10 +36,7 @@
 <body>
 
   <div class="container-scroller">
-   <!--  <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>-->
-  <div  id="notifications"><?php echo $this->session->flashdata('pesan2'); ?></div>
-  <div  id="notifications"><?php echo $this->session->flashdata('pesan1'); ?></div>
-    
+   
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0   ">
 
@@ -59,6 +56,11 @@
         </button>
         
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan1'); ?>
+            <?php echo $this->session->flashdata('pesan2'); ?>
+            </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
@@ -69,7 +71,7 @@
                 <div class="inner">
                   <div class="inner">
                     <span class="profile-text font-weight-bold"><?=$this->session->userdata('namaAdmin')?></span>
-                    <small class="profile-text small">Admin</small>
+                    <small class="profile-text small"><?=$this->session->userdata('operatorstatus')?></small>
                   </div>
                   <div class="inner">
                     <div class="icon-wrapper">

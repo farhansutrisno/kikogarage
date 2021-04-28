@@ -22,11 +22,18 @@ class C_dataOperator extends CI_Controller{
 			if($username == $key['username'] && $password == $key['password']){
 				$no=1;
 
+				if ($key['status'] == 1) {
+					$operatorstatus = 'Admin';
+				}else{
+					$operatorstatus = 'Super Admin';
+				}
+
 				$this->session->set_userdata('namaAdmin',$key['username']);
 				$this->session->set_userdata('namaLengkap',$key['namaLengkap']);
 				$this->session->set_userdata('kodeOperator',$key['kdOperator']);
 				$this->session->set_userdata('foto',$key['foto']);
 				$this->session->set_userdata('statusAdmin',$key['status']);
+				$this->session->set_userdata('operatorstatus',$operatorstatus);
 
 				$this->session->set_flashdata('pesan1', 
 	 	                '<div class="alert alert-info ">    

@@ -64,7 +64,7 @@
                 <div class="inner">
                   <div class="inner">
                     <span class="profile-text font-weight-bold"><?=$this->session->userdata('namaAdmin')?></span>
-                    <small class="profile-text small">Admin</small>
+                    <small class="profile-text small"><?=$this->session->userdata('operatorstatus')?></small>
                   </div>
                   <div class="inner">
                     <div class="icon-wrapper">

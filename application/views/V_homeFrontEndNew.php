@@ -45,6 +45,17 @@
     		height: 35px !important;
     		font-size: 14px !important;
     	}
+
+    	.boxnew{
+    		position: static;
+			width: 498px;
+			height: 187px;
+			left: 391px;
+			top: 375px;
+			background: rgba(226, 221, 102, 0.8);
+			/*filter: blur(4px);*/
+			border-radius: 75px;
+    	}
     </style>
   </head>
   <body>
@@ -237,7 +248,10 @@
 	            <h1 class="mb-2" style="font-size: 40px;">Premium Carwash & Auto Detailing</h1>
 	            <p style="font-size: 18px;">Rawat dan Percantik Kendaraan Anda dan Percayakan Kepada Kami</p>
 	            <p class="mb-0"><a href="<?php echo base_url('C_produkPembeli/pencarianNew/CarWash') ?>" class="btn btn-success py-3 px-4">Reservasi Sekarang</a></p>
-	           
+	            <br>
+	           	<div class="boxnew">
+	           		
+	           	</div>
             </div>
           </div>
         </div>
