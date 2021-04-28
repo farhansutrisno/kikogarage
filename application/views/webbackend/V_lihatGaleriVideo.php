@@ -70,9 +70,6 @@
 <body>
 
   <div class="container-scroller">
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan5'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan7'); ?></div>
     
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0   ">
@@ -96,6 +93,13 @@
 
 
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan3'); ?>
+            <?php echo $this->session->flashdata('pesan5'); ?>
+            <?php echo $this->session->flashdata('pesan6'); ?>
+            <?php echo $this->session->flashdata('pesan7'); ?>
+            </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
@@ -461,7 +465,7 @@
                <div class="modal-header" style="height: 50px !important;">
                  
                   <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Hapus Data Galeri</h6>
+                  <h6 class="modal-title textBlack" align="left">Hapus Data Galeri Video</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -469,7 +473,7 @@
                </div>
                <div class="modal-body" style="height: 50px !important;">
                   
-                     <p>Apakah anda yakin ingin menghapus data Galeri</p>  
+                     <p>Apakah anda yakin ingin menghapus data Galeri Video</p>  
                   
                 </div>
 

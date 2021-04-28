@@ -125,17 +125,8 @@ class mod_dataKiko extends CI_Model{
 			$this->db->insert('galeri',$data);
 	}
 
-	public function inputDataGaleriVideo($gambar){
+	public function inputDataGaleriVideo($data){
 			
-			$judulGaleriVideo	= $this->input->post('judulGaleriVideo');
-		
-			$data 			= array(
-				"judulGaleri" 		=> $judulGaleriVideo,
-				"tglGaleri" 		=> date("Y-m-d H:i:s"),
-				"tipe"				=> 2,
-				"gambar"			=> $gambar
-			);
-
 			$this->db->insert('galeri',$data);
 	}
 
@@ -146,34 +137,28 @@ class mod_dataKiko extends CI_Model{
 
 	public function prosesUpdateDataGaleri($gambar){
 
+		$kdGaleri 		= $this->input->post('kdGaleri');
+		$judulGaleri 	= $this->input->post('judulGaleri');
 
+		if($gambar==null){
 
-			if($gambar==null){
+			$data 			= array(
+				"judulGaleri" 		=> $judulGaleri,
+				"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
+			);
 
-				$kdGaleri 		= $this->input->post('kdGaleri');
-				$judulGaleri 	= $this->input->post('judulGaleri');
+		}else{
 				
-				$data 			= array(
-					"judulGaleri" 		=> $judulGaleri,
-					"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
-				);
+			$data 			= array(
+				"judulGaleri" 		=> $judulGaleri,
+				"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
+				"gambar"			=> $gambar 
+			);
 
-				$this->db->where("kdGaleri",$kdGaleri);
-				return $this->db->update("galeri",$data);
+		}
 
-			}else{
-					$kdGaleri 		= $this->input->post('kdGaleri');
-					$judulGaleri 	= $this->input->post('judulGaleri');
-					
-					$data 			= array(
-						"judulGaleri" 		=> $judulGaleri,
-						"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
-						"gambar"			=> $gambar 
-					);
-
-				$this->db->where("kdGaleri",$kdGaleri);
-				return $this->db->update("galeri",$data);
-			}
+		$this->db->where("kdGaleri",$kdGaleri);
+		return $this->db->update("galeri",$data);
 	}
 
 	public function deleteDataGaleri($kdGaleri){

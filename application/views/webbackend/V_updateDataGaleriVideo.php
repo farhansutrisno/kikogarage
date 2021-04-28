@@ -38,16 +38,14 @@
 
 <body>
   <div class="container-scroller">
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan4'); ?></div>
+   
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-       <a class="navbar-brand brand-logo" href="#"> 
+        <a class="navbar-brand" href="#">
          
           <p class="text-center font-weight-medium">Kiko Good Garage</p>
         </a>
-       
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -56,6 +54,10 @@
         
         <ul class="navbar-nav navbar-nav-right">
           
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan3'); ?>
+            </div>
+
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <div class="dropdown-toggle-wrapper">
@@ -89,7 +91,7 @@
                   </div>
                 </div>
               </a>
-              <!-- <a class="dropdown-item mt-2">
+             <!--  <a class="dropdown-item mt-2">
                 Lihat Data Operator
               </a>
               <a class="dropdown-item">
@@ -204,13 +206,13 @@
                 <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
                 </li> -->
-                <li class="nav-item Active">
+                <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
                 </li>
-                <li class="nav-item">
+                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Konsumen</a>
                 </li>
                
@@ -218,7 +220,7 @@
             </div>
           </li>
 
-          <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
@@ -317,34 +319,35 @@
             </div>
           </div>
           
-          <form method="POST" action="<?php echo base_url().'webbackend/C_dataKiko/prosesInputDataGaleriVideo'?>" enctype="multipart/form-data">
+           <form method="POST" action="<?php echo base_url().'webbackend/C_dataKiko/prosesUpdateDataGaleriVideo'?>" enctype="multipart/form-data">
           <div class="row">
-
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Data Galeri Video</h4>
-      
-                  <hr>
+                  <h4 class="card-title">Update Data Galeri Video</h4>
                   
+                  <hr>
+                     
+                    <input type="hidden" class="form-control" name="kdGaleri" value="<?php echo $Galeri['kdGaleri']?>" />
                     <fieldset>
                       <div class="form-group">
                           <label>Judul Galeri</label>
-                          <input type="text" class="form-control" name="judulGaleriVideo" value="<?php echo set_value('judulGaleriVideo') ?>" required/>
-                          <?php echo form_error('judulGaleriVideo'); ?>
+                          <input type="text" class="form-control" name="judulGaleri" value="<?php echo $Galeri['judulGaleri']?>" required/>
+                          <?php echo set_value('judulGaleri') ?><br><?php echo form_error('judulGaleri'); ?>
                       </div>
-                      
+                     
                       <div>
-                        <label>Gambar Galeri</label>
+                        <label>Video</label>
                         <div>
-                          <input class="form-control" type="file" name="video" required>
-                          <span><i>Format file : MP4 | Maksimal Upload : 5 Mb</i></span>
-                          <?php echo form_error('video'); ?>
+                          <video controls loop="true" width="250px" height="200px">
+                            <source src="<?php echo base_url().'gambar_proyek/'.$Galeri['gambar'] ?>" type="video/mp4"/>
+                          </video>
+          
+                          <input class="form-control" type="file" name="userfile" >
+                          <span><i>Format : MP4 | Maksimal Upload : 5 Mb</i></span>
 
                       </div>
-                      
-                      </div>
-                      
+                       
                     </fieldset>
                   
                 </div>
@@ -352,7 +355,7 @@
             </div>
 
             <div class="col-lg-6">
-           
+              
             </div>
 
             <div class="col-lg-12">
@@ -366,6 +369,7 @@
                   </div>
                 </div>
               </div>
+
           </div>
           </form>
           <!-- <?php echo form_close(); ?> -->
@@ -403,7 +407,8 @@
   <script src="<?php echo base_url() ?>admin/js/bt-maxLength.js"></script>
   <!-- End custom js for this page-->
 <!-- <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd9%2f1qnbRUEVCVZX4IV0M5OaagmDC9xsepkK5hTLXpERDD8TrtJTWm0zcV8%2fw8Bo1%2fdc0i%2flxQYMINzyz8b1eLBCBLpqGjHWbErwHMhSNKiAJCGszynE9YkG8NHcHRxQ1jwpwxZIzS8L%2fMTjMHwpldaKnjciA%2fhvOrKk1Fzzkub2sg2tTtj796sIzcH6mm1DOXvDtCyo8h2p%2f1owNmB1ECpI9ViW8Cg3oo%2fBEpXGASLHU8CQL2kPOgiAPWCrmFdL8%2bklJdp9XZsUQZYQLTt%2fkX4v840V8lCkn4yItrMroeG7%2fSdghqboIPnfn1E%2fkkK1t%2fu8ThWoxLWkGcwA1VfTfVKAKnhXmDKXlaB4brppugOypwm%2bZ06%2bsfR%2bUbccHipHHR1rT0RZxzpDka63wnX%2fEivA00t4UVN90FRZyokx9jt4%2fOl9pO7VvRg9tRQrcccUw4mg%2f3tXoqsJXzVdVaQys%2fG4PR5sRiiR6Rw%2bDyLgNLcT1OUSkj9R6s4Q%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
-  
+
+<!-- script buat date picker-->
   <script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript">
      $('.datepicker').datetimepicker({
@@ -419,5 +424,4 @@
     </script>
 
 </body>
-
 </html>

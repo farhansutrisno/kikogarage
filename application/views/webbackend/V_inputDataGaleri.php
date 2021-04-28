@@ -323,7 +323,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Data Galeri</h4>
+                  <h4 class="card-title">Input Data Galeri Photo</h4>
       
                   <hr>
                   

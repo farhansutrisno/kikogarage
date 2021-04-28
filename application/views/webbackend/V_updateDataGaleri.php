@@ -321,7 +321,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Update Data Galeri</h4>
+                  <h4 class="card-title">Update Data Galeri Photo</h4>
                   
                   <hr>
                      
@@ -337,7 +337,7 @@
                         <label>Gambar</label>
                         <div>
                           <span><img src="<?php echo base_url().'gambar_proyek/'.$Galeri['gambar'] ?>" height="50px" width="60px" ></span>
-          
+                          
                           <input class="form-control" type="file" name="userfile">
                           <span><i>Format : JPG/JPEG/PNG | Maksimal Upload : 10 Mb</i></span>
 
