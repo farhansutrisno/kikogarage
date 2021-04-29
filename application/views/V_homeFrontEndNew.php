@@ -65,8 +65,8 @@
     		/*position: sticky;*/
 			/*width: 498px;*/
 			display: inline-block;
-			min-width: 150px;
-			min-height: 150px;			
+			min-width: 100px;
+			min-height: 100px;			
 			/*height: 187px;*/
 			/*left: 391px;*/
 			/*top: 375px;*/
@@ -271,12 +271,14 @@
 
 		            <br>
 		           	<div class="boxnew">
-		           		<p style="font-size: 18px; color: #FFFFFF;">Antrian Reservasi Terbaru</p>
+		           		<p class="mb-0" style="font-size: 18px; color: #FFFFFF;">Antrian Reservasi Terbaru</p>
 		           		<div class="boxcircle">
-		           			<h1 style="font-size: 20px; color: #095F50;margin-top: 2.0rem !important;margin-bottom: -1.0rem !important;">Sisa</h1>
-		           			<b style="font-size: 60px; color: #095F50;">8</b>
+		           			<h1 style="font-size: 15px; color: #095F50;margin-top: 1.5rem !important;margin-bottom: -1.0rem !important;">Sisa</h1>
+		           			<b style="font-size: 40px; color: #095F50;">8</b>
 		           		</div>
-		           		<br>
+		           		<p class="mb-0" style="font-size: 18px; color: #FFFFFF;">Antrian Anda</p>
+		           		<p class="mb-0" style="font-size: 18px; color: #095F50;"><b>ANT-15</b></p>
+		           		<p class="mb-0" style="font-size: 18px; color: #095F50;"><b>Estimasi : 1 Jam 45 Menit</b></p>
 	           		</div>
 	           	<?php } ?>
             </div>
