@@ -15,6 +15,7 @@
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/owl.theme.default.min.css">
+
     <link rel="stylesheet" href="<?php echo base_url() ?>css/magnific-popup.css">
 
     <link rel="stylesheet" href="<?php echo base_url() ?>css/aos.css">
@@ -281,7 +282,7 @@
               <div class="gallery-container">  
                   
                   <div class="col-xs-6 col-sm-4 col-md-3 ">
-                    <div class="gallery-item">
+                    <div class="gallery-item gallery">
                       <h2 style="margin: 0 0 20px; font-weight: 600; font-family: 'Poppins' sans-serif; color: #083180; font-size: 18px; text-align: justify;"><?php echo $key->judulGaleri; ?></h2>
                       <img src="<?php echo base_url() ?>gambar_proyek/<?php echo $key->gambar ?>" width="200px" alt="" />
                       <div class="project-project-gallery-overlay">
@@ -302,6 +303,7 @@
             <?php echo $pag; ?>
         </div>
       </div>
+     
     </section>
 
    
@@ -475,6 +477,8 @@
 
 	</script>
 
+
+
   <!-- <script src="<?php echo base_url() ?>js/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url() ?>js/jquery-migrate-3.0.1.min.js"></script>
   <script src="<?php echo base_url() ?>js/popper.min.js"></script>
@@ -483,7 +487,9 @@
   <script src="<?php echo base_url() ?>js/jquery.waypoints.min.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.stellar.min.js"></script>
   <script src="<?php echo base_url() ?>js/owl.carousel.min.js"></script>
+
   <script src="<?php echo base_url() ?>js/jquery.magnific-popup.min.js"></script>
+
   <script src="<?php echo base_url() ?>js/aos.js"></script>
   <script src="<?php echo base_url() ?>js/jquery.animateNumber.min.js"></script>
 
@@ -495,7 +501,22 @@
   <!-- <script src="<?php echo base_url() ?>js/google-map.js"></script> -->
   <script src="<?php echo base_url() ?>js/main.js"></script>
 
-
+  <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('.gallery').magnificPopup({
+                type: 'image',
+  
+                // To invoke the popup
+                // using the 'a' tag
+                delegate: 'a',
+  
+                // Enable the gallery
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
+    </script>
     
   </body>
 </html>
