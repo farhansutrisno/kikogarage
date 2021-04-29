@@ -48,8 +48,8 @@ class C_dataKiko extends CI_Controller{
         //$data['data'] = $this->mahasiswa_model->get_mahasiswa_list($config["per_page"], $data['page']);           
 
         $data['pag'] = $this->pagination->create_links();
-		$data['galeri'] = $this->mod_dataKiko->lihatDataGaleri($config["per_page"], $data['page'])->result();
-
+		$data['galeri'] = $this->mod_dataKiko->lihatDataGaleriFo($config["per_page"], $data['page'])->result();
+		$data['video']  = $this->mod_dataKiko->lihatDataGaleriVideo()->result();
 		$this->load->view('V_galeriFoNew',$data);
 	}
 

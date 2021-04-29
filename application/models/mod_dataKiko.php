@@ -103,6 +103,7 @@ class mod_dataKiko extends CI_Model{
 	}
 
 	public function lihatDataGaleriFo($limit, $start){
+		$this->db->where("tipe",1);
 		return $this->db->get("galeri",$limit, $start);
 	}
 

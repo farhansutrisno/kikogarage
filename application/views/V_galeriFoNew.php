@@ -233,18 +233,21 @@
     		<div class="row justify-content-center">
           <div class="col-md-12 heading-section text-center ftco-animate mb-5">
           	<!-- <span class="subheading">What we offer</span> -->
-            <h2 class="mb-2">Produk Kiko Good Garage</h2>
+            <h2 class="mb-2">Video Kiko Good Garage</h2>
           </div>
         </div>
     		<div class="row">
     			<div class="col-md-12">
     				<div class="carousel-car owl-carousel">
 
-    					<?php foreach ($galeri as $key) { ?>
+    					<?php foreach ($video as $key) { ?>
 
     					<div class="item">
     						<div class="car-wrap rounded ftco-animate">
-		    					<div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $key->gambar ?>);">
+		    					<div class="img rounded d-flex align-items-end");">
+		    						<video controls loop="true" width="300px" height="300px">
+				                      	<source src="<?php echo base_url().'gambar_proyek/'.$key->gambar ?>" type="video/mp4" />
+				                    </video>
 		    					</div>
 		    					<div class="text">
 		    						<h2 class="mb-0"><a href="#"><?php echo $key->judulGaleri; ?></a></h2>
@@ -261,10 +264,17 @@
     	</div>
     </section>
 
-    <section class="padding-top-20 padding-bottom-20">
+    <section class="padding-top-20 padding-bottom-20" style="margin-top: -70px !important;">
       
       <div class="gallery-page-sec"> 
         <div class="container">
+        	<div class="row justify-content-center">
+	          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+	          	<!-- <span class="subheading">What we offer</span> -->
+	            <h2 class="mb-2">Photo Kiko Good Garage</h2>
+	          </div>
+	        </div>
+
           <div class="row">   
             <?php foreach ($galeri as $key) { ?>
             <div class="gallery-area">            
