@@ -14,17 +14,23 @@ class C_produkPembeli extends CI_Controller{
     public function lihatProdukNew(){
         $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
         $data['reservasiqueue']   = $this->mod_dataProduk->queue();
-        $data['reservasiAwal']   = $this->mod_dataProduk->reservasiAwal($data['reservasiqueue']->tglTransaksi);
 
-        $data['cekJumlahQueue'] = $this->mod_dataProduk->cekJumlahQueue($data['reservasiqueue']->tglTransaksi,$data['reservasiqueue']->kodeUnik)->result();
+        if (!empty($data['reservasiqueue'])) {
+            $data['reservasiAwal']   = $this->mod_dataProduk->reservasiAwal($data['reservasiqueue']->tglTransaksi);
 
-        if ($data['reservasiqueue']->kdPembelian != $data['reservasiAwal']->kdPembelian) {
-            $awal  = strtotime($data['reservasiAwal']->tglPembayaran);
-            $akhir = strtotime($data['reservasiqueue']->tglPembayaran);
-            $diff  = $akhir - $awal;
+            $data['cekJumlahQueue'] = $this->mod_dataProduk->cekJumlahQueue($data['reservasiqueue']->tglTransaksi,$data['reservasiqueue']->kodeUnik)->result();
+
+            if ($data['reservasiqueue']->kdPembelian != $data['reservasiAwal']->kdPembelian) {
+                $awal  = strtotime($data['reservasiAwal']->tglPembayaran);
+                $akhir = strtotime($data['reservasiqueue']->tglPembayaran);
+                $diff  = $akhir - $awal;
+            }else{
+                $diff  = NULL;
+            }
         }else{
             $diff  = NULL;
         }
+        
 
         $jam   = floor($diff / (60 * 60));
         $menit = $diff - $jam * (60 * 60);
