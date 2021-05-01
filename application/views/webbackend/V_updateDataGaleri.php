@@ -39,7 +39,6 @@
 <body>
   <div class="container-scroller">
    
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -54,6 +53,10 @@
         </button>
         
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan3'); ?>
+            </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">

@@ -142,11 +142,11 @@ class C_transaksiProduk extends CI_Controller{
 				$kodeTukang = $cekTukang->KdTukang;
 			}
 
-			if ($booking == 'Antar Jemput') {
+			// if ($booking == 'Antar Jemput') {
 				$KdTukang = $kodeTukang;
-			}else{
-				$KdTukang = $kodeTukang;
-			}
+			// }else{
+			// 	$KdTukang = $kodeTukang;
+			// }
 
 			$order = $this->mod_dataPembelian->inputTransaksi($idAkun)->result_array();
 
@@ -167,7 +167,7 @@ class C_transaksiProduk extends CI_Controller{
 									'tglPembayaran'		=> $jamreservasi,
 									'noPlat'			=> $noPlat,
 									'jenisBooking'		=> $booking,
-									'statusPembayaran' 	=> 'Waiting List');
+									'statusPembayaran' 	=> 'Antrian');
 				
 				$this->mod_dataPembelian->inputDataOrder($dataTransaksi);
 			}
@@ -176,22 +176,22 @@ class C_transaksiProduk extends CI_Controller{
 									'idAkun'			=> $idAkun,
 									'kodeUnik'			=> $id,
 									'createDate'		=> date("Y-m-d H:i:s"),
-									'status' 			=> 'Waiting List'
+									'status' 			=> 'Antrian'
 							);
 			$this->mod_dataPembelian->inputDataHistory($dataHistory);
 
-			if (!empty($KdTukang)) {
+			// if (!empty($KdTukang)) {
 				$this->mod_dataPembelian->statusTukang($kodeTukang);
-			}
+			// }
 			
 			$data["produk"] 		= $this->mod_dataPembelian->dataProduk($id)->result();
 			$data["history"] 		= $this->mod_dataPembelian->lihatDataHistory($id)->result();
 
-			if (!empty($KdTukang)) {
+			// if (!empty($KdTukang)) {
 				$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi($id)->result();
-			}else{
-				$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi3($id)->result();
-			}
+			// }else{
+			// 	$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi3($id)->result();
+			// }
 			
 			$data["profil"] 		= $this->mod_dataPembelian->lihatTransaksi2($idAkun)->result();
 
@@ -245,8 +245,6 @@ class C_transaksiProduk extends CI_Controller{
 
 		//konfigurasi pagination
         $config['base_url'] = site_url('C_transaksiProduk/allTransaksiNew'); //site url
-        // $config['total_rows'] = $this->db->count_all('pembelian'); //total row harus di ubah per user count data
-
         $id = $this->session->userdata('kode');
         $config['total_rows'] = $this->mod_dataPembelian->countpencarian($id)->result()[0]->data;
 

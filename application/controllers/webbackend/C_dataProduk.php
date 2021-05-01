@@ -23,6 +23,8 @@ class C_dataProduk extends CI_Controller{
 
 		$x['Cars_Wash'] 	= $this->mod_dataProduk->get_kategori('CarWash',$tahun)->row()->data;
 		$x['Coating'] 		= $this->mod_dataProduk->get_kategori('Coating',$tahun)->row()->data;
+		$x['Interior'] 		= $this->mod_dataProduk->get_kategori('Interior',$tahun)->row()->data;
+		$x['Eksterior'] 	= $this->mod_dataProduk->get_kategori('Eksterior',$tahun)->row()->data;
 
 		$x['Cars_Wash1'] 	= $this->mod_dataProduk->kategori_value('CarWash',$tahun)->row()->data;
 		$x['Coating1'] 		= $this->mod_dataProduk->kategori_value('Coating',$tahun)->row()->data;
@@ -119,8 +121,11 @@ class C_dataProduk extends CI_Controller{
 			$x['desember'] 		= $this->mod_dataProduk->get_bulan('12',$tahun)->result()[0]->total_bayar;
 		}
 
-		$x['waitinglist'] 	= $this->mod_dataProduk->seluruhnya('Waiting List',$tahun)->row()->data;
+		$x['Antrian'] 		= $this->mod_dataProduk->seluruhnya('Antrian',$tahun)->row()->data;
 		$x['selesai'] 		= $this->mod_dataProduk->seluruhnya('Selesai',$tahun)->row()->data;
+		$x['pengerjaan'] 	= $this->mod_dataProduk->seluruhnya('Pengerjaan',$tahun)->row()->data;
+		$x['penjemputan'] 	= $this->mod_dataProduk->seluruhnya('Penjemputan',$tahun)->row()->data;
+		$x['pengantaran'] 	= $this->mod_dataProduk->seluruhnya('Pengantaran',$tahun)->row()->data;
 
 		$this->load->view('webbackend/V_lihatGrafikPenjualan',$x);
 

@@ -458,7 +458,7 @@ class mod_dataProduk extends CI_Model{
     function seluruhnya($status,$tahun){
         // $tahun = $this->session->userdata('tahun');
         $tahun = $tahun;
-        $query = "SELECT  COUNT(statusPembayaran) as data
+        $query = "SELECT  COUNT(DISTINCT statusPembayaran) as data
                                 FROM pembelian
                                 WHERE statusPembayaran = '".$status."' AND tglTransaksi BETWEEN '$tahun-01-01' AND '$tahun-12-31'";
         return $this->db->query("$query");

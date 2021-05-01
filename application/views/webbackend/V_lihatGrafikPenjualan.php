@@ -413,7 +413,7 @@
                           text:'<h3>JUMLAH LAYANAN KIKO BERDASARKAN KATEGORI</h3>'
                         },
                         tooltip: {
-                          backgroundColor: getColor['tosca_blue'],
+                          backgroundColor: getColor['white'],
                           borderColor: 'transparent',
                           borderRadius: 7,
                           borderWidth: 0,
@@ -432,7 +432,7 @@
                         },
                         legend: {
                           itemMarginTop: 20,
-                          itemHoverStyle: {color: getColor['white']}
+                          // itemHoverStyle: {color: getColor['white']}
                         },
                         credits: {enabled: false},
                         series: [{
@@ -449,6 +449,14 @@
                               name: 'Coating',
                               y: <?php echo $Coating ?>,
                               color: getColor['yellow'],
+                            }, {
+                              name: 'Interior',
+                              y: <?php echo $Interior ?>,
+                              color: getColor['green'],
+                            }, {
+                              name: 'Eksterior',
+                              y: <?php echo $Eksterior ?>,
+                              color: getColor['orange'],
                             }
                           ]
                         }]
@@ -475,7 +483,7 @@
                             text:'<h3>JUMLAH RESERVASI BERDASARKAN STATUS RESERVASI</h3>'
                           },
                           tooltip: {
-                            backgroundColor: getColor['tosca_blue'],
+                            backgroundColor: getColor['white'],
                             borderColor: 'transparent',
                             borderRadius: 7,
                             borderWidth: 0,
@@ -494,7 +502,7 @@
                           },
                           legend: {
                             itemMarginTop: 20,
-                            itemHoverStyle: {color: getColor['white']}
+                            // itemHoverStyle: {color: getColor['white']}
                           },
                           credits: {enabled: false},
                           series: [{
@@ -505,13 +513,25 @@
 
                             data: [
                               {
-                                name: 'Waiting List',
-                                y: <?php echo $waitinglist ?>,
+                                name: 'Antrian',
+                                y: <?php echo $Antrian ?>,
                                 color: getColor['Deep_Sky_Blue'],
                               }, {
-                                name: 'Finish',
+                                name: 'Selesai',
                                 y: <?php echo $selesai ?>,
                                 color: getColor['Chartreuse']
+                              }, {
+                                name: 'Pengerjaan',
+                                y: <?php echo $pengerjaan ?>,
+                                color: getColor['tosca_blue']
+                              }, {
+                                name: 'Penjemputan',
+                                y: <?php echo $penjemputan ?>,
+                                color: getColor['red']
+                              }, {
+                                name: 'Pengantaran',
+                                y: <?php echo $pengantaran ?>,
+                                color: getColor['pink']
                               }
                             ]
 
@@ -563,7 +583,7 @@
                 legend: {enabled: false},
                 credits: {enabled: false},
                 tooltip: {
-                  backgroundColor: getColor['tosca_blue'],
+                  backgroundColor: getColor['white'],
                   borderColor: 'transparent',
                   borderRadius: 7,
                   borderWidth: 0,
@@ -574,7 +594,7 @@
                 series: [{
                   name: 'Jumlah :',
                   data: [<?php echo $Cars_Wash1 ?>,<?php echo $Coating1 ?>],
-                  color: getColor['Dark_Orchid']
+                  color: getColor['Chocolate']
                 }]
               });
                     </script>
@@ -623,7 +643,7 @@
                 legend: {enabled: false},
                 credits: {enabled: false},
                 tooltip: {
-                  backgroundColor: getColor['tosca_blue'],
+                  backgroundColor: getColor['white'],
                   borderColor: 'transparent',
                   borderRadius: 7,
                   borderWidth: 0,
@@ -634,7 +654,7 @@
                 series: [{
                   name: 'Jumlah :',
                   data: [<?php echo $antarjemput ?>,<?php echo $langsung ?>],
-                  color: getColor['Dark_Orchid']
+                  color: getColor['red']
                 }]
               });
                     </script>

@@ -35,10 +35,7 @@
 <body>
 
   <div class="container-scroller">
-   <!--  <div  id="notifications"><?php echo $this->session->flashdata('pesan3'); ?></div>-->
-  <div  id="notifications"><?php echo $this->session->flashdata('pesan2'); ?></div>
-  <div  id="notifications"><?php echo $this->session->flashdata('pesan1'); ?></div>
-    
+   
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0   ">
 
@@ -58,6 +55,11 @@
         </button>
         
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan1'); ?>
+            <?php echo $this->session->flashdata('pesan2'); ?>
+            </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
@@ -367,7 +369,7 @@
                                 // echo "<td>". $key->kategori."</td>";
                                 echo "<td>". $key->noAntrian."</td>";
                                 echo "<td>Rp.".number_format($key->totalBayar, 0,",",".")."</td>";
-                                echo "<td>". $key->statusPembayaran."</td>";
+                                echo "<td style='color: #5CB85C !important;'>". $key->statusPembayaran."</td>";
                                 echo "<td>". $dateUpdate."</td>";
                                 
                       ?>

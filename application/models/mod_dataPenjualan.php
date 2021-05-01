@@ -76,17 +76,27 @@ class mod_dataPenjualan extends CI_Model{
 			$kodeUnik 		= $this->input->post('kodeUnik');
 			$idAkun			= $this->input->post('idAkun');
 			$kdoperator		= $this->input->post('kdoperator');
+			$KdTukang		= $this->input->post('KdTukang');
 
-			$pencucian		= $this->input->post('pencucian');
-			$pengeringan	= $this->input->post('pengeringan');
-			$selesai		= $this->input->post('selesai');
+			$pengerjaanLangsung		= $this->input->post('pengerjaanLangsung');
+			$selesaiLangsung		= $this->input->post('selesaiLangsung');
+			$penjemputan			= $this->input->post('penjemputan');
+			$pengerjaanJemput		= $this->input->post('pengerjaanJemput');
+			$pengantaran			= $this->input->post('pengantaran');
+			$selesaiJemput			= $this->input->post('selesaiJemput');
 
-			if (!empty($pencucian)) {
-				$status = $pencucian;
-			}else if (!empty($pengeringan)) {
-				$status = $pengeringan;
-			}else if (!empty($selesai)) {
-				$status = $selesai;
+			if (!empty($pengerjaanLangsung)) {
+				$status = $pengerjaanLangsung;
+			}else if (!empty($selesaiLangsung)) {
+				$status = $selesaiLangsung;
+			}else if (!empty($penjemputan)) {
+				$status = $penjemputan;
+			}else if (!empty($pengerjaanJemput)) {
+				$status = $pengerjaanJemput;
+			}else if (!empty($pengantaran)) {
+				$status = $pengantaran;
+			}else if (!empty($selesaiJemput)) {
+				$status = $selesaiJemput;
 			}
 
 			$data 			= array(
@@ -125,7 +135,14 @@ class mod_dataPenjualan extends CI_Model{
 				);
 
 				$this->db->where("idAkun",$idAkun);
-				return $this->db->update("konsumen",$datapoin);
+				$this->db->update("konsumen",$datapoin);
+
+				$datatukang  = array(
+					"status"	=> 1,
+				);
+
+				$this->db->where("KdTukang",$KdTukang);
+				return $this->db->update("tukang",$datatukang);
 
 			}else{
 				$data1 			= array(

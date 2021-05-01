@@ -362,6 +362,18 @@
                                   $KdTukang = $key->KdTukang;
                                 }
 
+                                if ($key->statusPembayaran == 'Antrian') {
+                                  $statusPembayaran = "<font style='color:#800000'>".$key->statusPembayaran."</font>";
+                                }else if ($key->statusPembayaran == 'Penjemputan') {
+                                  $statusPembayaran = "<font style='color:#FFA500'>".$key->statusPembayaran."</font>";
+                                }else if ($key->statusPembayaran == 'Pengerjaan') {
+                                  $statusPembayaran = "<font style='color:#337AB7'>".$key->statusPembayaran."</font>";
+                                }else if ($key->statusPembayaran == 'Pengantaran') {
+                                  $statusPembayaran = "<font style='color:#5BC0DE'>".$key->statusPembayaran."</font>";
+                                }else if ($key->statusPembayaran == 'Selesai') {
+                                  $statusPembayaran = "<font style='color:#5CB85C'>".$key->statusPembayaran."</font>";
+                                }
+
                                 echo "<tr>";
                                 echo "<td>". $no++."</td>";
                                 echo "<td>". $key->namaLengkap."</td>";
@@ -370,7 +382,7 @@
                                 // echo "<td>". $key->kategori."</td>";
                                 echo "<td>". $key->noAntrian."</td>";
                                 echo "<td>Rp.".number_format($key->totalBayar, 0,",",".")."</td>";
-                                echo "<td>". $key->statusPembayaran."</td>";
+                                echo "<td>". $statusPembayaran."</td>";
                                 echo "<td>". $dateUpdate."</td>";
                                 
                       ?>

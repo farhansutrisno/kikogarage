@@ -38,7 +38,6 @@
 
 <body>
   <div class="container-scroller">
-    <div  id="notifications"><?php echo $this->session->flashdata('pesan2'); ?></div>
 
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -54,6 +53,10 @@
         </button>
         
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan2'); ?>
+            </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -291,34 +294,64 @@
                     <input type="hidden" name="kdoperator" value="<?php echo $kdoperator ?>" />
                     <input type="hidden" name="kodeUnik" value="<?php echo $penjualan[0]->kodeUnik ?>" />
                     <input type="hidden" name="idAkun" value="<?php echo $penjualan[0]->idAkun ?>" />
-
+                    <input type="hidden" name="KdTukang" value="<?php echo $penjualan[0]->KdTukang ?>" />
 
                     <fieldset>
 
-                      <?php if ($penjualan[0]->statusPembayaran == 'Waiting List') { ?>
+                      <?php if ($penjualan[0]->statusPembayaran == 'Antrian' && $penjualan[0]->jenisBooking == 'Langsung') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
-                            <select class="form-control" type="text" name="pencucian">
-                                  <option>Pencucian</option>
+                            <select class="form-control" type="text" name="pengerjaanLangsung">
+                                  <option>Pengerjaan</option>
                             </select>
                         </div>
 
                       <?php } ?>
 
-                      <?php if ($penjualan[0]->statusPembayaran == 'Pencucian') { ?>
+                      <?php if ($penjualan[0]->statusPembayaran == 'Antrian' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
-                            <select class="form-control" type="text" name="pengeringan">
-                                  <option>Pengeringan</option>
+                            <select class="form-control" type="text" name="penjemputan">
+                                  <option>Penjemputan</option>
                             </select>
                         </div>
 
                       <?php } ?>
 
-                      <?php if ($penjualan[0]->statusPembayaran == 'Pengeringan') { ?>
+                      <?php if ($penjualan[0]->statusPembayaran == 'Penjemputan' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
-                            <select class="form-control" type="text" name="selesai">
+                            <select class="form-control" type="text" name="pengerjaanJemput">
+                                  <option>Pengerjaan</option>
+                            </select>
+                        </div>
+
+                      <?php } ?>
+
+                      <?php if ($penjualan[0]->statusPembayaran == 'Pengerjaan' && $penjualan[0]->jenisBooking == 'Langsung') { ?>
+
+                        <div class="form-group" style="width: 300px !important;">
+                            <select class="form-control" type="text" name="selesaiLangsung">
+                                  <option>Selesai</option>
+                            </select>
+                        </div>
+
+                      <?php } ?>
+
+                      <?php if ($penjualan[0]->statusPembayaran == 'Pengerjaan' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
+
+                        <div class="form-group" style="width: 300px !important;">
+                            <select class="form-control" type="text" name="pengantaran">
+                                  <option>Pengantaran</option>
+                            </select>
+                        </div>
+
+                      <?php } ?>
+
+                      <?php if ($penjualan[0]->statusPembayaran == 'Pengantaran' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
+
+                        <div class="form-group" style="width: 300px !important;">
+                            <select class="form-control" type="text" name="selesaiJemput">
                                   <option>Selesai</option>
                             </select>
                         </div>
