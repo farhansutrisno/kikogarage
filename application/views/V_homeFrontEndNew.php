@@ -38,40 +38,26 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
 
     <style type="text/css">
-    	/*.nav-link{
-    		color: #FFFFFF !important;
-    	}*/
     	.form-control{
     		height: 35px !important;
     		font-size: 14px !important;
     	}
 
     	.boxnew{
-    		/*position: static;*/
-			/*width: 498px;*/
-			display: inline-block;
+    		display: inline-block;
 			min-width: 350px;
 			min-height: 200px;
-			/*height: 187px;*/
-			/*left: 391px;*/
-			/*top: 375px;*/
 			padding: 10px 20px 20px 20px;
 			background: rgba(226, 221, 102, 0.8);
-			/*filter: blur(4px);*/
 			border-radius: 75px;
     	}
 
     	.boxcircle{
-    		/*position: sticky;*/
-			/*width: 498px;*/
-			display: inline-block;
+    		display: inline-block;
 			min-width: 100px;
 			min-height: 100px;			
-			/*height: 187px;*/
-			/*left: 391px;*/
-			/*top: 375px;*/
 			background: #ECECEC;
-			/*filter: blur(4px);*/
+			
 			border-radius: 500px;
     	}
     </style>
@@ -269,71 +255,28 @@
 
 	            <?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
 
+	            	<?php if (!empty($reservasiqueue)) { ?>
+
 		            <br>
 		           	<div class="boxnew">
 		           		<p class="mb-0" style="font-size: 18px; color: #FFFFFF;">Antrian Reservasi Terbaru</p>
 		           		<div class="boxcircle">
 		           			<h1 style="font-size: 15px; color: #095F50;margin-top: 1.5rem !important;margin-bottom: -1.0rem !important;">Sisa</h1>
-		           			<b style="font-size: 40px; color: #095F50;">8</b>
+		           			<b style="font-size: 40px; color: #095F50;"><?php echo $cekJumlahQueue[0]->data; ?></b>
 		           		</div>
 		           		<p class="mb-0" style="font-size: 18px; color: #FFFFFF;">Antrian Anda</p>
-		           		<p class="mb-0" style="font-size: 18px; color: #095F50;"><b>ANT-15</b></p>
-		           		<p class="mb-0" style="font-size: 18px; color: #095F50;"><b>Estimasi : 1 Jam 45 Menit</b></p>
+		           		<p class="mb-0" style="font-size: 18px; color: #095F50;"><b><?= $reservasiqueue->noAntrian ?></b></p>
+		           		<?php if (!empty($diff)) { ?>
+		           		<p class="mb-0" style="font-size: 18px; color: #095F50;"><b>Estimasi : <?= $jam;?> Jam <?= $menit;?> Menit</b></p>
+		           		<?php } ?>
 	           		</div>
+	           		<?php } ?>
 	           	<?php } ?>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-     <!-- <section class="ftco-section ftco-no-pt bg-light">
-    	<div class="container">
-    		<div class="row no-gutters">
-    			<div class="col-md-12	featured-top">
-    				<div class="row no-gutters">
-	  					<div class="col-md-4 d-flex align-items-center">
-	  						
-	  					</div>
-	  					<div class="col-md-8 d-flex align-items-right">
-	  						<div class="services-wrap rounded-right w-100">
-	  							<?php if ($this->session->userdata('nama') AND $this->session->userdata('pass')) { ?>
-	  							<h4 class="heading-section mb-2">Selamat datang <?=$this->session->userdata('namaLengkap3')?> </h4>
-	  							<h3 class="heading-section mb-4">Reservasi Kiko Good Garage</h3>
-	  							<?php }?>
-	  							<div class="row d-flex mb-4">
-					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-					            <div class="services w-100 text-center">
-				              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-				              	<div class="text w-100">
-					                <h3 class="heading mb-2">Biaya Jemput Murah</h3>
-				                </div>
-					            </div>      
-					          </div>
-					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-					            <div class="services w-100 text-center">
-				              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
-				              	<div class="text w-100">
-					                <h3 class="heading mb-2">Pembayaran Ditempat</h3>
-					              </div>
-					            </div>      
-					          </div>
-					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-					            <div class="services w-100 text-center">
-				              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
-				              	<div class="text w-100">
-					                <h3 class="heading mb-2">Cars Wash Terpercaya</h3>
-					              </div>
-					            </div>      
-					          </div>
-					        </div>
-	  						</div>
-	  					</div>
-	  				</div>
-				</div>
-  		</div>
-    </section> -->
-
 
     <section class="ftco-section ftco-no-pt bg-light">
     	<div class="container">

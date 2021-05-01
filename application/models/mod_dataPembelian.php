@@ -290,5 +290,10 @@ class mod_dataPembelian extends CI_Model{
          return $this->db->get('pembelian');
     }
 
+    public function queue(){
+        $query = $this->db->query("SELECT * FROM pembelian ORDER BY kdPembelian DESC LIMIT 1");
+        return $query->row();
+    }
+
 }
 ?>

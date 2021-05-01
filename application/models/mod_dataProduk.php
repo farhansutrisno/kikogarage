@@ -33,6 +33,25 @@ class mod_dataProduk extends CI_Model{
         return $this->db->get();
     }
 
+    public function queue(){
+        $kode = $this->session->userdata('kode');
+        $query = $this->db->query("SELECT * FROM pembelian WHERE idAkun= '".$kode."' AND StatusPembayaran != 'Selesai' ORDER BY kdPembelian DESC LIMIT 1");
+        return $query->row();
+    }
+
+    public function reservasiAwal($tglTransaksi){
+       
+        $query = $this->db->query("SELECT * FROM pembelian WHERE tglTransaksi= '".$tglTransaksi."' AND StatusPembayaran != 'Selesai' ORDER BY kdPembelian ASC LIMIT 1");
+        return $query->row();
+    }
+
+    public function cekJumlahQueue($tglReservasi,$kodeUnik){
+         $query = "SELECT  COUNT(DISTINCT kodeUnik) as data
+                                FROM pembelian
+                                WHERE kodeUnik != '".$kodeUnik."' AND tglTransaksi = '".$tglReservasi."' AND StatusPembayaran != 'Selesai'";
+        return $this->db->query("$query");
+    }
+
     public function lihatDetailProduk($id){
          $this->db->where("kdProduk",$id);
          return $this->db->get("produk");

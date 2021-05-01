@@ -13,16 +13,25 @@ class C_produkPembeli extends CI_Controller{
 
     public function lihatProdukNew(){
         $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-        
-        // $id = $this->session->userdata('kode');
-        // if (!empty($id)) {
-            // $this->load->model('mod_dataAkun');
-            // $data["dataPembeli"]    = $this->mod_dataAkun->ubahDataPembelian($id)->result();
-            // $data['jmlreservasi']   = $this->mod_dataProduk->jmlreservasi($id)->result()[0]->jmlreservasi;
-            // $data['idAkun']         = $id;
-        // }
+        $data['reservasiqueue']   = $this->mod_dataProduk->queue();
+        $data['reservasiAwal']   = $this->mod_dataProduk->reservasiAwal($data['reservasiqueue']->tglTransaksi);
 
-        // $data['jml_produk']        = $this->mod_dataProduk->jml_produk2()->result();
+        $data['cekJumlahQueue'] = $this->mod_dataProduk->cekJumlahQueue($data['reservasiqueue']->tglTransaksi,$data['reservasiqueue']->kodeUnik)->result();
+
+        if ($data['reservasiqueue']->kdPembelian != $data['reservasiAwal']->kdPembelian) {
+            $awal  = strtotime($data['reservasiAwal']->tglPembayaran);
+            $akhir = strtotime($data['reservasiqueue']->tglPembayaran);
+            $diff  = $akhir - $awal;
+        }else{
+            $diff  = NULL;
+        }
+
+        $jam   = floor($diff / (60 * 60));
+        $menit = $diff - $jam * (60 * 60);
+
+        $data['diff']    = $diff;
+        $data['jam']     = $jam;
+        $data['menit']   = floor( $menit / 60 );
         
         $this->session->set_flashdata('test1', 
                     '<div class="alert alert-info" style="margin-bottom: 20px !important">    
