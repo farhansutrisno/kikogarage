@@ -69,22 +69,24 @@ class C_transaksiProduk extends CI_Controller{
 
 								$noAntrian1 = $explode_data[1] + 1;
 								$noAntrian = 'LGSG-'.$noAntrian1;
-							}else{
-								$this->session->set_flashdata('notif1', 
-					                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
-					                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					                <h7>Jam Reservasi Sudah Penuh! </h7>
-					                   
-					                </div>');
-								redirect('C_produkPembeli/datareservasi');
 							}
-
-						}else{
-
-							$noAntrian1 = 1;
-							$noAntrian = 'LGSG-'.$noAntrian1;
+							// else{
+							// 	$this->session->set_flashdata('notif1', 
+					  //               '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
+					  //               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					  //               <h7>Jam Reservasi Sudah Penuh! </h7>
+					                   
+					  //               </div>');
+							// 	redirect('C_produkPembeli/datareservasi');
+							// }
 
 						}
+						// else{
+
+						// 	$noAntrian1 = 1;
+						// 	$noAntrian = 'LGSG-'.$noAntrian1;
+
+						// }
 					}else{
 
 						$noAntrian1 = 1;
@@ -105,22 +107,24 @@ class C_transaksiProduk extends CI_Controller{
 								$noAntrian1 = $explode_data[1] + 1;
 								$noAntrian = 'JEMPUT-'.$noAntrian1;
 
-							}else{
-								$this->session->set_flashdata('notif1', 
-					                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
-					                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					                <h7>Jam Reservasi Sudah Penuh! </h7>
-					                   
-					                </div>');
-								redirect('C_produkPembeli/datareservasi');
 							}
-
-						}else{
-
-							$noAntrian1 = 1;
-							$noAntrian = 'JEMPUT-'.$noAntrian1;
+							// else{
+							// 	$this->session->set_flashdata('notif1', 
+					  //               '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
+					  //               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					  //               <h7>Jam Reservasi Sudah Penuh! </h7>
+					                   
+					  //               </div>');
+							// 	redirect('C_produkPembeli/datareservasi');
+							// }
 
 						}
+						// else{
+
+						// 	$noAntrian1 = 1;
+						// 	$noAntrian = 'JEMPUT-'.$noAntrian1;
+
+						// }
 					}else{
 
 						$noAntrian1 = 1;

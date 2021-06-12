@@ -392,7 +392,7 @@
             </div> -->
             
           </div> <!-- .col-md-8 -->
-          <div class="col-md-5 sidebar ftco-animate">
+          <div class="col-md-5 sidebar ftco-animate" style="margin-top: -10px !important;">
 
             <div class="sidebar-box ftco-animate">
               <h3><b>Data Reservasi</b></h3>
