@@ -363,15 +363,15 @@
                                 }
 
                                 if ($key->statusPembayaran == 'Antrian') {
-                                  $statusPembayaran = "<font style='color:#800000'>".$key->statusPembayaran."</font>";
+                                  $statusPembayaran = "<font style='color:#800000'><b>".$key->statusPembayaran."</b></font>";
                                 }else if ($key->statusPembayaran == 'Penjemputan') {
-                                  $statusPembayaran = "<font style='color:#FFA500'>".$key->statusPembayaran."</font>";
+                                  $statusPembayaran = "<font style='color:#FFA500'><b>".$key->statusPembayaran."</b></font>";
                                 }else if ($key->statusPembayaran == 'Pengerjaan') {
-                                  $statusPembayaran = "<font style='color:#337AB7'>".$key->statusPembayaran."</font>";
+                                  $statusPembayaran = "<font style='color:#337AB7'><b>".$key->statusPembayaran."</b></font>";
                                 }else if ($key->statusPembayaran == 'Pengantaran') {
-                                  $statusPembayaran = "<font style='color:#5BC0DE'>".$key->statusPembayaran."</font>";
+                                  $statusPembayaran = "<font style='color:#5BC0DE'><b>".$key->statusPembayaran."</b></font>";
                                 }else if ($key->statusPembayaran == 'Selesai') {
-                                  $statusPembayaran = "<font style='color:#5CB85C'>".$key->statusPembayaran."</font>";
+                                  $statusPembayaran = "<font style='color:#5CB85C'><b>".$key->statusPembayaran."</b></font>";
                                 }
 
                                 echo "<tr>";

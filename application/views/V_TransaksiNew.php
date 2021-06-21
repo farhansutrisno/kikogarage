@@ -148,6 +148,10 @@
             <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
             <p style="color: #000000 !important;">Nomor Plat Kendaraan : <?php echo $row[0]->noPlat ?></p>
             <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
+
+            <?php if ($row[0]->statusPembayaran == 'Selesai') { ?>
+                <p style="color: #000000 !important;">Keterangan Reservasi : <?php echo $row[0]->catatan ?></p>
+            <?php }?>
             
             <?php if (!empty($row[0]->nama_lengkap)) { ?>
 

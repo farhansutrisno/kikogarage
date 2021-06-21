@@ -304,6 +304,7 @@
                         <tr><th style="width: 15px !important;">Tgl Transaksi</th><td><?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y').' '.date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?></td></tr>
                         <tr><th>Status Reservasi</th><td><?php echo $row[0]->statusPembayaran ?></td></tr>
                         <tr><th>Total Bayar</th><td>Rp.<?php echo number_format($row[0]->totalBayar, 0,",",".") ?></td></tr>
+                        <tr><th>Keterangan Reservasi</th><td><?php echo $row[0]->catatan ?></td></tr>
                     </table>
                     <br>
                     <table class="table table-bordered">

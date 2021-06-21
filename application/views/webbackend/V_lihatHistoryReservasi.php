@@ -297,13 +297,13 @@
                     <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
                       
                       <div class="row">
-                        <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
+                        <!-- <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
                             <option value="">Status</option>                 
                            <?php foreach($status as $r) { ?>
                               <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
                             <?php } ?>
                         </select>
-                        &nbsp;&nbsp;
+                        &nbsp;&nbsp; -->
                         <select class="form-control"  name="tahun" style="width: 100px !important">  
                           <option value="">Tahun</option>                 
                           <?php foreach($tahun as $key) { ?>
@@ -369,7 +369,7 @@
                                 // echo "<td>". $key->kategori."</td>";
                                 echo "<td>". $key->noAntrian."</td>";
                                 echo "<td>Rp.".number_format($key->totalBayar, 0,",",".")."</td>";
-                                echo "<td style='color: #5CB85C !important;'>". $key->statusPembayaran."</td>";
+                                echo "<td style='color: #5CB85C !important;'><b>". $key->statusPembayaran."</b></td>";
                                 echo "<td>". $dateUpdate."</td>";
                                 
                       ?>

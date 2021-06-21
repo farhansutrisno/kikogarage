@@ -283,7 +283,7 @@
               <div class="card">
                 <div class="card-body">
 
-                  <h4 class="card-title">Langkah-Langkah Reservasi</h4>
+                  <h4 class="card-title">Data Reservasi</h4>
                   <br>
                   <hr>
                    <form method="POST" action="<?php echo base_url().'webbackend/C_dataPenjualan/prosesUpdateDataPenjualan'?>" name="updateDataPenjualan" >
@@ -298,9 +298,20 @@
 
                     <fieldset>
 
+                       <div class="form-group" style="width: 300px !important;">
+                          <label>No Antrian</label>
+                            <input type="text" class="form-control" value="<?php echo $penjualan[0]->noAntrian?>" readonly/>
+                        </div>
+
+                         <div class="form-group" style="width: 300px !important;">
+                          <label>No Plat</label>
+                          <input type="text" class="form-control" value="<?php echo $penjualan[0]->noPlat?>" readonly/>
+                        </div>
+
                       <?php if ($penjualan[0]->statusPembayaran == 'Antrian' && $penjualan[0]->jenisBooking == 'Langsung') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
+                          <label>Status Reservasi</label>
                             <select class="form-control" type="text" name="pengerjaanLangsung">
                                   <option>Pengerjaan</option>
                             </select>
@@ -311,6 +322,7 @@
                       <?php if ($penjualan[0]->statusPembayaran == 'Antrian' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
+                          <label>Status Reservasi</label>
                             <select class="form-control" type="text" name="penjemputan">
                                   <option>Penjemputan</option>
                             </select>
@@ -321,6 +333,7 @@
                       <?php if ($penjualan[0]->statusPembayaran == 'Penjemputan' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
+                          <label>Status Reservasi</label>
                             <select class="form-control" type="text" name="pengerjaanJemput">
                                   <option>Pengerjaan</option>
                             </select>
@@ -331,9 +344,16 @@
                       <?php if ($penjualan[0]->statusPembayaran == 'Pengerjaan' && $penjualan[0]->jenisBooking == 'Langsung') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
+                          <label>Status Reservasi</label>
                             <select class="form-control" type="text" name="selesaiLangsung">
                                   <option>Selesai</option>
                             </select>
+                        </div>
+
+                        <div>
+                          <label>Catatan</label>
+                            <textarea required class="form-control" name="catatan" rows="3" style="width: 500px !important;"></textarea>
+                            <?php echo set_value('catatan') ?><br><?php echo form_error('catatan'); ?>
                         </div>
 
                       <?php } ?>
@@ -341,6 +361,7 @@
                       <?php if ($penjualan[0]->statusPembayaran == 'Pengerjaan' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
+                            <label>Status Reservasi</label>
                             <select class="form-control" type="text" name="pengantaran">
                                   <option>Pengantaran</option>
                             </select>
@@ -351,9 +372,16 @@
                       <?php if ($penjualan[0]->statusPembayaran == 'Pengantaran' && $penjualan[0]->jenisBooking == 'Antar Jemput') { ?>
 
                         <div class="form-group" style="width: 300px !important;">
+                            <label>Status Reservasi</label>
                             <select class="form-control" type="text" name="selesaiJemput">
                                   <option>Selesai</option>
                             </select>
+                        </div>
+
+                        <div>
+                          <label>Catatan</label>
+                            <textarea required class="form-control" name="catatan" rows="3" style="width: 500px !important;"></textarea>
+                            <?php echo set_value('catatan') ?><br><?php echo form_error('catatan'); ?>
                         </div>
 
                       <?php } ?>
