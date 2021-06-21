@@ -331,7 +331,6 @@
                           <th style="width: 10px !important;">No</th>
                           <th style="width: 40px !important;">Nama Pengirim</th>
                           <th style="width: 20px !important;">No Telepon</th>
-                          <!-- <th>Judul pesan</th> -->
                           <th style="width: 20px !important; text-align: center !important;">Tgl Pesan</th>
                           <th style="text-align: center !important;">Action</th>
                       </tr>
@@ -344,7 +343,7 @@
                               if (empty($key->tglPesan)) {
                                 $dateCreate = '-';
                               }else{
-                                $dateCreate = date_format (new DateTime($key->tglPesan), 'd-M-Y H:i:s');
+                                $dateCreate = date_format (new DateTime($key->tglPesan), 'd-M-Y').' '.date_format (new DateTime($key->jamPesan), 'H:i:s');
                               }
 
                                 echo "<tr>";

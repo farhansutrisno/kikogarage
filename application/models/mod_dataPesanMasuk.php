@@ -10,17 +10,14 @@ class mod_dataPesanMasuk extends CI_Model{
 	public function kirimPesan(){
 			$namaLengkap 	= $this->input->post('namaLengkap');
 			$noTelepon 		= $this->input->post('noTelepon');
-			// $judulPesan 	= $this->input->post('judulPesan');
 			$isiPesan 		= $this->input->post('isiPesan');
-			// $kode			= $this->session->userdata('kode');
 
 			$data 			= array(
 				"namaLengkap" 			=> $namaLengkap,
 				"noTelepon" 			=> $noTelepon,
-				// "judulPesan" 			=> $judulPesan,
 				"isiPesan" 				=> $isiPesan,
-				"tglPesan" 				=> date("Y-m-d H:i:s"),
-				// "idAkun"				=>  $kode 
+				"tglPesan" 				=> date("Y-m-d"),
+				"jamPesan"				=> date("H:i:s")
 			);
 
 				$this->db->insert('pesanMasuk',$data);

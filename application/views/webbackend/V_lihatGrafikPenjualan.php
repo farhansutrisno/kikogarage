@@ -296,38 +296,74 @@
           </div>
           <div class="col-md-4 grid-margin">
               <div class="card">
-                <div class="card-body" align="center">
-                  <h3 class="card-title mb-0">FILTER PER-<?php echo $tahuncurrent ?></h3><br><br>
+                <div class="card-body">
+                  <h3 class="card-title mb-0" align="center"><b>FILTER GRAFIK</b></h3><br><br>
 
                   <form action="<?php echo base_url().'webbackend/C_dataProduk/grafikProduk'?>" method="POST">
+                    <h5>From</h5>
                       <div class="row">
-                        <select class="form-control"  name="bulan" style="width: 100px !important">  
+                        <select class="form-control"  name="tanggalawal" style="width: 70px !important">  
+                          <option value="">Tanggal</option> 
+
+                          <?php 
+                          $dayawal = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31);
+                          foreach($dayawal as $dayawal1) { ?>
+                            <option value="<?php echo $dayawal1;?>" <?php if ($tanggalawal2 == $dayawal1) echo "selected";?>><?php echo $dayawal1;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control"  name="bulanawal" style="width: 70px !important">  
+                          <option value="">bulan</option>                 
+                          <?php 
+                          $bulanawal = array(1,2,3,4,5,6,7,8,9,10,11,12);
+                          foreach($bulanawal as $bulanawal1) { ?>
+                            <option value="<?php echo $bulanawal1;?>" <?php if ($bulanawal1 == $bulanawal2) echo "selected";?>><?php echo $bulanawal1;?></option>
+                          <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <select class="form-control" name="tahunawal" style="width: 90px !important">  
+                            <option value="">Tahun</option>                 
+                           <?php foreach($tahun as $tahunawal1) { ?>
+                              <option value="<?php echo $tahunawal1->tanggal;?>" <?php if($tahunawal2 == $tahunawal1->tanggal) echo 'selected';?>><?php echo $tahunawal1->tanggal;?></option>
+                            <?php } ?>
+                        </select>
+                        &nbsp;&nbsp;
+                        <!-- <input type="submit" name="submit" class="btn btn-round btn-success" value="Filter" > -->
+                      </div>
+                  <!-- </form> -->
+                  <br>
+                  <h5>To</h5>
+                  <!-- <form action="<?php echo base_url().'webbackend/C_dataProduk/grafikProduk'?>" method="POST"> -->
+                      <div class="row">
+                        <select class="form-control"  name="tanggal" style="width: 70px !important">  
                           <option value="">Tanggal</option> 
 
                           <?php 
                           $day = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31);
                           foreach($day as $day1) { ?>
-                            <option value="<?php echo $day1;?>"><?php echo $day1;?></option>
+                            <option value="<?php echo $day1;?>" <?php if ($tanggalcurrent == $day1) echo "selected";?>><?php echo $day1;?></option>
                           <?php } ?>
                         </select>
                         &nbsp;&nbsp;
-                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                        <select class="form-control"  name="bulan" style="width: 70px !important">  
                           <option value="">bulan</option>                 
                           <?php 
                           $bulan = array(1,2,3,4,5,6,7,8,9,10,11,12);
                           foreach($bulan as $bln) { ?>
-                            <option value="<?php echo $bln;?>"><?php echo $bln;?></option>
+                            <option value="<?php echo $bln;?>" <?php if ($bulancurrent == $bln) echo "selected";?>><?php echo $bln;?></option>
                           <?php } ?>
                         </select>
                         &nbsp;&nbsp;
-                        <select class="form-control" name="tahun" style="width: 100px !important">  
+                        <select class="form-control" name="tahun" style="width: 90px !important">  
                             <option value="">Tahun</option>                 
                            <?php foreach($tahun as $r) { ?>
                               <option value="<?php echo $r->tanggal;?>" <?php if($tahuncurrent == $r->tanggal) echo 'selected';?>><?php echo $r->tanggal;?></option>
                             <?php } ?>
                         </select>
-                        &nbsp;&nbsp;
-                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Filter" >
+                      </div>
+                      <br>
+                      <div class="row"> 
+                          <input type="submit" name="submit" class="btn btn-round btn-success" value="Filter" >
                       </div>
                   </form>
                   
@@ -397,6 +433,71 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-12">
+          <!-- LINE CHART -->
+          <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+
+              <div class="chart" id="barChart3" style="height: 350px;margin-bottom: 30px"></div>
+              <script type="text/javascript">
+              $('#barChart3').highcharts({
+                chart: {
+                  type: 'column',
+                  backgroundColor: 'transparent'
+                },
+                    title: {
+                      text: '<h3>JUMLAH LAYANAN BERDASARKAN PAKET</h3>'
+                    },
+                xAxis: {
+                  categories: ['Interior', 'Eksterior', 'Reguler Carwash', 'Premium Carwash', 'Bronze Coating', 'Diamond Coating', 'Gold Coating', 'Silver Coating'],
+                  title: {
+                    text: null
+                  }
+                },
+                yAxis: {
+                  min: 0,
+                  title: {
+                    text: 'Jumlah Layanan',
+                    align: 'high'
+                  },
+                  labels: {
+                    overflow: 'justify'
+                  }
+                },
+                plotOptions: {
+                  bar: {
+                    dataLabels: {
+                      enabled: true
+                    }
+                  }
+                },
+                legend: {enabled: false},
+                credits: {enabled: false},
+                tooltip: {
+                  backgroundColor: getColor['white'],
+                  borderColor: 'transparent',
+                  borderRadius: 7,
+                  borderWidth: 0,
+                  style: {
+                    color: getColor['dark']
+                  }
+                },
+                series: [{
+                  name: 'Jumlah :',
+                  data: [<?php echo $Interior3 ?>,<?php echo $Eksterior3 ?>, <?php echo $Reguler3 ?>,<?php echo $Premium3 ?>,<?php echo $Bronze3 ?>,<?php echo $Diamond3 ?>,<?php echo $Gold3 ?>,<?php echo $Silver3 ?>],
+                  color: getColor['red']
+                }]
+              });
+            </script>
+
+            </div>
+            
+            </div>
+          </div>
+        </div>
+
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -410,7 +511,7 @@
                           backgroundColor: 'transparent'
                         },
                         title: {
-                          text:'<h3>JUMLAH LAYANAN KIKO BERDASARKAN KATEGORI</h3>'
+                          text:'<h3>JUMLAH LAYANAN BERDASARKAN KATEGORI</h3>'
                         },
                         tooltip: {
                           backgroundColor: getColor['white'],
@@ -555,10 +656,10 @@
                   backgroundColor: 'transparent'
                 },
                     title: {
-                      text: '<h3>JUMLAH RESERVASI JASA BERDASARKAN KATEGORI</h3>'
+                      text: '<h3>JUMLAH RESERVASI LAYANAN BERDASARKAN KATEGORI</h3>'
                     },
                 xAxis: {
-                  categories: ['Cars Wash', 'Coating'],
+                  categories: ['Cars Wash', 'Coating', 'Interior', 'Eksterior'],
                   title: {
                     text: null
                   }
@@ -593,7 +694,7 @@
                 },
                 series: [{
                   name: 'Jumlah :',
-                  data: [<?php echo $Cars_Wash1 ?>,<?php echo $Coating1 ?>],
+                  data: [<?php echo $Cars_Wash1 ?>,<?php echo $Coating1 ?>,<?php echo $Interior1 ?>,<?php echo $Eksterior1 ?>],
                   color: getColor['Chocolate']
                 }]
               });
@@ -615,7 +716,7 @@
                   backgroundColor: 'transparent'
                 },
                     title: {
-                      text: '<h3>JUMLAH RESERVASI JASA BERDASARKAN JENIS BOOKING</h3>'
+                      text: '<h3>JUMLAH RESERVASI BERDASARKAN JENIS BOOKING</h3>'
                     },
                 xAxis: {
                   categories: ['Antar Jemput', 'Langsung'],
@@ -674,7 +775,7 @@
                           type: 'line'
                       },
                       title: {
-                          text: 'JUMLAH PENDAPATAN PERBULAN'
+                          text: 'JUMLAH PENDAPATAN'
                       },
 
                       subtitle: {

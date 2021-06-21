@@ -20,7 +20,6 @@ class C_pesanMasuk extends CI_Controller{
 	
 		$this->form_validation->set_rules('namaLengkap','nama lengkap','trim|required');
 		$this->form_validation->set_rules('noTelepon','no telepon','trim|required|numeric');
-	    // $this->form_validation->set_rules('judulPesan','judul pesan','trim|required|min_length[8]');
 	    $this->form_validation->set_rules('isiPesan','isi pesan','required');
 
 	    if(isset($_POST['submit'])){
@@ -64,10 +63,6 @@ class C_pesanMasuk extends CI_Controller{
 		$data["row"] = $this->mod_dataPesanMasuk->detailPesanMasuk($kdPesanMasuk)->result();
 		$this->load->view('webbackend/V_detailPesanMasuk', $data);
 	}
-
-	// public function kirimPesan(){
-	// 	$this->load->view('V_kirimPesan');
-	// }
 	
 }
 

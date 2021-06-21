@@ -337,7 +337,7 @@
                     </tr>
                     <tr>
                       <td>Tanggal Pesan</td>
-                      <td><?php echo date_format (new DateTime($row[0]->tglPesan), 'd-M-Y') ?>
+                      <td><?php echo date_format (new DateTime($row[0]->tglPesan), 'd-M-Y').' '.date_format (new DateTime($row[0]->jamPesan), 'H:i:s') ?>
                     </tr>
                     <!-- <tr>
                       <td>Judul Pesan</td>

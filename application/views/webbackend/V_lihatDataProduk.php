@@ -397,13 +397,13 @@
                               if (empty($key->updateDate)) {
                                 $dateUpdate = '-';
                               }else{
-                                $dateUpdate = date_format (new DateTime($key->updateDate), 'd-M-Y H:i:s');
+                                $dateUpdate = date_format (new DateTime($key->updateDate), 'd-M-Y');
                               }
 
                               if (empty($key->createDate)) {
                                 $dateCreate = '-';
                               }else{
-                                $dateCreate = date_format (new DateTime($key->createDate), 'd-M-Y H:i:s');
+                                $dateCreate = date_format (new DateTime($key->createDate), 'd-M-Y');
                               }
 
                               // if (empty($key->point)) {
