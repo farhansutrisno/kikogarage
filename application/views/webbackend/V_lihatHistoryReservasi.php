@@ -290,7 +290,7 @@
                 
                 <div class="col-md-7">
                     <?php
-                    echo anchor('webbackend/C_dataPenjualan/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
+                    echo anchor('webbackend/C_dataPenjualan/exportAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
                     ?>
                 </div>
                 <div class="col-md-5">

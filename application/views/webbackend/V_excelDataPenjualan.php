@@ -1,6 +1,8 @@
 <?php
- header("Content-type: application/vnd.ms-excel");
+ header("Content-type: application/x-ms-excel");
  header("Content-Disposition: attachment; filename=data_Reservasi.xls");
+ header("Pragma: no-cache");  
+ header("Expires: 0");  
  ?>
 
  <?php 
