@@ -294,16 +294,9 @@
                     ?>
                 </div>
                 <div class="col-md-5">
-                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
+                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
                       
                       <div class="row">
-                        <!-- <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
-                            <option value="">Status</option>                 
-                           <?php foreach($status as $r) { ?>
-                              <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
-                            <?php } ?>
-                        </select>
-                        &nbsp;&nbsp; -->
                         <select class="form-control"  name="tahun" style="width: 100px !important">  
                           <option value="">Tahun</option>                 
                           <?php foreach($tahun as $key) { ?>

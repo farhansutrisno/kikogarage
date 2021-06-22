@@ -92,6 +92,15 @@ class C_dataPenjualan extends CI_Controller{
 		$this->load->view('webbackend/V_excelDataPenjualan',$data);
 	}
 
+	public function exportAllHistory(){
+		$data["filter"] 	 = array(
+								'filter' => 0
+								);
+
+		$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualanHistory()->result();
+		$this->load->view('webbackend/V_excelDataPenjualan',$data);
+	}
+
 	public function dataFilter(){
        if(isset($_POST['submit'])){
             $status 	= $this->input->post('statusPembayaran');
@@ -112,6 +121,28 @@ class C_dataPenjualan extends CI_Controller{
 								);
 
             $data['penjualan']= $this->mod_dataPenjualan->excelFilter($status,$tahun,$bulan)->result();
+            $this->load->view('webbackend/V_excelDataPenjualan',$data);
+        }
+    }
+
+    public function dataFilterHistory(){
+       if(isset($_POST['submit'])){
+            $tahun 		= $this->input->post('tahun');
+            $bulan 		= $this->input->post('bulan');
+            
+            if (empty($status) && empty($tahun) && empty($bulan)) {
+	    		$query = 0;
+		    }else{
+		    	$query = 1;
+		    }
+
+            $data["filter"] 	 = array(
+								'tahun'  => $tahun,
+								'bulan'  => $bulan,
+								'filter' => $query
+								);
+
+            $data['penjualan']= $this->mod_dataPenjualan->excelFilterHistory($tahun,$bulan)->result();
             $this->load->view('webbackend/V_excelDataPenjualan',$data);
         }
     }

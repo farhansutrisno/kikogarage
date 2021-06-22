@@ -25,7 +25,7 @@ class mod_dataPenjualan extends CI_Model{
 		$this->db->from('pembelian');
 		$this->db->join('konsumen','konsumen.idAkun = pembelian.idAkun');
 		$this->db->order_by('kdPembelian','DESC');
-		 $this->db->where("statusPembayaran =",'Selesai');
+		$this->db->where("statusPembayaran =",'Selesai');
 		return $this->db->get();
 	}
 
@@ -36,6 +36,17 @@ class mod_dataPenjualan extends CI_Model{
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->order_by('pembelian.kdPembelian','DESC');
+		return $this->db->get();
+	}
+
+	public function lihatDataPenjualanHistory(){
+		
+		$this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen');
+		$this->db->from('konsumen');
+		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
+		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
+		$this->db->order_by('pembelian.kdPembelian','DESC');
+		$this->db->where("statusPembayaran =",'Selesai');
 		return $this->db->get();
 	}
 
@@ -209,6 +220,38 @@ class mod_dataPenjualan extends CI_Model{
 	    }
 
 	    if (empty($status) && empty($tahun) && empty($bulan)) {
+	    	$query = substr($query, 0,-5);// membuang where
+	    }else{
+	    	$query = substr($query, 0,-3);// membuang and
+	    }
+
+	    $bismillah = $query." order by pembelian.tglTransaksi desc";
+
+        return $this->db->query("$bismillah");        
+    }
+
+    public function excelFilterHistory($tahun,$bulan)
+    {
+
+        $query = "select konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.kdPembelian, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen from konsumen inner join pembelian on konsumen.idAkun=pembelian.idAkun inner join produk on pembelian.kdProduk=produk.kdProduk where";
+
+        $query = $query." statusPembayaran = 'Selesai' and";
+
+        if ($bulan >= 10) {
+
+	        if($tahun != ""){
+	        $query = $query." pembelian.tglTransaksi BETWEEN '".$tahun."-".$bulan."-01' AND '".$tahun."-".$bulan."-31' and";
+	        }
+
+	    }else{
+
+	        $bln = "0".$bulan;
+	        if($tahun != ""){
+	        $query = $query." pembelian.tglTransaksi BETWEEN '".$tahun."-".$bln."-01' AND '".$tahun."-".$bln."-31' and";
+	        }
+	    }
+
+	    if (empty($tahun) && empty($bulan)) {
 	    	$query = substr($query, 0,-5);// membuang where
 	    }else{
 	    	$query = substr($query, 0,-3);// membuang and
