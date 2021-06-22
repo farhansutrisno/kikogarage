@@ -363,13 +363,13 @@
                         if ($row[0]->updateDate == NULL) {
                           $dateUpdate = '-';
                         }else{
-                          $dateUpdate = date_format (new DateTime($row[0]->updateDate), 'd-M-Y H:i:s');
+                          $dateUpdate = date_format (new DateTime($row[0]->updateDate), 'd-M-Y');
                         }
 
                         if ($row[0]->createDate == NULL) {
                           $dateCreate = '-';
                         }else{
-                          $dateCreate = date_format (new DateTime($row[0]->createDate), 'd-M-Y H:i:s');
+                          $dateCreate = date_format (new DateTime($row[0]->createDate), 'd-M-Y');
                         }
                       ?>
 

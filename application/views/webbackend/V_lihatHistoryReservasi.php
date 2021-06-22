@@ -336,7 +336,6 @@
                           <th>Nama Konsumen</th>
                           <th>No Telepon</th>
                           <th>No Plat</th>
-                          <!-- <th>kategori</th> -->
                           <th>No Antrian</th>
                           <th>Total Bayar</th>
                           <th>Status Pembelian</th>
@@ -366,7 +365,6 @@
                                 echo "<td>". $key->namaLengkap."</td>";
                                 echo "<td>". $key->noTelepon."</td>";
                                 echo "<td>". $key->noPlat."</td>";
-                                // echo "<td>". $key->kategori."</td>";
                                 echo "<td>". $key->noAntrian."</td>";
                                 echo "<td>Rp.".number_format($key->totalBayar, 0,",",".")."</td>";
                                 echo "<td style='color: #5CB85C !important;'><b>". $key->statusPembayaran."</b></td>";

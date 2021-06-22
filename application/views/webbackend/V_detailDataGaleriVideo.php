@@ -329,8 +329,8 @@
                           <th style="width: 90px !important;">Judul Galeri</th>
                           <td><?php echo $Galeri[0]->judulGaleri ?></td>
                         </tr>
-                        <tr><th>TGL Galeri</th><td><?php echo date_format (new DateTime($Galeri[0]->tglGaleri), 'd-M-Y') ?></td></tr>
-                        <tr><th>TGL Update Galeri</th><td><?php echo date_format (new DateTime($Galeri[0]->tglUpdateGaleri), 'd-M-Y') ?></td></tr>
+                        <tr><th>TGL Galeri</th><td><?php echo date_format (new DateTime($Galeri[0]->tglGaleri), 'd-M-Y H:i:s') ?></td></tr>
+                        <tr><th>TGL Update Galeri</th><td><?php echo date_format (new DateTime($Galeri[0]->tglUpdateGaleri), 'd-M-Y H:i:s') ?></td></tr>
                     </table>
                   </div>
                 </div>
