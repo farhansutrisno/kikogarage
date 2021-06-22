@@ -342,13 +342,13 @@
                 <input type="hidden" name="totalBayar" value="<?php echo $total_belanja?>">
                 <input type="hidden" name="idAkun" value="<?php echo $produk[0]->idAkun?>">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="date11" placeholder="Pilih Tanggal Reservasi Anda" name="tglReservasi" required>
+                  <input type="text" class="form-control" id="date11" placeholder="Pilih Tanggal Reservasi Anda" name="tglReservasi" value="<?php echo $tglReservasi ?>" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Pilih Jam Reservasi Anda" value="10:00">
+                  <input type="text" id="time" class="form-control" name="jamreservasi" placeholder="Pilih Jam Reservasi Anda" value="<?php echo $jamreservasi ?>">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nomor Plat Kendaraan Anda" name="noPlat" required>
+                  <input type="text" class="form-control" placeholder="Nomor Plat Kendaraan Anda" name="noPlat" value="<?php echo $noPlat ?>" required>
                 </div>
                 <div class="form-group">
                   <!-- <input type="text" class="form-control" placeholder="No Telepon" name="noTelepon" required> -->

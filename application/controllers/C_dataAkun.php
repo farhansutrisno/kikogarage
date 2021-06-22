@@ -112,6 +112,11 @@ class C_dataAkun extends CI_Controller{
 			$this->session->unset_userdata('unik');
 			$this->session->unset_userdata('pass');
 			$this->session->unset_userdata('pembayaran');
+
+			$this->session->unset_userdata('noPlat');
+	        $this->session->unset_userdata('jenisBooking');
+	        $this->session->unset_userdata('tglReservasi');
+	        $this->session->unset_userdata('jamreservasi');
 			
 			redirect('C_produkPembeli/lihatProdukNew');
 	}

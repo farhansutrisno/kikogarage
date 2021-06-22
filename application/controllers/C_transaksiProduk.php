@@ -33,6 +33,11 @@ class C_transaksiProduk extends CI_Controller{
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>Jadwal Sudah Penuh !</h7>
 		                </div>');
+
+					$this->session->set_userdata('noPlat',$noPlat);
+					$this->session->set_userdata('jenisBooking',$jenisBooking);
+					$this->session->set_userdata('tglReservasi',$tglReservasi);
+					$this->session->set_userdata('jamreservasi',$jamreservasi);
 				
 					redirect('C_produkPembeli/datareservasi');
 				}

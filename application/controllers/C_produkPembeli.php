@@ -114,6 +114,12 @@ class C_produkPembeli extends CI_Controller{
 
         $jml                    = $this->mod_dataProduk->jmlKeranjang();
         $data['keranjang']      = $jml->jmlKeranjang;
+
+        $data['noPlat']         = $this->session->userdata('noPlat');
+        $data['jenisBooking']   = $this->session->userdata('jenisBooking');
+        $data['tglReservasi']   = $this->session->userdata('tglReservasi');
+        $data['jamreservasi']   = $this->session->userdata('jamreservasi');
+
         $this->load->view('V_dataReservasiNew',$data);
     }
 
