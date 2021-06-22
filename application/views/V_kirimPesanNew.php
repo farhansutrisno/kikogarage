@@ -31,24 +31,6 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>dist/css/bootstrap-datepicker.min.css">
   <script src="<?php echo base_url() ?>dist/js/bootstrap-datepicker.min.js"></script>
   <script src="<?php echo base_url() ?>dist/locales/bootstrap-datepicker.id.min.js"></script>
-
-  <script src="http://maps.googleapis.com/maps/api/js"></script>
-
-  <script>
-      // fungsi initialize untuk mempersiapkan peta
-      function initialize() {
-      var propertiPeta = {
-          center:new google.maps.LatLng(-8.5830695,116.3202515),
-          zoom:15,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      
-      var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-      }
-
-      // event jendela di-load  
-      google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
     
     <link rel="stylesheet" href="<?php echo base_url() ?>css/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/icomoon.css">
@@ -63,6 +45,8 @@
         font-size: 14px !important;
       }
     </style>
+
+    <?php echo $map['js'];?>
 
   </head>
   <body>
@@ -291,8 +275,7 @@
         </div>
         <div class="row justify-content-center">
         	<div class="col-md-12">
-        		<!-- <div id="map" class="bg-white"></div> -->
-            <div id="googleMap" style="width:100%;height:380px;"></div>
+            <?php echo $map['html'];?>
         	</div>
         </div>
       </div>

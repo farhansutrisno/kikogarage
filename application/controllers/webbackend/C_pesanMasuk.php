@@ -13,7 +13,19 @@ class C_pesanMasuk extends CI_Controller{
 	}
 
 	public function kirimPesanNew(){
-		$this->load->view('V_kirimPesanNew');
+
+		$this->load->library('googlemaps');
+        $config=array();
+        $config['center']="-7.120185,112.418852";
+        $config['zoom']=17;
+        $config['map_height']="400px";
+        $this->googlemaps->initialize($config);
+        $marker=array();
+        $marker['position']="-7.120185,112.418852";
+        $this->googlemaps->add_marker($marker);
+        $data['map']=$this->googlemaps->create_map();
+
+		$this->load->view('V_kirimPesanNew', $data);
 	}
 
 	public function prosesKirimPesan(){
