@@ -36,6 +36,7 @@ class mod_dataPenjualan extends CI_Model{
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
 		$this->db->order_by('pembelian.kdPembelian','DESC');
+		$this->db->where("statusPembayaran !=",'Selesai');
 		return $this->db->get();
 	}
 
@@ -185,7 +186,7 @@ class mod_dataPenjualan extends CI_Model{
 	}
 
 	public function filter(){
-        return $this->db->query("SELECT DISTINCT statusPembayaran FROM pembelian");
+        return $this->db->query("SELECT DISTINCT statusPembayaran FROM pembelian WHERE statusPembayaran != 'Selesai'");
     }
 
     public function bulan(){
