@@ -110,7 +110,7 @@ class C_produkPembeli extends CI_Controller{
 
     public function datareservasi(){
         $data['produk']         = $this->mod_dataProduk->lihatReservasi()->result();
-        $data['jamreservasi1']   = $this->mod_dataProduk->lihatjamreservasi()->result();
+        $data['jamreservasi1']  = $this->mod_dataProduk->lihatjamreservasi()->result();
 
         $jml                    = $this->mod_dataProduk->jmlKeranjang();
         $data['keranjang']      = $jml->jmlKeranjang;
