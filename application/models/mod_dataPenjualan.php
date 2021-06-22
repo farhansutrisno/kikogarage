@@ -267,5 +267,10 @@ class mod_dataPenjualan extends CI_Model{
         return $this->db->query("SELECT DISTINCT YEAR(tglTransaksi) AS tanggal1 FROM pembelian  order by tanggal1 desc");
     }
 
+    public function deleteDataPenjualan($kodeUnik){
+        $this->db->where("kodeUnik",$kodeUnik);
+        return $this->db->delete("pembelian");
+    }
+
 }
 ?>

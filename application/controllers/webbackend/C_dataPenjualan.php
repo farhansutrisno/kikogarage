@@ -174,6 +174,20 @@ class C_dataPenjualan extends CI_Controller{
 		}
 
 	}
+
+	public function deleteDataPenjualan(){
+		$this->session->set_flashdata('pesan5', 
+		                '<div class="alert alert-info ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>BERHASIL ! </h7>
+		                    <p>Berhasil menghapus data Reservasi</p>
+		                </div>');
+
+		$kodeUnik = $this->input->post('kodeUnik');
+
+		$this->mod_dataPenjualan->deleteDataPenjualan($kodeUnik);
+		redirect('webbackend/C_dataProduk/lihatDataProduk');
+	}
 	
 }
 

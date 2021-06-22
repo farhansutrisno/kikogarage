@@ -295,5 +295,11 @@ class mod_dataPembelian extends CI_Model{
         return $query->row();
     }
 
+    public function selectQueue(){
+        $kode = $this->session->userdata('kode');
+        $query = $this->db->query("SELECT * FROM pembelian WHERE idAkun= '".$kode."' AND StatusPembayaran != 'Selesai' ORDER BY kdPembelian DESC LIMIT 1");
+        return $query->row();
+    }
+
 }
 ?>

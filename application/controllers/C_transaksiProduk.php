@@ -22,6 +22,23 @@ class C_transaksiProduk extends CI_Controller{
 			$tglReservasi	= $this->input->post('tglReservasi');
 			$jamreservasi	= $this->input->post('jamreservasi');
 
+			$reservasiqueue = $this->mod_dataPembelian->selectQueue();
+
+			if (!empty($reservasiqueue->statusPembayaran) && $reservasiqueue->statusPembayaran != 'Selesai') {
+				$this->session->set_flashdata('cekjadwal2', 
+		                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>Reservasi sebelumnya harus selesai terlebih dahulu !</h7>
+		                </div>');
+
+				$this->session->set_userdata('noPlat',$noPlat);
+				$this->session->set_userdata('jenisBooking',$jenisBooking);
+				$this->session->set_userdata('tglReservasi',$tglReservasi);
+				$this->session->set_userdata('jamreservasi',$jamreservasi);
+			
+				redirect('C_produkPembeli/datareservasi');
+			}
+
 			$cekjadwal = $this->mod_dataPembelian->cekjadwalreservasi($tglReservasi)->result_array();
 
 			foreach ($cekjadwal as $key) {
@@ -151,12 +168,8 @@ class C_transaksiProduk extends CI_Controller{
 				$kodeTukang = $cekTukang->KdTukang;
 			}
 
-			// if ($booking == 'Antar Jemput') {
-				$KdTukang = $kodeTukang;
-			// }else{
-			// 	$KdTukang = $kodeTukang;
-			// }
-
+			$KdTukang = $kodeTukang;
+			
 			$order = $this->mod_dataPembelian->inputTransaksi($idAkun)->result_array();
 
 			foreach ($order as $key) {
@@ -187,18 +200,12 @@ class C_transaksiProduk extends CI_Controller{
 							);
 			$this->mod_dataPembelian->inputDataHistory($dataHistory);
 
-			// if (!empty($KdTukang)) {
-				$this->mod_dataPembelian->statusTukang($kodeTukang);
-			// }
+			$this->mod_dataPembelian->statusTukang($kodeTukang);
 			
 			$data["produk"] 		= $this->mod_dataPembelian->dataProduk($id)->result();
 			$data["history"] 		= $this->mod_dataPembelian->lihatDataHistory($id)->result();
 
-			// if (!empty($KdTukang)) {
-				$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi($id)->result();
-			// }else{
-			// 	$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi3($id)->result();
-			// }
+			$data["row"] 		= $this->mod_dataPembelian->lihatTransaksi($id)->result();
 			
 			$data["profil"] 		= $this->mod_dataPembelian->lihatTransaksi2($idAkun)->result();
 
@@ -206,6 +213,11 @@ class C_transaksiProduk extends CI_Controller{
 			$data['totalBelanja2'] 	= $jml->jumlahBayar2;
 
 			$this->mod_dataPembelian->deleteProduk($idAkun);
+
+			$this->session->unset_userdata('noPlat');
+	        $this->session->unset_userdata('jenisBooking');
+	        $this->session->unset_userdata('tglReservasi');
+	        $this->session->unset_userdata('jamreservasi');
 
 			$this->session->set_flashdata('test1', 
 	                    '<div class="alert alert-info" style="margin-bottom: 20px !important">    
@@ -216,12 +228,7 @@ class C_transaksiProduk extends CI_Controller{
 			$this->load->view('V_TransaksiNew',$data);
 
 			}else{
-				// $this->session->set_flashdata('pembayaran2', 
-			 //                '<div class="alert alert-danger">    
-			 //                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			 //                <h7>Erorr Pembayaran ! </h7>
-			                   
-			 //                </div>');
+				
 				redirect('C_produkPembeli/datareservasi');
 			}
 

@@ -91,6 +91,7 @@
           <?php echo $this->session->flashdata('hapus1'); ?>
           <?php echo $this->session->flashdata('notif1'); ?>
           <?php echo $this->session->flashdata('cekjadwal1'); ?>
+          <?php echo $this->session->flashdata('cekjadwal2'); ?>
 
            <div class="container">
             <div class="row">
