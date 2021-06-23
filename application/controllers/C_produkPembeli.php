@@ -21,9 +21,9 @@ class C_produkPembeli extends CI_Controller{
             $data['cekJumlahQueue'] = $this->mod_dataProduk->cekJumlahQueue($data['reservasiqueue']->tglTransaksi,$data['reservasiqueue']->kodeUnik)->result();
 
             if ($data['reservasiqueue']->kdPembelian != $data['reservasiAwal']->kdPembelian) {
-                $awal  = strtotime($data['reservasiAwal']->tglPembayaran);
-                $akhir = strtotime($data['reservasiqueue']->tglPembayaran);
-                $diff  = $akhir - $awal;
+                $akhir  = strtotime($data['reservasiAwal']->tglPembayaran);
+                $awal   = strtotime($data['reservasiqueue']->tglPembayaran);
+                $diff   = $akhir - $awal;
             }else{
                 $diff  = NULL;
             }
