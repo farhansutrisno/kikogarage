@@ -184,18 +184,19 @@
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
-            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
+           <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
-        
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>             
+              <span class="menu-title">Dashboard</span>      
             </a>
           </li>
 
-         <li class="nav-item">
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon icon-screen-desktop"></i>
               <span class="menu-title">Data Front End</span>
@@ -212,7 +213,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Konsumen</a>
                 </li>
                
@@ -220,15 +221,19 @@
             </div>
           </li>
 
-         <li class="nav-item">
+          <?php } ?>
+
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
+
               <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                 <div class="badge badge-info">2</div>
               <?php }else{ ?>
                 <div class="badge badge-info">1</div>
               <?php } ?>
+              
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
@@ -247,20 +252,14 @@
             </div>
           </li>
           
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
               <span class="menu-title">Data Layanan</span>
             </a>
           </li>
-          
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
-              <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Reservasi</span>
-            </a>
-          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
@@ -279,6 +278,8 @@
               </ul>
             </div>
           </li>
+
+           <?php } ?>
           
         </ul>
       </nav>
@@ -386,7 +387,7 @@
                           <select class="form-control" type="text" name="status" required>
                                 <?php 
                                 $array3 = array("1", "2");
-                                $tra_type = array("1" => "Admin", "2" => "Super Admin");
+                                $tra_type = array("1" => "Admin Services", "2" => "Owner");
                                 foreach($array3 as $array3) { ?>
                                     <option value="<?php echo $array3;?>" <?php if($array3 == $operator['status']) echo 'selected';?>><?php echo $tra_type[$array3];?></option>
                                 <?php } ?>

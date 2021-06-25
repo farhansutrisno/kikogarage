@@ -447,12 +447,12 @@
 
 		if(password == ''){
 			valid = 0;
-			var msg = 'Password Tidak Boleh Kosong Tidak Boleh Kosong';
+			var msg = 'Password Tidak Boleh Kosong';
 		}
 
 		if(noTelepon == ''){
 			valid = 0;
-			var msg = 'No Telepon Tidak Boleh Kosong Tidak Boleh Kosong';
+			var msg = 'No Telepon Tidak Boleh Kosong';
 		}
 
 		if(valid == 1){

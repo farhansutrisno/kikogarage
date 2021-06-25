@@ -23,9 +23,9 @@ class C_dataOperator extends CI_Controller{
 				$no=1;
 
 				if ($key['status'] == 1) {
-					$operatorstatus = 'Admin';
+					$operatorstatus = 'Admin Services';
 				}else{
-					$operatorstatus = 'Super Admin';
+					$operatorstatus = 'Owner';
 				}
 
 				$this->session->set_userdata('namaAdmin',$key['username']);

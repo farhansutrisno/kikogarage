@@ -210,6 +210,45 @@ class C_dataAkun extends CI_Controller{
 		
 	}
 
+	public function prosesUpdateDataKonsumen(){
+
+		$this->form_validation->set_rules('namaLengkap','nama lengkap','trim|required|min_length[4]');
+	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
+	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
+
+	    if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+
+		    	$kodeUnik = $this->input->post('kodeUnik');
+				$KdTukang = $this->input->post('KdTukang');
+				redirect('C_dataPenjualan/detailDataPenjualan2/'.$kodeUnik.'/'.$KdTukang);
+
+		    }
+		    else{
+		        
+		    	$config['upload_path']='./gambar_proyek/';
+		        $config['allowed_types']='jpg|png|jpeg';
+		        $config['max_size'] = 500000;
+		        $this->load->library('upload',$config);
+		        $this->upload->do_upload();
+		        $data   =  $this->upload->data();
+
+		        $this->mod_dataAkun->prosesUpdateAkun($data['file_name']);
+
+		        $this->session->set_flashdata('pesanProfil', 
+				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
+				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				                <h7>BERHASIL ! </h7>
+				                    <p>Berhasil mengupdate data konsumen</p>
+				                </div>');
+				
+				redirect('C_dataAkun/lihatMemberNew');
+
+		    }
+		}	
+		
+	}
+
 	//========================================================================================================
 
 

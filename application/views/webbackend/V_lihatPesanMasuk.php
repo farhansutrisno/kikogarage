@@ -196,6 +196,8 @@
             </a>
           </li>
 
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon icon-screen-desktop"></i>
@@ -221,15 +223,19 @@
             </div>
           </li>
 
+          <?php } ?>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
+
               <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                 <div class="badge badge-info">2</div>
               <?php }else{ ?>
                 <div class="badge badge-info">1</div>
               <?php } ?>
+              
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
@@ -248,19 +254,14 @@
             </div>
           </li>
           
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
               <span class="menu-title">Data Layanan</span>
             </a>
           </li>
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
-              <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Reservasi</span>
-            </a>
-          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
@@ -279,6 +280,8 @@
               </ul>
             </div>
           </li>
+
+           <?php } ?>
           
         </ul>
       </nav>

@@ -36,7 +36,7 @@ class C_produkPembeli extends CI_Controller{
         $menit = $diff - $jam * (60 * 60);
 
         $data['diff']    = $diff;
-        $data['jam']     = $jam;
+        $data['jam']     = preg_replace("/-/","", $jam);
         $data['menit']   = floor( $menit / 60 );
         
         $this->session->set_flashdata('test1', 
@@ -118,7 +118,13 @@ class C_produkPembeli extends CI_Controller{
         $data['noPlat']         = $this->session->userdata('noPlat');
         $data['jenisBooking']   = $this->session->userdata('jenisBooking');
         $data['tglReservasi']   = $this->session->userdata('tglReservasi');
-        $data['jamreservasi']   = $this->session->userdata('jamreservasi');
+        if (!empty($this->session->userdata('jamreservasi'))) {
+            $jamreservasi = $this->session->userdata('jamreservasi');
+        }else{
+            $jamreservasi = '10:00';
+        }
+
+        $data['jamreservasi']   = $jamreservasi;
 
         $this->load->view('V_dataReservasiNew',$data);
     }

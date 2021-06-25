@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/font-awesome/css/font-awesome.min.css">
   <link href="<?php echo base_url() ?>assetsAdmin/css/icons.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.addons.css">
@@ -148,19 +149,19 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
-
-         <ul class="nav">
+        <ul class="nav">
           <li class="nav-item nav-profile">
-            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
+           <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
-        
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>             
+              <span class="menu-title">Dashboard</span>      
             </a>
           </li>
+
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
@@ -187,15 +188,19 @@
             </div>
           </li>
 
+          <?php } ?>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
+
               <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                 <div class="badge badge-info">2</div>
               <?php }else{ ?>
                 <div class="badge badge-info">1</div>
               <?php } ?>
+              
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
@@ -214,19 +219,14 @@
             </div>
           </li>
           
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
               <span class="menu-title">Data Layanan</span>
             </a>
           </li>
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
-              <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Reservasi</span>
-            </a>
-          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
@@ -246,6 +246,8 @@
             </div>
           </li>
 
+           <?php } ?>
+          
         </ul>
       </nav>
       <!-- partial -->
@@ -388,10 +390,10 @@
                                 
                       ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailDataPenjualan2/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
-                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/updateDataPenjualan/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i> Edit</a>
-                                    <a href="#" onclick="myDelete(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailDataPenjualan2/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="fa fa-eye"></i> Detail</a>
+                                    <!-- <a href="<?php echo base_url().'webbackend/C_dataPenjualan/updateDataPenjualan/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-primary"><i class="fa fa-handshake-o"></i> Edit</a> -->
+                                    <a href="#" onclick="updateselesai(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-primary"><i class="fa fa-handshake-o"></i> Selesai</a>
+                                    <!-- <a href="#" onclick="myDelete(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a> -->
                                 </td>
                             </tr>
                         <?php } ?>
@@ -454,6 +456,40 @@
 
        </div>
 
+       <div class="modal fade" id="updateselesai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="login">
+               <div class="modal-header" style="height: 50px !important;">
+                 
+                  <div class="col-md-11">
+                  <h6 class="modal-title textBlack" align="left">Update Status Pengerjaan</h6>
+                </div>
+                <div class="col-md-1">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+               </div>
+               <div class="modal-body" style="height: 50px !important;">
+                  
+                     <p>Konfirmasi bahwa proses Pengerjaan Sudah Selesai</p>  
+                  
+                </div>
+
+               </div>
+               <div class="modal-footer" align="right">
+                <div class="col-md-12">
+                    <div align="right">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                      <button type="button" id="btn_selesai" class="btn btn-primary">Selesai</button>
+                    </div>  
+                </div>
+               </div>
+             </div>
+
+          </div>
+
+       </div>
+
   <script>
     function myDelete(val) {
         // console.log(val);
@@ -484,6 +520,38 @@
             });
 
         });
+        
+    }
+
+    function updateselesai(val) {
+        // console.log(val);
+        var kodeUnik = val;
+
+        $('#updateselesai').modal('show');
+
+        // $("#btn_selesai").click(function() {
+
+        //     $.ajax({
+        //           url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/deleteDataPenjualan",
+        //           type: 'POST',
+        //           dataType: "html",
+        //           data: {
+        //               kodeUnik: kodeUnik
+        //           },
+        //           success: function(data) {
+        //               console.log(data);
+        //               $('#dialogrepair_box').modal('hide');
+        //               window.location.reload(true);
+                   
+        //           },
+        //           error: function(xhr, ajaxOptions, thrownError)
+        //           {
+        //               alert("Failed to get where column list, please try again");
+            
+        //           }
+        //     });
+
+        // });
         
     }
   </script>

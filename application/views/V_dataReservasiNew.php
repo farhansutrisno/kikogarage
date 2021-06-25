@@ -297,7 +297,7 @@
                         <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
                         <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>
                       </div>
-                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Hapus</a></p>
+                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Batal</a></p>
                     </div>
                   </div>
                 </div>

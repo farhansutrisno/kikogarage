@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/font-awesome/css/font-awesome.min.css">
   <link href="<?php echo base_url() ?>assetsAdmin/css/icons.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.addons.css">
@@ -29,6 +30,11 @@
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
     }
+
+    .form-control{
+        font-size: 14px !important;
+      }
+
   </style>
 </head>
 
@@ -140,19 +146,19 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
-
-         <ul class="nav">
+        <ul class="nav">
           <li class="nav-item nav-profile">
-            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
+           <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
-        
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>             
+              <span class="menu-title">Dashboard</span>      
             </a>
           </li>
+
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
@@ -179,15 +185,19 @@
             </div>
           </li>
 
+          <?php } ?>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
+
               <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
                 <div class="badge badge-info">2</div>
               <?php }else{ ?>
                 <div class="badge badge-info">1</div>
               <?php } ?>
+              
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
@@ -206,21 +216,16 @@
             </div>
           </li>
           
+          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
               <i class="menu-icon icon-present"></i>
               <span class="menu-title">Data Layanan</span>
             </a>
           </li>
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">
-              <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Reservasi</span>
-            </a>
-          </li> -->
 
-         <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
               <i class="menu-icon icon-bag"></i>
               <span class="menu-title">Data Reservasi</span>
@@ -238,6 +243,8 @@
             </div>
           </li>
 
+           <?php } ?>
+          
         </ul>
       </nav>
       <!-- partial -->
@@ -283,6 +290,7 @@
               <div class="row">
                 <div class="col-md-6">
                     <div class="table-responsive">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#updateDataKonsumen"><i class="fa fa-address-book"></i>Update Data Konsumen</a>
                     <table class="table table-bordered">
                         <tr><th colspan="2" style="text-align: center;">Data Konsumen</th></tr>
                         <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->namaLengkap ?></td></tr>
@@ -315,6 +323,8 @@
                         <?php } ?> 
                     </table>
                     <br>
+                   
+                    <a href="#" class="btn btn-primary"><i class="fa fa-user-circle"></i>Update Data Pegawai</a>
                     <table class="table table-bordered">
                         <tr><th colspan="2" style="text-align: center;">Nama Pegawai Kiko</th></tr>
                         <?php 
@@ -343,13 +353,106 @@
                   </div>
                     
                 </div>
-
-                 <?php echo anchor('webbackend/C_dataPenjualan/lihatDataPenjualan','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
+                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatDataPenjualan'?>" class="btn btn-round btn-info"><i class="fa fa-reply"></i>Kembali</a>
               </div>
                
 
             </div>
-          </div>  
+          </div>
+
+          <div class="modal fade" id="updateDataKonsumen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div id="login">
+                     <div class="modal-header">
+                       
+                        <div class="col-md-11">
+                        <h6 class="modal-title textBlack" align="center">Update Data Konsumen</h6>
+                      </div>
+                      
+                     </div>
+                     <div class="modal-body">
+                        
+                        <div class="col-md-12 block-12">
+                        <form action="<?php echo base_url().'C_dataAkun/prosesUpdateDataKonsumen'?>" method="POST" id="regForm">
+
+                          <input type="hidden" name="kodeUnik" value="<?php echo $row[0]->kodeUnik ?>" />
+                          
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" placeholder="Nama Lengkap" value="<?php echo $row[0]->namaLengkap ?>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="noTelepon" name="noTelepon" placeholder="No Telepon" value="<?php echo $row[0]->noTelepon ?>" required>
+                          </div>
+                          <div class="form-group">
+                            <textarea cols="10" rows="5" name="alamatLengkap" class="form-control" id="alamatLengkap" placeholder="Alamat Lengkap" required><?php echo $row[0]->alamatLengkap ?></textarea>
+                          </div>
+                           
+                          <div class="form-group">
+                             <input class="form-control" type="file" name="userfile" value="<?php echo $row[0]->fotoKonsumen ?>" required>
+                              <span style="font-size: 14px !important;"><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
+                          </div>
+
+                          
+                          <div class="form-group">
+                            <div class="row justify-content-center">
+                               <button type="button" class="btn btn-danger btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                              <button type="button" onclick="save();" class="btn btn-primary btn-lg marleft20 active">Simpan</button>
+                            </div>
+                          </div>
+
+                        </form>
+                      
+                      </div>
+
+                     </div>
+                     
+                   </div>
+
+
+                </div>
+
+             </div>
+          </div>
+
+
+          <script type="text/javascript">
+
+              function save(){
+
+                var namaLengkap     = $('#namaLengkap').val();
+                var noTelepon       = $('#noTelepon').val();
+                var alamatLengkap   = $('#alamatLengkap').val();
+                var valid = 1;
+                  
+                if(namaLengkap == ''){
+                  valid = 0;
+                  var msg = 'Nama Lengkap Tidak Boleh Kosong';
+                }
+
+                if(noTelepon == ''){
+                  valid = 0;
+                  var msg = 'No Telepon Tidak Boleh Kosong';
+                }
+
+                if(alamatLengkap == ''){
+                  valid = 0;
+                  var msg = 'Alamat Lengkap Tidak Boleh Kosong';
+                }
+
+                if(valid == 1){
+
+                  document.getElementById("regForm").submit();
+                  
+                }else{
+                  alert(msg);
+                }
+                    
+              }
+            
+          </script>
+
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
