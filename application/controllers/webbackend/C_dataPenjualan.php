@@ -37,6 +37,8 @@ class C_dataPenjualan extends CI_Controller{
 			$data["KdTukang"] = array($KodeTukang = 1);
 		}
 
+		$data['dataPegawai'] = $this->mod_dataPenjualan->lihatDataPegawaiKiko()->result();
+
 		$data["penjualanProduk"] = $this->mod_dataPenjualan->detailDataPenjualanProduk($kodeUnik)->result();
 		
 		$this->load->view('webbackend/V_detailDataPenjualan', $data);

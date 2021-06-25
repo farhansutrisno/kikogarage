@@ -18,6 +18,15 @@ class mod_dataPenjualan extends CI_Model{
 		return $this->db->get();
 	}
 
+	public function lihatDataPegawaiKiko(){
+
+		$this->db->distinct();
+		$this->db->select('KdTukang, nama_lengkap, noTelepon, status');
+		$this->db->from('tukang');
+		$this->db->order_by('status','ASC');
+		return $this->db->get();
+	}
+
 	public function lihatHistoryReservasi(){
 
 		$this->db->distinct();
@@ -52,7 +61,7 @@ class mod_dataPenjualan extends CI_Model{
 	}
 
     public function detailDataPenjualan2($kodeUnik){
-        $this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, pembelian.catatan, produk.namaProduk, produk.kategori, pembelian.totalBayar, tukang.nama_lengkap, tukang.noTelepon as tukangHP, tukang.jenisKelamin, konsumen.foto as fotoKonsumen');
+        $this->db->select('konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, pembelian.catatan, pembelian.kodeUnik, pembelian.idAkun, pembelian.KdTukang, produk.namaProduk, produk.kategori, pembelian.totalBayar, tukang.nama_lengkap, tukang.noTelepon as tukangHP, tukang.jenisKelamin, konsumen.foto as fotoKonsumen');
 		$this->db->from('konsumen');
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
 		$this->db->join('produk','produk.kdProduk = pembelian.kdProduk');
@@ -62,7 +71,7 @@ class mod_dataPenjualan extends CI_Model{
     }
 
     public function detailDataPenjualan3($kodeUnik){
-        $this->db->select('konsumen.namaLengkap, konsumen.noTelepon, konsumen.alamatLengkap, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, pembelian.totalBayar, pembelian.catatan, konsumen.foto as fotoKonsumen');
+        $this->db->select('konsumen.namaLengkap, konsumen.noTelepon, konsumen.alamatLengkap, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, pembelian.totalBayar, pembelian.catatan, pembelian.kodeUnik, pembelian.idAkun, pembelian.KdTukang, konsumen.foto as fotoKonsumen');
 		$this->db->from('konsumen');
 		$this->db->join('pembelian','pembelian.idAkun = konsumen.idAkun');
 		// $this->db->join('produk','produk.kdProduk = pembelian.kdProduk');

@@ -215,6 +215,21 @@ class mod_dataOperator extends CI_Model{
 		}
 	}
 
+	public function prosesUpdateDataTukangBO(){
+
+		$namaPegawaiKiko 	= $this->input->post('namaPegawaiKiko');
+		$kodeUnik 			= $this->input->post('kodeUnik');
+		
+		$data 			= array(
+			"KdTukang" 		=> $namaPegawaiKiko
+			 
+		);
+
+		$this->db->where("kodeUnik",$kodeUnik);
+		return $this->db->update("pembelian",$data);
+		
+	}
+
 	public function detailDataTukang($KdTukang){
          $this->db->where("KdTukang",$KdTukang);
          return $this->db->get("tukang");

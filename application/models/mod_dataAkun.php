@@ -108,6 +108,41 @@ class mod_dataAkun extends CI_Model{
 		}
 	}
 
+	public function prosesUpdateKonsumenBO($gambar){
+
+		if($gambar==null){
+
+			$namaLengkap 	= $this->input->post('namaLengkap');
+			$noTelepon 		= $this->input->post('noTelepon');
+			$alamatLengkap 	= $this->input->post('alamatLengkap');
+
+			$data 			= array(
+				"namaLengkap" 		=> $namaLengkap,
+				"noTelepon" 		=> $noTelepon,
+				"alamatLengkap" 	=> $alamatLengkap
+			);
+
+			$this->db->where("idAkun",$this->input->post('idAkun'));
+			return $this->db->update("konsumen",$data);
+
+		}else{
+
+			$namaLengkap 	= $this->input->post('namaLengkap');
+			$noTelepon 		= $this->input->post('noTelepon');
+			$alamatLengkap 	= $this->input->post('alamatLengkap');
+
+			$data 			= array(
+				"namaLengkap" 		=> $namaLengkap,
+				"noTelepon" 		=> $noTelepon,
+				"alamatLengkap" 	=> $alamatLengkap,
+				"foto"				=> $gambar 
+			);
+
+			$this->db->where("idAkun",$this->input->post('idAkun'));
+			return $this->db->update("konsumen",$data);
+		}
+	}
+
 
 	public function prosesUpdateDataPembeli(){
 			$namaLengkap 	= $this->input->post('namaLengkap');

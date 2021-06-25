@@ -216,12 +216,20 @@ class C_dataAkun extends CI_Controller{
 	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
 	    $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
 
-	    if(isset($_POST['submit'])){
+	    // if(isset($_POST['submit'])){
+	    	
 		    if($this->form_validation->run() == false){
+
+		    	$this->session->set_flashdata('gagalUpdateKonsumen', 
+				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
+				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				                <h7>BERHASIL ! </h7>
+				                    <p>Gagal mengupdate data konsumen</p>
+				                </div>');
 
 		    	$kodeUnik = $this->input->post('kodeUnik');
 				$KdTukang = $this->input->post('KdTukang');
-				redirect('C_dataPenjualan/detailDataPenjualan2/'.$kodeUnik.'/'.$KdTukang);
+				redirect('webbackend/C_dataPenjualan/detailDataPenjualan2/'.$kodeUnik.'/'.$KdTukang);
 
 		    }
 		    else{
@@ -233,19 +241,21 @@ class C_dataAkun extends CI_Controller{
 		        $this->upload->do_upload();
 		        $data   =  $this->upload->data();
 
-		        $this->mod_dataAkun->prosesUpdateAkun($data['file_name']);
+		        $this->mod_dataAkun->prosesUpdateKonsumenBO($data['file_name']);
 
-		        $this->session->set_flashdata('pesanProfil', 
+		        $this->session->set_flashdata('suksesUpdateKonsumen', 
 				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
 				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				                <h7>BERHASIL ! </h7>
 				                    <p>Berhasil mengupdate data konsumen</p>
 				                </div>');
 				
-				redirect('C_dataAkun/lihatMemberNew');
+				$kodeUnik = $this->input->post('kodeUnik');
+				$KdTukang = $this->input->post('KdTukang');
+				redirect('webbackend/C_dataPenjualan/detailDataPenjualan2/'.$kodeUnik.'/'.$KdTukang);
 
 		    }
-		}	
+		// }	
 		
 	}
 

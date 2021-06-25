@@ -61,6 +61,11 @@
         </button>
         
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('gagalUpdateKonsumen'); ?>
+            <?php echo $this->session->flashdata('suksesUpdateKonsumen'); ?>
+          </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="<?php echo base_url() ?>#" data-toggle="dropdown" aria-expanded="false">
@@ -299,7 +304,7 @@
                         <tr><th>Foto</th><td></td></tr>
                     </table>
                   </div>
-                  <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="200px" height="200px">
+                  <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="150px" height="200px">
                   <br><br>
                 </div>
                 <div class="col-md-6">
@@ -323,33 +328,15 @@
                         <?php } ?> 
                     </table>
                     <br>
-                   
-                    <a href="#" class="btn btn-primary"><i class="fa fa-user-circle"></i>Update Data Pegawai</a>
+
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#updateDataPegawaiBO"><i class="fa fa-user-circle"></i>Update Data Pegawai</a>
                     <table class="table table-bordered">
                         <tr><th colspan="2" style="text-align: center;">Nama Pegawai Kiko</th></tr>
-                        <?php 
-                        if ($KdTukang[0] != 0) { ?>
-                         
                           <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->nama_lengkap ?></td></tr>
                           <tr><th>No Handphone</th><td><?php echo $row[0]->tukangHP ?></td></tr>
-                          <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?>
-                            <!-- <?php 
-
-                          if ($row[0]->status == 1) {
-                            $status = 'Free';
-                          }else{
-                            $status = 'Kerja';
-                          }
-
-                          echo $status ?> -->
-                            
-                          </td></tr>
-                        
-                        <?php 
-                        }
-                        ?>
-                        
+                          <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?></td></tr>
                     </table>
+
                   </div>
                     
                 </div>
@@ -374,9 +361,11 @@
                      <div class="modal-body">
                         
                         <div class="col-md-12 block-12">
-                        <form action="<?php echo base_url().'C_dataAkun/prosesUpdateDataKonsumen'?>" method="POST" id="regForm">
+                        <form action="<?php echo base_url().'C_dataAkun/prosesUpdateDataKonsumen'?>" enctype="multipart/form-data" method="POST" id="regForm">
 
                           <input type="hidden" name="kodeUnik" value="<?php echo $row[0]->kodeUnik ?>" />
+                          <input type="hidden" name="KdTukang" value="<?php echo $row[0]->KdTukang ?>" />
+                          <input type="hidden" name="idAkun" value="<?php echo $row[0]->idAkun ?>" />
                           
                           <div class="form-group">
                             <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" placeholder="Nama Lengkap" value="<?php echo $row[0]->namaLengkap ?>" required>
@@ -389,7 +378,7 @@
                           </div>
                            
                           <div class="form-group">
-                             <input class="form-control" type="file" name="userfile" value="<?php echo $row[0]->fotoKonsumen ?>" required>
+                             <input class="form-control" type="file" name="userfile" required>
                               <span style="font-size: 14px !important;"><i>Format file : JPG/PNG | Maksimal Upload : 10 Mb</i></span>
                           </div>
 
@@ -398,6 +387,71 @@
                             <div class="row justify-content-center">
                                <button type="button" class="btn btn-danger btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
                               <button type="button" onclick="save();" class="btn btn-primary btn-lg marleft20 active">Simpan</button>
+                            </div>
+                          </div>
+
+                        </form>
+                      
+                      </div>
+
+                     </div>
+                     
+                   </div>
+
+
+                </div>
+
+             </div>
+          </div>
+
+          <div class="modal fade" id="updateDataPegawaiBO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div id="login">
+                     <div class="modal-header">
+                       
+                        <div class="col-md-11">
+                        <h6 class="modal-title textBlack" align="center">Update Data Pegawai Service</h6>
+                      </div>
+                      
+                     </div>
+                     <div class="modal-body">
+                        
+                        <div class="col-md-12 block-12">
+                        <form action="<?php echo base_url().'webbackend/C_dataOperator/prosesUpdateDataTukangBO'?>" method="POST" id="regForm2">
+
+                          <input type="hidden" name="kodeUnik" value="<?php echo $row[0]->kodeUnik ?>" />
+                          <input type="hidden" name="KdTukang" value="<?php echo $row[0]->KdTukang ?>" />
+                          
+                          <div class="form-group">
+
+                             <select class="form-control" type="text" name="namaPegawaiKiko" id="datatukang" required>
+                                
+                              <?php 
+                              foreach($dataPegawai as $listgender) { 
+
+                                  if ($listgender->status == 2) {
+                                    $statusPegawai = 'Bekerja';
+                                  }else{
+                                    $statusPegawai = 'Free';
+                                  }
+
+                                  $namaPegawaiKiko = $listgender->nama_lengkap.' - '.$listgender->noTelepon.' - '.$statusPegawai;
+
+                                ?>
+                                  <option value="<?php echo $listgender->KdTukang;?>" <?php if($listgender->KdTukang == $row[0]->KdTukang) echo 'selected';?> ><?php echo $namaPegawaiKiko;?></option>
+                              <?php } ?>
+
+                            </select>
+                            <?php echo set_value('namaPegawaiKiko') ?><br><?php echo form_error('namaPegawaiKiko'); ?>
+
+                          </div>
+                          
+                          
+                          <div class="form-group">
+                            <div class="row justify-content-center">
+                               <button type="button" class="btn btn-danger btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                              <button type="button" onclick="saveTukang();" class="btn btn-primary btn-lg marleft20 active">Simpan</button>
                             </div>
                           </div>
 
@@ -443,6 +497,26 @@
                 if(valid == 1){
 
                   document.getElementById("regForm").submit();
+                  
+                }else{
+                  alert(msg);
+                }
+                    
+              }
+
+              function saveTukang(){
+
+                var datatukang     = $('#datatukang').val();
+                var valid = 1;
+                  
+                if(datatukang == ''){
+                  valid = 0;
+                  var msg = 'Pegawai Kiko Tidak Boleh Kosong';
+                }
+
+                if(valid == 1){
+
+                  document.getElementById("regForm2").submit();
                   
                 }else{
                   alert(msg);

@@ -315,6 +315,42 @@ class C_dataOperator extends CI_Controller{
 
 	}
 
+	public function prosesUpdateDataTukangBO(){
+		$this->form_validation->set_rules('namaPegawaiKiko','nama pegawai kiko','required');
+
+	    // if(isset($_POST['submit'])){
+		    if($this->form_validation->run() == false){
+		    	$this->session->set_flashdata('gagalUpdateKonsumen', 
+				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
+				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				                <h7>BERHASIL ! </h7>
+				                    <p>Gagal mengupdate data pegawai service</p>
+				                </div>');
+
+		    	$kodeUnik = $this->input->post('kodeUnik');
+				$KdTukang = $this->input->post('KdTukang');
+				redirect('webbackend/C_dataPenjualan/detailDataPenjualan2/'.$kodeUnik.'/'.$KdTukang);
+		    }
+		    else{
+		       
+	            $this->mod_dataOperator->prosesUpdateDataTukangBO($data['file_name']);
+
+				$this->session->set_flashdata('suksesUpdateKonsumen', 
+				                '<div class="alert alert-success" style="margin-bottom: 20px !important">    
+				                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				                <h7>BERHASIL ! </h7>
+				                    <p>Berhasil mengupdate data pegawai service</p>
+				                </div>');
+				
+				$kodeUnik = $this->input->post('kodeUnik');
+				$KdTukang = $this->input->post('namaPegawaiKiko');
+				redirect('webbackend/C_dataPenjualan/detailDataPenjualan2/'.$kodeUnik.'/'.$KdTukang);
+
+		    }
+		// }
+
+	}
+
 	public function deleteDataTukang(){
 
 		$kdtukang = $this->input->post('kdtukang');
