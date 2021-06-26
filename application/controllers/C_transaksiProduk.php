@@ -5,6 +5,7 @@ class C_transaksiProduk extends CI_Controller{
 		$this->load->helper(array('form','url'));
 		$this->load->library(array('form_validation','table'));
 		$this->load->library('pagination');
+		$this->load->library('pdf');
 		$this->load->model('mod_dataPembelian');
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -295,6 +296,19 @@ class C_transaksiProduk extends CI_Controller{
 		$data['pembayaran'] = $this->mod_dataPembelian->sessionTransaksi($config["per_page"], $data['page'])->result();
 
 		$this->load->view('V_allReservasiNew',$data);
+	}
+
+	public function exportpdf(){
+
+		$id 			= $this->uri->segment(3);
+		$KdTukang 		= $this->uri->segment(4);
+
+		$html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3>';
+		$html_content .= $this->mod_dataPembelian->fetch_single_details($id,$KdTukang);
+		$this->pdf->loadHtml($html_content);
+		$this->pdf->render();
+		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf", array("Attachment"=>1));
+
 	}
 
 	//============================================================================================================================

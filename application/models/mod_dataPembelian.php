@@ -46,6 +46,48 @@ class mod_dataPembelian extends CI_Model{
          return $this->db->get();
     }
 
+    function fetch_single_details($id,$KdTukang)
+	{
+		$this->db->select('*');
+		$this->db->from('pembelian');
+		$this->db->join('tukang','tukang.KdTukang=pembelian.KdTukang');
+		$this->db->where("kodeUnik",$id);
+
+		$data = $this->db->get();         
+ 		
+		$output = '<table width="100%" cellspacing="0" cellpadding="0">';
+		foreach($data->result() as $row)
+		{
+			$output .= '
+			<tr>
+				<td colspan="2">
+					<hr/>
+					<h3>Data Reservasi</h3>
+					<p>No Antrian : '.$row->noAntrian.'</p>
+					<p>Jam & Tanggal Reservasi : '.date_format (new DateTime($row->tglPembayaran), 'H:i').' - '.date_format (new DateTime($row->tglTransaksi), 'd M Y').'</p>
+					<p>No Plat : </b>'.$row->noPlat.'</p>
+					<p>Jenis Booking : '.$row->jenisBooking.'</p>
+					<p>Total Bayar : Rp. '.number_format($row->totalBayar, 0,",",".").' </p>
+					<hr/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td width="160px"><img width="150px" src="'.base_url().'gambar_proyek/'.$row->foto.'" /></td>
+				<td>
+					<h3>Data Pegawai Kiko</h3>
+					<p>Nama Pegawai Kiko : '.$row->nama_lengkap.' </p>
+					<p>No Telp Pegawai Kiko : '.$row->noTelepon.' </p>
+				</td>
+			</tr>
+			';
+		}
+
+		$output .= '</table>';
+
+		return $output;
+	}
+
     public function lihatTransaksi3($id){
 		// $this->db->select('*');
 		// $this->db->from('pembelian');
