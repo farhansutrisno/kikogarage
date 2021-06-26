@@ -31,6 +31,9 @@
       border-radius: 0% !important;
     }
   </style>
+
+    
+
 </head>
 
 <body>
@@ -288,40 +291,114 @@
           <div class="card">
             <div class="card-body">
               <h5 class="page-title">Detail History Reservasi <small>Kiko Good Garage</small> </h5><br>
-              <div class="row">
-                
-                <div class="col-md-7">
-                    <?php
-                    echo anchor('webbackend/C_dataPenjualan/exportAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
-                    ?>
+              
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    
+                    <div class="accordion accordion-multiple-filled" id="accordion-3" role="tablist">
 
-                </div>
-                <div class="col-md-5">
-                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
-                      
-                      <div class="row">
-                        <select class="form-control"  name="tahun" style="width: 100px !important">  
-                          <option value="">Tahun</option>                 
-                          <?php foreach($tahun as $key) { ?>
-                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
-                          <?php } ?>
-                        </select>
-                        &nbsp;&nbsp;
-                        <select class="form-control"  name="bulan" style="width: 80px !important">  
-                          <option value="">bulan</option>                 
-                          <?php foreach($bulan as $bln) { ?>
-                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
-                          <?php } ?>
-                        </select>
-                        &nbsp;&nbsp;
-                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                      <div class="card">
+                        <div class="card-header" role="tab" id="headingOne-3">
+                          <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapseOne-3" aria-expanded="false" aria-controls="collapseOne-3">
+                              Export to Excel
+                            </a>
+                          </h5>
+                        </div>
+                        <div id="collapseOne-3" class="collapse" role="tabpanel" aria-labelledby="headingOne-3" data-parent="#accordion-3">
+                          <div class="card-body">
+
+                            <div class="row">
+                  
+                                <div class="col-md-8">
+                                    <?php
+                                    echo anchor('webbackend/C_dataPenjualan/exportAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
+                                    ?>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
+                                      
+                                      <div class="row">
+                                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                                          <option value="">Tahun</option>                 
+                                          <?php foreach($tahun as $key) { ?>
+                                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                                          <option value="">bulan</option>                 
+                                          <?php foreach($bulan as $bln) { ?>
+                                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                                      </div>
+                                      
+                                    </form>
+                                </div>
+                              </div>
+
+                          </div>
+                        </div>
                       </div>
-                      
-                    </form>
+
+                      <div class="card">
+                        <div class="card-header" role="tab" id="headingTwo-3">
+                          <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo-3" aria-expanded="false" aria-controls="collapseTwo-3">
+                              Export to PDF
+                            </a>
+                          </h5>
+                        </div>
+                        <div id="collapseTwo-3" class="collapse" role="tabpanel" aria-labelledby="headingTwo-3" data-parent="#accordion-3">
+                          <div class="card-body">
+                            
+                            <div class="row">
+                  
+                                <div class="col-md-8">
+                                    <?php
+                                    echo anchor('webbackend/C_dataPenjualan/exportAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
+                                    ?>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
+                                      
+                                      <div class="row">
+                                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                                          <option value="">Tahun</option>                 
+                                          <?php foreach($tahun as $key) { ?>
+                                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                                          <option value="">bulan</option>                 
+                                          <?php foreach($bulan as $bln) { ?>
+                                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                                      </div>
+                                      
+                                    </form>
+                                </div>
+                              </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
               </div>
-              <br><br>
-                    
+
               <div class="row">
                 
                 <div class="col-12 table-responsive">
@@ -395,6 +472,37 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+
+          $('#makerLimitBtnHide').hide();
+          $('#divMakerLimit').hide();
+
+      });
+      
+      function makerLimitShow() {
+        $('#divMakerLimit').show();
+          $('#makerLimitBtnHide').attr('Onclick', 'makerLimitHide()');
+          $('#makerLimitBtnShow').hide();
+          $('#makerLimitBtnHide').show();
+
+      }
+
+      function makerLimitHide() {
+          $('#divMakerLimit').hide();
+          $('#makerLimitBtnShow').attr('Onclick', 'makerLimitShow()');
+          $('#makerLimitBtnHide').hide();
+          $('#makerLimitBtnShow').show();
+      }
+
+      function refreshwindow()
+      {
+        // not loaded frames
+        window.document.location.reload();
+      }
+
+    </script>
 
   <!-- plugins:js -->
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.base.js"></script>
