@@ -10,7 +10,7 @@ class mod_dataPenjualan extends CI_Model{
 	public function lihatDataPenjualan(){
 
 		$this->db->distinct();
-		$this->db->select('konsumen.namaLengkap,konsumen.noTelepon,pembelian.tglTransaksi,pembelian.KdTukang,pembelian.kodeUnik,pembelian.noAntrian,pembelian.noPlat,pembelian.totalBayar,pembelian.statusPembayaran,pembelian.tglPembayaran');
+		$this->db->select('konsumen.namaLengkap,konsumen.noTelepon,pembelian.tglTransaksi,pembelian.KdTukang,pembelian.kodeUnik,pembelian.noAntrian,pembelian.noPlat,pembelian.totalBayar,pembelian.statusPembayaran,pembelian.tglPembayaran,pembelian.jenisBooking,pembelian.idAkun');
 		$this->db->from('pembelian');
 		$this->db->join('konsumen','konsumen.idAkun = pembelian.idAkun');
 		$this->db->order_by('kdPembelian','ASC');
@@ -98,28 +98,27 @@ class mod_dataPenjualan extends CI_Model{
 			$idAkun			= $this->input->post('idAkun');
 			$kdoperator		= $this->input->post('kdoperator');
 			$KdTukang		= $this->input->post('KdTukang');
-			$catatan		= $this->input->post('catatan');
+			// $catatan		= $this->input->post('catatan');
+			$status			= $this->input->post('statusPengerjaan');
+			// $selesaiLangsung		= $this->input->post('selesaiLangsung');
+			// $penjemputan			= $this->input->post('penjemputan');
+			// $pengerjaanJemput		= $this->input->post('pengerjaanJemput');
+			// $pengantaran			= $this->input->post('pengantaran');
+			// $selesaiJemput			= $this->input->post('selesaiJemput');
 
-			$pengerjaanLangsung		= $this->input->post('pengerjaanLangsung');
-			$selesaiLangsung		= $this->input->post('selesaiLangsung');
-			$penjemputan			= $this->input->post('penjemputan');
-			$pengerjaanJemput		= $this->input->post('pengerjaanJemput');
-			$pengantaran			= $this->input->post('pengantaran');
-			$selesaiJemput			= $this->input->post('selesaiJemput');
-
-			if (!empty($pengerjaanLangsung)) {
-				$status = $pengerjaanLangsung;
-			}else if (!empty($selesaiLangsung)) {
-				$status = $selesaiLangsung;
-			}else if (!empty($penjemputan)) {
-				$status = $penjemputan;
-			}else if (!empty($pengerjaanJemput)) {
-				$status = $pengerjaanJemput;
-			}else if (!empty($pengantaran)) {
-				$status = $pengantaran;
-			}else if (!empty($selesaiJemput)) {
-				$status = $selesaiJemput;
-			}
+			// if (!empty($pengerjaanLangsung)) {
+			// 	$status = $pengerjaanLangsung;
+			// }else if (!empty($selesaiLangsung)) {
+			// 	$status = $selesaiLangsung;
+			// }else if (!empty($penjemputan)) {
+			// 	$status = $penjemputan;
+			// }else if (!empty($pengerjaanJemput)) {
+			// 	$status = $pengerjaanJemput;
+			// }else if (!empty($pengantaran)) {
+			// 	$status = $pengantaran;
+			// }else if (!empty($selesaiJemput)) {
+			// 	$status = $selesaiJemput;
+			// }
 
 			$data 			= array(
 				
@@ -137,7 +136,7 @@ class mod_dataPenjualan extends CI_Model{
 
 				$data1 			= array(
 					"statusPembayaran"	=> $status,	
-					"catatan"			=> $catatan,
+					// "catatan"			=> $catatan,
 				);
 
 				$this->db->where("kodeUnik",$kodeUnik);

@@ -351,6 +351,8 @@
                     <tbody>
                       <?php
                         $no=1;
+                        $kdoperator = $this->session->userdata('kodeOperator');
+
                             foreach ($penjualan as $key){
 
                                 if (empty($key->tglTransaksi)) {
@@ -392,8 +394,8 @@
                                 <td>
                                     <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailDataPenjualan2/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="fa fa-eye"></i> Detail</a>
                                     <!-- <a href="<?php echo base_url().'webbackend/C_dataPenjualan/updateDataPenjualan/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-primary"><i class="fa fa-handshake-o"></i> Edit</a> -->
-                                    <a href="#" onclick="updateselesai(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-primary"><i class="fa fa-handshake-o"></i> Selesai</a>
-                                    <!-- <a href="#" onclick="myDelete(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a> -->
+                                    <a href="#" onclick="updateselesai(<?='\''.$key->kodeUnik.'\',\''.$key->idAkun.'\',\''.$kdoperator.'\',\''.$key->KdTukang.'\',\''."Selesai".'\''?>)" class="btn btn-primary <?php if ($key->statusPembayaran == 'Pengantaran' && $key->jenisBooking == 'Antar Jemput' || $key->statusPembayaran == 'Pengerjaan' && $key->jenisBooking == 'Langsung'){ ?> ' ' <?php }else{?> disabled <?php } ?>"><i class="fa fa-handshake-o"></i> Selesai</a>
+                                    <a href="#" onclick="myDelete(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Batal</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -428,7 +430,7 @@
                <div class="modal-header" style="height: 50px !important;">
                  
                   <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Hapus Data Reservasi</h6>
+                  <h6 class="modal-title textBlack" align="left">Batal Data Reservasi</h6>
                 </div>
                 <div class="col-md-1">
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -436,16 +438,16 @@
                </div>
                <div class="modal-body" style="height: 50px !important;">
                   
-                     <p>Apakah anda yakin ingin menghapus data Reservasi</p>  
+                     <p>Apakah anda yakin ingin membatalkan data Reservasi</p>  
                   
                 </div>
 
                </div>
-               <div class="modal-footer" align="right">
+               <div class="modal-footer" align="center">
                 <div class="col-md-12">
-                    <div align="right">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_delete" class="btn btn-danger">Hapus</button>
+                    <div align="center">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>&nbsp;&nbsp;
+                      <button type="button" id="btn_delete" class="btn btn-danger">Lanjutkan</button>
                     </div>  
                 </div>
                </div>
@@ -471,16 +473,16 @@
                </div>
                <div class="modal-body" style="height: 50px !important;">
                   
-                     <p>Konfirmasi bahwa proses Pengerjaan Sudah Selesai</p>  
+                     <p>Konfirmasi Status Pengerjaan : Selesai</p>  
                   
                 </div>
 
                </div>
-               <div class="modal-footer" align="right">
+               <div class="modal-footer" align="center">
                 <div class="col-md-12">
-                    <div align="right">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_selesai" class="btn btn-primary">Selesai</button>
+                    <div align="center">
+                      <button type="button" class="btn btn-danger btn-rounded btn-fw" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                      <button type="button" id="btn_selesai" class="btn btn-success btn-rounded btn-fw">Selesai</button>
                     </div>  
                 </div>
                </div>
@@ -510,7 +512,7 @@
                       console.log(data);
                       $('#dialogrepair_box').modal('hide');
                       window.location.reload(true);
-                   
+
                   },
                   error: function(xhr, ajaxOptions, thrownError)
                   {
@@ -523,35 +525,43 @@
         
     }
 
-    function updateselesai(val) {
-        // console.log(val);
-        var kodeUnik = val;
+    function updateselesai(kodeUnik,idAkun,kdoperator,KdTukang,statusPengerjaan) {
+
+        var kodeUnik          = kodeUnik;
+        var idAkun            = idAkun;
+        var kdoperator        = kdoperator;
+        var KdTukang          = KdTukang;
+        var statusPengerjaan  = statusPengerjaan;
 
         $('#updateselesai').modal('show');
 
-        // $("#btn_selesai").click(function() {
+        $("#btn_selesai").click(function() {
 
-        //     $.ajax({
-        //           url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/deleteDataPenjualan",
-        //           type: 'POST',
-        //           dataType: "html",
-        //           data: {
-        //               kodeUnik: kodeUnik
-        //           },
-        //           success: function(data) {
-        //               console.log(data);
-        //               $('#dialogrepair_box').modal('hide');
-        //               window.location.reload(true);
-                   
-        //           },
-        //           error: function(xhr, ajaxOptions, thrownError)
-        //           {
-        //               alert("Failed to get where column list, please try again");
+            $.ajax({
+                  url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
+                  type: 'POST',
+                  dataType: "html",
+                  data: {
+                      kodeUnik: kodeUnik,
+                      idAkun: idAkun,
+                      kdoperator : kdoperator,
+                      KdTukang : KdTukang,
+                      statusPengerjaan : statusPengerjaan
+                  },
+                  success: function(data) {
+                      console.log(data);
+                      $('#updateselesai').modal('hide');
+                      window.location.reload(true);
+
+                  },
+                  error: function(xhr, ajaxOptions, thrownError)
+                  {
+                      alert("Failed to get where column list, please try again");
             
-        //           }
-        //     });
+                  }
+            });
 
-        // });
+        });
         
     }
   </script>

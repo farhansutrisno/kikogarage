@@ -496,13 +496,5 @@ class mod_dataProduk extends CI_Model{
         return $this->db->query("$query");
     }
 
-    function kategoripaket($paket,$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal){
-        $tahun = $tahun;
-        $query = "SELECT  COUNT(kdProduk) as data
-                                FROM produk
-                                WHERE paket = '".$paket."' AND createDate BETWEEN '$tahunawal-$bulanawal-$tanggalawal' AND '$tahun-$bulan-$tanggal'";
-        return $this->db->query("$query");
-    }
-
 }
 ?>

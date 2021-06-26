@@ -453,7 +453,7 @@
                   backgroundColor: 'transparent'
                 },
                     title: {
-                      text: '<h3>JUMLAH LAYANAN BERDASARKAN KATEGORI</h3>'
+                      text: '<h3>JUMLAH PRODUK KIKO BERDASARKAN KATEGORI</h3>'
                     },
                 xAxis: {
                   categories: ['Cars Wash', 'Coating', 'Interior', 'Eksterior'],
@@ -501,75 +501,7 @@
               </div>
             </div>
 
-            <!-- <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  
-                      <div class="chart" id="pieChart3" style="height: 350px;margin-bottom: 30px"></div>
-                      <script type="text/javascript">
-                      chart = new Highcharts.Chart({
-                        chart: {
-                          renderTo: 'pieChart3',
-                          plotShadow: false,
-                          backgroundColor: 'transparent'
-                        },
-                        title: {
-                          text:'<h3>JUMLAH LAYANAN BERDASARKAN KATEGORI</h3>'
-                        },
-                        tooltip: {
-                          backgroundColor: getColor['white'],
-                          borderColor: 'transparent',
-                          borderRadius: 7,
-                          borderWidth: 0,
-                          style: {
-                            color: getColor['dark'],
-                            fontSize: '13px'  
-                          }
-                        },
-                        plotOptions: {
-                          pie: {
-                            cursor: 'pointer',
-                            dataLabels: {enabled: true},
-                            borderWidth: 0,
-                            showInLegend: true
-                          }
-                        },
-                        legend: {
-                          itemMarginTop: 20,
-                          // itemHoverStyle: {color: getColor['white']}
-                        },
-                        credits: {enabled: false},
-                        series: [{
-                          type: 'pie',
-                          name: 'Jumlah : ',
-                          innerSize: '50%',
-                          size: '80%',
-                          data: [
-                            {
-                              name: 'Cars Wash',
-                              y: <?php echo $Cars_Wash ?>,
-                              color: getColor['Dark_Orchid'],
-                            }, {
-                              name: 'Coating',
-                              y: <?php echo $Coating ?>,
-                              color: getColor['yellow'],
-                            }, {
-                              name: 'Interior',
-                              y: <?php echo $Interior ?>,
-                              color: getColor['green'],
-                            }, {
-                              name: 'Eksterior',
-                              y: <?php echo $Eksterior ?>,
-                              color: getColor['orange'],
-                            }
-                          ]
-                        }]
-                      });
-                    </script>
-                      
-                </div>
-              </div>
-            </div> -->
+            
 
             <div class="col-6 grid-margin stretch-card">
               <div class="card">
@@ -717,125 +649,7 @@
               </div>
             </div>
 
-          <!--   <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  
-                      <div class="chart" id="barChart5" style="height: 350px;margin-bottom: 30px"></div>
-                      <script type="text/javascript">
-                      $('#barChart5').highcharts({
-                chart: {
-                  type: 'column',
-                  backgroundColor: 'transparent'
-                },
-                    title: {
-                      text: '<h3>JUMLAH RESERVASI LAYANAN BERDASARKAN KATEGORI</h3>'
-                    },
-                xAxis: {
-                  categories: ['Cars Wash', 'Coating', 'Interior', 'Eksterior'],
-                  title: {
-                    text: null
-                  }
-                },
-                yAxis: {
-                  min: 0,
-                  title: {
-                    text: 'Jumlah Reservasi',
-                    align: 'high'
-                  },
-                  labels: {
-                    overflow: 'justify'
-                  }
-                },
-                plotOptions: {
-                  bar: {
-                    dataLabels: {
-                      enabled: true
-                    }
-                  }
-                },
-                legend: {enabled: false},
-                credits: {enabled: false},
-                tooltip: {
-                  backgroundColor: getColor['white'],
-                  borderColor: 'transparent',
-                  borderRadius: 7,
-                  borderWidth: 0,
-                  style: {
-                    color: getColor['dark']
-                  }
-                },
-                series: [{
-                  name: 'Jumlah :',
-                  data: [<?php echo $Cars_Wash1 ?>,<?php echo $Coating1 ?>,<?php echo $Interior1 ?>,<?php echo $Eksterior1 ?>],
-                  color: getColor['Chocolate']
-                }]
-              });
-                    </script>
-                      
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  
-                      <div class="chart" id="barChart6" style="height: 350px;margin-bottom: 30px"></div>
-                      <script type="text/javascript">
-                      $('#barChart6').highcharts({
-                chart: {
-                  type: 'column',
-                  backgroundColor: 'transparent'
-                },
-                    title: {
-                      text: '<h3>JUMLAH RESERVASI BERDASARKAN JENIS BOOKING</h3>'
-                    },
-                xAxis: {
-                  categories: ['Antar Jemput', 'Langsung'],
-                  title: {
-                    text: null
-                  }
-                },
-                yAxis: {
-                  min: 0,
-                  title: {
-                    text: 'Jumlah Reservasi',
-                    align: 'high'
-                  },
-                  labels: {
-                    overflow: 'justify'
-                  }
-                },
-                plotOptions: {
-                  bar: {
-                    dataLabels: {
-                      enabled: true
-                    }
-                  }
-                },
-                legend: {enabled: false},
-                credits: {enabled: false},
-                tooltip: {
-                  backgroundColor: getColor['white'],
-                  borderColor: 'transparent',
-                  borderRadius: 7,
-                  borderWidth: 0,
-                  style: {
-                    color: getColor['dark']
-                  }
-                },
-                series: [{
-                  name: 'Jumlah :',
-                  data: [<?php echo $antarjemput ?>,<?php echo $langsung ?>],
-                  color: getColor['red']
-                }]
-              });
-                    </script>
-                      
-                </div>
-              </div>
-            </div> -->
+          
 
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
@@ -942,7 +756,7 @@
                           },
 
                           series: [{
-                              name: 'Pendapatan = Rp.',
+                              name: 'Omzet = Rp.',
                               data: [<?php echo $januari ?>,<?php echo $februari ?>,<?php echo $maret ?>, <?php echo $april ?>,<?php echo $mei ?>,<?php echo $juni ?>,<?php echo $juli ?>,<?php echo $agustus ?>,<?php echo $september ?>,<?php echo $oktober ?>,<?php echo $november ?>, <?php echo $desember ?>]
                           }],
 

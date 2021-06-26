@@ -13,6 +13,7 @@
   <link href="<?php echo base_url() ?>assetsAdmin/css/icons.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/font-awesome/css/font-awesome.min.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -293,6 +294,7 @@
                     <?php
                     echo anchor('webbackend/C_dataPenjualan/exportAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
                     ?>
+
                 </div>
                 <div class="col-md-5">
                     <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
@@ -366,7 +368,7 @@
                                 
                       ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailHistoryReservasi/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailHistoryReservasi/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="fa fa-eye"></i> Detail</a>
                                 </td>
                             </tr>
                         <?php } ?>

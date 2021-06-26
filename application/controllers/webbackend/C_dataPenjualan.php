@@ -13,7 +13,6 @@ class C_dataPenjualan extends CI_Controller{
 		$data['bulan']	= $this->mod_dataPenjualan->bulan()->result();
 		$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan()->result();
 
-
 		$this->load->view('webbackend/V_lihatDataPenjualan',$data);
 	}
 
@@ -59,7 +58,6 @@ class C_dataPenjualan extends CI_Controller{
 		$this->load->view('webbackend/V_detailHistoryReservasi', $data);
 	}
 
-
 	public function updateDataPenjualan($kodeUnik){
 		$data["penjualan"] = $this->mod_dataPenjualan->updateDataPenjualan($kodeUnik)->result();
 		$this->load->view('webbackend/V_updateDataPenjualan', $data);
@@ -67,21 +65,13 @@ class C_dataPenjualan extends CI_Controller{
 
 	public function prosesUpdateDataPenjualan(){
 
-	    if(isset($_POST['submit'])){
+	    // if(isset($_POST['submit'])){
 		    
-
-			$this->session->set_flashdata('pesan1', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL ! </h7>
-		                    <p>Data penjualan berhasil diupdate</p>
-		                </div>');
-
 			$this->mod_dataPenjualan->prosesUpdateDataPenjualan();
 			
 			redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
 
-		}
+		// }
 
 	}
 
@@ -178,17 +168,10 @@ class C_dataPenjualan extends CI_Controller{
 	}
 
 	public function deleteDataPenjualan(){
-		$this->session->set_flashdata('pesan5', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL ! </h7>
-		                    <p>Berhasil menghapus data Reservasi</p>
-		                </div>');
-
 		$kodeUnik = $this->input->post('kodeUnik');
 
 		$this->mod_dataPenjualan->deleteDataPenjualan($kodeUnik);
-		redirect('webbackend/C_dataProduk/lihatDataProduk');
+		redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
 	}
 	
 }

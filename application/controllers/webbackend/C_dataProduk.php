@@ -193,15 +193,6 @@ class C_dataProduk extends CI_Controller{
 		$x['penjemputan'] 	= $this->mod_dataProduk->seluruhnya('Penjemputan',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
 		$x['pengantaran'] 	= $this->mod_dataProduk->seluruhnya('Pengantaran',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
 
-		$x['Interior3'] 	= $this->mod_dataProduk->kategoripaket('Interior',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Eksterior3'] 	= $this->mod_dataProduk->kategoripaket('Eksterior',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Reguler3'] 		= $this->mod_dataProduk->kategoripaket('Reguler',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Premium3'] 		= $this->mod_dataProduk->kategoripaket('Premium',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Bronze3'] 		= $this->mod_dataProduk->kategoripaket('Bronze',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Diamond3'] 		= $this->mod_dataProduk->kategoripaket('Diamond',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Gold3'] 		= $this->mod_dataProduk->kategoripaket('Gold',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['Silver3'] 		= $this->mod_dataProduk->kategoripaket('Silver',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-
 		$this->load->view('webbackend/V_lihatGrafikPenjualan',$x);
 
     }

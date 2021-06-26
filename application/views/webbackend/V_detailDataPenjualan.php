@@ -303,9 +303,41 @@
                         <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
                         <tr><th>Foto</th><td></td></tr>
                     </table>
+                  
+                    <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="150px" height="200px">
                   </div>
-                  <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="150px" height="200px">
                   <br><br>
+                  <div class="table-responsive">
+                      <h5 class="page-title">Update Status Pengerjaan</h5><br>
+                      <?php 
+                        $kdoperator = $this->session->userdata('kodeOperator');
+                      ?>
+
+                      <?php if ($row[0]->statusPembayaran == 'Antrian' && $row[0]->jenisBooking == 'Antar Jemput') { ?>
+
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Penjemputan".'\''?>)"><i class="fa fa-car"></i>Penjemputan</a>
+
+                      <?php } ?>
+
+                      <?php if ($row[0]->statusPembayaran == 'Penjemputan' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Antrian' && $row[0]->jenisBooking == 'Langsung') { ?>
+
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Pengerjaan".'\''?>)"><i class="fa fa-wrench"></i>Pengerjaan</a>
+
+                      <?php } ?>
+
+                      <?php if ($row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Antar Jemput') { ?>
+
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Pengantaran".'\''?>)"><i class="fa fa-send"></i>Pengantaran</a>
+
+                      <?php } ?>
+
+                      <!-- <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
+
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Selesai".'\''?>)"><i class="fa fa-handshake-o"></i>Selesai</a>
+
+                      <?php } ?> -->
+
+                  </div>
                 </div>
                 <div class="col-md-6">
                     <div class="table-responsive">
@@ -340,7 +372,7 @@
                   </div>
                     
                 </div>
-                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatDataPenjualan'?>" class="btn btn-round btn-info"><i class="fa fa-reply"></i>Kembali</a>
+                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatDataPenjualan'?>" class="btn btn-info btn-rounded btn-fw"><i class="fa fa-reply"></i>Kembali</a>
               </div>
                
 
@@ -385,8 +417,8 @@
                           
                           <div class="form-group">
                             <div class="row justify-content-center">
-                               <button type="button" class="btn btn-danger btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                              <button type="button" onclick="save();" class="btn btn-primary btn-lg marleft20 active">Simpan</button>
+                               <button type="button" class="btn btn-danger btn-rounded btn-fw btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                              <button type="button" onclick="save();" class="btn btn-primary btn-rounded btn-fw btn-lg marleft20 active">Simpan</button>
                             </div>
                           </div>
 
@@ -450,8 +482,8 @@
                           
                           <div class="form-group">
                             <div class="row justify-content-center">
-                               <button type="button" class="btn btn-danger btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                              <button type="button" onclick="saveTukang();" class="btn btn-primary btn-lg marleft20 active">Simpan</button>
+                               <button type="button" class="btn btn-danger btn-rounded btn-fw btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                              <button type="button" onclick="saveTukang();" class="btn btn-primary btn-rounded btn-fw btn-lg marleft20 active">Simpan</button>
                             </div>
                           </div>
 
@@ -469,6 +501,39 @@
              </div>
           </div>
 
+           <div class="modal fade" id="updateProgress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div id="login">
+                     <div class="modal-header" style="height: 50px !important;">
+                       
+                        <div class="col-md-11">
+                        <h6 class="modal-title textBlack" align="left">Update Status Pengerjaan</h6>
+                      </div>
+                      <div class="col-md-1">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                     </div>
+                     <div class="modal-body" style="height: 50px !important;">
+                        
+                           <p id="subtitle"></p>  
+                        
+                      </div>
+
+                     </div>
+                     <div class="modal-footer" align="center">
+                      <div class="col-md-12">
+                          <div align="center">
+                            <button type="button" class="btn btn-danger btn-rounded btn-fw" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                            <button type="button" id="btn_progress" class="btn btn-success btn-rounded btn-fw">Simpan</button>
+                          </div>  
+                      </div>
+                     </div>
+                   </div>
+
+                </div>
+
+             </div>
 
           <script type="text/javascript">
 
@@ -522,6 +587,48 @@
                   alert(msg);
                 }
                     
+              }
+
+              function updateProgress(kodeUnik,idAkun,kdoperator,KdTukang,statusPengerjaan) {
+                  
+                  var kodeUnik          = kodeUnik;
+                  var idAkun            = idAkun;
+                  var kdoperator        = kdoperator;
+                  var KdTukang          = KdTukang;
+                  var statusPengerjaan  = statusPengerjaan;
+
+                  $('#subtitle').text('Konfirmasi Status Pengerjaan : '+statusPengerjaan);
+
+                  $('#updateProgress').modal('show');
+
+                  $("#btn_progress").click(function() {
+
+                      $.ajax({
+                            url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
+                            type: 'POST',
+                            dataType: "html",
+                            data: {
+                                kodeUnik: kodeUnik,
+                                idAkun: idAkun,
+                                kdoperator : kdoperator,
+                                KdTukang : KdTukang,
+                                statusPengerjaan : statusPengerjaan
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                $('#updateProgress').modal('hide');
+                                window.location.reload(true);
+
+                            },
+                            error: function(xhr, ajaxOptions, thrownError)
+                            {
+                                alert("Failed to get where column list, please try again");
+                      
+                            }
+                      });
+
+                  });
+                  
               }
             
           </script>

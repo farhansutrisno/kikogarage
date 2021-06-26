@@ -13,6 +13,7 @@
   <link href="<?php echo base_url() ?>assetsAdmin/css/icons.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>admin/vendors/iconfonts/font-awesome/css/font-awesome.min.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -292,7 +293,7 @@
                         <tr><th>Foto</th><td></td></tr>
                     </table>
                   </div>
-                  <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="200px" height="200px">
+                  <img src="<?php echo base_url().'gambar_proyek/'.$row[0]->fotoKonsumen ?>" width="150px" height="200px">
                   <br><br>
                 </div>
                 <div class="col-md-6">
@@ -346,7 +347,8 @@
                     
                 </div>
 
-                 <?php echo anchor('webbackend/C_dataPenjualan/lihatHistoryReservasi','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
+                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatHistoryReservasi'?>" class="btn btn-round btn-info"><i class="fa fa-reply"></i>Kembali</a> 
+
               </div>
                
 
