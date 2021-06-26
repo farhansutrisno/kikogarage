@@ -132,15 +132,7 @@ class C_dataOperator extends CI_Controller{
 		$this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
 	    $this->form_validation->set_rules('password','password','trim|required|min_length[4]|alpha_dash');
 	    $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
-	    // $this->form_validation->set_rules('tglLahir','tanggal lahir','required');
 	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
-	    // $this->form_validation->set_rules('jenisKelamin','jenis kelamin','required');
-	    // $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
-	    // $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');
-	    // $this->form_validation->set_rules('kota_kab','kota/kabupaten','required|min_length[4]');
-	    // $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
-	    // $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
-	    // $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
 	    $this->form_validation->set_rules('status','status','required');
 
 	    if(isset($_POST['submit'])){
@@ -179,15 +171,7 @@ class C_dataOperator extends CI_Controller{
 		$this->form_validation->set_rules('username','username','trim|required|min_length[4]|alpha_dash');
 	    $this->form_validation->set_rules('password','password','trim|required|min_length[4]|alpha_dash');
 	    $this->form_validation->set_rules('email','email','required|min_length[3]|valid_email');
-	    // $this->form_validation->set_rules('tglLahir','tanggal lahir','required');
 	    $this->form_validation->set_rules('noTelepon','no telepon','required|min_length[10]|numeric');
-	    // $this->form_validation->set_rules('jenis','jenis kelamin','required');
-	    // $this->form_validation->set_rules('kelurahan','kelurahan','required|min_length[4]');
-	    // $this->form_validation->set_rules('kecamatan','kecamatan','required|min_length[4]');
-	    // $this->form_validation->set_rules('kota_kab','kota/kabupaten','required|min_length[4]');
-	    // $this->form_validation->set_rules('provinsi','provinsi','required|min_length[4]');
-	    // $this->form_validation->set_rules('alamatLengkap','alamat lengkap','required|min_length[6]');
-	    // $this->form_validation->set_rules('kodePos','kode pos','required|min_length[4]|numeric');
 	    $this->form_validation->set_rules('status','Status','required');
 
 	    if(isset($_POST['submit'])){
@@ -355,12 +339,6 @@ class C_dataOperator extends CI_Controller{
 
 		$kdtukang = $this->input->post('kdtukang');
 
-		// $this->session->set_flashdata('pesan7', 
-		//                 '<div class="alert alert-info ">    
-		//                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		//                 <h7>BERHASIL ! </h7>
-		//                     <p>Berhasil menghapus data tukang<br/></p>
-		//                 </div>');
 		$this->mod_dataOperator->deleteDataTukang($kdtukang);
 		redirect('webbackend/C_dataOperator/lihatDataTukang');
 	}

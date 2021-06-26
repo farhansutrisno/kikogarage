@@ -139,6 +139,9 @@ class C_dataPenjualan extends CI_Controller{
         }
     }
 
+    //====================================================================================================
+    // function dibawah tidak dipakai
+
     public function prosesUpdateDataPenjualan2(){
 
 	    $this->form_validation->set_rules('catatan','catatan','required|min_length[7]');

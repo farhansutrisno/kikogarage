@@ -260,7 +260,7 @@ class C_dataAkun extends CI_Controller{
 	}
 
 	//========================================================================================================
-
+	//function tidak dipakai
 
 	public function login(){
 		$this->load->view('V_login');

@@ -8,7 +8,6 @@ class C_dataKiko extends CI_Controller{
 	}
 
 	public  function lihatAboutUsFoNew(){
-		// $data['artikel'] = $this->mod_dataKiko->lihatDataArtikel()->result();
 		$this->load->view('V_aboutUsNew');
 	}
 
@@ -73,7 +72,6 @@ class C_dataKiko extends CI_Controller{
 
 	public function prosesInputDataGaleri(){
 		$this->form_validation->set_rules('judulGaleri','judul galeri','trim|required|min_length[5]');
-	    // $this->form_validation->set_rules('isiArtikel','alamat lengkap','required|min_length[6]');
 
 	    if(isset($_POST['submit'])){
 		    if($this->form_validation->run() == false){
@@ -108,7 +106,6 @@ class C_dataKiko extends CI_Controller{
 
 	public function prosesInputDataGaleriVideo(){
 		$this->form_validation->set_rules('judulGaleriVideo','judul galeri Video','trim|required|min_length[5]');
-	    // $this->form_validation->set_rules('isiArtikel','alamat lengkap','required|min_length[6]');
 
 	    if(isset($_POST['submit'])){
 		    if($this->form_validation->run() == false){
@@ -329,8 +326,6 @@ class C_dataKiko extends CI_Controller{
 	}
 
 	public  function lihatDataGaleriFo(){
-		// $data['galeri'] = $this->mod_dataKiko->lihatDataGaleri()->result();
-		// $this->load->view('V_galeriFo', $data);
 
 		$config['base_url']     = site_url('C_dataKiko/lihatDataGaleriFo'); //site url
         $config['total_rows']   = $this->db->count_all('galeri'); //total row
@@ -373,7 +368,7 @@ class C_dataKiko extends CI_Controller{
 	
 
 	//=========================================================================================
-
+	//function di bawah ini tidak dipakai
 	
 
 	public function inputDataArtikel(){
@@ -409,27 +404,6 @@ class C_dataKiko extends CI_Controller{
 		}
 
 	}
-
-	//funtion dibawah ini tidak dipakai
-	//=============================================================================================================
-	/*function periksasatu($username){
-		if (! preg_match('/^[a-zA-Z\s.,123456789]+$/',$username)) {
-			$this->form_validation->set_massage('periksasatu','gunakan huruf atau angka dalam mengisi');
-			return false;
-		}else{
-			return true;
-		}
-	}
-
-	function periksadua($username){
-		if (! preg_match('/^[a-zA-Z\s.,123456789]+$/',$username)) {
-			$this->form_validation->set_massage('periksasatu','gunakan huruf, karakter atau angka dalam mengisi');
-			return false;
-		}else{
-			return true;
-		}
-	}*/
-	//===================================================================================================================
 
 	public function updateDataArtikel($kdArtikel){
 		$data["artikel"] = $this->mod_dataKiko->updateDataArtikel($kdArtikel)->row_array();

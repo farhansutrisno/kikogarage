@@ -312,7 +312,8 @@ class C_transaksiProduk extends CI_Controller{
 	}
 
 	//============================================================================================================================
-
+	// function tidak dipakai
+	
 	public function inputOngkir(){
 
 		$this->form_validation->set_rules('noPlat','no plat','required');

@@ -173,8 +173,19 @@ class C_produkPembeli extends CI_Controller{
         $this->load->view('V_pencarianLoginNew',$data);
     }
 
-    //================================================================================================================================
+    public function deleteProduk2($kdKeranjang){
+        $this->session->set_flashdata('hapus1', 
+                        '<div class="alert alert-info" style="margin-bottom: 20px !important">    
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <h7>BERHASIL ! </h7>
+                            <p>Berhasil Menghapus Produk</p>
+                        </div>');
+        $this->mod_dataProduk->deleteProduk($kdKeranjang);
+        redirect('C_produkPembeli/datareservasi');
+    }
 
+    //================================================================================================================================
+    //function tidak dipakai
 
 	// public function index(){
  //        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
@@ -425,17 +436,6 @@ class C_produkPembeli extends CI_Controller{
 
         //}
         
-    }
-
-    public function deleteProduk2($kdKeranjang){
-        $this->session->set_flashdata('hapus1', 
-                        '<div class="alert alert-info" style="margin-bottom: 20px !important">    
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <h7>BERHASIL ! </h7>
-                            <p>Berhasil Menghapus Produk</p>
-                        </div>');
-        $this->mod_dataProduk->deleteProduk($kdKeranjang);
-        redirect('C_produkPembeli/datareservasi');
     }
 
     public function pencarianLogin(){
