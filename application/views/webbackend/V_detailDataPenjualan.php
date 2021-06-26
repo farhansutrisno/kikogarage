@@ -331,11 +331,11 @@
 
                       <?php } ?>
 
-                      <!-- <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
+                      <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
 
                         <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Selesai".'\''?>)"><i class="fa fa-handshake-o"></i>Selesai</a>
 
-                      <?php } ?> -->
+                      <?php } ?>
 
                   </div>
                 </div>
@@ -617,8 +617,13 @@
                             success: function(data) {
                                 console.log(data);
                                 $('#updateProgress').modal('hide');
-                                window.location.reload(true);
 
+                                if (statusPengerjaan == 'Selesai') {
+                                  window.location.href = "<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan";
+                                }else{
+                                  window.location.reload(true);
+                                }
+                                
                             },
                             error: function(xhr, ajaxOptions, thrownError)
                             {

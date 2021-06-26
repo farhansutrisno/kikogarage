@@ -69,7 +69,7 @@ class C_dataPenjualan extends CI_Controller{
 		    
 			$this->mod_dataPenjualan->prosesUpdateDataPenjualan();
 			
-			redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
+			
 
 		// }
 
