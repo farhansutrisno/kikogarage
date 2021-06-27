@@ -261,7 +261,7 @@
       </div>
     </section>
 
-  <section class="ftco-section testimony-section bg-light" style="margin-top: -100px !important;">
+  <!-- <section class="ftco-section testimony-section bg-light" style="margin-top: -100px !important;">
       <div class="container">
 
         <div class="row justify-content-center mb-5">
@@ -332,7 +332,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- <section class="ftco-counter ftco-section img" id="section-counter">
 			<div class="overlay"></div>
