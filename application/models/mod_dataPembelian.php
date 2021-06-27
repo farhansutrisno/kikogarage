@@ -296,12 +296,12 @@ class mod_dataPembelian extends CI_Model{
     }
 
     function cekNoAntrian2(){
-        $query = $this->db->query("SELECT * FROM pembelian WHERE jenisBooking='Langsung' ORDER BY kdPembelian DESC LIMIT 1");
+        $query = $this->db->query("SELECT * FROM pembelian WHERE jenisBooking='Langsung' AND statusPembayaran != 'Selesai' ORDER BY kdPembelian DESC LIMIT 1");
         return $query->row();
     }
 
     function cekNoAntrian3(){
-        $query = $this->db->query("SELECT * FROM pembelian WHERE jenisBooking='Antar Jemput' ORDER BY kdPembelian DESC LIMIT 1");
+        $query = $this->db->query("SELECT * FROM pembelian WHERE jenisBooking='Antar Jemput' AND statusPembayaran != 'Selesai' ORDER BY kdPembelian DESC LIMIT 1");
         return $query->row();
     }
 
