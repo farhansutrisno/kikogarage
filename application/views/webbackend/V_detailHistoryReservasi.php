@@ -187,22 +187,22 @@
               <i class="menu-icon icon-user"></i>
               <span class="menu-title">Pegawai</span>
 
-              <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
+              <!-- <?php if ($this->session->userdata('statusAdmin') == '2') { ?> -->
                 <div class="badge badge-info">2</div>
-              <?php }else{ ?>
+              <!-- <?php }else{ ?>
                 <div class="badge badge-info">1</div>
-              <?php } ?>
+              <?php } ?> -->
               
             </a>
             <div class="collapse" id="apps-dropdown">
               <ul class="nav flex-column sub-menu">
-                <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
+                <!-- <?php if ($this->session->userdata('statusAdmin') == '2') { ?> -->
                   
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
                   </li>
 
-                <?php } ?>
+                <!-- <?php } ?> -->
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
                 </li>
