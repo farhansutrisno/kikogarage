@@ -201,7 +201,7 @@ class C_transaksiProduk extends CI_Controller{
 							);
 			$this->mod_dataPembelian->inputDataHistory($dataHistory);
 
-			$this->mod_dataPembelian->statusTukang($kodeTukang);
+			// $this->mod_dataPembelian->statusTukang($kodeTukang);
 			
 			$data["produk"] 		= $this->mod_dataPembelian->dataProduk($id)->result();
 			$data["history"] 		= $this->mod_dataPembelian->lihatDataHistory($id)->result();

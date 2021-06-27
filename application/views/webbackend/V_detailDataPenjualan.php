@@ -594,6 +594,8 @@
                   var KdTukang          = KdTukang;
                   var statusPengerjaan  = statusPengerjaan;
 
+                  console.log(statusPengerjaan);
+
                   $('#subtitle').text('Konfirmasi Status Pengerjaan : '+statusPengerjaan);
 
                   $('#updateProgress').modal('show');

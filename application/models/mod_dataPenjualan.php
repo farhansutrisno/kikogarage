@@ -98,27 +98,7 @@ class mod_dataPenjualan extends CI_Model{
 			$idAkun			= $this->input->post('idAkun');
 			$kdoperator		= $this->input->post('kdoperator');
 			$KdTukang		= $this->input->post('KdTukang');
-			// $catatan		= $this->input->post('catatan');
 			$status			= $this->input->post('statusPengerjaan');
-			// $selesaiLangsung		= $this->input->post('selesaiLangsung');
-			// $penjemputan			= $this->input->post('penjemputan');
-			// $pengerjaanJemput		= $this->input->post('pengerjaanJemput');
-			// $pengantaran			= $this->input->post('pengantaran');
-			// $selesaiJemput			= $this->input->post('selesaiJemput');
-
-			// if (!empty($pengerjaanLangsung)) {
-			// 	$status = $pengerjaanLangsung;
-			// }else if (!empty($selesaiLangsung)) {
-			// 	$status = $selesaiLangsung;
-			// }else if (!empty($penjemputan)) {
-			// 	$status = $penjemputan;
-			// }else if (!empty($pengerjaanJemput)) {
-			// 	$status = $pengerjaanJemput;
-			// }else if (!empty($pengantaran)) {
-			// 	$status = $pengantaran;
-			// }else if (!empty($selesaiJemput)) {
-			// 	$status = $selesaiJemput;
-			// }
 
 			$data 			= array(
 				
@@ -167,12 +147,23 @@ class mod_dataPenjualan extends CI_Model{
 				return $this->db->update("tukang",$datatukang);
 
 			}else{
+
+				if ($status == 'Pengerjaan') {
+					$datatukang  = array(
+						"status"	=> 2,
+					);
+
+					$this->db->where("KdTukang",$KdTukang);
+					$this->db->update("tukang",$datatukang);
+				}
+
 				$data1 			= array(
 					"statusPembayaran"	=> $status,	
 				);
 
 				$this->db->where("kodeUnik",$kodeUnik);
 				return $this->db->update("pembelian",$data1);
+				
 			}
 
 	}
