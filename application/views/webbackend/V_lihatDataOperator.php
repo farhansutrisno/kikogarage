@@ -325,9 +325,7 @@
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php
-                    if ($this->session->userdata('statusAdmin') == '2') {
                       echo anchor('webbackend/C_dataOperator/inputDataOperator','Add Operator',array('class'=>'btn btn-round btn-success'));
-                    }
                     ?>
 
                 </div>

@@ -325,51 +325,133 @@
           <div class="card">
             <div class="card-body">
              <h5 class="page-title">  Lihat Data Layanan <small>Kiko Good Garage</small></h5><br>
+
              <div class="row">
-                
-                <div class="col-md-7">
-                  <?php
-                    echo anchor('webbackend/C_dataProduk/inputDataProduk','Input Layanan',array('class'=>'btn btn-round btn-success'));
-                    ?>
-                   <?php
-                    echo anchor('webbackend/C_dataProduk/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
-                    ?>
-                </div>
-                <div class="col-md-5" align="right">
-                    <form action="<?php echo base_url().'webbackend/C_dataProduk/dataFilter'?>" method="POST">
-                      
-                      <div class="row">
+              <div class="col-md-7">
+                <?php
+                  echo anchor('webbackend/C_dataProduk/inputDataProduk','Input Layanan',array('class'=>'btn btn-round btn-success'));
+                  ?>
+              </div>
+            </div>
+            <br>
+             <div class="accordion accordion-multiple-filled" id="accordion-3" role="tablist">
 
-                        <select class="form-control"  name="kategori" style="width: 120px !important">  
-                          <option value="">Kategori</option>                 
-                          <?php foreach($filter as $r) { ?>
-                            <option value="<?php echo $r->kategori;?>"><?php echo $r->kategori;?></option>
-                          <?php } ?>
-                        </select>
-                        &nbsp;&nbsp;
-                        <select class="form-control"  name="tahun" style="width: 100px !important">  
-                          <option value="">Tahun</option>                 
-                          <?php foreach($tahun as $key) { ?>
-                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
-                          <?php } ?>
-                        </select>
-                        &nbsp;&nbsp;
-                        <select class="form-control"  name="bulan" style="width: 80px !important">  
-                          <option value="">Bulan</option>                 
-                          <?php foreach($bulan as $bln) { ?>
-                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
-                          <?php } ?>
-                        </select>
-                        &nbsp;&nbsp;
-                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >
+                      <div class="card">
+                        <div class="card-header" role="tab" id="headingOne-3">
+                          <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapseOne-3" aria-expanded="false" aria-controls="collapseOne-3">
+                              Export to Excel
+                            </a>
+                          </h5>
+                        </div>
+                        <div id="collapseOne-3" class="collapse" role="tabpanel" aria-labelledby="headingOne-3" data-parent="#accordion-3">
+                          <div class="card-body">
 
+                              <div class="row">
+                                <div class="col-md-7">
+                                  
+                                   <?php
+                                    echo anchor('webbackend/C_dataProduk/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
+                                    ?>
+                                </div>
+                                <div class="col-md-5" align="right">
+                                    <form action="<?php echo base_url().'webbackend/C_dataProduk/dataFilter'?>" id="regFormExcel" method="POST">
+                                      
+                                      <div class="row">
+
+                                        <select class="form-control"  name="kategori" id="kategoriexcel" style="width: 120px !important">  
+                                          <option value="">Kategori</option>                 
+                                          <?php foreach($filter as $r) { ?>
+                                            <option value="<?php echo $r->kategori;?>"><?php echo $r->kategori;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <select class="form-control"  name="tahun" id="tahunexcel" style="width: 100px !important">  
+                                          <option value="">Tahun</option>                 
+                                          <?php foreach($tahun as $key) { ?>
+                                            <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <select class="form-control"  name="bulan" id="bulanexcel" style="width: 80px !important">  
+                                          <option value="">Bulan</option>                 
+                                          <?php foreach($bulan as $bln) { ?>
+                                            <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                                          <?php } ?>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        <!-- <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" > -->
+                                        <button type="button" onclick="saveExcel();" class="btn btn-round btn-success">Export Filter</button> 
+                                      </div>
+
+                                  </form>
+                                </div>
+                              </div>
+
+                          </div>
+                        </div>
                       </div>
 
-                  </form>
-                </div>
-              </div>
-             <br>
-             <br>
+                      <div class="card">
+                        <div class="card-header" role="tab" id="headingTwo-3">
+                          <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo-3" aria-expanded="false" aria-controls="collapseTwo-3">
+                              Export to PDF
+                            </a>
+                          </h5>
+                        </div>
+                        <div id="collapseTwo-3" class="collapse" role="tabpanel" aria-labelledby="headingTwo-3" data-parent="#accordion-3">
+                          <div class="card-body">
+                            
+                            <div class="row">
+                
+                              <div class="col-md-7">
+                                
+                                 <?php
+                                  echo anchor('webbackend/C_dataProduk/exportAllPDF','Export All',array('class'=>'btn btn-round btn-success'));
+                                  ?>
+                              </div>
+                              <div class="col-md-5" align="right">
+                                  <form action="<?php echo base_url().'webbackend/C_dataProduk/dataFilterPDF'?>" id="regForm" method="POST">
+                                    
+                                    <div class="row">
+
+                                      <select class="form-control"  name="kategori" id="kategoriPDF" style="width: 120px !important">  
+                                        <option value="">Kategori</option>                 
+                                        <?php foreach($filter as $r) { ?>
+                                          <option value="<?php echo $r->kategori;?>"><?php echo $r->kategori;?></option>
+                                        <?php } ?>
+                                      </select>
+                                      &nbsp;&nbsp;
+                                      <select class="form-control"  name="tahun" id="tahun" style="width: 100px !important">  
+                                        <option value="">Tahun</option>                 
+                                        <?php foreach($tahun as $key) { ?>
+                                          <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
+                                        <?php } ?>
+                                      </select>
+                                      &nbsp;&nbsp;
+                                      <select class="form-control"  name="bulan" id="bulan" style="width: 80px !important">  
+                                        <option value="">Bulan</option>                 
+                                        <?php foreach($bulan as $bln) { ?>
+                                          <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
+                                        <?php } ?>
+                                      </select>
+                                      &nbsp;&nbsp;
+                                      <!-- <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" > -->
+                                      <button type="button" onclick="save();" class="btn btn-round btn-success">Export Filter</button> 
+                                    </div>
+
+                                </form>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <br>
+
               <div class="row">
                 
                 <div class="col-12 table-responsive">
@@ -520,6 +602,73 @@
         });
         
     }
+  </script>
+  <script type="text/javascript">
+
+      function save(){
+
+        var tahun            = $('#tahun').val();
+        var bulan            = $('#bulan').val();
+        // var kategoriPDF      = $('#kategoriPDF').val();
+        var valid = 1;
+
+        // if(kategoriPDF == ''){
+        //   valid = 0;
+        //   var msg = 'Kategori Tidak Boleh Kosong';
+        // }
+
+        if(tahun == ''){
+          valid = 0;
+          var msg = 'Tahun Tidak Boleh Kosong';
+        }
+        
+        if(bulan == ''){
+          valid = 0;
+          var msg = 'Bulan Tidak Boleh Kosong';
+        }
+
+        if(valid == 1){
+
+          document.getElementById("regForm").submit();
+          
+        }else{
+          alert(msg);
+        }
+            
+      }
+
+      function saveExcel(){
+
+        var tahun             = $('#tahunexcel').val();
+        var bulan             = $('#bulanexcel').val();
+        // var kategoriexcel     = $('#kategoriexcel').val();
+        var valid = 1;
+
+        // if(kategoriexcel == ''){
+        //   valid = 0;
+        //   var msg = 'Kategori Tidak Boleh Kosong';
+        // }
+          
+        if(tahun == ''){
+          valid = 0;
+          var msg = 'Tahun Tidak Boleh Kosong';
+        }
+
+        if(bulan == ''){
+          valid = 0;
+          var msg = 'Bulan Tidak Boleh Kosong';
+        }
+
+        if(valid == 1){
+
+          document.getElementById("regFormExcel").submit();
+          
+        }else{
+          alert(msg);
+        }
+            
+      }
+
   </script>
 
   <!-- plugins:js -->

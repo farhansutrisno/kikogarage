@@ -4,6 +4,7 @@ class C_dataProduk extends CI_Controller{
 		parent::__construct();
 		$this->load->helper(array('form','url'));
 		$this->load->library(array('form_validation','table'));
+		$this->load->library('pdf');
 		$this->load->model('mod_dataProduk');
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -439,7 +440,7 @@ class C_dataProduk extends CI_Controller{
 	}
 
 	public function dataFilter(){
-       if(isset($_POST['submit'])){
+       // if(isset($_POST['submit'])){
             $kategori 	= $this->input->post('kategori');
             $tahun 		= $this->input->post('tahun');
             $bulan 		= $this->input->post('bulan');
@@ -459,7 +460,66 @@ class C_dataProduk extends CI_Controller{
 
             $data['produk']= $this->mod_dataProduk->excelFilter($kategori,$tahun,$bulan)->result();
             $this->load->view('webbackend/V_excelDataProduk',$data);
-        }
+        // }
+    }
+
+    public function exportAllPDF(){
+
+	 	$dateDownload = date("d-M-Y H:i:s");
+
+	 	$data["filter"] 	 = array('filter' => 0);
+    	$data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
+    	$this->load->view('webbackend/V_laporanProduk',$data);
+
+    	$paper_size 	= 'A4';
+    	$orientation 	= 'landscape';
+
+		$html_content = '<h3 align="center">DATA LAYANAN KIKO GOOD GARAGE</h3><hr/>';
+		$html_content .= $this->output->get_output();
+		$this->pdf->set_paper($paper_size, $orientation);
+		// echo $html_content;die();
+		$this->pdf->loadHtml($html_content);
+		$this->pdf->render();
+		$this->pdf->stream("Data Layanan Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
+
+	}
+
+	public function dataFilterPDF(){
+       // if(isset($_POST['submit'])){
+
+       		$dateDownload = date("d-M-Y H:i:s");
+       		
+            $kategori 	= $this->input->post('kategori');
+            $tahun 		= $this->input->post('tahun');
+            $bulan 		= $this->input->post('bulan');
+
+            if (empty($kategori) && empty($tahun) && empty($bulan)) {
+	    		$query = 0;
+		    }else{
+		    	$query = 1;
+		    }
+
+            $data["filter"] 	 = array(
+								'tahun'   	=> $tahun,
+								'bulan'  	=> $bulan,
+								'kategori' 	=> $kategori,
+								'filter' 	=> $query
+								);
+
+            $data['produk']= $this->mod_dataProduk->excelFilter($kategori,$tahun,$bulan)->result();
+            $this->load->view('webbackend/V_laporanProduk',$data);
+
+            $paper_size 	= 'A4';
+	    	$orientation 	= 'landscape';
+
+			$html_content = '<h3 align="center">DATA LAYANAN KIKO GOOD GARAGE</h3><hr/>';
+			$html_content .= $this->output->get_output();
+			$this->pdf->set_paper($paper_size, $orientation);
+			// echo $html_content;die();
+			$this->pdf->loadHtml($html_content);
+			$this->pdf->render();
+			$this->pdf->stream("Data Layanan Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
+        // }
     }
 
 }
