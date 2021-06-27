@@ -316,31 +316,31 @@
                                     ?>
                                 </div>
                                 <div class="col-md-5">
-                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" id="regFormExcel" method="POST">
                                       
                                       <div class="row">
-                                        <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
+                                        <select class="form-control" name="statusPembayaran" id="statusPengerjaanExcel" style="width: 120px !important">  
                                             <option value="">Status</option>                 
                                            <?php foreach($status as $r) { ?>
                                               <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
                                             <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                                        <select class="form-control" id="tahunexcel" name="tahun" style="width: 100px !important">  
                                           <option value="">Tahun</option>                 
                                           <?php foreach($tahun as $key) { ?>
                                             <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                                        <select class="form-control" id="bulanexcel" name="bulan" style="width: 80px !important">  
                                           <option value="">bulan</option>                 
                                           <?php foreach($bulan as $bln) { ?>
                                             <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                                        <button type="button" onclick="saveExcel();" class="btn btn-round btn-success">Export Filter</button> 
                                       </div>
                                       
                                     </form>
@@ -370,31 +370,32 @@
                                     ?>
                                 </div>
                                 <div class="col-md-5">
-                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/exportpdfAllReservasiFilter'?>" method="POST">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/exportpdfAllReservasiFilter'?>" id="regForm" method="POST">
                                       
                                       <div class="row">
-                                        <select class="form-control" name="statusPembayaran" style="width: 120px !important">  
+                                        <select class="form-control" name="statusPembayaran" id="statusPengerjaan" style="width: 120px !important">  
                                             <option value="">Status</option>                 
                                            <?php foreach($status as $r) { ?>
                                               <option value="<?php echo $r->statusPembayaran;?>"><?php echo $r->statusPembayaran;?></option>
                                             <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                                        <select class="form-control"  name="tahun" id="tahun" style="width: 100px !important">  
                                           <option value="">Tahun</option>                 
                                           <?php foreach($tahun as $key) { ?>
                                             <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                                        <select class="form-control"  name="bulan" id="bulan" style="width: 80px !important">  
                                           <option value="">bulan</option>                 
                                           <?php foreach($bulan as $bln) { ?>
                                             <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                                        <!-- <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  -->
+                                        <button type="button" onclick="save();" class="btn btn-round btn-success">Export Filter</button>  
                                       </div>
                                       
                                     </form>
@@ -644,6 +645,73 @@
         });
         
     }
+  </script>
+  <script type="text/javascript">
+
+      function save(){
+
+        var tahun                 = $('#tahun').val();
+        var bulan                 = $('#bulan').val();
+        var statusPengerjaan      = $('#statusPengerjaan').val();
+        var valid = 1;
+
+        if(statusPengerjaan == ''){
+          valid = 0;
+          var msg = 'Status Pengerjaan Tidak Boleh Kosong';
+        }
+
+        if(tahun == ''){
+          valid = 0;
+          var msg = 'Tahun Tidak Boleh Kosong';
+        }
+        
+        if(bulan == ''){
+          valid = 0;
+          var msg = 'Bulan Tidak Boleh Kosong';
+        }
+
+        if(valid == 1){
+
+          document.getElementById("regForm").submit();
+          
+        }else{
+          alert(msg);
+        }
+            
+      }
+
+      function saveExcel(){
+
+        var tahun                     = $('#tahunexcel').val();
+        var bulan                     = $('#bulanexcel').val();
+        var statusPengerjaanExcel     = $('#statusPengerjaanExcel').val();
+        var valid = 1;
+
+        if(statusPengerjaanExcel == ''){
+          valid = 0;
+          var msg = 'Status Pengerjaan Tidak Boleh Kosong';
+        }
+          
+        if(tahun == ''){
+          valid = 0;
+          var msg = 'Tahun Tidak Boleh Kosong';
+        }
+
+        if(bulan == ''){
+          valid = 0;
+          var msg = 'Bulan Tidak Boleh Kosong';
+        }
+
+        if(valid == 1){
+
+          document.getElementById("regFormExcel").submit();
+          
+        }else{
+          alert(msg);
+        }
+            
+      }
+
   </script>
 
   <!-- plugins:js -->

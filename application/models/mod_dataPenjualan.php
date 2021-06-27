@@ -201,10 +201,14 @@ class mod_dataPenjualan extends CI_Model{
         return $this->db->query("SELECT DISTINCT MONTH(tglTransaksi) AS bulan FROM pembelian  order by bulan ASC");
     }
 
+    public function bulanReservasi(){
+        return $this->db->query("SELECT DISTINCT MONTH(tglTransaksi) AS bulan FROM pembelian WHERE statusPembayaran != 'Selesai' order by bulan ASC");
+    }
+
     public function excelFilter($status,$tahun,$bulan)
     {
 
-        $query = "select konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.kdPembelian, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen from konsumen inner join pembelian on konsumen.idAkun=pembelian.idAkun inner join produk on pembelian.kdProduk=produk.kdProduk where";
+        $query = "select konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.kdPembelian, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, pembelian.tglPembayaran, pembelian.kodeUnik, konsumen.foto as fotoKonsumen from konsumen inner join pembelian on konsumen.idAkun=pembelian.idAkun inner join produk on pembelian.kdProduk=produk.kdProduk where";
 
         if ($bulan >= 10) {
 
@@ -273,6 +277,10 @@ class mod_dataPenjualan extends CI_Model{
 
     public function tahun2(){
         return $this->db->query("SELECT DISTINCT YEAR(tglTransaksi) AS tanggal1 FROM pembelian  order by tanggal1 desc");
+    }
+
+    public function tahunReservasi(){
+        return $this->db->query("SELECT DISTINCT YEAR(tglTransaksi) AS tanggal1 FROM pembelian WHERE statusPembayaran != 'Selesai' order by tanggal1 desc");
     }
 
     public function deleteDataPenjualan($kodeUnik){

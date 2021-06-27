@@ -10,15 +10,15 @@ class C_dataPenjualan extends CI_Controller{
 	
 	public function lihatDataPenjualan(){
 		$data['status'] = $this->mod_dataPenjualan->filter()->result();
-		$data['tahun']	= $this->mod_dataPenjualan->tahun2()->result();
-		$data['bulan']	= $this->mod_dataPenjualan->bulan()->result();
+		$data['tahun']	= $this->mod_dataPenjualan->tahunReservasi()->result();
+		$data['bulan']	= $this->mod_dataPenjualan->bulanReservasi()->result();
 		$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan()->result();
 
 		$this->load->view('webbackend/V_lihatDataPenjualan',$data);
 	}
 
 	public function lihatHistoryReservasi(){
-		$data['status'] = $this->mod_dataPenjualan->filter()->result();
+		// $data['status'] = $this->mod_dataPenjualan->filter()->result();
 		$data['tahun']	= $this->mod_dataPenjualan->tahun2()->result();
 		$data['bulan']	= $this->mod_dataPenjualan->bulan()->result();
 		$data['penjualan'] = $this->mod_dataPenjualan->lihatHistoryReservasi()->result();
@@ -95,7 +95,7 @@ class C_dataPenjualan extends CI_Controller{
 	}
 
 	public function dataFilter(){
-       if(isset($_POST['submit'])){
+       // if(isset($_POST['submit'])){
             $status 	= $this->input->post('statusPembayaran');
             $tahun 		= $this->input->post('tahun');
             $bulan 		= $this->input->post('bulan');
@@ -115,7 +115,7 @@ class C_dataPenjualan extends CI_Controller{
 
             $data['penjualan']= $this->mod_dataPenjualan->excelFilter($status,$tahun,$bulan)->result();
             $this->load->view('webbackend/V_excelDataPenjualan',$data);
-        }
+        // }
     }
 
     public function dataFilterHistory(){
@@ -142,12 +142,14 @@ class C_dataPenjualan extends CI_Controller{
 
     public function exportpdfAllHistory(){
 
+    	$dateDownload = date("d-M-Y H:i:s");
+
     	$data["filter"] 	 = array('filter' => 0);
     	$data['penjualan'] = $this->mod_dataPenjualan->lihatHistoryReservasi()->result();
     	$this->load->view('webbackend/V_laporanHistoryReservasi',$data);
 
     	$paper_size 	= 'A4';
-    	$orientation 	= 'potrait';
+    	$orientation 	= 'landscape';
 
 		$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
 		$html_content .= $this->output->get_output();
@@ -155,11 +157,13 @@ class C_dataPenjualan extends CI_Controller{
 		// echo $html_content;die;
 		$this->pdf->loadHtml($html_content);
 		$this->pdf->render();
-		$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+		$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
 
 	}
 
 	public function exportpdfAllHistoryFilter(){
+
+		$dateDownload = date("d-M-Y H:i:s");
 
 		// if(isset($_POST['submit'])){
 
@@ -182,7 +186,7 @@ class C_dataPenjualan extends CI_Controller{
 	    	$this->load->view('webbackend/V_laporanHistoryReservasiFilter',$data);
 
 	    	$paper_size 	= 'A4';
-	    	$orientation 	= 'potrait';
+	    	$orientation 	= 'landscape';
 
 			$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
 			$html_content .= $this->output->get_output();
@@ -192,29 +196,34 @@ class C_dataPenjualan extends CI_Controller{
 
 			$this->pdf->loadHtml($html_content);
 			$this->pdf->render();
-			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
 		// }
 	}
 
 	 public function exportReservasiAll(){
 
+	 	$dateDownload = date("d-M-Y H:i:s");
+
+	 	$data["filter"] 	 = array('filter' => 0);
     	$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan()->result();
     	$this->load->view('webbackend/V_laporanHistoryReservasi',$data);
 
     	$paper_size 	= 'A4';
-    	$orientation 	= 'potrait';
+    	$orientation 	= 'landscape';
 
 		$html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3><hr/>';
 		$html_content .= $this->output->get_output();
 		$this->pdf->set_paper($paper_size, $orientation);
-		echo $html_content;die();
+		// echo $html_content;die();
 		$this->pdf->loadHtml($html_content);
 		$this->pdf->render();
-		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
 
 	}
 
 	public function exportpdfAllReservasiFilter(){
+
+		$dateDownload = date("d-M-Y H:i:s");
 
 		// if(isset($_POST['submit'])){
 			
@@ -235,11 +244,11 @@ class C_dataPenjualan extends CI_Controller{
 								'filter' => $query
 								);
 
-	    	$data['penjualan']= $this->mod_dataPenjualan->excelFilterHistory($tahun,$bulan)->result();
+	    	$data['penjualan']= $this->mod_dataPenjualan->excelFilter($status,$tahun,$bulan)->result();
 	    	$this->load->view('webbackend/V_laporanHistoryReservasiFilter',$data);
 
 	    	$paper_size 	= 'A4';
-	    	$orientation 	= 'potrait';
+	    	$orientation 	= 'landscape';
 
 			$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
 			$html_content .= $this->output->get_output();
@@ -249,7 +258,7 @@ class C_dataPenjualan extends CI_Controller{
 
 			$this->pdf->loadHtml($html_content);
 			$this->pdf->render();
-			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
 		// }
 	}
 
