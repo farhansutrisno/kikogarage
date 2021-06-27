@@ -4,6 +4,7 @@ class C_dataPenjualan extends CI_Controller{
 		parent::__construct();
 		$this->load->helper(array('form','url'));
 		$this->load->library(array('form_validation','table'));
+		$this->load->library('pdf');
 		$this->load->model('mod_dataPenjualan');
 	}
 	
@@ -118,7 +119,7 @@ class C_dataPenjualan extends CI_Controller{
     }
 
     public function dataFilterHistory(){
-       if(isset($_POST['submit'])){
+       // if(isset($_POST['submit'])){
             $tahun 		= $this->input->post('tahun');
             $bulan 		= $this->input->post('bulan');
             
@@ -136,8 +137,121 @@ class C_dataPenjualan extends CI_Controller{
 
             $data['penjualan']= $this->mod_dataPenjualan->excelFilterHistory($tahun,$bulan)->result();
             $this->load->view('webbackend/V_excelDataPenjualan',$data);
-        }
+        // }
     }
+
+    public function exportpdfAllHistory(){
+
+    	$data["filter"] 	 = array('filter' => 0);
+    	$data['penjualan'] = $this->mod_dataPenjualan->lihatHistoryReservasi()->result();
+    	$this->load->view('webbackend/V_laporanHistoryReservasi',$data);
+
+    	$paper_size 	= 'A4';
+    	$orientation 	= 'potrait';
+
+		$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+		$html_content .= $this->output->get_output();
+		$this->pdf->set_paper($paper_size, $orientation);
+		// echo $html_content;die;
+		$this->pdf->loadHtml($html_content);
+		$this->pdf->render();
+		$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+
+	}
+
+	public function exportpdfAllHistoryFilter(){
+
+		// if(isset($_POST['submit'])){
+
+            $tahun 		= $this->input->post('tahun');
+            $bulan 		= $this->input->post('bulan');
+            
+            if (empty($status) && empty($tahun) && empty($bulan)) {
+	    		$query = 0;
+		    }else{
+		    	$query = 1;
+		    }
+
+            $data["filter"] 	 = array(
+								'tahun'  => $tahun,
+								'bulan'  => $bulan,
+								'filter' => $query
+								);
+
+	    	$data['penjualan']= $this->mod_dataPenjualan->excelFilterHistory($tahun,$bulan)->result();
+	    	$this->load->view('webbackend/V_laporanHistoryReservasiFilter',$data);
+
+	    	$paper_size 	= 'A4';
+	    	$orientation 	= 'potrait';
+
+			$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+			$html_content .= $this->output->get_output();
+			$this->pdf->set_paper($paper_size, $orientation);
+
+			// echo $html_content;die;
+
+			$this->pdf->loadHtml($html_content);
+			$this->pdf->render();
+			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+		// }
+	}
+
+	 public function exportReservasiAll(){
+
+    	$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan()->result();
+    	$this->load->view('webbackend/V_laporanHistoryReservasi',$data);
+
+    	$paper_size 	= 'A4';
+    	$orientation 	= 'potrait';
+
+		$html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+		$html_content .= $this->output->get_output();
+		$this->pdf->set_paper($paper_size, $orientation);
+		echo $html_content;die();
+		$this->pdf->loadHtml($html_content);
+		$this->pdf->render();
+		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+
+	}
+
+	public function exportpdfAllReservasiFilter(){
+
+		// if(isset($_POST['submit'])){
+			
+			$status 	= $this->input->post('statusPembayaran');
+            $tahun 		= $this->input->post('tahun');
+            $bulan 		= $this->input->post('bulan');
+            
+            if (empty($status) && empty($tahun) && empty($bulan)) {
+	    		$query = 0;
+		    }else{
+		    	$query = 1;
+		    }
+
+            $data["filter"] 	 = array(
+								'tahun'  => $tahun,
+								'bulan'  => $bulan,
+								'status' => $status,
+								'filter' => $query
+								);
+
+	    	$data['penjualan']= $this->mod_dataPenjualan->excelFilterHistory($tahun,$bulan)->result();
+	    	$this->load->view('webbackend/V_laporanHistoryReservasiFilter',$data);
+
+	    	$paper_size 	= 'A4';
+	    	$orientation 	= 'potrait';
+
+			$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+			$html_content .= $this->output->get_output();
+			$this->pdf->set_paper($paper_size, $orientation);
+
+			// echo $html_content;die;
+
+			$this->pdf->loadHtml($html_content);
+			$this->pdf->render();
+			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf", array("Attachment"=>0));
+		// }
+	}
 
     //====================================================================================================
     // function dibawah tidak dipakai

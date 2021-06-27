@@ -8,7 +8,7 @@
  <?php 
 if ($filter['filter'] == 1) { ?>
   
-  <table border="1">
+  <table border="0">
 
     
     <tr>

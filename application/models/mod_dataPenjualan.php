@@ -242,7 +242,7 @@ class mod_dataPenjualan extends CI_Model{
     public function excelFilterHistory($tahun,$bulan)
     {
 
-        $query = "select konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.kdPembelian, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.statusPembayaran, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen from konsumen inner join pembelian on konsumen.idAkun=pembelian.idAkun inner join produk on pembelian.kdProduk=produk.kdProduk where";
+        $query = "select konsumen.namaLengkap,konsumen.email, konsumen.noTelepon, konsumen.kelurahan, konsumen.kecamatan, konsumen.kota_kabupaten, konsumen.provinsi, konsumen.alamatLengkap, konsumen.kodePos, pembelian.kdPembelian, pembelian.noAntrian, pembelian.noPlat, pembelian.jenisBooking, pembelian.tglTransaksi, pembelian.tglPembayaran, pembelian.statusPembayaran, pembelian.kodeUnik, produk.namaProduk, produk.kategori, pembelian.totalBayar, konsumen.foto as fotoKonsumen from konsumen inner join pembelian on konsumen.idAkun=pembelian.idAkun inner join produk on pembelian.kdProduk=produk.kdProduk where";
 
         $query = $query." statusPembayaran = 'Selesai' and";
 

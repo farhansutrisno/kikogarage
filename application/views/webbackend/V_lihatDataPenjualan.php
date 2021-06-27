@@ -366,11 +366,11 @@
                 
                                 <div class="col-md-7">
                                     <?php
-                                    echo anchor('webbackend/C_dataPenjualan/exportAll','Export All',array('class'=>'btn btn-round btn-success'));
+                                    echo anchor('webbackend/C_dataPenjualan/exportReservasiAll','Export All',array('class'=>'btn btn-round btn-success'));
                                     ?>
                                 </div>
                                 <div class="col-md-5">
-                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilter'?>" method="POST">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/exportpdfAllReservasiFilter'?>" method="POST">
                                       
                                       <div class="row">
                                         <select class="form-control" name="statusPembayaran" style="width: 120px !important">  

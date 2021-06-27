@@ -318,24 +318,24 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" id="regFormExcel" method="POST">
                                       
                                       <div class="row">
-                                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                                        <select class="form-control"  name="tahun" id="tahunexcel" style="width: 100px !important">  
                                           <option value="">Tahun</option>                 
                                           <?php foreach($tahun as $key) { ?>
                                             <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                                        <select class="form-control"  name="bulan" id="bulanexcel" style="width: 80px !important">  
                                           <option value="">bulan</option>                 
                                           <?php foreach($bulan as $bln) { ?>
                                             <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                                        <button type="button" onclick="saveExcel();" class="btn btn-round btn-success">Export Filter</button>  
                                       </div>
                                       
                                     </form>
@@ -361,29 +361,29 @@
                   
                                 <div class="col-md-8">
                                     <?php
-                                    echo anchor('webbackend/C_dataPenjualan/exportAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
+                                    echo anchor('webbackend/C_dataPenjualan/exportpdfAllHistory','Export All',array('class'=>'btn btn-round btn-success'));
                                     ?>
 
                                 </div>
                                 <div class="col-md-4">
-                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/dataFilterHistory'?>" method="POST">
+                                    <form action="<?php echo base_url().'webbackend/C_dataPenjualan/exportpdfAllHistoryFilter'?>" id="regForm" method="POST">
                                       
                                       <div class="row">
-                                        <select class="form-control"  name="tahun" style="width: 100px !important">  
+                                        <select class="form-control"  name="tahun" id="tahun" style="width: 100px !important">  
                                           <option value="">Tahun</option>                 
                                           <?php foreach($tahun as $key) { ?>
                                             <option value="<?php echo $key->tanggal1;?>"><?php echo $key->tanggal1;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <select class="form-control"  name="bulan" style="width: 80px !important">  
+                                        <select class="form-control"  name="bulan" id="bulan" style="width: 80px !important">  
                                           <option value="">bulan</option>                 
                                           <?php foreach($bulan as $bln) { ?>
                                             <option value="<?php echo $bln->bulan;?>"><?php echo $bln->bulan;?></option>
                                           <?php } ?>
                                         </select>
                                         &nbsp;&nbsp;
-                                        <input type="submit" name="submit" class="btn btn-round btn-success" value="Export Filter" >  
+                                        <button type="button" onclick="save();" class="btn btn-round btn-success">Export Filter</button> 
                                       </div>
                                       
                                     </form>
@@ -457,6 +457,63 @@
             </div>
           </div>  
         </div>
+
+        <script type="text/javascript">
+
+              function save(){
+
+                var tahun     = $('#tahun').val();
+                var bulan     = $('#bulan').val();
+                var valid = 1;
+                  
+                if(tahun == ''){
+                  valid = 0;
+                  var msg = 'Tahun Tidak Boleh Kosong';
+                }
+
+                if(bulan == ''){
+                  valid = 0;
+                  var msg = 'Bulan Tidak Boleh Kosong';
+                }
+
+                if(valid == 1){
+
+                  document.getElementById("regForm").submit();
+                  
+                }else{
+                  alert(msg);
+                }
+                    
+              }
+
+              function saveExcel(){
+
+                var tahun     = $('#tahunexcel').val();
+                var bulan     = $('#bulanexcel').val();
+                var valid = 1;
+                  
+                if(tahun == ''){
+                  valid = 0;
+                  var msg = 'Tahun Tidak Boleh Kosong';
+                }
+
+                if(bulan == ''){
+                  valid = 0;
+                  var msg = 'Bulan Tidak Boleh Kosong';
+                }
+
+                if(valid == 1){
+
+                  document.getElementById("regFormExcel").submit();
+                  
+                }else{
+                  alert(msg);
+                }
+                    
+              }
+
+          </script>
+
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -472,37 +529,6 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
-  <script type="text/javascript">
-      $(document).ready(function(){
-
-          $('#makerLimitBtnHide').hide();
-          $('#divMakerLimit').hide();
-
-      });
-      
-      function makerLimitShow() {
-        $('#divMakerLimit').show();
-          $('#makerLimitBtnHide').attr('Onclick', 'makerLimitHide()');
-          $('#makerLimitBtnShow').hide();
-          $('#makerLimitBtnHide').show();
-
-      }
-
-      function makerLimitHide() {
-          $('#divMakerLimit').hide();
-          $('#makerLimitBtnShow').attr('Onclick', 'makerLimitShow()');
-          $('#makerLimitBtnHide').hide();
-          $('#makerLimitBtnShow').show();
-      }
-
-      function refreshwindow()
-      {
-        // not loaded frames
-        window.document.location.reload();
-      }
-
-    </script>
 
   <!-- plugins:js -->
   <script src="<?php echo base_url() ?>admin/vendors/js/vendor.bundle.base.js"></script>
