@@ -412,8 +412,8 @@
                 
                   <ul>
                     <li><span class="icon icon-map-marker"></span><span class="text">Jalan Soewoko No. 30 Jetis, Kec. Lamongan, Kab. Lamongan 62211</span></li>
-                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">085856442607</span></a></li>
-                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">kikogoodgarage@gmail.com</span></a></li>
+                    <li><span class="icon icon-phone"></span><span class="text">085856442607</span></li>
+                    <li><span class="icon icon-envelope"></span><span class="text">kikogoodgarage@gmail.com</span></li>
                   </ul>
               </div>
               
