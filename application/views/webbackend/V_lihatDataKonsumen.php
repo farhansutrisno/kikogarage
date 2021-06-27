@@ -332,7 +332,6 @@
                           <th style="width: 10px !important;">No</th>
                           <th>Nama Lengkap</th>
                           <th>No Telepon</th>
-                          <th>Kecamatan</th>
                           <th style="text-align: center !important;">Poin</th>
                           <th style="text-align: center !important;">Status Member</th>
                           <th style="text-align: center !important;">Action</th>
@@ -347,7 +346,6 @@
                                 echo "<td>". $no++."</td>";
                                 echo "<td>". $key->namaLengkap."</td>";
                                 echo "<td>". $key->noTelepon."</td>";
-                                echo "<td>". $key->kecamatan."</td>";
                                 echo "<td align='center'>". $key->poin."</td>";
                                 echo "<td align='center'>". $key->member."</td>";
                                 ?>
