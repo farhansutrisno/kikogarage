@@ -9,6 +9,7 @@ class C_dataAkun extends CI_Controller{
 
 	//================================================================================
 	//fix dipakai
+	//coba lagi
 
 	public function prosesLogin(){
 
