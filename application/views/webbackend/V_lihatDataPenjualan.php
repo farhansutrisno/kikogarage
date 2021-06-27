@@ -524,8 +524,8 @@
                <div class="modal-footer" align="center">
                 <div class="col-md-12">
                     <div align="center">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_delete" class="btn btn-danger">Lanjutkan</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>&nbsp;&nbsp;
+                      <button type="button" id="btn_delete" class="btn btn-danger">Ya</button>
                     </div>  
                 </div>
                </div>
