@@ -43,7 +43,12 @@
       'Chocolate':'#D2691E',
       'red' : '#FF0000',
       'pink' : '#FFC0CB',
-      'dark': '#262932'
+      'dark': '#262932',
+      'antrian' : '#800000',
+      'penjemputan' : '#FFA500',
+      'pengerjaan' : '#337AB7',
+      'pengantaran' : '#5BC0DE',
+      'selesai' : '#5CB85C'
     };
   </script>
   <style type="text/css">
@@ -552,23 +557,23 @@
                               {
                                 name: 'Antrian',
                                 y: <?php echo $Antrian ?>,
-                                color: getColor['Deep_Sky_Blue'],
-                              }, {
-                                name: 'Selesai',
-                                y: <?php echo $selesai ?>,
-                                color: getColor['Chartreuse']
-                              }, {
-                                name: 'Pengerjaan',
-                                y: <?php echo $pengerjaan ?>,
-                                color: getColor['tosca_blue']
+                                color: getColor['antrian'],
                               }, {
                                 name: 'Penjemputan',
                                 y: <?php echo $penjemputan ?>,
-                                color: getColor['red']
+                                color: getColor['penjemputan']
+                              }, {
+                                name: 'Pengerjaan',
+                                y: <?php echo $pengerjaan ?>,
+                                color: getColor['pengerjaan']
                               }, {
                                 name: 'Pengantaran',
                                 y: <?php echo $pengantaran ?>,
-                                color: getColor['pink']
+                                color: getColor['pengantaran']
+                              }, {
+                                name: 'Selesai',
+                                y: <?php echo $selesai ?>,
+                                color: getColor['selesai']
                               }
                             ]
 
