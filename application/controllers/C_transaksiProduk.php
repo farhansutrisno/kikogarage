@@ -305,6 +305,9 @@ class C_transaksiProduk extends CI_Controller{
 
 		// $html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3>';
 		$html_content = $this->mod_dataPembelian->fetch_single_details($id,$KdTukang);
+
+		// echo $html_content;die;
+		
 		$this->pdf->loadHtml($html_content);
 		$this->pdf->render();
 		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>1));

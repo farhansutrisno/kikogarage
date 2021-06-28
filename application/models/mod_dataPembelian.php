@@ -48,12 +48,13 @@ class mod_dataPembelian extends CI_Model{
 
     function fetch_single_details($id,$KdTukang)
 	{
-		$this->db->select('*');
+		$this->db->distinct();
+		$this->db->select('pembelian.noAntrian,pembelian.tglPembayaran,pembelian.tglTransaksi,pembelian.noPlat,pembelian.jenisBooking,pembelian.totalBayar,tukang.foto,tukang.nama_lengkap,tukang.noTelepon');
 		$this->db->from('pembelian');
 		$this->db->join('tukang','tukang.KdTukang=pembelian.KdTukang');
 		$this->db->where("kodeUnik",$id);
 
-		$data = $this->db->get();        
+		$data = $this->db->get();    
 
 		$output = '<table border="0">
 					    <tr>

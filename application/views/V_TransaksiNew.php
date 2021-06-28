@@ -36,8 +36,12 @@
     <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
      <style type="text/css">
-      /*.nav-link{
-        color: #FFFFFF !important;
+      /*a:link, a:visited {
+        color: white;
+      }
+
+      a:hover, a:active {
+        color: white;
       }*/
     </style>
 
@@ -142,7 +146,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 ftco-animate">
-            <h3><b>Data Reservasi</b> &nbsp;&nbsp;&nbsp;<a href="<?php echo base_url().'C_transaksiProduk/exportpdf/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" target="_blank" class="btn btn-info">Unduh PDF</a></h3> 
+            <h3><b>Data Reservasi</b> &nbsp;&nbsp;&nbsp;<a style="color: #FFFFFF !important;" href="<?php echo base_url().'C_transaksiProduk/exportpdf/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" target="_blank" class="btn btn-info">Unduh PDF</a></h3> 
             <hr/>
             <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
             <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
