@@ -24,8 +24,23 @@ class C_dataOperator extends CI_Controller{
 
 				if ($key['status'] == 1) {
 					$operatorstatus = 'Admin Services';
+
+					$this->session->set_flashdata('pesan1', 
+	 	                '<div class="alert alert-info ">    
+	                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	                <h7>BERHASIL ! </h7>
+	                    <p>Berhasil login sebagai Admin Services<br/></p>
+	                </div>');
+
 				}else{
 					$operatorstatus = 'Owner';
+
+					$this->session->set_flashdata('pesan1', 
+	 	                '<div class="alert alert-info ">    
+	                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	                <h7>BERHASIL ! </h7>
+	                    <p>Berhasil login sebagai Owner<br/></p>
+	                </div>');
 				}
 
 				$this->session->set_userdata('namaAdmin',$key['username']);
@@ -35,12 +50,6 @@ class C_dataOperator extends CI_Controller{
 				$this->session->set_userdata('statusAdmin',$key['status']);
 				$this->session->set_userdata('operatorstatus',$operatorstatus);
 
-				$this->session->set_flashdata('pesan1', 
-	 	                '<div class="alert alert-info ">    
-	                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	                <h7>BERHASIL ! </h7>
-	                    <p>Berhasil login sebagai Admin<br/></p>
-	                </div>');
 				redirect('webbackend/C_dataProduk/grafikProduk');
 			}
 		}

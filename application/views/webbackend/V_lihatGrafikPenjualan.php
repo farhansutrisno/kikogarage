@@ -74,6 +74,10 @@
         </button>
         
         <ul class="navbar-nav navbar-nav-right">
+
+          <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
+            <?php echo $this->session->flashdata('pesan1'); ?>
+            </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -589,7 +593,7 @@
                           backgroundColor: 'transparent'
                         },
                         title: {
-                          text:'<h3>JUMLAH RESERVASI LAYANAN BERDASARKAN KATEGORI</h3>'
+                          text:'<h3>JUMLAH RESERVASI BERDASARKAN KATEGORI PRODUK</h3>'
                         },
                         tooltip: {
                           backgroundColor: getColor['white'],
@@ -693,11 +697,11 @@
                           size: '80%',
                           data: [
                             {
-                              name: 'Cars Wash',
+                              name: 'Antar Jemput',
                               y: <?php echo $antarjemput ?>,
                               color: getColor['red'],
                             }, {
-                              name: 'Coating',
+                              name: 'Langsung',
                               y: <?php echo $langsung ?>,
                               color: getColor['yellow'],
                             }

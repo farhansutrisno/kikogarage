@@ -65,7 +65,8 @@ class C_dataProduk extends CI_Controller{
 		}
 
 		if (empty($bulanawal)) {
-			$bulanawal = "01";
+			// $bulanawal = "01";
+			$bulanawal = date("m");
 		}else{
 
 			if ($bulanawal >= 10) {
