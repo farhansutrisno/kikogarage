@@ -150,8 +150,8 @@ class C_dataPenjualan extends CI_Controller{
     	$paper_size 	= 'A4';
     	$orientation 	= 'landscape';
 
-		$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
-		$html_content .= $this->output->get_output();
+		// $html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+		$html_content = $this->output->get_output();
 		$this->pdf->set_paper($paper_size, $orientation);
 		// echo $html_content;die;
 		$this->pdf->loadHtml($html_content);
@@ -187,8 +187,8 @@ class C_dataPenjualan extends CI_Controller{
 	    	$paper_size 	= 'A4';
 	    	$orientation 	= 'landscape';
 
-			$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
-			$html_content .= $this->output->get_output();
+			// $html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+			$html_content = $this->output->get_output();
 			$this->pdf->set_paper($paper_size, $orientation);
 
 			// echo $html_content;die;
@@ -210,8 +210,8 @@ class C_dataPenjualan extends CI_Controller{
     	$paper_size 	= 'A4';
     	$orientation 	= 'landscape';
 
-		$html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3><hr/>';
-		$html_content .= $this->output->get_output();
+		// $html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+		$html_content = $this->output->get_output();
 		$this->pdf->set_paper($paper_size, $orientation);
 		// echo $html_content;die();
 		$this->pdf->loadHtml($html_content);
@@ -249,15 +249,15 @@ class C_dataPenjualan extends CI_Controller{
 	    	$paper_size 	= 'A4';
 	    	$orientation 	= 'landscape';
 
-			$html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
-			$html_content .= $this->output->get_output();
+			// $html_content = '<h3 align="center">DATA HISTORY RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+			$html_content = $this->output->get_output();
 			$this->pdf->set_paper($paper_size, $orientation);
 
 			// echo $html_content;die;
 
 			$this->pdf->loadHtml($html_content);
 			$this->pdf->render();
-			$this->pdf->stream("Data History Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
+			$this->pdf->stream("Data Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>0));
 		// }
 	}
 

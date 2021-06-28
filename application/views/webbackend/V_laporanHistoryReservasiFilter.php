@@ -2,7 +2,13 @@
 <html><head>
 	<title></title>
 </head><body>
-
+	<table border="0">
+	    <tr>
+	        <td style="width: 400px !important" align="right"><img style="margin-bottom: 0px !important;" width="100px" src="<?php echo base_url() . 'asset/images/logokiko.jpeg'?>"></td>
+	        <td><h3 align="center">  DATA RESERVASI KIKO GOOD GARAGE</h3></td>
+	    </tr>
+	</table>
+	<hr style="margin-top: -5px !important" />
 	<?php if ($filter['filter'] == 1) { ?>
 		  
 		  <table border="0">
