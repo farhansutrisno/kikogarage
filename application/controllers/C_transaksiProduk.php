@@ -349,24 +349,7 @@ class C_transaksiProduk extends CI_Controller{
 		    }
 		}
 
-		/*if($this->input->post("submit")){
-			$this->session->set_flashdata('ongkir1', 
-		                '<div class="alert alert-info ">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>BERHASIL MEMILIH PAKET ONGKIR</h7>
-		                    <p>Harap Segera Dibayar </p>
-		                </div>');
-			$this->mod_dataPembelian->inputOngkir();
-			redirect('C_transaksiProduk/inputDataPembayaran');
-		}else{
-			$this->session->set_flashdata('ongkir2', 
-		                '<div class="alert alert-danger">    
-		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>Erorr Pembayaran ! </h7>
-		                   
-		                </div>');
-			redirect('C_transaksiProduk/inputDataPembayaran');
-		}*/
+		
 	}
 
 	public function inputDataPembayaran(){
@@ -402,38 +385,7 @@ class C_transaksiProduk extends CI_Controller{
 		}
 	}
 
-	/*public function inputDataReservasi(){
-		if($this->input->post("submit")){
-
-			// $this->session->set_flashdata('pembayaran1', 
-		 //                '<div class="alert alert-info ">    
-		 //                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		 //                <h7>BERHASIL ! </h7>
-		 //                    <p>Harap Segera Dibayar Dan Lanjutkan Transaksi <br>
-		 //                    	Tekan Tombol Lanjutkan Transaksi </p>
-		 //                </div>');
-
-			// $this->mod_dataPembelian->inputPembayaran();
-
-			// $kodeUnik	= $this->input->post('kodeUnik');
-
-			$noPlat			= $this->input->post('noPlat');
-			$jenisBooking	= $this->input->post('jenisBooking');
-
-			redirect('C_transaksiProduk/lihatTransaksi2/'.$noPlat.'/'.$jenisBooking);
-		}else{
-			// $this->session->set_flashdata('pembayaran2', 
-		 //                '<div class="alert alert-danger">    
-		 //                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		 //                <h7>Erorr Pembayaran ! </h7>
-		                   
-		 //                </div>');
-			redirect('C_produkPembeli/datareservasi');
-		}
-	}*/
-
 	
-
 	public function lihatTransaksi(){
 		$id 			= $this->uri->segment(3);
 		$KdTukang 		= $this->uri->segment(4);
@@ -455,17 +407,6 @@ class C_transaksiProduk extends CI_Controller{
 	}
 
 	
-
-	//function di bawah ini tidak dipakai
-	/*public function lihatDataTransaksi(){
-		$id   = $this->session->userdata('kdPembayaran');
-		$kode = $this->session->userdata('kode');
-		
-		$data["row"] = $this->mod_dataPembelian->lihatData2($id)->result();
-		
-		$data["profil"] = $this->mod_dataPembelian->lihatData($kode)->result();
-		$this->load->view('V_lihatDataTransaksi',$data);
-	}*/
 
 	public function lihatTagihan(){
 		$data['row'] = $this->mod_dataPembelian->lihatTagihan()->result();

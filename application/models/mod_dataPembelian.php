@@ -280,18 +280,6 @@ class mod_dataPembelian extends CI_Model{
 		 return $this->db->get("pembelian",$limit, $start);
 	}
 
-	/*public function sessionTransaksi($limit, $start){
-		$kode = $this->session->userdata('kode');
-		$this->db->limit($limit, $start);
-		$this->db->distinct();
-		$this->db->select("pembelian.totalBayar,pembelian.kdPembayaran,pembelian.kodeUnik,pembelian.tglTransaksi,pembelian.noResi,pembelian.statusPembayaran,pembelian.strukPembayaran,produk.namaProduk");
-		$this->db->from('pembelian');
-		$this->db->join('produk','produk.kdProduk=pembelian.kdProduk');
-		$this->db->where("idAkun",$kode);
-		$this->db->order_by('tglTransaksi','DESC');
-		 return $this->db->get();
-	}*/
-
 	public function deleteProduk($idAkun){
 		// $kode 			= $this->session->userdata('kode');
         $this->db->where("idAkun",$idAkun);
@@ -299,7 +287,7 @@ class mod_dataPembelian extends CI_Model{
     }
 
     function cekNoAntrian(){
-        $query = $this->db->query("SELECT * FROM pembelian ORDER BY kdPembelian DESC LIMIT 1");
+        $query = $this->db->query("SELECT * FROM pembelian WHERE statusPembayaran != 'Selesai' ORDER BY kdPembelian DESC LIMIT 1");
         return $query->row();
     }
 

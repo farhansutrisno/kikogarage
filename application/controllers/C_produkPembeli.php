@@ -187,19 +187,7 @@ class C_produkPembeli extends CI_Controller{
     //================================================================================================================================
     //function tidak dipakai
 
-	// public function index(){
- //        $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
- //        $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
- //        $this->load->view('V_homeFrontEnd2',$data);
- //    }
-    
-    //function dibawah tidak dipakai
-	/*public function lihatProdukAwal(){
-		$data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-        $data['barang_ukm'] = $this->mod_dataProduk->barang_ukm()->result();
-		$this->load->view('V_homeFrontEnd1',$data);
-	}*/
-
+	
     public function lihatProduk(){
         $data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
         $data['carwash'] = $this->mod_dataProduk->carwash()->result();
