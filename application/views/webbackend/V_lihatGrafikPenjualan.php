@@ -266,9 +266,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           
-          <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
-
-          <div class="row mb-4">
+          <div class="row" style="margin-bottom: -5px !important;">
 
             <div class="col-12 d-flex align-items-center justify-content-between">
               <h4 class="page-title"></h4>
@@ -301,6 +299,8 @@
               </div>
             </div>
           </div>
+
+          <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
 
             <div class="col-md-6 grid-margin">
                 <div class="card">
