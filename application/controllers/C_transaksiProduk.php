@@ -299,15 +299,15 @@ class C_transaksiProduk extends CI_Controller{
 	}
 
 	public function exportpdf(){
-
+		$dateDownload = date("d-M-Y H:i:s");
 		$id 			= $this->uri->segment(3);
 		$KdTukang 		= $this->uri->segment(4);
 
-		$html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3>';
-		$html_content .= $this->mod_dataPembelian->fetch_single_details($id,$KdTukang);
+		// $html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3>';
+		$html_content = $this->mod_dataPembelian->fetch_single_details($id,$KdTukang);
 		$this->pdf->loadHtml($html_content);
 		$this->pdf->render();
-		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf", array("Attachment"=>1));
+		$this->pdf->stream("Data Reservasi Kiko Good garage.pdf".' - '.$dateDownload, array("Attachment"=>1));
 
 	}
 

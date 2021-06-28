@@ -53,15 +53,22 @@ class mod_dataPembelian extends CI_Model{
 		$this->db->join('tukang','tukang.KdTukang=pembelian.KdTukang');
 		$this->db->where("kodeUnik",$id);
 
-		$data = $this->db->get();         
+		$data = $this->db->get();        
+
+		$output = '<table border="0">
+					    <tr>
+					        <td style="width: 200px !important" align="right"><img style="margin-bottom: 0px !important;" width="100px" src="'.base_url().'asset/images/logokiko.jpeg"></td>
+					        <td><h3 align="center">  DATA RESERVASI KIKO GOOD GARAGE</h3></td>
+					    </tr>
+					</table>
+					<hr style="margin-top: -5px !important" />';
  		
-		$output = '<table width="100%" cellspacing="0" cellpadding="0">';
+		$output .= '<table width="100%" cellspacing="0" cellpadding="0">';
 		foreach($data->result() as $row)
 		{
 			$output .= '
 			<tr>
 				<td colspan="2">
-					<hr/>
 					<h3>Data Reservasi</h3>
 					<p>No Antrian : '.$row->noAntrian.'</p>
 					<p>Jam & Tanggal Reservasi : '.date_format (new DateTime($row->tglPembayaran), 'H:i').' - '.date_format (new DateTime($row->tglTransaksi), 'd M Y').'</p>
