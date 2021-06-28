@@ -475,8 +475,8 @@ class C_dataProduk extends CI_Controller{
     	$paper_size 	= 'A4';
     	$orientation 	= 'landscape';
 
-		$html_content = '<h3 align="center">DATA LAYANAN KIKO GOOD GARAGE</h3><hr/>';
-		$html_content .= $this->output->get_output();
+		// $html_content = '<h3 align="center">DATA LAYANAN KIKO GOOD GARAGE</h3><hr/>';
+		$html_content = $this->output->get_output();
 		$this->pdf->set_paper($paper_size, $orientation);
 		// echo $html_content;die();
 		$this->pdf->loadHtml($html_content);
@@ -513,8 +513,8 @@ class C_dataProduk extends CI_Controller{
             $paper_size 	= 'A4';
 	    	$orientation 	= 'landscape';
 
-			$html_content = '<h3 align="center">DATA LAYANAN KIKO GOOD GARAGE</h3><hr/>';
-			$html_content .= $this->output->get_output();
+			// $html_content = '<h3 align="center">DATA LAYANAN KIKO GOOD GARAGE</h3><hr/>';
+			$html_content = $this->output->get_output();
 			$this->pdf->set_paper($paper_size, $orientation);
 			// echo $html_content;die();
 			$this->pdf->loadHtml($html_content);
