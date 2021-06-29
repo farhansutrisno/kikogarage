@@ -292,7 +292,7 @@
                     <div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $produk1->gambar ?>);">
                     </div>
                     <div class="text">
-                      <h2 class="mb-0"><a href="#" style="cursor: default !important;"><?php echo $produk1->namaProduk ?></a></h2>
+                      <h2 class="mb-0"><a href="#" style="cursor: default !important; text-transform: capitalize !important;"><?php echo $produk1->namaProduk ?></a></h2>
                       <div class="d-flex mb-3">
                         <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
                         <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>

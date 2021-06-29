@@ -127,7 +127,7 @@
               <div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $produk1->gambar ?>);">
               </div>
               <div class="text">
-                <h2 class="mb-0"><a href="#" style="cursor: default !important;"><?php echo $produk1->namaProduk ?></a></h2>
+                <h2 class="mb-0"><a href="#" style="cursor: default !important; text-transform: capitalize !important;"><?php echo $produk1->namaProduk ?></a></h2>
                 <div class="d-flex mb-3">
                   <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
                   <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>
@@ -148,14 +148,33 @@
           <div class="col-md-7 ftco-animate">
             <h3><b>Data Reservasi</b> &nbsp;&nbsp;&nbsp;<a style="color: #FFFFFF !important;" href="<?php echo base_url().'C_transaksiProduk/exportpdf/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" target="_blank" class="btn btn-info">Unduh PDF</a></h3> 
             <hr/>
-            <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
+            <!-- <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
             <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
-            <p style="color: #000000 !important;">Nomor Plat Kendaraan : <?php echo $row[0]->noPlat ?></p>
+            <p style="color: #000000 !important; text-transform: capitalize !important;">Nomor Plat Kendaraan : <?php echo $row[0]->noPlat ?></p>
             <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
 
             <?php if ($row[0]->statusPembayaran == 'Selesai') { ?>
                 <p style="color: #000000 !important;">Keterangan Reservasi : <?php echo $row[0]->catatan ?></p>
-            <?php }?>
+            <?php }?> -->
+
+            <table border='0'>
+              <tr>
+                <td style="color: #000000 !important;">No. Antrian</td>
+                <td style="color: #000000 !important;">:  <?php echo $row[0]->noAntrian ?></td>
+              </tr>
+              <tr>
+                <td style="width:220px !important; color: #000000 !important;">Jam & Tanggal Reservasi</td></td>
+                <td style="color: #000000 !important;">: <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></td>
+              </tr>
+              <tr>
+                <td style="color: #000000 !important;">No Plat</td>
+                <td style="text-transform: capitalize !important; color: #000000 !important;">: <?php echo $row[0]->noPlat ?></td>
+              </tr>
+              <tr>
+                <td style="color: #000000 !important;">Jenis Reservasi</td></td>
+                <td style="color: #000000 !important;">: <?php echo $row[0]->jenisBooking ?></td>
+              </tr>
+          </table>
             
             <?php if (!empty($row[0]->nama_lengkap)) { ?>
 
@@ -166,7 +185,7 @@
               <div class="desc">
                 <h3><b>Pegawai Kiko Good Garage</b></h3>
                 <hr/>
-                <p style="color: #000000 !important;">Nama Lengkap : <?php echo $row[0]->nama_lengkap ?></p>
+                <p style="color: #000000 !important; text-transform: capitalize !important;">Nama Lengkap : <?php echo $row[0]->nama_lengkap ?></p>
                 <p style="color: #000000 !important;">Jenis Kelamin : <?php echo $row[0]->jenisKelamin; ?></p>
                 <p style="color: #000000 !important;">No Telepon : <?php echo $row[0]->noTelepon ?></p>
               </div>

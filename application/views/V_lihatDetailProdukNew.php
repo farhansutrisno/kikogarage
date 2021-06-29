@@ -343,7 +343,7 @@
       				<div class="img rounded" style="background-image: url(<?php echo base_url().'gambar_proyek/'.$row[0]->gambar ?>);"></div>
       				<div class="text text-center">
       					<span class="subheading" style="font-size: 15px !important;"><?php echo $row[0]->kategori ?></span>
-      					<h2><?php echo $row[0]->namaProduk ?></h2>
+      					<h2 style="text-transform: capitalize !important;"><?php echo $row[0]->namaProduk ?></h2>
       					<h3 style="color: red;">Rp.<?php echo number_format($row[0]->hargaPenjualan,0,",","."); ?></h3>
       				</div>
       			</div>

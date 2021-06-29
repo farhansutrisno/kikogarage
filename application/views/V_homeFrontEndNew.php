@@ -297,7 +297,7 @@
 		    					<div class="img rounded d-flex align-items-end" style="background-image: url(<?php echo base_url() ?>gambar_proyek/<?php echo $key->gambar ?>);">
 		    					</div>
 		    					<div class="text">
-		    						<h2 class="mb-0"><a href="#"><?php echo $key->namaProduk; ?></a></h2>
+		    						<h2 class="mb-0"><a href="#" style="text-transform: capitalize !important;"><?php echo $key->namaProduk; ?></a></h2>
 		    						<div class="d-flex mb-3">
 			    						<span class="cat"><?php echo $key->kategori; ?></span>
 			    						<p class="price ml-auto">Rp. <?php echo number_format($key->hargaPenjualan,0,",","."); ?></p>
