@@ -148,15 +148,7 @@
           <div class="col-md-7 ftco-animate">
             <h3><b>Data Reservasi</b> &nbsp;&nbsp;&nbsp;<a style="color: #FFFFFF !important;" href="<?php echo base_url().'C_transaksiProduk/exportpdf/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" target="_blank" class="btn btn-info">Unduh PDF</a></h3> 
             <hr/>
-            <!-- <p style="color: #000000 !important;">No Antrian : <?php echo $row[0]->noAntrian ?></p>
-            <p style="color: #000000 !important;">Tanggal Reservasi : <?php echo date_format (new DateTime($row[0]->tglPembayaran), 'H:i') ?> - <?php echo date_format (new DateTime($row[0]->tglTransaksi), 'd M Y') ?></p>
-            <p style="color: #000000 !important; text-transform: capitalize !important;">Nomor Plat Kendaraan : <?php echo $row[0]->noPlat ?></p>
-            <p style="color: #000000 !important;">Jenis Booking : <?php echo $row[0]->jenisBooking ?></p>
-
-            <?php if ($row[0]->statusPembayaran == 'Selesai') { ?>
-                <p style="color: #000000 !important;">Keterangan Reservasi : <?php echo $row[0]->catatan ?></p>
-            <?php }?> -->
-
+            
             <table border='0'>
               <tr>
                 <td style="color: #000000 !important;">No. Antrian</td>
@@ -174,6 +166,15 @@
                 <td style="color: #000000 !important;">Jenis Reservasi</td></td>
                 <td style="color: #000000 !important;">: <?php echo $row[0]->jenisBooking ?></td>
               </tr>
+              <?php if ($row[0]->statusPembayaran == 'Selesai') { ?>
+               
+              <tr>
+                <td style="color: #000000 !important;">Keterangan</td></td>
+                <td style="color: #000000 !important; text-transform: capitalize !important;">: <?php echo $row[0]->catatan ?></td>
+              </tr>
+
+              <?php } ?>
+
           </table>
             
             <?php if (!empty($row[0]->nama_lengkap)) { ?>

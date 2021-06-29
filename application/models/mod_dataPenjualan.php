@@ -99,6 +99,7 @@ class mod_dataPenjualan extends CI_Model{
 			$kdoperator		= $this->input->post('kdoperator');
 			$KdTukang		= $this->input->post('KdTukang');
 			$status			= $this->input->post('statusPengerjaan');
+			$catatan		= $this->input->post('catatan');
 
 			$data 			= array(
 				
@@ -116,7 +117,7 @@ class mod_dataPenjualan extends CI_Model{
 
 				$data1 			= array(
 					"statusPembayaran"	=> $status,	
-					// "catatan"			=> $catatan,
+					"catatan"			=> $catatan,
 				);
 
 				$this->db->where("kodeUnik",$kodeUnik);

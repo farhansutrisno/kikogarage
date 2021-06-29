@@ -421,7 +421,7 @@
                           <!-- <th>kategori</th> -->
                           <th>No Antrian</th>
                           <th>Total Bayar</th>
-                          <th>Status Pembelian</th>
+                          <th>Status Reservasi</th>
                           <th>Tgl Transaksi</th>
                           <th>Aksi</th>
                       </tr>
@@ -537,38 +537,49 @@
        </div>
 
        <div class="modal fade" id="updateselesai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-       <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div id="login">
-               <div class="modal-header" style="height: 50px !important;">
-                 
-                  <div class="col-md-11">
-                  <h6 class="modal-title textBlack" align="left">Update Status Pengerjaan</h6>
-                </div>
-                <div class="col-md-1">
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-               </div>
-               <div class="modal-body" style="height: 50px !important;">
-                  
-                     <p>Konfirmasi Status Pengerjaan : Selesai</p>  
-                  
-                </div>
+           <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="login">
+                   <div class="modal-header">
+                     
+                      <div class="col-md-11">
+                      <h6 class="modal-title textBlack" align="center">Update Status Reservasi</h6>
+                    </div>
+                    
+                   </div>
+                   <div class="modal-body">
+                      
+                      <div class="col-md-12 block-12">
+                      <form action="#" enctype="multipart/form-data" method="POST">
 
-               </div>
-               <div class="modal-footer" align="center">
-                <div class="col-md-12">
-                    <div align="center">
-                      <button type="button" class="btn btn-danger btn-rounded btn-fw" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                      <button type="button" id="btn_selesai" class="btn btn-success btn-rounded btn-fw">Selesai</button>
-                    </div>  
-                </div>
-               </div>
-             </div>
+                        <div class="form-group">
+                            <p>Konfirmasi Status Reservasi : Selesai</p>  
+                        </div>
+                        
+                        <div class="form-group">
+                          <textarea cols="10" rows="5" name="catatan" class="form-control" id="catatan" placeholder="Catatan" required></textarea>
+                        </div>
 
-          </div>
+                        <div class="form-group">
+                          <div class="row justify-content-center">
+                             <button type="button" class="btn btn-danger btn-rounded btn-fw btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                            <button type="button" id="btn_selesai" class="btn btn-primary btn-rounded btn-fw btn-lg marleft20 active">Simpan</button>
+                          </div>
+                        </div>
 
-       </div>
+                      </form>
+                    
+                    </div>
+
+                   </div>
+                   
+                 </div>
+
+
+              </div>
+
+           </div>
+        </div>
 
   <script>
     function myDelete(val) {
@@ -615,6 +626,10 @@
 
         $("#btn_selesai").click(function() {
 
+          var catatan         = document.getElementById("catatan").value;
+
+          if(catatan){
+            
             $.ajax({
                   url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
                   type: 'POST',
@@ -624,7 +639,8 @@
                       idAkun: idAkun,
                       kdoperator : kdoperator,
                       KdTukang : KdTukang,
-                      statusPengerjaan : statusPengerjaan
+                      statusPengerjaan : statusPengerjaan,
+                      catatan : catatan
                   },
                   success: function(data) {
                       console.log(data);
@@ -638,6 +654,12 @@
             
                   }
             });
+
+          }else{
+            var msg = 'Catatan Tidak Boleh Kosong';
+            alert(msg);
+            window.location.reload(true);    
+          }
 
         });
         

@@ -408,7 +408,7 @@
                           <th>No Plat</th>
                           <th>No Antrian</th>
                           <th>Total Bayar</th>
-                          <th>Status Pembelian</th>
+                          <th>Status Reservasi</th>
                           <th>Tgl Transaksi</th>
                           <th>Aksi</th>
                       </tr>

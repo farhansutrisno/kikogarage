@@ -498,39 +498,54 @@
              </div>
           </div>
 
-           <div class="modal fade" id="updateProgress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal fade" id="updateProgress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div id="login">
-                     <div class="modal-header" style="height: 50px !important;">
+                     <div class="modal-header">
                        
                         <div class="col-md-11">
-                        <h6 class="modal-title textBlack" align="left">Update Status Pengerjaan</h6>
+                        <h6 class="modal-title textBlack" align="center">Update Status Reservasi</h6>
                       </div>
-                      <div class="col-md-1">
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      </div>
+                      
                      </div>
-                     <div class="modal-body" style="height: 50px !important;">
+                     <div class="modal-body">
                         
-                           <p id="subtitle"></p>  
+                        <div class="col-md-12 block-12">
+                        <form action="#" enctype="multipart/form-data" method="POST">
+
+                          <div class="form-group">
+                             <p id="subtitle"></p> 
+                          </div>
+                          
+                          <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
+
+                          <div class="form-group">
+                            <textarea cols="10" rows="5" name="catatan" class="form-control" id="catatan" placeholder="Catatan" required></textarea>
+                          </div>
+
+                          <?php } ?>
                         
+                          <div class="form-group">
+                            <div class="row justify-content-center">
+                               <button type="button" class="btn btn-danger btn-rounded btn-fw btn-lg marleft20" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
+                              <button type="button" id="btn_progress" class="btn btn-primary btn-rounded btn-fw btn-lg marleft20 active">Simpan</button>
+                            </div>
+                          </div>
+
+                        </form>
+                      
                       </div>
 
                      </div>
-                     <div class="modal-footer" align="center">
-                      <div class="col-md-12">
-                          <div align="center">
-                            <button type="button" class="btn btn-danger btn-rounded btn-fw" data-dismiss="modal">Batal</button>&nbsp;&nbsp;
-                            <button type="button" id="btn_progress" class="btn btn-success btn-rounded btn-fw">Simpan</button>
-                          </div>  
-                      </div>
-                     </div>
+                     
                    </div>
+
 
                 </div>
 
              </div>
+          </div>
 
           <script type="text/javascript">
 
@@ -593,14 +608,55 @@
                   var kdoperator        = kdoperator;
                   var KdTukang          = KdTukang;
                   var statusPengerjaan  = statusPengerjaan;
-
-                  console.log(statusPengerjaan);
-
-                  $('#subtitle').text('Konfirmasi Status Pengerjaan : '+statusPengerjaan);
+                 
+                  $('#subtitle').text('Konfirmasi Status Reservasi : '+statusPengerjaan);
 
                   $('#updateProgress').modal('show');
 
                   $("#btn_progress").click(function() {
+
+                     var catatan         = document.getElementById("catatan").value;
+
+                    <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
+
+                        if(catatan){
+                          $.ajax({
+                                url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
+                                type: 'POST',
+                                dataType: "html",
+                                data: {
+                                    kodeUnik: kodeUnik,
+                                    idAkun: idAkun,
+                                    kdoperator : kdoperator,
+                                    KdTukang : KdTukang,
+                                    statusPengerjaan : statusPengerjaan,
+                                    catatan : catatan
+                                },
+                                success: function(data) {
+                                    console.log(data);
+                                    $('#updateProgress').modal('hide');
+
+                                    if (statusPengerjaan == 'Selesai') {
+                                      window.location.href = "<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan";
+                                    }else{
+                                      window.location.reload(true);
+                                    }
+                                    
+                                },
+                                error: function(xhr, ajaxOptions, thrownError)
+                                {
+                                    alert("Failed to get where column list, please try again");
+                          
+                                }
+                          });
+
+                        }else{
+                          var msg = 'Catatan Tidak Boleh Kosong';
+                          alert(msg);
+                          window.location.reload(true);    
+                        }
+
+                    <?php }else{ ?>
 
                       $.ajax({
                             url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
@@ -611,7 +667,8 @@
                                 idAkun: idAkun,
                                 kdoperator : kdoperator,
                                 KdTukang : KdTukang,
-                                statusPengerjaan : statusPengerjaan
+                                statusPengerjaan : statusPengerjaan,
+                                catatan : catatan
                             },
                             success: function(data) {
                                 console.log(data);
@@ -630,6 +687,10 @@
                       
                             }
                       });
+
+                    <?php } ?>
+
+                      
 
                   });
                   

@@ -59,7 +59,7 @@ if ($filter['filter'] == 1) { ?>
               <th rowspan="1">No Plat</th>
               <th rowspan="1">Jenis Booking</th>
               <th rowspan="1">Tgl Transaksi</th>
-              <th rowspan="1">Status</th>
+              <th rowspan="1">Status Reservasi</th>
               <th rowspan="1">Nama Jasa</th>
               <th rowspan="1">Kategori</th>
               <th rowspan="1">Total Bayar</th>
