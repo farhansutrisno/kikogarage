@@ -66,7 +66,7 @@
 							</tr>
 		                	<tr>
 		                	  <td style='width:300px !important; text-transform: capitalize;'>".$row->namaProduk."</td>  
-		                	  <td>Rp. ".number_format($row->subtotal, 0,",",".")."</td>
+		                	  <td align='right'>Rp. ".number_format($row->subtotal, 0,",",".")."</td>
 		                	</tr>";
 	                } ?>
                     <?php echo " </table><br>
@@ -78,18 +78,18 @@
 			            </tr>
 			             <tr>
 			            	<td style='width:300px !important;'>Total Bayar</td>
-			                <td>Rp. ".number_format($key->totalBayar, 0,",",".")."</td>
-						</tr>"; ?>
+			                <td align='right'>Rp. ".number_format($key->totalBayar, 0,",",".")."</td>
+						</tr>
+						<tr>
+			            	<td>Poin didapat</td>
+							<td align='right'>1</td>
+			            </tr>"; ?>
 
 					<?php if ($key->statusPembayaran == 'Selesai') { ?>
 
 			            <?php echo "<tr>
-						            	<td>Poin didapat</td>
-										<td>1</td>
-						            </tr>
-						            <tr>
 						            	<td>Total Poin</td></td>
-						                 <td>".$key->poin."</td>
+						                 <td align='right'>".$key->poin."</td>
 						            </tr>";
 						         ?>
 
