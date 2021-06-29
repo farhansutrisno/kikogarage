@@ -303,8 +303,17 @@ class C_transaksiProduk extends CI_Controller{
 		$id 			= $this->uri->segment(3);
 		$KdTukang 		= $this->uri->segment(4);
 
-		// $html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3>';
-		$html_content = $this->mod_dataPembelian->fetch_single_details($id,$KdTukang);
+		$data['penjualan'] = $this->mod_dataPembelian->fetch_single_details($id,$KdTukang)->result();
+		$data["produk"]    = $this->mod_dataPembelian->dataProduk($id)->result();
+		$data["tglUnduh"]  = $dateDownload;
+		$this->load->view('V_laporanReservasi',$data);
+
+    	$paper_size 	= 'A4';
+    	$orientation 	= 'potrait';
+
+		// $html_content = '<h3 align="center">DATA RESERVASI KIKO GOOD GARAGE</h3><hr/>';
+		$html_content = $this->output->get_output();
+		$this->pdf->set_paper($paper_size, $orientation);
 
 		// echo $html_content;die;
 		
