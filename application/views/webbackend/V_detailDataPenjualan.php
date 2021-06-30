@@ -521,11 +521,11 @@
                           <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
 
                           <div class="form-group">
-                            <textarea cols="10" rows="5" name="catatan" class="form-control" id="catatan" placeholder="Catatan" required></textarea>
+                            <textarea cols="10" rows="5" name="catatan" class="form-control" id="catatan1" placeholder="Catatan" required></textarea>
                           </div>
 
                           <?php }else{ ?>
-                            <input type="hidden" name="catatan" id="catatan" value="-" />
+                            <input type="hidden" name="catatan" id="catatan2" value="-" />
                           <?php }?>
                         
                           <div class="form-group">
@@ -618,41 +618,14 @@
 
                   $("#btn_progress").click(function() {
 
-                    var catatan         = document.getElementById("catatan").value;
+                    if (statusPengerjaan == "Selesai") { 
 
-                    if (statusPengerjaan == 'Pengantaran' && jenisBooking == 'Antar Jemput' || statusPengerjaan == 'Pengerjaan' && jenisBooking == 'Langsung') { 
+                        var catatan1         = document.getElementById("catatan1").value;
 
-                        if(catatan){
-                          $.ajax({
-                                url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
-                                type: 'POST',
-                                dataType: "html",
-                                data: {
-                                    kodeUnik: kodeUnik,
-                                    idAkun: idAkun,
-                                    kdoperator : kdoperator,
-                                    KdTukang : KdTukang,
-                                    statusPengerjaan : statusPengerjaan,
-                                    catatan : catatan
-                                },
-                                success: function(data) {
-                                    console.log(data);
-                                    $('#updateProgress').modal('hide');
+                        if(catatan1){
 
-                                    if (statusPengerjaan == 'Selesai') {
-                                      window.location.href = "<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan";
-                                    }else{
-                                      window.location.reload(true);
-                                    }
-                                    
-                                },
-                                error: function(xhr, ajaxOptions, thrownError)
-                                {
-                                    alert("Failed to get where column list, please try again");
+                          var catatan      = catatan1;
                           
-                                }
-                          });
-
                         }else{
                           var msg = 'Catatan Tidak Boleh Kosong';
                           alert(msg);
@@ -661,37 +634,40 @@
 
                     }else{
 
-                      $.ajax({
-                            url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
-                            type: 'POST',
-                            dataType: "html",
-                            data: {
-                                kodeUnik: kodeUnik,
-                                idAkun: idAkun,
-                                kdoperator : kdoperator,
-                                KdTukang : KdTukang,
-                                statusPengerjaan : statusPengerjaan,
-                                catatan : catatan
-                            },
-                            success: function(data) {
-                                console.log(data);
-                                $('#updateProgress').modal('hide');
-
-                                if (statusPengerjaan == 'Selesai') {
-                                  window.location.href = "<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan";
-                                }else{
-                                  window.location.reload(true);
-                                }
-                                
-                            },
-                            error: function(xhr, ajaxOptions, thrownError)
-                            {
-                                alert("Failed to get where column list, please try again");
-                      
-                            }
-                      });
+                      var catatan2     = document.getElementById("catatan2").value;
+                      var catatan      = catatan2;
 
                     }
+
+                    $.ajax({
+                              url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
+                              type: 'POST',
+                              dataType: "html",
+                              data: {
+                                  kodeUnik: kodeUnik,
+                                  idAkun: idAkun,
+                                  kdoperator : kdoperator,
+                                  KdTukang : KdTukang,
+                                  statusPengerjaan : statusPengerjaan,
+                                  catatan : catatan
+                              },
+                              success: function(data) {
+                                  console.log(data);
+                                  $('#updateProgress').modal('hide');
+
+                                  if (statusPengerjaan == 'Selesai') {
+                                    window.location.href = "<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan";
+                                  }else{
+                                    window.location.reload(true);
+                                  }
+                                  
+                              },
+                              error: function(xhr, ajaxOptions, thrownError)
+                              {
+                                  alert("Failed to get where column list, please try again");
+                        
+                              }
+                        });
 
                   });
                   
