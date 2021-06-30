@@ -213,7 +213,7 @@
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Konsumen</a>
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Customer</a>
                 </li>
                
               </ul>
@@ -240,7 +240,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
                   </li>
                   
                 </ul>
@@ -318,7 +318,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Lihat Detail Konsumen <small>kiko Good Garage</small> </h5><br>
+              <h5 class="page-title">Lihat Detail Customer <small>kiko Good Garage</small> </h5><br>
               <div class="row">
                 <div class="col-md-6">
                     <div class="table-responsive">

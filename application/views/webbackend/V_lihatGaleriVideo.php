@@ -254,7 +254,7 @@
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Konsumen</a>
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Customer</a>
                 </li>
                
               </ul>
@@ -281,7 +281,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
                   </li>
                   
                 </ul>
@@ -423,7 +423,7 @@
                                 <td>
                                     <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleriVideo/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
                                     <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleriVideo/'.$key->kdGaleri?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Update</a>
+                                    <i class="ion ion-md-create"></i>Edit</a>
                                     <a href="#" onclick="myDelete(<?='\''.$key->kdGaleri.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                 </td>
                             </tr>

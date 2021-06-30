@@ -322,7 +322,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Update Data Konsumen</h4>
+                  <h4 class="card-title">Edit Data Customer</h4>
                   
                   <hr>
                      

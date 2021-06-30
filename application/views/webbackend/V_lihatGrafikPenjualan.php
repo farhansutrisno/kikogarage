@@ -200,7 +200,7 @@
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Konsumen</a>
+                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Customer</a>
                 </li>
                
               </ul>
@@ -227,7 +227,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
                   </li>
                   
                 </ul>
@@ -307,7 +307,7 @@
 
           <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
 
-            <div class="col-md-6 grid-margin">
+            <div class="col-md-7 grid-margin">
                 <div class="card">
                   <div class="card-body">
                     <h3 class="card-title mb-0" align="center"><b>FILTER GRAFIK</b></h3><br><br>
