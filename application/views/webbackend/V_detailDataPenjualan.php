@@ -312,25 +312,25 @@
 
                       <?php if ($row[0]->statusPembayaran == 'Antrian' && $row[0]->jenisBooking == 'Antar Jemput') { ?>
 
-                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Penjemputan".'\''?>)"><i class="fa fa-car"></i>Penjemputan</a>
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Penjemputan".'\',\''.$row[0]->jenisBooking.'\''?>)"><i class="fa fa-car"></i>Penjemputan</a>
 
                       <?php } ?>
 
                       <?php if ($row[0]->statusPembayaran == 'Penjemputan' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Antrian' && $row[0]->jenisBooking == 'Langsung') { ?>
 
-                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Pengerjaan".'\''?>)"><i class="fa fa-wrench"></i>Pengerjaan</a>
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Pengerjaan".'\',\''.$row[0]->jenisBooking.'\''?>)"><i class="fa fa-wrench"></i>Pengerjaan</a>
 
                       <?php } ?>
 
                       <?php if ($row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Antar Jemput') { ?>
 
-                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Pengantaran".'\''?>)"><i class="fa fa-send"></i>Pengantaran</a>
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Pengantaran".'\',\''.$row[0]->jenisBooking.'\''?>)"><i class="fa fa-send"></i>Pengantaran</a>
 
                       <?php } ?>
 
                       <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
 
-                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Selesai".'\''?>)"><i class="fa fa-handshake-o"></i>Selesai</a>
+                        <a href="#" class="btn btn-success btn-rounded btn-fw" onclick="updateProgress(<?='\''.$row[0]->kodeUnik.'\',\''.$row[0]->idAkun.'\',\''.$kdoperator.'\',\''.$row[0]->KdTukang.'\',\''."Selesai".'\',\''.$row[0]->jenisBooking.'\''?>)"><i class="fa fa-handshake-o"></i>Selesai</a>
 
                       <?php } ?>
 
@@ -524,7 +524,9 @@
                             <textarea cols="10" rows="5" name="catatan" class="form-control" id="catatan" placeholder="Catatan" required></textarea>
                           </div>
 
-                          <?php } ?>
+                          <?php }else{ ?>
+                            <input type="hidden" name="catatan" id="catatan" value="-" />
+                          <?php }?>
                         
                           <div class="form-group">
                             <div class="row justify-content-center">
@@ -601,13 +603,14 @@
                     
               }
 
-              function updateProgress(kodeUnik,idAkun,kdoperator,KdTukang,statusPengerjaan) {
+              function updateProgress(kodeUnik,idAkun,kdoperator,KdTukang,statusPengerjaan,jenisBooking) {
                   
                   var kodeUnik          = kodeUnik;
                   var idAkun            = idAkun;
                   var kdoperator        = kdoperator;
                   var KdTukang          = KdTukang;
                   var statusPengerjaan  = statusPengerjaan;
+                  var jenisBooking      = jenisBooking;
                  
                   $('#subtitle').text('Konfirmasi Status Reservasi : '+statusPengerjaan);
 
@@ -615,9 +618,9 @@
 
                   $("#btn_progress").click(function() {
 
-                     var catatan         = document.getElementById("catatan").value;
+                    var catatan         = document.getElementById("catatan").value;
 
-                    <?php if ($row[0]->statusPembayaran == 'Pengantaran' && $row[0]->jenisBooking == 'Antar Jemput' || $row[0]->statusPembayaran == 'Pengerjaan' && $row[0]->jenisBooking == 'Langsung') { ?>
+                    if (statusPengerjaan == 'Pengantaran' && jenisBooking == 'Antar Jemput' || statusPengerjaan == 'Pengerjaan' && jenisBooking == 'Langsung') { 
 
                         if(catatan){
                           $.ajax({
@@ -653,10 +656,10 @@
                         }else{
                           var msg = 'Catatan Tidak Boleh Kosong';
                           alert(msg);
-                          window.location.reload(true);    
+                          window.location.reload(true); 
                         }
 
-                    <?php }else{ ?>
+                    }else{
 
                       $.ajax({
                             url:"<?php echo base_url(); ?>webbackend/C_dataPenjualan/prosesUpdateDataPenjualan",
@@ -688,9 +691,7 @@
                             }
                       });
 
-                    <?php } ?>
-
-                      
+                    }
 
                   });
                   
