@@ -318,7 +318,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Lihat Detail Tukang <small>kiko Good Garage</small> </h5><br>
+              <h5 class="page-title">Lihat Detail Pegawai Services <small>kiko Good Garage</small> </h5><br>
               <div class="row">
                 <div class="col-md-6">
                     <div class="table-responsive">

@@ -324,11 +324,11 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Data Tukang <small>Kiko Good Garage </small></h5><br>
+              <h5 class="page-title">Data Pegawai Services <small>Kiko Good Garage </small></h5><br>
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php
-                    echo anchor('webbackend/C_dataOperator/inputDataTukang','Add Tukang',array('class'=>'btn btn-round btn-success'));
+                    echo anchor('webbackend/C_dataOperator/inputDataTukang','Add Data Pegawai Services',array('class'=>'btn btn-round btn-success'));
                     ?>
 
                 </div>
@@ -369,7 +369,7 @@
                                 <td>
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/detailDataTukang/'.$key->KdTukang ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/updateDataTukang/'.$key->KdTukang?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Update</a>
+                                    <i class="ion ion-md-create"></i>Edit</a>
                                     <a href="#" onclick="myDelete(<?='\''.$key->KdTukang.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                     <!-- <button class="class="btn btn-danger"" onClick="myDelete()"><i class="ion ion-md-trash"></i> Delete</button> -->
                                 </td>

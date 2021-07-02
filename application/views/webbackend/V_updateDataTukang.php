@@ -323,7 +323,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Edit Data Tukang</h4>
+                  <h4 class="card-title">Edit Data Pegawai Services</h4>
                   
                   <hr>
                      
