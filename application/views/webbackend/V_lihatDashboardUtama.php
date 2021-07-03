@@ -764,43 +764,36 @@
 
                         <div class="chart" id="barChart2" style="height: 400px;margin-bottom: 30px"></div>
                         <script type="text/javascript">
+
+                          Highcharts.setOptions({
+                            lang: {
+                              thousandsSep: ','
+                            }
+                          });
+                          
                         $('#barChart2').highcharts({
                           chart: {
                               type: 'line'
                           },
                           title: {
-                              text: 'JUMLAH OMZET'
-                          },
-
-                          subtitle: {
-                              text: 'Kiko Good Garage'
+                              text: 'JUMLAH OMZET KIKO GOOD GARAGE'
                           },
                           xAxis: {
                                   categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
                               },
                           yAxis: {
                               title: {
-                                  text: 'Jumlah Pendapatan'
+                                  text: 'Jumlah Omzet'
                               },
-                              tickPositioner: function () {
-                                  var positions = [],
-                                      tick = Math.floor(this.dataMin),
-                                      increment = Math.ceil((this.dataMax - this.dataMin) / 6);
-
-                                  if (this.dataMax !== null && this.dataMin !== null) {
-                                      for (tick; tick - increment <= this.dataMax; tick += increment) {
-                                          positions.push(tick);
-                                      }
+                              labels: {
+                                formatter: function() {
+                                  if (this.value >= 1E6) {
+                                    return 'Rp.' + (this.value / 1000000) + ' Jt';
                                   }
-                                  return positions;
+                                  return 'Rp.' + this.value / 1000 + ' Rb';
+                                }
                               }
                           },
-                          legend: {
-                              layout: 'horizontal',
-                              align: 'right',
-                              verticalAlign: 'middle'
-                          },
-
                           plotOptions: {
                               series: {
                                           label: {

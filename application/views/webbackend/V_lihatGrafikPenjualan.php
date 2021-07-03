@@ -692,7 +692,7 @@
                               },
                           yAxis: {
                               title: {
-                                  text: 'Jumlah Pendapatan'
+                                  text: 'Jumlah Omzet'
                               },
                               labels: {
                                 formatter: function() {
