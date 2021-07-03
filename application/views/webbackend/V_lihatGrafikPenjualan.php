@@ -173,97 +173,21 @@
            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
+            <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/grafikProdukUtama">
+              <i class="menu-icon icon-home"></i>
+              <span class="menu-title">Dashboard Utama</span>
+            </a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link active" href="<?php echo base_url()?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard By Filter</span>      
+              <span class="menu-title">Dashboard By Filter</span>
             </a>
           </li>
 
-          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
-
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="menu-icon icon-screen-desktop"></i>
-              <span class="menu-title">Data Front End</span>
-              <div class="badge badge-info">3</div>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
-                </li> -->
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataGaleriBo">Galeri</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Customer</a>
-                </li>
-               
-              </ul>
-            </div>
-          </li>
-
-          <?php } ?>
-
-          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
-
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
-                <i class="menu-icon icon-user"></i>
-                <span class="menu-title">Pegawai</span>
-
-                <div class="badge badge-info">2</div>
-                
-              </a>
-              <div class="collapse" id="apps-dropdown">
-                <ul class="nav flex-column sub-menu">
-                   
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
-                  </li>
-                  
-                </ul>
-              </div>
-            </li>
-          <?php } ?>
-          
-          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
-
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/lihatDataProduk">
-              <i class="menu-icon icon-present"></i>
-              <span class="menu-title">Data Layanan</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#datareservasi" aria-expanded="false" aria-controls="datareservasi">
-              <i class="menu-icon icon-bag"></i>
-              <span class="menu-title">Data Reservasi</span>
-              <div class="badge badge-info">2</div>
-            </a>
-            <div class="collapse" id="datareservasi">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">Reservasi Customer</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatHistoryReservasi">History Reservasi</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-           <?php } ?>
-          
         </ul>
       </nav>
       <!-- partial -->
@@ -310,7 +234,7 @@
             <div class="col-md-7 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h3 class="card-title mb-0" align="center"><b>FILTER GRAFIK</b></h3><br><br>
+                    <h3 class="card-title mb-0" align="center"><b>FILTER GRAFIK</b></h3><br>
 
                     <form action="<?php echo base_url().'webbackend/C_dataProduk/grafikProduk'?>" method="POST">
                       
@@ -392,7 +316,6 @@
                         <div class="d-inline-block pt-3">
                           <div class="d-flex">
                              <h2 class="mb-0"><?php echo $jml_produk[0]->jml_produk; ?></h2> 
-                             <!-- <h2 class="mb-0"><?php echo $jml_produk; ?></h2> -->
                           </div>
                         </div>
                         <div class="d-inline-block">
@@ -451,7 +374,7 @@
               <div class="card">
                 <div class="card-body">
                   
-                      <div class="chart" id="pieChart5" style="height: 350px;margin-bottom: 30px"></div>
+                      <div class="chart" id="pieChart5" style="height: 300px;margin-bottom: 30px"></div>
                       <script type="text/javascript">
                       chart = new Highcharts.Chart({
                         chart: {
@@ -523,7 +446,7 @@
               <div class="card">
                 <div class="card-body">
                   
-                      <div class="chart" id="pieChart6" style="height: 350px;margin-bottom: 30px"></div>
+                      <div class="chart" id="pieChart6" style="height: 300px;margin-bottom: 30px"></div>
                       <script type="text/javascript">
                       chart = new Highcharts.Chart({
                         chart: {
@@ -585,7 +508,7 @@
               <div class="card">
                 <div class="card-body">
                   
-                      <div class="chart" id="barChart5" style="height: 350px;margin-bottom: 30px"></div>
+                      <div class="chart" id="barChart5" style="height: 300px;margin-bottom: 30px"></div>
                       <script type="text/javascript">
                       $('#barChart5').highcharts({
                 chart: {
@@ -647,7 +570,7 @@
               <div class="card">
                 <div class="card-body">
 
-                      <div class="chart" id="pieChart2" style="height: 350px;margin-bottom: 30px"></div>
+                      <div class="chart" id="pieChart2" style="height: 300px;margin-bottom: 30px"></div>
                         <script type="text/javascript">
                         chart = new Highcharts.Chart({
                           chart: {
@@ -727,7 +650,7 @@
                   <div class="card">
                     <div class="card-body">
 
-                        <div class="chart" id="barChart2" style="height: 500px;margin-bottom: 30px"></div>
+                        <div class="chart" id="barChart2" style="height: 400px;margin-bottom: 30px"></div>
                         <script type="text/javascript">
                         $('#barChart2').highcharts({
                           chart: {

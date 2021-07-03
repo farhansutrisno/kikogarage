@@ -189,22 +189,23 @@
            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
-              <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>      
+            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProdukUtama">
+              <i class="menu-icon icon-home"></i>
+              <span class="menu-title">Dashboard Utama</span>      
             </a>
           </li>
 
           <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+          <li class="nav-item active">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="true" aria-controls="form-elements">
               <i class="menu-icon icon-screen-desktop"></i>
               <span class="menu-title">Data Front End</span>
               <div class="badge badge-info">3</div>
             </a>
-            <div class="collapse" id="form-elements">
+            <div class="collapse show" id="form-elements">
               <ul class="nav flex-column sub-menu">
                 <!-- <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataKiko/lihatDataArtikelBo">Artikel</a>
@@ -215,8 +216,8 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_pesanMasuk/lihatPesanMasuk">Pesan Masuk</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Customer</a>
+                <li class="nav-item active">
+                  <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataKonsumen">Data Customer</a>
                 </li>
                
               </ul>

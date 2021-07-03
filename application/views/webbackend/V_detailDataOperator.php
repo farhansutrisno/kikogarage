@@ -186,10 +186,11 @@
            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
-              <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>      
+            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProdukUtama">
+              <i class="menu-icon icon-home"></i>
+              <span class="menu-title">Dashboard Utama</span>      
             </a>
           </li>
 
@@ -224,19 +225,19 @@
 
          <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
 
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="true" aria-controls="apps-dropdown">
                 <i class="menu-icon icon-user"></i>
                 <span class="menu-title">Pegawai</span>
 
                 <div class="badge badge-info">2</div>
                 
               </a>
-              <div class="collapse" id="apps-dropdown">
+              <div class="collapse show" id="apps-dropdown">
                 <ul class="nav flex-column sub-menu">
                    
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
+                  <li class="nav-item active">
+                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataOperator">Data Operator</a>
                   </li>
 
                   <li class="nav-item">

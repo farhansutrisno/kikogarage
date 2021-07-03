@@ -50,7 +50,7 @@ class C_dataOperator extends CI_Controller{
 				$this->session->set_userdata('statusAdmin',$key['status']);
 				$this->session->set_userdata('operatorstatus',$operatorstatus);
 
-				redirect('webbackend/C_dataProduk/grafikProduk');
+				redirect('webbackend/C_dataProduk/grafikProdukUtama');
 			}
 		}
 		if ($no==0) {

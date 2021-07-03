@@ -147,10 +147,11 @@
            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
-              <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>      
+            <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProdukUtama">
+              <i class="menu-icon icon-home"></i>
+              <span class="menu-title">Dashboard Utama</span>      
             </a>
           </li>
 
@@ -226,7 +227,7 @@
             </a>
             <div class="collapse" id="datareservasi">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataPenjualan/lihatDataPenjualan">Reservasi Customer</a>
                 </li>
                 <li class="nav-item">
