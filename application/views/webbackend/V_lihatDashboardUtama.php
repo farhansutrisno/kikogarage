@@ -614,13 +614,21 @@
                   }
                 },
                 yAxis: {
-                  min: 0,
                   title: {
-                    text: 'Jumlah Layanan',
+                    text: 'Jumlah Produk',
                     align: 'high'
                   },
-                  labels: {
-                    overflow: 'justify'
+                  tickPositioner: function () {
+                      var positions = [],
+                          tick = Math.floor(0),
+                          increment = Math.ceil((this.dataMax - this.dataMin) / 6);
+
+                      if (this.dataMax !== null && this.dataMin !== null) {
+                          for (tick; tick - increment <= this.dataMax; tick += increment) {
+                              positions.push(tick);
+                          }
+                      }
+                      return positions;
                   }
                 },
                 plotOptions: {
@@ -773,6 +781,18 @@
                           yAxis: {
                               title: {
                                   text: 'Jumlah Pendapatan'
+                              },
+                              tickPositioner: function () {
+                                  var positions = [],
+                                      tick = Math.floor(this.dataMin),
+                                      increment = Math.ceil((this.dataMax - this.dataMin) / 6);
+
+                                  if (this.dataMax !== null && this.dataMin !== null) {
+                                      for (tick; tick - increment <= this.dataMax; tick += increment) {
+                                          positions.push(tick);
+                                      }
+                                  }
+                                  return positions;
                               }
                           },
                           legend: {
