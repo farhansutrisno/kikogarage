@@ -204,10 +204,9 @@
                 <div class="wrapper mr-4 d-none d-sm-block">
                   <p class="mb-0">
                     <?php
-                    $tanggal= mktime(date("m"),date("d"),date("Y"));
-                    echo "Tanggal : <b>".date("d-M-Y", $tanggal)."</b> ";
-
                     date_default_timezone_set('Asia/Jakarta');
+                    $tanggal= mktime(date("m"),date("d"),date("Y"));
+                    echo "Tanggal : <b>".date("d-M-Y", $tanggal)."</b> ";                    
                     $jam=date("H:i:s");
                     echo "| Pukul : <b>". $jam." "."</b>";
 
