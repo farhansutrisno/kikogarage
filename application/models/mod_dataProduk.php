@@ -402,7 +402,7 @@ class mod_dataProduk extends CI_Model{
         $tahun = $tahun;
         $query = "SELECT COUNT(kdProduk) as jml_produk
                                 from produk
-                                WHERE createDate BETWEEN '$tahunawal-$bulanawal-$tanggalawal' AND '$tahun-$bulan-$tanggal'";
+                                WHERE createDate BETWEEN '$tahunawal-01-01' AND '$tahun-12-31'";
         // echo $query;die;                            
         return $this->db->query("$query");
     }
@@ -420,7 +420,7 @@ class mod_dataProduk extends CI_Model{
     public function jml_pesan($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal){
         $query = "SELECT COUNT(kdPesanMasuk) as jml_pesan
                                 from pesanmasuk
-                                WHERE tglPesan BETWEEN '$tahunawal-$bulanawal-$tanggalawal' AND '$tahun-$bulan-$tanggal'";
+                                WHERE tglPesan BETWEEN '$tahunawal-01-01' AND '$tahun-12-31'";
         return $this->db->query("$query");
     }
     //=======================================================================
@@ -430,7 +430,7 @@ class mod_dataProduk extends CI_Model{
         $tahun = $tahun;
         $query = "SELECT COUNT(DISTINCT kodeUnik) as jml_penjualan
                                 from pembelian
-                                WHERE tglTransaksi BETWEEN '$tahunawal-$bulanawal-$tanggalawal' AND '$tahun-$bulan-$tanggal'";
+                                WHERE tglTransaksi BETWEEN '$tahunawal-01-01' AND '$tahun-12-31'";
         return $this->db->query("$query");
     }
 
@@ -459,7 +459,7 @@ class mod_dataProduk extends CI_Model{
     function get_kategori($kategori,$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal){
         $query = "SELECT  COUNT(kategori) as data
                                 FROM produk
-                                WHERE kategori= '".$kategori."' AND createDate BETWEEN '$tahunawal-$bulanawal-$tanggalawal' AND '$tahun-$bulan-$tanggal'";
+                                WHERE kategori= '".$kategori."' AND createDate BETWEEN '$tahunawal-01-01' AND '$tahun-12-31'";
 
         return $this->db->query("$query");
     }

@@ -176,7 +176,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProduk">
               <i class="menu-icon icon-diamond"></i>
-              <span class="menu-title">Dashboard</span>      
+              <span class="menu-title">Dashboard By Filter</span>      
             </a>
           </li>
 
@@ -447,144 +447,6 @@
 
             <?php } ?>
 
-              <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  
-                      <div class="chart" id="barChart5" style="height: 350px;margin-bottom: 30px"></div>
-                      <script type="text/javascript">
-                      $('#barChart5').highcharts({
-                chart: {
-                  type: 'bar',
-                  backgroundColor: 'transparent'
-                },
-                    title: {
-                      text: '<h3>JUMLAH PRODUK KIKO BERDASARKAN KATEGORI</h3>'
-                    },
-                xAxis: {
-                  categories: ['Cars Wash', 'Coating', 'Interior', 'Eksterior'],
-                  title: {
-                    text: null
-                  }
-                },
-                yAxis: {
-                  min: 0,
-                  title: {
-                    text: 'Jumlah Layanan',
-                    align: 'high'
-                  },
-                  labels: {
-                    overflow: 'justify'
-                  }
-                },
-                plotOptions: {
-                  bar: {
-                    dataLabels: {
-                      enabled: true
-                    }
-                  }
-                },
-                legend: {enabled: false},
-                credits: {enabled: false},
-                tooltip: {
-                  backgroundColor: getColor['white'],
-                  borderColor: 'transparent',
-                  borderRadius: 7,
-                  borderWidth: 0,
-                  style: {
-                    color: getColor['dark']
-                  }
-                },
-                series: [{
-                  name: 'Jumlah :',
-                  data: [<?php echo $Cars_Wash ?>,<?php echo $Coating ?>,<?php echo $Interior ?>,<?php echo $Eksterior ?>],
-                  color: getColor['Chocolate']
-                }]
-              });
-                    </script>
-                      
-                </div>
-              </div>
-            </div>
-
-            
-
-            <div class="col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-
-                      <div class="chart" id="pieChart2" style="height: 350px;margin-bottom: 30px"></div>
-                        <script type="text/javascript">
-                        chart = new Highcharts.Chart({
-                          chart: {
-                            renderTo: 'pieChart2',
-                            plotShadow: false,
-                            backgroundColor: 'transparent'
-                          },
-                          title: {
-                            text:'<h3>JUMLAH RESERVASI BERDASARKAN STATUS RESERVASI</h3>'
-                          },
-                          tooltip: {
-                            backgroundColor: getColor['white'],
-                            borderColor: 'transparent',
-                            borderRadius: 7,
-                            borderWidth: 0,
-                            style: {
-                              color: getColor['dark'],
-                              fontSize: '13px'  
-                            }
-                          },
-                          plotOptions: {
-                            pie: {
-                              cursor: 'pointer',
-                              dataLabels: {enabled: true},
-                              borderWidth: 0,
-                              showInLegend: true
-                            }
-                          },
-                          legend: {
-                            itemMarginTop: 20,
-                            // itemHoverStyle: {color: getColor['white']}
-                          },
-                          credits: {enabled: false},
-                          series: [{
-                            type: 'pie',
-                            name: 'Jumlah : ',
-                            innerSize: '50%',
-                            size: '80%',
-
-                            data: [
-                              {
-                                name: 'Antrian',
-                                y: <?php echo $Antrian ?>,
-                                color: getColor['antrian'],
-                              }, {
-                                name: 'Penjemputan',
-                                y: <?php echo $penjemputan ?>,
-                                color: getColor['penjemputan']
-                              }, {
-                                name: 'Pengerjaan',
-                                y: <?php echo $pengerjaan ?>,
-                                color: getColor['pengerjaan']
-                              }, {
-                                name: 'Pengantaran',
-                                y: <?php echo $pengantaran ?>,
-                                color: getColor['pengantaran']
-                              }, {
-                                name: 'Selesai',
-                                y: <?php echo $selesai ?>,
-                                color: getColor['selesai']
-                              }
-                            ]
-
-                          }]
-                        });
-                      </script>
-                      
-                </div>
-              </div>
-            </div>
-
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -719,10 +581,149 @@
               </div>
             </div>
 
+              <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  
+                      <div class="chart" id="barChart5" style="height: 350px;margin-bottom: 30px"></div>
+                      <script type="text/javascript">
+                      $('#barChart5').highcharts({
+                chart: {
+                  type: 'bar',
+                  backgroundColor: 'transparent'
+                },
+                    title: {
+                      text: '<h3>JUMLAH PRODUK KIKO BERDASARKAN KATEGORI</h3>'
+                    },
+                xAxis: {
+                  categories: ['Cars Wash', 'Coating', 'Interior', 'Eksterior'],
+                  title: {
+                    text: null
+                  }
+                },
+                yAxis: {
+                  min: 0,
+                  title: {
+                    text: 'Jumlah Layanan',
+                    align: 'high'
+                  },
+                  labels: {
+                    overflow: 'justify'
+                  }
+                },
+                plotOptions: {
+                  bar: {
+                    dataLabels: {
+                      enabled: true
+                    }
+                  }
+                },
+                legend: {enabled: false},
+                credits: {enabled: false},
+                tooltip: {
+                  backgroundColor: getColor['white'],
+                  borderColor: 'transparent',
+                  borderRadius: 7,
+                  borderWidth: 0,
+                  style: {
+                    color: getColor['dark']
+                  }
+                },
+                series: [{
+                  name: 'Jumlah :',
+                  data: [<?php echo $Cars_Wash ?>,<?php echo $Coating ?>,<?php echo $Interior ?>,<?php echo $Eksterior ?>],
+                  color: getColor['Chocolate']
+                }]
+              });
+                    </script>
+                      
+                </div>
+              </div>
+            </div>
+
+            <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+
+            <div class="col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+
+                      <div class="chart" id="pieChart2" style="height: 350px;margin-bottom: 30px"></div>
+                        <script type="text/javascript">
+                        chart = new Highcharts.Chart({
+                          chart: {
+                            renderTo: 'pieChart2',
+                            plotShadow: false,
+                            backgroundColor: 'transparent'
+                          },
+                          title: {
+                            text:'<h3>JUMLAH RESERVASI BERDASARKAN STATUS RESERVASI</h3>'
+                          },
+                          tooltip: {
+                            backgroundColor: getColor['white'],
+                            borderColor: 'transparent',
+                            borderRadius: 7,
+                            borderWidth: 0,
+                            style: {
+                              color: getColor['dark'],
+                              fontSize: '13px'  
+                            }
+                          },
+                          plotOptions: {
+                            pie: {
+                              cursor: 'pointer',
+                              dataLabels: {enabled: true},
+                              borderWidth: 0,
+                              showInLegend: true
+                            }
+                          },
+                          legend: {
+                            itemMarginTop: 20,
+                            // itemHoverStyle: {color: getColor['white']}
+                          },
+                          credits: {enabled: false},
+                          series: [{
+                            type: 'pie',
+                            name: 'Jumlah : ',
+                            innerSize: '50%',
+                            size: '80%',
+
+                            data: [
+                              {
+                                name: 'Antrian',
+                                y: <?php echo $Antrian ?>,
+                                color: getColor['antrian'],
+                              }, {
+                                name: 'Penjemputan',
+                                y: <?php echo $penjemputan ?>,
+                                color: getColor['penjemputan']
+                              }, {
+                                name: 'Pengerjaan',
+                                y: <?php echo $pengerjaan ?>,
+                                color: getColor['pengerjaan']
+                              }, {
+                                name: 'Pengantaran',
+                                y: <?php echo $pengantaran ?>,
+                                color: getColor['pengantaran']
+                              }, {
+                                name: 'Selesai',
+                                y: <?php echo $selesai ?>,
+                                color: getColor['selesai']
+                              }
+                            ]
+
+                          }]
+                        });
+                      </script>
+                      
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
 
             <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
 
-                <div class="col-xl-12 col-md-6 col-12">
+                <div class="col-xl-6 col-md-6 col-12">
                   <div class="card">
                     <div class="card-body">
 
