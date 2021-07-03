@@ -643,8 +643,21 @@
                 },
                 series: [{
                   name: 'Jumlah :',
-                  data: [<?php echo $Cars_Wash ?>,<?php echo $Coating ?>,<?php echo $Interior ?>,<?php echo $Eksterior ?>],
-                  color: getColor['Chocolate']
+                  data: [
+                          {
+                            y: <?php echo $Cars_Wash ?>,
+                            color: getColor['Chocolate'],
+                          }, {
+                            y: <?php echo $Coating ?>,
+                            color: getColor['yellow'],
+                          }, {
+                            y: <?php echo $Interior ?>,
+                            color: getColor['green'],
+                          }, {
+                            y: <?php echo $Eksterior ?>,
+                            color: getColor['red'],
+                          }
+                        ]
                 }]
               });
                     </script>
