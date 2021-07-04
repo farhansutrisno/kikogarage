@@ -758,7 +758,7 @@
 
             <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
 
-                <div class="col-6 grid-margin stretch-card">
+                <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
 
