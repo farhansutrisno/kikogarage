@@ -176,8 +176,8 @@
 
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>webbackend/C_dataProduk/grafikProdukUtama">
-              <i class="menu-icon icon-home"></i>
-              <span class="menu-title">Dashboard Utama</span>
+              <i class="menu-icon icon-home" style="color: #969c99 !important;"></i>
+              <span class="menu-title" style="color: #969c99 !important;">Dashboard Utama</span>
             </a>
           </li>
 
