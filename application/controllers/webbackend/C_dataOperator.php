@@ -53,6 +53,7 @@ class C_dataOperator extends CI_Controller{
 				redirect('webbackend/C_dataProduk/grafikProdukUtama');
 			}
 		}
+		
 		if ($no==0) {
 			$this->session->set_flashdata('pesan2', 
 		                '<div class="alert alert-danger">    
@@ -283,8 +284,8 @@ class C_dataOperator extends CI_Controller{
 
 	    if(isset($_POST['submit'])){
 		    if($this->form_validation->run() == false){
-		    	$id 				= $this->input->post('kdOperator');
-		        $data["operator"] 	= $this->mod_dataOperator->updateDataTukang($id)->row_array();
+		    	$id 				= $this->input->post('KdTukang');
+		        $data["tukang"] 	= $this->mod_dataOperator->updateDataTukang($id)->row_array();
 				$this->load->view('webbackend/V_updateDataTukang', $data);
 		    }
 		    else{

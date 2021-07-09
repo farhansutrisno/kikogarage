@@ -333,14 +333,14 @@
                       <div class="form-group">
                           <label>Nama Lengkap</label>
                           <input type="text" class="form-control" name="namaLengkap" value="<?php echo $tukang['nama_lengkap']?>" required/>
-                          <?php echo set_value('namaLengkap') ?><br><?php echo form_error('namaLengkap'); ?>
+                          <?php echo form_error('namaLengkap'); ?>
                       </div>
                       
                       <div class="form-group">
                           <label>No Telpon</label>
                           <div>
                               <input type="number" class="form-control" name="noTelepon" value="<?php echo $tukang['noTelepon'] ?>" required/>
-                              <?php echo set_value('noTelepon') ?><br><?php echo form_error('noTelepon'); ?>
+                              <?php echo form_error('noTelepon'); ?>
                           </div>
                       </div>
                       <div class="form-group">
@@ -354,7 +354,7 @@
                             <?php } ?>
 
                           </select>
-                          <?php echo set_value('jenis') ?><br><?php echo form_error('jenis'); ?>
+                          <?php echo form_error('jenis'); ?>
                       </div>
                        
                        <div>
