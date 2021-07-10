@@ -189,11 +189,11 @@ class C_dataProduk extends CI_Controller{
 			$x['desember'] 		= $this->mod_dataProduk->get_bulan('12',$tahun,$tanggal,$tahunawal,$tanggalawal)->result()[0]->total_bayar;
 		}
 
-		$x['Antrian'] 		= $this->mod_dataProduk->seluruhnya('Antrian',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['selesai'] 		= $this->mod_dataProduk->seluruhnya('Selesai',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['pengerjaan'] 	= $this->mod_dataProduk->seluruhnya('Pengerjaan',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['penjemputan'] 	= $this->mod_dataProduk->seluruhnya('Penjemputan',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
-		$x['pengantaran'] 	= $this->mod_dataProduk->seluruhnya('Pengantaran',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
+		// $x['Antrian'] 		= $this->mod_dataProduk->seluruhnya('Antrian',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
+		// $x['selesai'] 		= $this->mod_dataProduk->seluruhnya('Selesai',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
+		// $x['pengerjaan'] 	= $this->mod_dataProduk->seluruhnya('Pengerjaan',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
+		// $x['penjemputan'] 	= $this->mod_dataProduk->seluruhnya('Penjemputan',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
+		// $x['pengantaran'] 	= $this->mod_dataProduk->seluruhnya('Pengantaran',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
 
 		$this->load->view('webbackend/V_lihatGrafikPenjualan',$x);
 
@@ -267,15 +267,15 @@ class C_dataProduk extends CI_Controller{
 
 		}
 
-		$x['tahuncurrent']		= $tahun;
-		$x['bulancurrent']		= $bulan;
-		$x['tanggalcurrent']	= $tanggal;
+		// $x['tahuncurrent']		= $tahun;
+		// $x['bulancurrent']		= $bulan;
+		// $x['tanggalcurrent']	= $tanggal;
 
-		$x['tahunawal2']		= $tahunawal;
-		$x['bulanawal2']		= $bulanawal;
-		$x['tanggalawal2']		= $tanggalawal;
+		// $x['tahunawal2']		= $tahunawal;
+		// $x['bulanawal2']		= $bulanawal;
+		// $x['tanggalawal2']		= $tanggalawal;
 
-		$x['tahun']			= $this->mod_dataProduk->tahun()->result();
+		// $x['tahun']			= $this->mod_dataProduk->tahun()->result();
 
 		$x['Cars_Wash'] 	= $this->mod_dataProduk->get_kategori('CarWash',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
 		$x['Coating'] 		= $this->mod_dataProduk->get_kategori('Coating',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
@@ -291,9 +291,9 @@ class C_dataProduk extends CI_Controller{
 		$x['langsung'] 		= $this->mod_dataProduk->jenisBooking('Langsung',$tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->row()->data;
 
 
-      	$x['jml_produk'] 		= $this->mod_dataProduk->jml_produk($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->result();
-		$x['jml_pesan'] 		= $this->mod_dataProduk->jml_pesan($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->result();
-		$x['jml_penjualan'] 	= $this->mod_dataProduk->jml_penjualan($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->result();
+  //     	$x['jml_produk'] 		= $this->mod_dataProduk->jml_produk($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->result();
+		// $x['jml_pesan'] 		= $this->mod_dataProduk->jml_pesan($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->result();
+		// $x['jml_penjualan'] 	= $this->mod_dataProduk->jml_penjualan($tahun,$bulan,$tanggal,$tahunawal,$bulanawal,$tanggalawal)->result();
 
 		$x['januari'] = $this->mod_dataProduk->get_bulan('01',$tahun,$tanggal,$tahunawal,$tanggalawal)->result()[0]->total_bayar;
 		if ($x['januari'] == NULL) {

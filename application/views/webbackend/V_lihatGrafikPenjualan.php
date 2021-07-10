@@ -584,7 +584,7 @@
               </div>
             </div>
 
-            <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
+            <!-- <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
 
             <div class="col-6 grid-margin stretch-card">
               <div class="card">
@@ -662,7 +662,7 @@
               </div>
             </div>
 
-            <?php } ?>
+            <?php } ?> -->
 
             <?php if ($this->session->userdata('statusAdmin') == '2') { ?>
 
