@@ -228,15 +228,15 @@
 
           <?php if ($this->session->userdata('statusAdmin') == '1') { ?>
 
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="true" aria-controls="apps-dropdown">
                 <i class="menu-icon icon-user"></i>
                 <span class="menu-title">Pegawai</span>
 
                 <div class="badge badge-info">2</div>
                 
               </a>
-              <div class="collapse" id="apps-dropdown">
+              <div class="collapse show" id="apps-dropdown">
                 <ul class="nav flex-column sub-menu">
                    
                   <li class="nav-item">
@@ -244,7 +244,7 @@
                   </li>
 
                   <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
+                    <a class="nav-link active" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
                   </li>
                   
                 </ul>
