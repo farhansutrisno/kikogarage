@@ -125,6 +125,8 @@ class C_dataOperator extends CI_Controller{
 		$this->session->unset_userdata('foto');
 		$this->session->unset_userdata('tahun');
 
+		$this->session->sess_destroy();
+
 		redirect('webbackend/C_dataOperator/login');
 	}
 
