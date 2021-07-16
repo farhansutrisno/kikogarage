@@ -287,7 +287,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Lihat Data Penjualan <small>Kiko Good Garage</small> </h5><br>
+              <h5 class="page-title">Lihat Data Reservasi <small>Kiko Good Garage</small> </h5><br>
 
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
