@@ -25,13 +25,13 @@
   <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
   
 </head>
@@ -323,7 +323,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Edit Data Layanan</h4>
+                  <h3 class="card-title">Edit Data Layanan</h3>
                 
                   <hr>
                     <input type="hidden" name="kdProduk" value="<?php echo $produk[0]->kdProduk ?>"/>

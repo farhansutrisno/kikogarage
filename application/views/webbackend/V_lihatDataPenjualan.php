@@ -23,13 +23,13 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg" />
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
   
 </head>
@@ -287,7 +287,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Lihat Data Reservasi <small>Kiko Good Garage</small> </h5><br>
+              <h3 class="page-title">Lihat Data Reservasi <small>Kiko Good Garage</small> </h3><br>
 
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
@@ -471,9 +471,9 @@
                                 
                       ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailDataPenjualan2/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="fa fa-eye"></i> Detail</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataPenjualan/detailDataPenjualan2/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-info"> <i class="fa fa-eye"></i> Detail</a>&nbsp;
                                     <!-- <a href="<?php echo base_url().'webbackend/C_dataPenjualan/updateDataPenjualan/'.$key->kodeUnik.'/'.$KdTukang?>" class="btn btn-primary"><i class="fa fa-handshake-o"></i> Edit</a> -->
-                                    <a href="#" onclick="updateselesai(<?='\''.$key->kodeUnik.'\',\''.$key->idAkun.'\',\''.$kdoperator.'\',\''.$key->KdTukang.'\',\''."Selesai".'\''?>)" class="btn btn-primary <?php if ($key->statusPembayaran == 'Pengantaran' && $key->jenisBooking == 'Antar Jemput' || $key->statusPembayaran == 'Pengerjaan' && $key->jenisBooking == 'Langsung'){ ?> ' ' <?php }else{?> disabled <?php } ?>"><i class="fa fa-handshake-o"></i> Selesai</a>
+                                    <a href="#" onclick="updateselesai(<?='\''.$key->kodeUnik.'\',\''.$key->idAkun.'\',\''.$kdoperator.'\',\''.$key->KdTukang.'\',\''."Selesai".'\''?>)" class="btn btn-primary <?php if ($key->statusPembayaran == 'Pengantaran' && $key->jenisBooking == 'Antar Jemput' || $key->statusPembayaran == 'Pengerjaan' && $key->jenisBooking == 'Langsung'){ ?> ' ' <?php }else{?> disabled <?php } ?>"><i class="fa fa-handshake-o"></i> Selesai</a>&nbsp;
                                     <a href="#" onclick="myDelete(<?='\''.$key->kodeUnik.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Batal</a>
                                 </td>
                             </tr>

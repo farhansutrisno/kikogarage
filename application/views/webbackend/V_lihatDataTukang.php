@@ -22,13 +22,13 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg" />
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
 </head>
 
@@ -325,7 +325,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Data Pegawai Services <small>Kiko Good Garage </small></h5><br>
+              <h3 class="page-title">Data Pegawai Services <small>Kiko Good Garage </small></h3><br>
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php
@@ -368,9 +368,9 @@
                                 
                                 ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataOperator/detailDataTukang/'.$key->KdTukang ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataOperator/detailDataTukang/'.$key->KdTukang ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>&nbsp;
                                     <a href="<?php echo base_url().'webbackend/C_dataOperator/updateDataTukang/'.$key->KdTukang?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Edit</a>
+                                    <i class="ion ion-md-create"></i>Edit</a>&nbsp;
                                     <a href="#" onclick="myDelete(<?='\''.$key->KdTukang.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                     <!-- <button class="class="btn btn-danger"" onClick="myDelete()"><i class="ion ion-md-trash"></i> Delete</button> -->
                                 </td>

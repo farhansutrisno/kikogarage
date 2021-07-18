@@ -294,7 +294,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Data Artikel <small>Kiko Good Garage </small></h5><br>
+              <h3 class="page-title">Data Artikel <small>Kiko Good Garage </small></h3><br>
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php

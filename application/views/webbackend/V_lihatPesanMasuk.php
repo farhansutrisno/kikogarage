@@ -22,13 +22,13 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg" />
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
 </head>
 
@@ -322,7 +322,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Lihat Pesan Masuk <small>Kiko Good Garage</small> </h5><br>
+              <h3 class="page-title">Lihat Pesan Masuk <small>Kiko Good Garage</small> </h3><br>
               <div class="row">
                 
                 <div class="col-12 table-responsive">
@@ -355,8 +355,7 @@
                                 echo "<td align='center'>". $dateCreate."</td>";
                                 ?>
                                 <td style="text-align: center !important;">
-                                    <a href="<?php echo base_url().'webbackend/C_pesanMasuk/detailPesanMasuk/'.$key->kdPesanMasuk ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
-                                    
+                                    <a href="<?php echo base_url().'webbackend/C_pesanMasuk/detailPesanMasuk/'.$key->kdPesanMasuk ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>&nbsp;
                                     <a href="#" onclick="myDelete(<?='\''.$key->kdPesanMasuk.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                 </td>
                             </tr>

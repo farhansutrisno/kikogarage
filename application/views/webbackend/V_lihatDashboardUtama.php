@@ -52,13 +52,13 @@
     };
   </script>
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
-    }
+    }*/
 
-    .rounded-circle, .settings-panel .color-tiles .tiles{
+    /*.rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
 </head>
 

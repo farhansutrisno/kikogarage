@@ -25,13 +25,13 @@
   <link href="<?php echo base_url()?>assets/date_picker_bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
   
 </head>
@@ -283,7 +283,7 @@
               <div class="card">
                 <div class="card-body">
 
-                  <h4 class="card-title">Data Reservasi</h4>
+                  <h3 class="card-title">Data Reservasi</h3>
                   <br>
                   <hr>
                    <form method="POST" action="<?php echo base_url().'webbackend/C_dataPenjualan/prosesUpdateDataPenjualan'?>" name="updateDataPenjualan" >

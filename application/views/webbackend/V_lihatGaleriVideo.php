@@ -22,13 +22,13 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg" />
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
   </style>
 
   <style type="text/css">
@@ -375,7 +375,7 @@
                 </ul>
               <!-- </div> -->
               <br>
-              <h5 class="page-title">Data Galeri Video <small>Kiko Good Garage </small></h5><br>
+              <h3 class="page-title">Data Galeri Video <small>Kiko Good Garage </small></h3><br>
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php
@@ -422,9 +422,9 @@
                                 
                                 ?>
                                 <td>
-                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleriVideo/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>
+                                    <a href="<?php echo base_url().'webbackend/C_dataKiko/detailDataGaleriVideo/'.$key->kdGaleri ?>" class="btn btn-info"> <i class="ion ion-md-eye"></i> Detail</a>&nbsp;
                                     <a href="<?php echo base_url().'webbackend/C_dataKiko/updateDataGaleriVideo/'.$key->kdGaleri?>" class="btn btn-primary">
-                                    <i class="ion ion-md-create"></i>Edit</a>
+                                    <i class="ion ion-md-create"></i>Edit</a>&nbsp;
                                     <a href="#" onclick="myDelete(<?='\''.$key->kdGaleri.'\''?>)" class="btn btn-danger"><i class="ion ion-md-trash"></i> Delete</a>
                                 </td>
                             </tr>

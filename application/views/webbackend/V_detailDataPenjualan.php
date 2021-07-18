@@ -23,13 +23,13 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>asset/images/logokiko.jpeg" />
 
   <style type="text/css">
-    .sidebar .nav .nav-item.nav-profile img{
+    /*.sidebar .nav .nav-item.nav-profile img{
       border-radius: 0% !important;
     }
 
     .rounded-circle, .settings-panel .color-tiles .tiles{
       border-radius: 0% !important;
-    }
+    }*/
 
     .form-control{
         font-size: 14px !important;
@@ -289,7 +289,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h5 class="page-title">Detail Reservasi <small>Kiko Good Garage</small> </h5><br>
+              <h3 class="page-title">Detail Reservasi <small>Kiko Good Garage</small> </h3><br>
               <div class="row">
                 <div class="col-md-6">
                     <div class="table-responsive">
