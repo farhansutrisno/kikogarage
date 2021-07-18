@@ -323,7 +323,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title">Edit Data Layanan</h3>
+                  <h3 class="card-title" style="font-size: 20px !important;">Edit Data Layanan</h3>
                 
                   <hr>
                     <input type="hidden" name="kdProduk" value="<?php echo $produk[0]->kdProduk ?>"/>

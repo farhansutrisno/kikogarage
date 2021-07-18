@@ -283,7 +283,7 @@
               <div class="card">
                 <div class="card-body">
 
-                  <h3 class="card-title">Data Reservasi</h3>
+                  <h3 class="card-title" style="font-size: 20px !important;">Data Reservasi</h3>
                   <br>
                   <hr>
                    <form method="POST" action="<?php echo base_url().'webbackend/C_dataPenjualan/prosesUpdateDataPenjualan'?>" name="updateDataPenjualan" >

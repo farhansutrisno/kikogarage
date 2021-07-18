@@ -327,7 +327,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title">Input Data Galeri Photo</h3>
+                  <h3 class="card-title" style="font-size: 20px !important;">Input Data Galeri Photo</h3>
       
                   <hr>
                   
