@@ -82,6 +82,7 @@
 
           <div style="width: 500px !important; margin-bottom: -3rem !important;" id="notifications">
             <?php echo $this->session->flashdata('pesan1'); ?>
+            <?php echo $this->session->flashdata('cektanggal1'); ?>
             </div>
           
           <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">

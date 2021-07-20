@@ -14,6 +14,10 @@ class C_dataProduk extends CI_Controller{
 		$tanggal1 	= $this->input->post('tanggal');
 		$bulan1 	= $this->input->post('bulan');
 
+		$tahunawal 		= $this->input->post('tahunawal');
+		$tanggalawal 	= $this->input->post('tanggalawal');
+		$bulanawal 		= $this->input->post('bulanawal');
+
 		if (empty($tahun1)) {
 			$tahun = date("Y");
 		}else{
@@ -35,17 +39,28 @@ class C_dataProduk extends CI_Controller{
 			$bulan = date("m");
 		}else{
 
-			if ($bulan1 >= 10) {
-				$bulan = $bulan1;
+			if ($bulan1 > $bulanawal ) {
+
+				if ($bulan1 >= 10) {
+					$bulan = $bulan1;
+				}else{
+					$bulan = "0".$bulan1;
+				}
+				
 			}else{
-				$bulan = "0".$bulan1;
+
+				$this->session->set_flashdata('cektanggal1', 
+		                '<div class="alert alert-info ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>Gagal Filter ! </h7>
+		                    <p>Harap memasukan bulan atau tahun dengan benar!!</p>
+		                </div>');
+
+				redirect('webbackend/C_dataProduk/grafikProduk');
+
 			}
 
 		}
-
-		$tahunawal 		= $this->input->post('tahunawal');
-		$tanggalawal 	= $this->input->post('tanggalawal');
-		$bulanawal 		= $this->input->post('bulanawal');
 
 		if (empty($tahunawal)) {
 			$tahunawal = $tahun;
