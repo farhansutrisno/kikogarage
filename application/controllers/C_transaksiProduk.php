@@ -29,7 +29,8 @@ class C_transaksiProduk extends CI_Controller{
 				$this->session->set_flashdata('cekjadwal2', 
 		                '<div class="alert alert-danger" style="margin-bottom: 20px !important">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		                <h7>Reservasi sebelumnya harus selesai terlebih dahulu !</h7>
+		                <h7>Reservasi sebelumnya harus selesai terlebih dahulu,</h7>
+		                <b>Hubungi 085856442607 </b>Terimakasih !
 		                </div>');
 
 				$this->session->set_userdata('noPlat',$noPlat);
