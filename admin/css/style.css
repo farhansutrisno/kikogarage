@@ -14809,8 +14809,10 @@ input:focus {
       .sidebar .nav .nav-item.nav-profile img {
         border-radius: 100%;
         margin: 20px auto 20px auto;
-        width: 100%;
-        max-width: 82px;
+        width: 80px !important;
+        height: 70px !important;
+        /*width: 100%;
+        max-width: 82px;*/
         display: block; }
       .sidebar .nav .nav-item.nav-profile p {
         color: #ffffff; }
