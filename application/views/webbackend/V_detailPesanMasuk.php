@@ -319,7 +319,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h3 class="page-title">Lihat Detail Pesan Masuk <small>Kiko Good Garage</small> </h3><br>
+              <h3 class="page-title">Lihat Detail Pesan Masuk Kiko Good Garage</h3><br>
               <div class="right_col" role="main">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">

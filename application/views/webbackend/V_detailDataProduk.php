@@ -319,7 +319,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h3 class="page-title">Lihat Detail Layanan <small>Kiko Good Garage</small> </h3><br>
+              <h3 class="page-title">Lihat Detail Layanan Kiko Good Garage</h3><br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="table-responsive">

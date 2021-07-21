@@ -375,7 +375,7 @@
                 </ul>
               <!-- </div> -->
               <br>
-              <h3 class="page-title">Data Galeri Video <small>Kiko Good Garage </small></h3><br>
+              <h3 class="page-title">Data Galeri Video Kiko Good Garage</h3><br>
               <div class="row">
               <div class="col-12 page-header-title">
                     <?php
