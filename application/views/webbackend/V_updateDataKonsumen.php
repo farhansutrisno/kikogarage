@@ -320,7 +320,7 @@
           
           <form method="POST" action="<?php echo base_url().'webbackend/C_dataOperator/prosesUpdateDataKonsumen'?>">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
                   <h3 class="card-title" style="font-size: 20px !important;">Edit Data Customer</h3>
@@ -328,7 +328,7 @@
                   <hr>
                      
                     <input type="hidden" class="form-control" name="idAkun" value="<?php echo $konsumen['idAkun']?>" />
-                    <fieldset>
+                    <fieldset class="col-lg-6">
                       <div class="form-group">
                           <label>Nama Lengkap</label>
                           <input type="text" class="form-control" name="namaLengkap" value="<?php echo $konsumen['namaLengkap']?>" readonly/>

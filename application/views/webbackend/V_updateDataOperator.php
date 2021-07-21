@@ -321,7 +321,7 @@
           <!-- <?php echo form_open('webbackend/C_dataOperator/prosesUpdateDataOperator'); ?> -->
            <form method="POST" action="<?php echo base_url().'webbackend/C_dataOperator/prosesUpdateDataOperator'?>" name="updateDataOperator" enctype="multipart/form-data">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
                   <h3 class="card-title" style="font-size: 20px !important;">Edit Data Operator</h3>
@@ -329,7 +329,7 @@
                   <hr>
                      
                     <input type="hidden" class="form-control" name="kdOperator" value="<?php echo $operator['kdOperator']?>" />
-                    <fieldset>
+                    <fieldset class="col-lg-6">
                       <div class="form-group">
                           <label>Nama Lengkap</label>
                           <input type="text" class="form-control" name="namaLengkap" value="<?php echo $operator['namaLengkap']?>" required/>

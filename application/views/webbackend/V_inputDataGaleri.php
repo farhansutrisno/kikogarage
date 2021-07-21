@@ -324,14 +324,14 @@
           <form method="POST" action="<?php echo base_url().'webbackend/C_dataKiko/prosesInputDataGaleri'?>" enctype="multipart/form-data">
           <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
                   <h3 class="card-title" style="font-size: 20px !important;">Input Data Galeri Photo</h3>
       
                   <hr>
                   
-                    <fieldset>
+                    <fieldset class="col-lg-6">
                       <div class="form-group">
                           <label>Judul Galeri</label>
                           <input type="text" class="form-control" name="judulGaleri" value="<?php echo set_value('judulGaleri') ?>" required/>

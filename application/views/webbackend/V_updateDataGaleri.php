@@ -321,7 +321,7 @@
           
            <form method="POST" action="<?php echo base_url().'webbackend/C_dataKiko/prosesUpdateDataGaleri'?>" enctype="multipart/form-data">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
                   <h3 class="card-title" style="font-size: 20px !important;">Edit Data Galeri Photo</h3>
@@ -329,7 +329,7 @@
                   <hr>
                      
                     <input type="hidden" class="form-control" name="kdGaleri" value="<?php echo $Galeri['kdGaleri']?>" />
-                    <fieldset>
+                    <fieldset class="col-lg-6">
                       <div class="form-group">
                           <label>Judul Galeri</label>
                           <input type="text" class="form-control" name="judulGaleri" value="<?php echo $Galeri['judulGaleri']?>" required/>
