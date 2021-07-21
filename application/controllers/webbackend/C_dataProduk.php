@@ -50,7 +50,7 @@ class C_dataProduk extends CI_Controller{
 			}else{
 
 				$this->session->set_flashdata('cektanggal1', 
-		                '<div class="alert alert-info ">    
+		                '<div class="alert alert-danger ">    
 		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		                <h7>Gagal Filter ! </h7>
 		                    <p>Harap memasukan bulan atau tahun dengan benar!!</p>
