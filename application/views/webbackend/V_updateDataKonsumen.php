@@ -247,7 +247,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Tukang</a>
+                    <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataOperator/lihatDataTukang">Data Pegawai Services</a>
                   </li>
                   
                 </ul>
