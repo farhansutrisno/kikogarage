@@ -136,28 +136,10 @@ class mod_dataKiko extends CI_Model{
 		 return $this->db->get("galeri");
 	}
 
-	public function prosesUpdateDataGaleri($gambar){
+	public function prosesUpdateDataGaleri($data){
 
 		$kdGaleri 		= $this->input->post('kdGaleri');
-		$judulGaleri 	= $this->input->post('judulGaleri');
-
-		if($gambar==null){
-
-			$data 			= array(
-				"judulGaleri" 		=> $judulGaleri,
-				"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
-			);
-
-		}else{
-				
-			$data 			= array(
-				"judulGaleri" 		=> $judulGaleri,
-				"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
-				"gambar"			=> $gambar 
-			);
-
-		}
-
+		
 		$this->db->where("kdGaleri",$kdGaleri);
 		return $this->db->update("galeri",$data);
 	}

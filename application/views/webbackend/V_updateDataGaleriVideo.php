@@ -343,7 +343,7 @@
                             <source src="<?php echo base_url().'gambar_proyek/'.$Galeri['gambar'] ?>" type="video/mp4"/>
                           </video>
           
-                          <input class="form-control" type="file" name="userfile" >
+                          <input class="form-control" type="file" name="video" >
                           <span><i>Format : MP4 | Maksimal Upload : 5 Mb</i></span>
 
                       </div>

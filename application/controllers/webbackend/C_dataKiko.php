@@ -210,35 +210,42 @@ class C_dataKiko extends CI_Controller{
 				$this->load->view('webbackend/V_updateDataGaleriVideo', $data);
 		    }
 		    else{
-
-		    	if (isset($_FILES['video']['name']) && $_FILES['video']['name'] != '') {
 		        
-			        unset($config);
-			        $date = date("ymd");
-			        $configVideo['upload_path'] = './gambar_proyek';
-			        $configVideo['max_size'] = '60000';
-			        $configVideo['allowed_types'] = 'avi|flv|wmv|mp3|mp4';
-			        $configVideo['overwrite'] = FALSE;
-			        $configVideo['remove_spaces'] = TRUE;
+		        unset($config);
+		        $date = date("ymd");
+		        $configVideo['upload_path'] = './gambar_proyek';
+		        $configVideo['max_size'] = '60000';
+		        $configVideo['allowed_types'] = 'avi|flv|wmv|mp3|mp4';
+		        $configVideo['overwrite'] = FALSE;
+		        $configVideo['remove_spaces'] = TRUE;
+		        $video_name = $date.$_FILES['video']['name'];
+		        $configVideo['file_name'] = $video_name;
+
+			    if (!empty($_FILES['video']['name'])) {
 			        
 			        $this->load->library('upload', $configVideo);
 			        $this->upload->initialize($configVideo);
 
-		        	$video_name = $date.$_FILES['video']['name'];
-		        	$configVideo['file_name'] = $video_name;
+			            $videoDetails = $this->upload->data();
+			            $data1['video_name']= $configVideo['file_name'];
+			            $data1['video_detail'] = $videoDetails;
 
-		        	$videoDetails = $this->upload->data();
-		            $data1['video_name']= $configVideo['file_name'];
-		            $data1['video_detail'] = $videoDetails;
-		  			
-		            $this->session->set_flashdata('pesan5', 
+			            $judulGaleri	= $this->input->post('judulGaleri');
+
+			            $data 			= array(
+							"judulGaleri" 		=> $judulGaleri,
+							"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
+							"gambar"			=> $data1['video_name']
+						);
+			  			
+			            $this->session->set_flashdata('pesan3', 
 			                '<div class="alert alert-info ">    
 			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			                <h7>BERHASIL ! </h7>
 			                </div>');
-					$this->mod_dataKiko->prosesUpdateDataGaleri($configVideo['file_name']);
-					redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
 
+						$this->mod_dataKiko->prosesUpdateDataGaleri($data);
+						redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
 
 			    }else{
 
@@ -247,8 +254,13 @@ class C_dataKiko extends CI_Controller{
 			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			                <h7>BERHASIL ! </h7>
 			                </div>');
-					$configVideo = NULL;
-					$this->mod_dataKiko->prosesUpdateDataGaleri($configVideo);
+					
+					$judulGaleri	= $this->input->post('judulGaleri');
+					$data 			= array(
+						"judulGaleri" 		=> $judulGaleri,
+						"tglUpdateGaleri" 	=> date("Y-m-d H:i:s")
+					);
+					$this->mod_dataKiko->prosesUpdateDataGaleri($data);
 					redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
 
 			    }
