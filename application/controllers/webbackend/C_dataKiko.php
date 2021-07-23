@@ -210,8 +210,8 @@ class C_dataKiko extends CI_Controller{
 				$this->load->view('webbackend/V_updateDataGaleriVideo', $data);
 		    }
 		    else{
-		        
-		        unset($config);
+
+		    	unset($config);
 		        $date = date("ymd");
 		        $configVideo['upload_path'] = './gambar_proyek';
 		        $configVideo['max_size'] = '60000';
@@ -221,35 +221,12 @@ class C_dataKiko extends CI_Controller{
 		        $video_name = $date.$_FILES['video']['name'];
 		        $configVideo['file_name'] = $video_name;
 
-			    if (!empty($_FILES['video']['name'])) {
-			        
-			        $this->load->library('upload', $configVideo);
-			        $this->upload->initialize($configVideo);
+		        $this->load->library('upload', $configVideo);
+		        $this->upload->initialize($configVideo);
 
-			            $videoDetails = $this->upload->data();
-			            $data1['video_name']= $configVideo['file_name'];
-			            $data1['video_detail'] = $videoDetails;
-
-			            $judulGaleri	= $this->input->post('judulGaleri');
-
-			            $data 			= array(
-							"judulGaleri" 		=> $judulGaleri,
-							"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
-							"gambar"			=> $data1['video_name']
-						);
-			  			
-			            $this->session->set_flashdata('pesan3', 
-			                '<div class="alert alert-info ">    
-			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			                <h7>BERHASIL ! </h7>
-			                </div>');
-
-						$this->mod_dataKiko->prosesUpdateDataGaleri($data);
-						redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
-
-			    }else{
-
-					$this->session->set_flashdata('pesan6', 
+		        if(!$this->upload->do_upload('video')) {
+		            
+		        	$this->session->set_flashdata('pesan6', 
 			                '<div class="alert alert-info ">    
 			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			                <h7>BERHASIL ! </h7>
@@ -263,8 +240,32 @@ class C_dataKiko extends CI_Controller{
 					$this->mod_dataKiko->prosesUpdateDataGaleri($data);
 					redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
 
-			    }
 
+		        }else{
+
+					$videoDetails = $this->upload->data();
+		            $data1['video_name']= $configVideo['file_name'];
+		            $data1['video_detail'] = $videoDetails;
+
+		            $judulGaleri	= $this->input->post('judulGaleri');
+
+		            $data 			= array(
+						"judulGaleri" 		=> $judulGaleri,
+						"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
+						"gambar"			=> $data1['video_name']
+					);
+		  			
+		            $this->session->set_flashdata('pesan3', 
+		                '<div class="alert alert-info ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>BERHASIL ! </h7>
+		                </div>');
+
+					$this->mod_dataKiko->prosesUpdateDataGaleri($data);
+					redirect('webbackend/C_dataKiko/lihatDataGaleriVideo');
+
+		        }
+					
 		    }
 		}
 
@@ -294,12 +295,29 @@ class C_dataKiko extends CI_Controller{
 	            $this->upload->do_upload();
 	            $data   =  $this->upload->data();
 
+	            $judulGaleri	= $this->input->post('judulGaleri');
+
+	            if (!empty($data['file_name'])) {
+	            	$data 			= array(
+						"judulGaleri" 		=> $judulGaleri,
+						"tglUpdateGaleri" 	=> date("Y-m-d H:i:s"),
+						"gambar"			=> $data['file_name']
+					);
+
+	            }else{
+	            	$data 			= array(
+						"judulGaleri" 		=> $judulGaleri,
+						"tglUpdateGaleri" 	=> date("Y-m-d H:i:s")
+					);
+
+	            }
+
 				$this->session->set_flashdata('pesan5', 
 			                '<div class="alert alert-info ">    
 			                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			                <h7>BERHASIL ! </h7>
 			                </div>');
-				$this->mod_dataKiko->prosesUpdateDataGaleri($data['file_name']);
+				$this->mod_dataKiko->prosesUpdateDataGaleri($data);
 				redirect('webbackend/C_dataKiko/lihatDataGaleriBo');
 		    }
 		}
