@@ -361,7 +361,7 @@
                             
                           </td>
                         </tr>
-                        <tr><th>Tanggal Lahir</th><td><?php echo date_format (new DateTime($row[0]->tglLahir), 'd-M-Y') ?></td></tr>
+                        <!-- <tr><th>Tanggal Lahir</th><td><?php echo date_format (new DateTime($row[0]->tglLahir), 'd-M-Y') ?></td></tr> -->
                         <!-- <tr><th>Jenis Kelamin</th><td><?php echo $row[0]->jenisKelamin ?></td></tr> -->
                         <tr><th>Email</th><td><?php echo $row[0]->email?></td></tr>
                         <tr><th>No Telepon</th><td><?php echo $row[0]->noTelepon ?></td></tr> 

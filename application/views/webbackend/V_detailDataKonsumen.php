@@ -343,19 +343,15 @@
                           <th>Status Member</th>
                           <td><?php echo $row[0]->member?></td>
                         </tr>
-                        <tr><th>Email</th><td><?php echo $row[0]->email?></td></tr>
                         <tr><th>No Telepon</th><td><?php echo $row[0]->noTelepon ?></td></tr> 
-                        <tr><th>Kelurahan</th><td><?php echo $row[0]->kelurahan ?></td></tr>
-                        <tr><th>Kecamatan</th><td><?php echo $row[0]->kecamatan ?></td></tr>
-                        <tr><th>Kabupaten</th><td><?php echo $row[0]->kota_kabupaten ?></td></tr>
+                        <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
                     </table>
                   </div>
                 </div>
                 <div class="col-md-6">
                     <div class="table-responsive">
                     <table class="table table-bordered table-striped">
-                        <tr><th style="width: 90px !important;">Provinsi</th><td><?php echo $row[0]->provinsi ?></td></tr>
-                        <tr><th>Alamat Lengkap</th><td><?php echo $row[0]->alamatLengkap ?></td></tr>
+                        
                         <tr><th>Foto</th><td></td></tr>
                         
                     </table>
