@@ -42,10 +42,10 @@
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand" href="#">
+        <!-- <a class="navbar-brand" href="#">
          
           <p class="text-center font-weight-medium">Kiko Good Garage</p>
-        </a>
+        </a> -->
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -183,11 +183,16 @@
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
         <ul class="nav">
-          <li class="nav-item nav-profile">
+          <li class="nav-item nav-profile" style="margin-top: -40px !important;">
+           <img src="<?php echo base_url() ?>asset/images/kikonew.png" alt="profile image" style="width: 120px !important; height: 100px !important; margin-bottom: -15px !important;">
+            <p class="text-center font-weight-medium" style="font-size: 22px !important;">Kiko Good Garage</p>
+            <hr color="white" width="85%">
+          </li>
+          
+          <li class="nav-item nav-profile" style="margin-top: -30px !important;">
            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>webbackend/C_dataProduk/grafikProdukUtama">
               <i class="menu-icon icon-home"></i>

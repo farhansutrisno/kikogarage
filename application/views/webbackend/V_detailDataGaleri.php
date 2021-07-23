@@ -42,10 +42,10 @@
 
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 
-       <a class="navbar-brand" href="#"> 
+       <!-- <a class="navbar-brand" href="#"> 
          
           <p class="text-center font-weight-medium">Kiko Good Garage</p>
-        </a>
+        </a> -->
        
       </div>
       
@@ -183,7 +183,13 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
         <ul class="nav">
-          <li class="nav-item nav-profile">
+          <li class="nav-item nav-profile" style="margin-top: -40px !important;">
+           <img src="<?php echo base_url() ?>asset/images/kikonew.png" alt="profile image" style="width: 120px !important; height: 100px !important; margin-bottom: -15px !important;">
+            <p class="text-center font-weight-medium" style="font-size: 22px !important;">Kiko Good Garage</p>
+            <hr color="white" width="85%">
+          </li>
+          
+          <li class="nav-item nav-profile" style="margin-top: -30px !important;">
            <img src="<?php echo base_url() . 'gambar_proyek/'.$this->session->userdata('foto') ?>" alt="profile image">
             <p class="text-center font-weight-medium"><?=$this->session->userdata('namaLengkap')?></p>
           </li>
