@@ -312,7 +312,7 @@
                   </div>
                   <br><br>
                   <div class="table-responsive">
-                      <h5 class="page-title">Update Status Pengerjaan</h5><br>
+                      <h5 class="page-title">Update Status Reservasi</h5><br>
                       <?php 
                         $kdoperator = $this->session->userdata('kodeOperator');
                       ?>
