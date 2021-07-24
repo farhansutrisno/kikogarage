@@ -146,7 +146,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 ftco-animate">
-            <h3><b>Data Reservasi</b> &nbsp;&nbsp;&nbsp;<a style="color: #FFFFFF !important;" href="<?php echo base_url().'C_transaksiProduk/exportpdf/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" target="_blank" class="btn btn-info">Unduh PDF</a></h3> 
+            <h3><b>Data Reservasi</b> &nbsp;&nbsp;&nbsp;<a style="color: #FFFFFF !important;" href="<?php echo base_url().'C_transaksiProduk/exportpdf/'.$row[0]->kodeUnik.'/'.$row[0]->KdTukang?>" target="_blank" class="btn btn-info">Unduh Bukti Reservasi</a></h3> 
             <hr/>
             
             <table border='0'>

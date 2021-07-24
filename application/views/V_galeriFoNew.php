@@ -300,7 +300,7 @@
             <?php } ?>
             
           </div>
-            <?php echo $pag; ?>
+            <!-- <?php echo $pag; ?> -->
         </div>
       </div>
      
