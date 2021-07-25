@@ -503,9 +503,9 @@
               <div class="card">
                 <div class="card-body">
                     <fieldset>
-                       <?php echo anchor('webbackend/C_dataOperator/lihatDataOperator','K E M B A L I',array('class'=>'btn btn-round btn-info' ));?>
+                       <?php echo anchor('webbackend/C_dataOperator/lihatDataOperator','Back',array('class'=>'btn btn-round btn-info' ));?>
                     
-                          <input type="submit" name="submit" class="btn btn-round btn-success" value="S I M P A N"/>
+                          <input type="submit" name="submit" class="btn btn-round btn-success" value="Submit"/>
                     </fieldset>
                   </div>
                 </div>

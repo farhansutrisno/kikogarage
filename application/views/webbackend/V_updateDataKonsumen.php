@@ -371,9 +371,9 @@
                        
                     </fieldset>
 
-                    <?php echo anchor('webbackend/C_dataOperator/lihatDataKonsumen','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
+                    <?php echo anchor('webbackend/C_dataOperator/lihatDataKonsumen','Back',array('class'=>'btn btn-round btn-info'));?>
                 
-                      <input type="submit" name="submit" class="btn btn-round btn-success" value="S I M P A N"/>
+                      <input type="submit" name="submit" class="btn btn-round btn-success" value="Submit"/>
                   
                 </div>
               </div>

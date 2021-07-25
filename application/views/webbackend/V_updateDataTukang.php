@@ -327,7 +327,7 @@
           <!-- <?php echo form_open('webbackend/C_dataOperator/prosesUpdateDataOperator'); ?> -->
            <form method="POST" action="<?php echo base_url().'webbackend/C_dataOperator/prosesUpdateDataTukang'?>" name="updateDataTukang" enctype="multipart/form-data">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
                   <h3 class="card-title" style="font-size: 20px !important;">Edit Data Pegawai Services</h3>
@@ -335,7 +335,7 @@
                   <hr>
                      
                     <input type="hidden" class="form-control" name="KdTukang" value="<?php echo $tukang['KdTukang']?>" />
-                    <fieldset>
+                    <fieldset class="col-lg-6">
                       <div class="form-group">
                           <label>Nama Lengkap</label>
                           <input type="text" class="form-control" name="namaLengkap" value="<?php echo $tukang['nama_lengkap']?>" required/>

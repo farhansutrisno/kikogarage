@@ -406,7 +406,7 @@
                 
                 
               </div>
-                <?php echo anchor('webbackend/C_dataProduk/lihatDataProduk','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
+                <?php echo anchor('webbackend/C_dataProduk/lihatDataProduk','Back',array('class'=>'btn btn-round btn-info'));?>
             </div>
           </div>  
         </div>

@@ -351,7 +351,7 @@
                     
                 </div>
 
-                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatHistoryReservasi'?>" class="btn btn-round btn-info"><i class="fa fa-reply"></i>Kembali</a> 
+                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatHistoryReservasi'?>" class="btn btn-round btn-info"><i class="fa fa-reply"></i>Back</a> 
 
               </div>
                

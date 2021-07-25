@@ -299,7 +299,7 @@
               <div class="row">
                 <div class="col-md-6">
                     <div class="table-responsive">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#updateDataKonsumen"><i class="fa fa-address-book"></i>Update Data Konsumen</a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#updateDataKonsumen"><i class="fa fa-address-book"></i>Update Data Customer</a>
                     <table class="table table-bordered">
                         <tr><th colspan="2" style="text-align: center;">Data Konsumen</th></tr>
                         <tr><th style="width: 15px !important;">Nama Lengkap</th><td><?php echo $row[0]->namaLengkap ?></td></tr>
@@ -376,7 +376,7 @@
                   </div>
                     
                 </div>
-                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatDataPenjualan'?>" class="btn btn-info btn-rounded btn-fw"><i class="fa fa-reply"></i>Kembali</a>
+                <a href="<?php echo base_url().'webbackend/C_dataPenjualan/lihatDataPenjualan'?>" class="btn btn-info btn-rounded btn-fw"><i class="fa fa-reply"></i>Back</a>
               </div>
                
 
@@ -390,7 +390,7 @@
                      <div class="modal-header">
                        
                         <div class="col-md-11">
-                        <h6 class="modal-title textBlack" align="center">Update Data Konsumen</h6>
+                        <h6 class="modal-title textBlack" align="center">Update Data Customer</h6>
                       </div>
                       
                      </div>

@@ -294,7 +294,7 @@
           
           <div class="card">
             <div class="card-body">
-              <h3 class="page-title">Detail History Reservasi Kiko Good Garage</h3><br>
+              <h3 class="page-title">Data History Reservasi Kiko Good Garage</h3><br>
               
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">

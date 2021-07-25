@@ -410,8 +410,8 @@
                       </div>  
                       <br>
 
-                       <?php echo anchor('webbackend/C_dataOperator/lihatDataOperator','K E M B A L I',array('class'=>'btn btn-round btn-info'));?>
-                       <input type="submit" name="submit" class="btn btn-round btn-success" value="S I M P A N"/>
+                       <?php echo anchor('webbackend/C_dataOperator/lihatDataOperator','Back',array('class'=>'btn btn-round btn-info'));?>
+                       <input type="submit" name="submit" class="btn btn-round btn-success" value="Submit"/>
 
                     </fieldset>
                   
