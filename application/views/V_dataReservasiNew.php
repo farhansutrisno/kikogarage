@@ -282,9 +282,18 @@
 
                 <?php 
                 $total_belanja = 0;
+                $total_potongan = 0;
+
                 foreach ($produk as $produk1) { 
 
                   $total_belanja = $total_belanja + $produk1->hargaPenjualan;
+
+                  if ($produk1->kategori == 'CarWash' && $produk1->paket == 'Reguler' || $produk1->kategori == 'CarWash' && $produk1->paket == 'Premium') {
+                    $total_potongan = $total_potongan + $produk1->hargaPenjualan;
+                    $kodeProduk     = $produk1->kdProduk;
+                    $hargaProduk    = $produk1->harga;                
+                  }
+                  
                   ?>
 
                 <div class="col-md-4">
@@ -297,7 +306,7 @@
                         <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
                         <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>
                       </div>
-                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Batal</a></p>
+                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>/<?php echo $produk1->kategori;?>/<?php echo $produk1->paket;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Batal</a></p>
                     </div>
                   </div>
                 </div>
@@ -402,7 +411,35 @@
                 <!-- <a class="blog-img mr-4" style="background-image: url(<?php echo base_url() ?>images/image_1.jpg);"></a> -->
                 <div class="text">
                   <h3 class="heading">
+
+                     <?php 
+                      if (empty($member[0]->poin)) {
+                        $totalPoint = 0;
+                      }else{
+                        $totalPoint = $member[0]->poin;
+                      }
+                      
+                    ?>
+
                      <p style="color: #000000 !important;">Total Bayar : Rp. <?php echo  number_format($total_belanja, 0,",",".");  ?> </p>
+                     <p style="color: #000000 !important;">Total Poin  : <?php echo $totalPoint; ?> &nbsp; 
+
+                      <?php if (!empty($produk)) { 
+
+                        if ($totalPoint >= 10 && $kodeProduk != 0 && $hargaProduk != 0) { ?>
+                        <a href="#" onclick="updateProgress(<?='\''.$member[0]->idAkun.'\',\''.$kodeProduk.'\''?>)" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Gunakan</a>
+                      <?php } ?>
+                      
+                      </p> 
+                      <?php if ($hargaProduk == 0 && $kodeProduk != 0) { 
+                        $totalpembayaran = $total_belanja - $total_potongan;
+
+                      ?>
+                       <p style="color: #000000 !important;">Total Potongan  : Rp. <?php echo  number_format($total_potongan, 0,",",".");  ?></p>
+                       <p style="color: #000000 !important;">Total Bayar  : Rp. <?php echo  number_format($totalpembayaran, 0,",","."); ?></p>
+                      <?php } 
+
+                    }?>
                   </h3>
                  
                 </div>
@@ -664,6 +701,33 @@
   //     });
 
   //   } );
+
+  function updateProgress(idAkun,kdProduk) {
+                  
+    var idAkun            = idAkun;
+    var kdProduk          = kdProduk;
+   
+      $.ajax({
+                url:"<?php echo base_url(); ?>C_produkPembeli/updatepotongan",
+                type: 'POST',
+                dataType: "html",
+                data: {
+                    idAkun: idAkun,
+                    kdProduk : kdProduk
+                },
+                success: function(data) {
+                    console.log(data);
+                    window.location.reload(true);
+                    
+                },
+                error: function(xhr, ajaxOptions, thrownError)
+                {
+                    alert("Failed to get where column list, please try again");
+          
+                }
+          });
+
+  }
 
   </script>
 

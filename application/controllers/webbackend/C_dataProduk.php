@@ -46,6 +46,13 @@ class C_dataProduk extends CI_Controller{
 				}else{
 					$bulan = "0".$bulan1;
 				}
+
+				$this->session->set_flashdata('cektanggal2', 
+		                '<div class="alert alert-success ">    
+		                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                <h7>Berhasil Filter ! </h7>
+		                    
+		                </div>');
 				
 			}else{
 

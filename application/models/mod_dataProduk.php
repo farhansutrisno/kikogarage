@@ -7,6 +7,33 @@ class mod_dataProduk extends CI_Model{
         date_default_timezone_set('Asia/Jakarta');
 	}
 
+    public function prosesPotongan($idAkun){
+
+            $kdProduk = $this->input->post('kdProduk');
+
+            $datakeranjang           = array(
+                "harga"  => 0,
+                "subtotal" => 0
+            );
+            $this->db->where("kdProduk",$kdProduk);
+            $this->db->where("idAkun",$idAkun);
+            $this->db->update("keranjang",$datakeranjang);
+
+            $query = $this->db->select('*');
+            $query = $this->db->where("idAkun",$idAkun);
+            $query = $this->db->get('konsumen')->result();
+            
+            $poin = $query[0]->poin - 10;
+            
+            $datapoin           = array(
+                "poin"  => $poin,
+            );
+
+            $this->db->where("idAkun",$idAkun);
+            return $this->db->update("konsumen",$datapoin);
+
+    }
+
     public function lihatjamreservasi(){
         $this->db->distinct();
         $this->db->select('tglPembayaran,tglTransaksi');
@@ -80,7 +107,7 @@ class mod_dataProduk extends CI_Model{
     public function lihatReservasi(){
         $kode = $this->session->userdata('kode');
 
-        $this->db->select('keranjang.kdProduk, keranjang.kdKeranjang, produk.namaProduk, produk.hargaPenjualan, produk.kategori, produk.gambar, keranjang.idAkun, konsumen.alamatLengkap');
+        $this->db->select('keranjang.kdProduk, keranjang.kdKeranjang, produk.namaProduk, produk.hargaPenjualan, produk.kategori, produk.gambar, produk.paket, keranjang.idAkun, konsumen.alamatLengkap, keranjang.harga');
         $this->db->from('keranjang');
         $this->db->join('produk','produk.kdProduk=keranjang.kdProduk');
         $this->db->join('konsumen','konsumen.idAkun=keranjang.idAkun');
@@ -154,7 +181,26 @@ class mod_dataProduk extends CI_Model{
         return $this->db->get("keranjang");
     }
 
-    public function deleteProduk($id){
+    public function deleteProduk($id,$kategori,$paket){
+
+        if ($kategori == 'CarWash' && $paket == 'Reguler' || $kategori == 'CarWash' && $paket == 'Premium') {
+
+            $idAkun = $this->session->userdata('kode');
+
+            $query = $this->db->select('*');
+            $query = $this->db->where("idAkun",$idAkun);
+            $query = $this->db->get('konsumen')->result();
+
+            $poin = $query[0]->poin + 10;
+                
+            $datapoin           = array(
+                "poin"  => $poin,
+            );
+
+            $this->db->where("idAkun",$idAkun);
+            $this->db->update("konsumen",$datapoin);
+        }
+
         $this->db->where("kdKeranjang",$id);
         return $this->db->delete("keranjang");
     }

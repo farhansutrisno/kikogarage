@@ -60,13 +60,20 @@
 						<tr>
 							<td colspan='2'><b>LAYANAN</b></td>
 						</tr>"; ?>
-					<?php foreach ($produk as $row){ 
+					<?php 
+						$total_potongan = 0;
+						foreach ($produk as $row){ 
+
+						if ($row->kategori == 'CarWash' && $row->paket == 'Reguler' && $row->subtotal == 0 || $row->kategori == 'CarWash' && $row->paket == 'Premium' && $row->subtotal == 0 ) {
+		                  $total_potongan = $total_potongan + $row->hargaPenjualan;              
+		                }
+
 						echo "<tr>
 								<td colspan='2'></td>
 							</tr>
 		                	<tr>
 		                	  <td style='width:300px !important; text-transform: capitalize;'>".$row->namaProduk."</td>  
-		                	  <td align='right'>Rp. ".number_format($row->subtotal, 0,",",".")."</td>
+		                	  <td align='right'>Rp. ".number_format($row->hargaPenjualan, 0,",",".")."</td>
 		                	</tr>";
 	                } ?>
                     <?php echo " </table><br>
@@ -81,15 +88,25 @@
 			                <td align='right'>Rp. ".number_format($key->totalBayar, 0,",",".")."</td>
 						</tr>
 						<tr>
-			            	<td>Poin didapat</td>
-							<td align='right'>1</td>
-			            </tr>"; ?>
+			            	<td style='width:300px !important;'>Potongan</td>
+			                <td align='right'>Rp. ".number_format($total_potongan, 0,",",".")."</td>
+						</tr>
+						<tr>
+			            	<td style='width:300px !important;'>Total Bayar</td>
+			                <td align='right'>Rp. ".number_format($key->totalBayar - $total_potongan, 0,",",".")."</td>
+						</tr>"; ?>
 
-					<?php if ($key->statusPembayaran == 'Selesai') { ?>
+					<?php if ($key->statusPembayaran == 'Selesai') { 
 
+						$totalPoin = $key->poin + 1;
+					?>
 			            <?php echo "<tr>
+						            	<td>Poin didapat</td>
+										<td align='right'>1</td>
+						            </tr>
+			            			<tr>
 						            	<td>Total Poin</td></td>
-						                 <td align='right'>".$key->poin."</td>
+						                 <td align='right'>".$totalPoin."</td>
 						            </tr>";
 						         ?>
 

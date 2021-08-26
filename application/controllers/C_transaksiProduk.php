@@ -316,7 +316,7 @@ class C_transaksiProduk extends CI_Controller{
 		$html_content = $this->output->get_output();
 		$this->pdf->set_paper($paper_size, $orientation);
 
-		// echo $html_content;die;
+		echo $html_content;die;
 		
 		$this->pdf->loadHtml($html_content);
 		$this->pdf->render();

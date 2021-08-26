@@ -111,7 +111,7 @@ class mod_dataPembelian extends CI_Model{
     }
 
     public function dataProduk($id) {
-		$this->db->select('pembelian.berat, produk.namaProduk, pembelian.subtotal, produk.kategori, produk.gambar, produk.hargaPenjualan');
+		$this->db->select('pembelian.berat, produk.namaProduk, pembelian.subtotal, produk.kategori, produk.paket, produk.gambar, produk.hargaPenjualan');
 		$this->db->from('produk');
 		$this->db->join('pembelian','pembelian.kdProduk=produk.kdProduk');
 		$this->db->where("kodeUnik",$id);
@@ -179,7 +179,7 @@ class mod_dataPembelian extends CI_Model{
     }
     function jumlahBayar2($id){
         
-        $query = $this->db->query("SELECT  SUM(subtotal) as jumlahBayar2
+        $query = $this->db->query("SELECT totalBayar as jumlahBayar2
                                 FROM pembelian
                                 WHERE kodeUnik=$id");
         return $query->row();

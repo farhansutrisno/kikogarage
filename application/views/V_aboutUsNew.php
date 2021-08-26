@@ -232,7 +232,7 @@
 
 	            <p>Kiko Good Garage merupakan usaha kecil menengah yang berdiri pada tanggal 1 September 2020 dan bergerak di bidang otomotif khususnya jasa pencucian kendaraan baik roda dua maupun roda empat. Selain itu juga menyediakan jasa coating kendaraan untuk roda empat. Kiko Good Garage beralamat di Jl. Soewoko No. 30, Jetis Lamongan. Pemanfaatan teknologi informasi bisa diterapkan oleh Kiko Good Garage untuk meningkatkan layanan jasa pencucian dan coating kendaraan. Pemanfaatan internet bukan hanya untuk usaha menengah keatas, tetapi juga bisa dimanfaatkan oleh usaha menengah kebawah.</p>
               <p>kikogarage didirikan pada tanggal 1 september 2020. Dinamakan kikogarage karena nama owner ‘frangky dan eko’. Jadi dikikogarage ini merupakan usaha carwash gabungan dari dua orang entrepreneur dimana didepan terdapat café dan belakangnya garasi untuk carwash dan coating otomotif.</p>
-	            <p><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Lihat Produk</a></p>
+	            <p><a href="<?php echo base_url() ?>C_produkPembeli/lihatProdukNew" class="btn btn-primary py-3 px-4">Lihat Layanan</a></p>
 	          </div>
 					</div>
 				</div>

@@ -120,7 +120,14 @@
         <h3 class="mb-3 bread"><b>Produk Terpilih</b></h3>
         <hr/>
         <div class="row">
-          <?php foreach ($produk as $produk1) { ?>
+          <?php 
+            $total_potongan = 0;
+            foreach ($produk as $produk1) { 
+
+                if ($produk1->kategori == 'CarWash' && $produk1->paket == 'Reguler' && $produk1->subtotal == 0 || $produk1->kategori == 'CarWash' && $produk1->paket == 'Premium' && $produk1->subtotal == 0) {
+                  $total_potongan = $total_potongan + $produk1->hargaPenjualan;              
+                }
+            ?>
 
           <div class="col-md-4">
             <div class="car-wrap rounded ftco-animate">
@@ -211,11 +218,11 @@
                         
                       </a></h3>
                   <div class="meta">
-                   <h3 class="heading"><a href="#" style="cursor: default !important;">Potongan : </a></h3>
+                   <h3 class="heading"><a href="#" style="cursor: default !important;">Potongan : Rp. <?php echo  number_format($total_potongan, 0,",",".");  ?></a></h3>
                   </div>
                   <hr/>
                   <h3 class="heading"><a href="#" style="cursor: default !important;">Total Bayar : Rp. <?php
-                     // $totalBayar2 = $totalBelanja2;
+                     $totalBayar2 = $totalBayar2 - $total_potongan;
                       echo  number_format($totalBayar2, 0,",",".");  ?></a></h3>
                 </div>
               </div>
