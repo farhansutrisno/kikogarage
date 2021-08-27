@@ -435,7 +435,7 @@
 
                         <a href="#" onclick="updateProgress(<?='\''.$member[0]->idAkun.'\',\''.$kodeProduk.'\''?>)" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Gunakan</a>
                       <?php } 
-                      if (!empty($produk) && $hargaProduk == 0) { 
+                      if (!empty($kodeProduk) && $hargaProduk == 0) { 
 
                         $totalpembayaran = $total_belanja - $total_potongan;
                         ?>
