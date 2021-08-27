@@ -100,7 +100,9 @@ class mod_dataProduk extends CI_Model{
     public function lihatKeranjang(){
         $kode = $this->session->userdata('kode');
 
-        $this->db->where("idAkun",$kode);
+        $this->db->select('keranjang.kdProduk,produk.kategori,produk.paket');
+        $this->db->join('produk','produk.kdProduk = keranjang.kdProduk');
+        $this->db->where("keranjang.idAkun",$kode);
         return $this->db->get("keranjang");
     }
 
@@ -181,9 +183,9 @@ class mod_dataProduk extends CI_Model{
         return $this->db->get("keranjang");
     }
 
-    public function deleteProduk($id,$kategori,$paket){
+    public function deleteProduk($id,$kategori,$paket,$harga){
 
-        if ($kategori == 'CarWash' && $paket == 'Reguler' || $kategori == 'CarWash' && $paket == 'Premium') {
+        if ($kategori == 'CarWash' && $paket == 'Reguler' && $harga == 0 || $kategori == 'CarWash' && $paket == 'Premium' && $harga == 0) {
 
             $idAkun = $this->session->userdata('kode');
 

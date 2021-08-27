@@ -283,6 +283,10 @@
                 <?php 
                 $total_belanja = 0;
                 $total_potongan = 0;
+                $kodeProduk     = '';
+                $hargaProduk    = 0;    
+                $kategoriproduk = '';  
+                $paketproduk    = '';       
 
                 foreach ($produk as $produk1) { 
 
@@ -291,7 +295,9 @@
                   if ($produk1->kategori == 'CarWash' && $produk1->paket == 'Reguler' || $produk1->kategori == 'CarWash' && $produk1->paket == 'Premium') {
                     $total_potongan = $total_potongan + $produk1->hargaPenjualan;
                     $kodeProduk     = $produk1->kdProduk;
-                    $hargaProduk    = $produk1->harga;                
+                    $hargaProduk    = $produk1->harga;    
+                    $kategoriproduk = $produk1->kategori;  
+                    $paketproduk    = $produk1->paket;           
                   }
                   
                   ?>
@@ -306,7 +312,7 @@
                         <span class="cat" style="color: #000000 !important;"><?php echo $produk1->kategori ?></span>
                         <p class="price ml-auto" style="color: red !important;">Rp. <?php echo  number_format($produk1->hargaPenjualan, 0,",","."); ?></p>
                       </div>
-                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>/<?php echo $produk1->kategori;?>/<?php echo $produk1->paket;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Batal</a></p>
+                      <p class="d-flex mb-0 d-block"><a href="<?php echo base_url()?>C_produkPembeli/deleteProduk2/<?php echo $produk1->kdKeranjang;?>/<?php echo $produk1->kategori;?>/<?php echo $produk1->paket;?>/<?php echo $produk1->harga;?>" class="btn btn-danger py-2 mr-1" style="color: #ffffff !important;">Batal</a></p>
                     </div>
                   </div>
                 </div>
@@ -424,22 +430,21 @@
                      <p style="color: #000000 !important;">Total Bayar : Rp. <?php echo  number_format($total_belanja, 0,",",".");  ?> </p>
                      <p style="color: #000000 !important;">Total Poin  : <?php echo $totalPoint; ?> &nbsp; 
 
-                      <?php if (!empty($produk)) { 
+                      <?php  
+                        if (!empty($produk) && $totalPoint >= 10 && $hargaProduk != 0) { ?>
 
-                        if ($totalPoint >= 10 && $kodeProduk != 0 && $hargaProduk != 0) { ?>
                         <a href="#" onclick="updateProgress(<?='\''.$member[0]->idAkun.'\',\''.$kodeProduk.'\''?>)" class="btn btn-success py-2 mr-1" style="color: #ffffff !important;">Gunakan</a>
-                      <?php } ?>
+                      <?php } 
+                      if (!empty($produk) && $hargaProduk == 0) { 
+
+                        $totalpembayaran = $total_belanja - $total_potongan;
+                        ?>
                       
                       </p> 
-                      <?php if ($hargaProduk == 0 && $kodeProduk != 0) { 
-                        $totalpembayaran = $total_belanja - $total_potongan;
-
-                      ?>
+                      
                        <p style="color: #000000 !important;">Total Potongan  : Rp. <?php echo  number_format($total_potongan, 0,",",".");  ?></p>
                        <p style="color: #000000 !important;">Total Bayar  : Rp. <?php echo  number_format($totalpembayaran, 0,",","."); ?></p>
-                      <?php } 
-
-                    }?>
+                  <?php } ?>
                   </h3>
                  
                 </div>

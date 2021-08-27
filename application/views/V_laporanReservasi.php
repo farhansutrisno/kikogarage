@@ -98,7 +98,7 @@
 
 					<?php if ($key->statusPembayaran == 'Selesai') { 
 
-						$totalPoin = $key->poin + 1;
+						$totalPoin = $key->poin;
 					?>
 			            <?php echo "<tr>
 						            	<td>Poin didapat</td>

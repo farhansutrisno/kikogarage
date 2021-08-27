@@ -250,7 +250,8 @@
                                     <input type="hidden" name="namaProduk" value="<?php echo $key->namaProduk; ?>" />
                                     <input type="hidden" name="harga" value="<?php echo $key->hargaPenjualan; ?>" />
                                     <input type="hidden" name="gambar" value="<?php echo $key->gambar; ?>" />
-                                    <!-- <input type="hidden" name="berat" value="<?php echo $key->berat; ?>" /> -->
+                                    <input type="hidden" name="kategori" value="<?php echo $key->kategori; ?>" />
+                                    <input type="hidden" name="paket" value="<?php echo $key->paket; ?>" />
                                     <input type="hidden" name="qty" value="1" />
                                     <!-- <button type="submit" name="submit" class="cart-btn"><i class="icon-basket-loaded"></i></button> -->
                                     <input type="submit" name="submit" value="Booking" class="btn btn-primary py-2 mr-1" style="width: 30% !important"> 

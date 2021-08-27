@@ -58,6 +58,9 @@ class C_produkPembeli extends CI_Controller{
 
     public function prosesTambah(){
             
+            $kategori       = $this->input->post('kategori');
+            $paket          = $this->input->post('paket');
+
             $subtotal       = $this->input->post('subtotal');
             $namaProduk     = $this->input->post('namaProduk');
             $kdProduk       = $this->input->post('kdProduk');
@@ -67,6 +70,22 @@ class C_produkPembeli extends CI_Controller{
             $gambar         = $this->input->post('gambar');
             // $berat          = $this->input->post('berat');
 
+            $cekkategori = $this->mod_dataProduk->lihatKeranjang()->result_array();
+
+            foreach ($cekkategori as $cek) {
+
+                if ($kategori == $cek['kategori']) {
+
+                    $this->session->set_flashdata('tambah1', 
+                        '<div class="alert alert-success" style="margin-bottom: 20px !important">    
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <h7>kategori '.$cek['kategori'].' sudah dipilih harap batal terlebih lalu pilih kembali</h7>
+                        </div>');
+                    redirect('C_produkPembeli/datareservasi');
+                }
+
+            }
+            
             $produk = $this->mod_dataProduk->cekProduk($kdProduk,$idAkun)->result();
 
             if ($kdProduk == $produk[0]->kdProduk) {
@@ -138,27 +157,6 @@ class C_produkPembeli extends CI_Controller{
         $kode = $this->session->userdata('kode');
         $this->mod_dataProduk->prosesPotongan($kode);
 
-        // $data['produk']         = $this->mod_dataProduk->lihatReservasi()->result();
-        // $data['jamreservasi1']  = $this->mod_dataProduk->lihatjamreservasi()->result();
-
-        // $jml                    = $this->mod_dataProduk->jmlKeranjang();
-        // $data['keranjang']      = $jml->jmlKeranjang;
-
-        // $this->load->model('mod_dataAkun');
-        // $data["member"] = $this->mod_dataAkun->lihatDataMember($kode)->result();
-
-        // $data['noPlat']         = $this->session->userdata('noPlat');
-        // $data['jenisBooking']   = $this->session->userdata('jenisBooking');
-        // $data['tglReservasi']   = $this->session->userdata('tglReservasi');
-        // if (!empty($this->session->userdata('jamreservasi'))) {
-        //     $jamreservasi = $this->session->userdata('jamreservasi');
-        // }else{
-        //     $jamreservasi = '10:00';
-        // }
-
-        // $data['jamreservasi']   = $jamreservasi;
-
-        // $this->load->view('V_dataReservasiNew',$data);
     }
 
     public function pencarianNew(){
@@ -205,14 +203,14 @@ class C_produkPembeli extends CI_Controller{
         $this->load->view('V_pencarianLoginNew',$data);
     }
 
-    public function deleteProduk2($kdKeranjang,$kategori,$paket){
+    public function deleteProduk2($kdKeranjang,$kategori,$paket,$harga){
         $this->session->set_flashdata('hapus1', 
                         '<div class="alert alert-info" style="margin-bottom: 20px !important">    
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <h7>BERHASIL ! </h7>
                             <p>Berhasil Menghapus Produk</p>
                         </div>');
-        $this->mod_dataProduk->deleteProduk($kdKeranjang,$kategori,$paket);
+        $this->mod_dataProduk->deleteProduk($kdKeranjang,$kategori,$paket,$harga);
         redirect('C_produkPembeli/datareservasi');
     }
 
